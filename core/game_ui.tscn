@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dnty0uxfnuiic"]
+
+[ext_resource type="Script" uid="uid://bdiu6feb84my1" path="res://core/game_ui.gd" id="1_i0cwh"]
+[ext_resource type="PackedScene" uid="uid://dwa6h68gp3cra" path="res://core/ui/ui_frame_rate.tscn" id="2_l787j"]
+[ext_resource type="PackedScene" uid="uid://bt58ok2qwcjln" path="res://core/ui/ui_transitions.tscn" id="3_3iaur"]
+
+[node name="GameUi" type="CanvasLayer" unique_id=547303981]
+process_mode = 3
+layer = 128
+script = ExtResource("1_i0cwh")
+ui_frame_rate_scene = ExtResource("2_l787j")
+ui_transitions_scene = ExtResource("3_3iaur")

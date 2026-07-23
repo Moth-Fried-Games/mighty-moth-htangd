@@ -14,10 +14,23 @@ config/name="GMTK2026"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameGlobals="*uid://p2nokudrdkw6"
+ControllerIcons="*uid://5l43qeefbt46"
+
+[copy_files_on_export]
+
+files=Array[PackedStringArray]([])
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg", "res://addons/copy_files_on_export/plugin.cfg", "res://addons/format_on_save/plugin.cfg")
 
 [physics]
 

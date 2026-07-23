@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://p2nokudrdkw6"]
+
+[ext_resource type="Script" uid="uid://cmau37afinrhj" path="res://core/game_globals.gd" id="1_7xhcd"]
+[ext_resource type="PackedScene" uid="uid://bersd3vbt6xu8" path="res://core/game_settings.tscn" id="2_hj100"]
+[ext_resource type="PackedScene" uid="uid://cvvdnqg5i4m7k" path="res://core/game_data.tscn" id="3_vvr1q"]
+
+[node name="GameGlobals" type="Node" unique_id=2009890175]
+process_mode = 3
+script = ExtResource("1_7xhcd")
+game_settings_scene = ExtResource("2_hj100")
+game_data_scene = ExtResource("3_vvr1q")

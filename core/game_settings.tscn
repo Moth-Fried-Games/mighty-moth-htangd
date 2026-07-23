@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bersd3vbt6xu8"]
+
+[ext_resource type="Script" uid="uid://cfgtjil6gu31y" path="res://core/game_settings.gd" id="1_be2fd"]
+
+[node name="GameSettings" type="Node" unique_id=2082667040]
+script = ExtResource("1_be2fd")
+metadata/_custom_type_script = "uid://cfgtjil6gu31y"
