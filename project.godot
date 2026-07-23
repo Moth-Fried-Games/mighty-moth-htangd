@@ -10,18 +10,16 @@ config_version=5
 
 [application]
 
-config/name="GMTK2026"
+config/name="Mighty Moth and the Horrible, Terrible, Awful, No-Good Day"
+run/main_scene="uid://duy7quoh4dbld"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameGlobals="*uid://p2nokudrdkw6"
 ControllerIcons="*uid://5l43qeefbt46"
-
-[copy_files_on_export]
-
-files=Array[PackedStringArray]([])
+GameGlobals="*uid://p2nokudrdkw6"
+GameUi="*uid://dnty0uxfnuiic"
 
 [display]
 

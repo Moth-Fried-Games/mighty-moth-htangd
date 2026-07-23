@@ -28,7 +28,12 @@ var game_data: GameData = null
 var game_events: GameEvents = GameEvents.new()
 var audio_manager: AudioManager = AudioManager.new()
 
-var game_dictionary: Dictionary = {}
+var game_dictionary: Dictionary = {
+	"flag": {},
+	"stat": {},
+	"node": {},
+	"resource": {},
+}
 
 
 func _ready() -> void:
