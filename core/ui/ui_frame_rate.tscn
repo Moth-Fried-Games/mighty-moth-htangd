@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://nqnqbexwbfsi" path="res://core/ui/ui_frame_rate.gd" id="1_ejxet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8ikx0"]
-font_size = 4
 font_color = Color(0, 0.5, 0, 1)
-outline_size = 2
-shadow_size = 4
+outline_size = 4
+shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 0)
 
