@@ -94,7 +94,7 @@ func change_to_game() -> void:
 		input_ready = false
 		GameGlobals.audio_manager.create_audio("sound_menu_click")
 		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_menu", 1)
-		GameUi.ui_transitions.change_scene_with_loading(GameGlobals.lab_scene)
+		GameUi.ui_transitions.change_scene_with_loading("res://game/main/main_game_scene.tscn")
 
 
 func quit_game() -> void:
