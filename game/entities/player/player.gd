@@ -14,6 +14,6 @@ func _physics_process(delta: float) -> void:
 
 func _movement():
 	if Input.is_action_just_pressed("move_up"):
-		_change_lane(-1)
+		_change_lane(direction.UP)
 	if Input.is_action_just_pressed("move_down"):
-		_change_lane(1)
+		_change_lane(direction.DOWN)

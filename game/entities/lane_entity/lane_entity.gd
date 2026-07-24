@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name LaneEntity
 
+enum direction {UP = -1, DOWN = 1}
+
 @export var lanes : Array[Node2D]
 
 @onready var lanes_quantity : int = lanes.size()
@@ -29,15 +31,15 @@ func _set_lane(lane : int):
 	current_lane = lane
 	global_position.y = lane_positions[current_lane].y
 
-func  _change_lane(direction : int ):
+func  _change_lane(dir : direction):
 	var cant_move_condition = (
-			(current_lane == 0 and direction == -1) 
-			or (current_lane == lanes_quantity - 1 and direction == 1)
+			(current_lane == 0 and dir == direction.UP) 
+			or (current_lane == lanes_quantity - 1 and dir == direction.DOWN)
 		)
 	
 	if cant_move_condition:
 		return
 	
-	current_lane += direction
+	current_lane += dir as int
 	
 	_set_lane(current_lane)
