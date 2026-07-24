@@ -4,6 +4,8 @@ class_name GameSettings
 
 @export var game_size: Vector2i = Vector2i(320, 180)
 @export var stretch_mode: bool = false
+
+# Graphics
 @export var display_mode: DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 @export var vsync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_DISABLED
 @export_enum("Auto", "30", "60", "144", "240", "360", "Uncapped", "Custom")
@@ -11,11 +13,13 @@ var frame_rate_cap: int = 0
 @export var custom_frame_rate_cap: int = 60
 @export var show_fps: bool = false
 
+# Audio
 @export_range(0, 1) var master_volume: float = 0.5
 @export_range(0, 1) var music_volume: float = 0.5
 @export_range(0, 1) var sound_volume: float = 0.5
 @export_range(0, 1) var ui_volume: float = 0.5
 
+# Controls
 @export_range(0.01, 1) var mouse_sensitivity: float = 0.5
 
 var last_game_size: Vector2 = Vector2.ZERO
@@ -40,7 +44,44 @@ func update_stretch_mode() -> void:
 				#print("Smaller Window")
 
 
+func save_settings() -> void:
+	var config: ConfigFile = ConfigFile.new()
+
+	config.set_value("Graphics", "display_mode", display_mode)
+	config.set_value("Graphics", "vsync_mode", vsync_mode)
+	config.set_value("Graphics", "frame_rate_cap", frame_rate_cap)
+	config.set_value("Graphics", "custom_frame_rate_cap", custom_frame_rate_cap)
+	config.set_value("Graphics", "show_fps", show_fps)
+
+	config.set_value("Audio", "master_volume", master_volume)
+	config.set_value("Audio", "music_volume", music_volume)
+	config.set_value("Audio", "sound_volume", sound_volume)
+	config.set_value("Audio", "ui_volume", ui_volume)
+
+	config.set_value("Controls", "mouse_sensitivity", mouse_sensitivity)
+
+	config.save("user://settings.cfg")
+
+
 func load_settings() -> void:
+	var config: ConfigFile = ConfigFile.new()
+	var err: Error = config.load("user://settings.cfg")
+	if err == OK:
+		display_mode = config.get_value("Graphics", "display_mode", display_mode)
+		vsync_mode = config.get_value("Graphics", "vsync_mode", vsync_mode)
+		frame_rate_cap = config.get_value("Graphics", "frame_rate_cap", frame_rate_cap)
+		custom_frame_rate_cap = config.get_value(
+			"Graphics", "custom_frame_rate_cap", custom_frame_rate_cap
+		)
+		show_fps = config.get_value("Graphics", "show_fps", show_fps)
+
+		master_volume = config.get_value("Audio", "master_volume", master_volume)
+		music_volume = config.get_value("Audio", "music_volume", music_volume)
+		sound_volume = config.get_value("Audio", "sound_volume", sound_volume)
+		ui_volume = config.get_value("Audio", "ui_volume", ui_volume)
+
+		mouse_sensitivity = config.get_value("Controls", "mouse_sensitivity", mouse_sensitivity)
+
 	update_display_mode(display_mode)
 	update_vsync_mode(vsync_mode)
 	update_frame_rate_cap(frame_rate_cap)
