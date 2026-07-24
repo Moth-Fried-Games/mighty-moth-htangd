@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var ui_frame_rate_scene: PackedScene:
 	set(value):
 		if is_instance_valid(value):
-			var value_instance = load(value.resource_path).instantiate()
+			var value_instance: UIFrameRate = load(value.resource_path).instantiate()
 			if value_instance is UIFrameRate:
 				ui_frame_rate_scene = value
 			else:
@@ -15,7 +15,7 @@ var ui_frame_rate: UIFrameRate = null
 @export var ui_transitions_scene: PackedScene:
 	set(value):
 		if is_instance_valid(value):
-			var value_instance = load(value.resource_path).instantiate()
+			var value_instance: UITransitions = load(value.resource_path).instantiate()
 			if value_instance is UITransitions:
 				ui_transitions_scene = value
 			else:
@@ -23,6 +23,7 @@ var ui_frame_rate: UIFrameRate = null
 		else:
 			ui_frame_rate_scene = value
 var ui_transitions: UITransitions = null
+
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():

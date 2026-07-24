@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func sync_audio_groups() -> void:
 	if not persistent_group.is_empty():
-		for per_group in persistent_group.keys():
+		for per_group: String in persistent_group.keys():
 			var group_position: float = 0
 			var first_key: String = persistent_group.keys()[0]
 			var first_player: AudioStreamPlayer = null
@@ -23,7 +23,7 @@ func sync_audio_groups() -> void:
 				first_player = persistent_group[per_group][first_key]["Player"]
 			if is_instance_valid(first_player):
 				group_position = first_player.get_playback_position()
-				for per_aud in persistent_audio.keys():
+				for per_aud: String in persistent_audio.keys():
 					var current_player: AudioStreamPlayer = persistent_group[per_group][per_aud]["Player"]
 					if is_instance_valid(current_player):
 						if current_player.get_playback_position() != group_position:
@@ -32,7 +32,7 @@ func sync_audio_groups() -> void:
 
 func loop_persistent_audio() -> void:
 	if not persistent_audio.is_empty():
-		for per_aud in persistent_audio.keys():
+		for per_aud: String in persistent_audio.keys():
 			if is_instance_valid(persistent_audio[per_aud]["Player"]):
 				var persistent_audio_player: AudioStreamPlayer = persistent_audio[per_aud]["Player"]
 				var reverb_tail: float = persistent_audio[per_aud]["ReverbTail"]
@@ -60,9 +60,9 @@ func loop_persistent_audio() -> void:
 
 func loop_persistent_owner_audio() -> void:
 	if not persistent_audio_owners.is_empty():
-		for pao in persistent_audio_owners.keys():
+		for pao: Node2D in persistent_audio_owners.keys():
 			if is_instance_valid(pao):
-				for per_aud in persistent_audio_owners[pao].keys():
+				for per_aud: String in persistent_audio_owners[pao].keys():
 					if is_instance_valid(persistent_audio_owners[pao][per_aud]["Player"]):
 						var persistent_audio_player: AudioStreamPlayer2D = persistent_audio_owners[pao][per_aud]["Player"]
 						var reverb_tail: float = persistent_audio_owners[pao][per_aud]["ReverbTail"]
@@ -92,7 +92,7 @@ func loop_persistent_owner_audio() -> void:
 				persistent_audio_owners.erase(pao)
 
 
-func load_audio():
+func load_audio() -> void:
 	for audio_setting: AudioSettings in GameGlobals.game_data.audio_resources:
 		audio_setting_dict[audio_setting.audio_name] = audio_setting
 

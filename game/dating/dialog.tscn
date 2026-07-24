@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://xpblm7xhbfof"]
+
+[ext_resource type="Script" uid="uid://cwqeauqdn4bvw" path="res://game/dating/dialog.gd" id="1_v8xbs"]
+[ext_resource type="PackedScene" uid="uid://bg6f3mmg2ro1v" path="res://game/dating/ui_dialog.tscn" id="2_wmvkl"]
+
+[node name="Dialog" type="Node2D" unique_id=2119953364]
+z_index = 10
+script = ExtResource("1_v8xbs")
+input_dialog = true
+dialog_list = Array[String](["Test", "Test 2", "Test 3"])
+dialog_width = 240.0
+
+[node name="UIDialog" parent="." unique_id=2018421613 instance=ExtResource("2_wmvkl")]
+modulate = Color(1, 1, 1, 0.75)
+custom_minimum_size = Vector2(240, 0)
+offset_left = -120.0
+offset_top = -35.0
+offset_right = 120.0
+offset_bottom = -23.0

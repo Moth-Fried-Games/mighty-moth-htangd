@@ -18,7 +18,7 @@ enum AudioType { MUSIC, SOUND, UI }
 var audio_count: int = 0
 
 
-func change_audio_count(amount: int):
+func change_audio_count(amount: int) -> void:
 	audio_count = max(0, audio_count + amount)
 
 
@@ -26,5 +26,5 @@ func has_open_limit() -> bool:
 	return audio_count < limit
 
 
-func on_audio_finished():
+func on_audio_finished() -> void:
 	change_audio_count(-1)

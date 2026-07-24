@@ -31,30 +31,32 @@ enum LaneId { TOP, MIDDLE, BOTTOM }
 		right_offset = v
 		_update_lanes()
 
+
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	_update_lanes()
 
+
 # Updates lane and anchor positions
-func _update_lanes():
-	
+func _update_lanes() -> void:
 	if is_instance_valid(middle_lane):
 		var viewport_size: Vector2 = get_viewport_rect().size
-		
+
 		position = (viewport_size / 2) + Vector2(0, center_offset)
 		middle_lane.position = Vector2.ZERO
 		bottom_lane.position = Vector2.ZERO + Vector2(0, lane_gaps)
 		top_lane.position = Vector2.ZERO + Vector2(0, -lane_gaps)
-		
-		middle_left_anchor.position = Vector2(-(viewport_size.x/2) + left_offset, 0)
-		top_left_anchor.position = Vector2(-(viewport_size.x/2) + left_offset, 0)
-		bottom_left_anchor.position = Vector2(-(viewport_size.x/2) + left_offset, 0)
-		
-		middle_right_anchor.position = Vector2((viewport_size.x/2) + right_offset, 0)
-		top_right_anchor.position = Vector2((viewport_size.x/2) + right_offset, 0)
-		bottom_right_anchor.position = Vector2((viewport_size.x/2) + right_offset, 0)
-	
+
+		middle_left_anchor.position = Vector2(-(viewport_size.x / 2) + left_offset, 0)
+		top_left_anchor.position = Vector2(-(viewport_size.x / 2) + left_offset, 0)
+		bottom_left_anchor.position = Vector2(-(viewport_size.x / 2) + left_offset, 0)
+
+		middle_right_anchor.position = Vector2((viewport_size.x / 2) + right_offset, 0)
+		top_right_anchor.position = Vector2((viewport_size.x / 2) + right_offset, 0)
+		bottom_right_anchor.position = Vector2((viewport_size.x / 2) + right_offset, 0)
+
 	pass
+
 
 # Retrieves a given lane's y pos
 func get_y_position(lane_id: LaneId) -> float:
@@ -66,8 +68,9 @@ func get_y_position(lane_id: LaneId) -> float:
 		LaneId.BOTTOM:
 			return bottom_lane.global_position.y
 	return INF
-	
-func get_collision_mask(lane_id: LaneId) -> int: # COLLISION MASKS PENDING REVISION
+
+
+func get_collision_mask(lane_id: LaneId) -> int:  # COLLISION MASKS PENDING REVISION
 	match lane_id:
 		LaneId.TOP:
 			return 1
@@ -75,4 +78,4 @@ func get_collision_mask(lane_id: LaneId) -> int: # COLLISION MASKS PENDING REVIS
 			return 2
 		LaneId.BOTTOM:
 			return 3
-	return INF
+	return -1

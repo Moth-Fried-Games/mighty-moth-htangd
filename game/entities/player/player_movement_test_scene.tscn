@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ba3paql6bxe3a"]
+
+[ext_resource type="PackedScene" uid="uid://7mtu3gycsbr" path="res://game/entities/player/player.tscn" id="1_qhxco"]
+[ext_resource type="Script" uid="uid://bwfr1rlil1o1q" path="res://game/entities/player/player_movement_test_scene.gd" id="1_x7ynj"]
+
+[node name="PlayerMovementTestScene" type="Node2D" unique_id=2109078874]
+script = ExtResource("1_x7ynj")
+
+[node name="Lane" type="Marker2D" parent="." unique_id=317934693]
+position = Vector2(-62, 512)
+
+[node name="Lane2" type="Marker2D" parent="." unique_id=994711512]
+position = Vector2(-64, 384)
+
+[node name="Lane3" type="Marker2D" parent="." unique_id=1469286854]
+position = Vector2(-62, 640)
+
+[node name="Lane4" type="Marker2D" parent="." unique_id=214136725]
+position = Vector2(-62, 256)
+
+[node name="Lane5" type="Marker2D" parent="." unique_id=54768817]
+position = Vector2(-62, 128)
+
+[node name="Player" parent="." unique_id=427807066 node_paths=PackedStringArray("lanes") instance=ExtResource("1_qhxco")]
+position = Vector2(128, 160)
+lanes = [NodePath("../Lane"), NodePath("../Lane2"), NodePath("../Lane3"), NodePath("../Lane4"), NodePath("../Lane5")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=913473372]
+position = Vector2(640, 360)

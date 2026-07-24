@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b0guybi8oysyt"]
+
+[ext_resource type="Script" uid="uid://dcutpxty2jcbp" path="res://game/dating/intro.gd" id="1_d2p87"]
+[ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="2_pil35"]
+
+[node name="Intro" type="Node2D" unique_id=346985930]
+script = ExtResource("1_d2p87")
+
+[node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
+position = Vector2(640, 700)
+dialog_width = 1260.0

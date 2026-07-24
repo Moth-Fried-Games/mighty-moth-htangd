@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bg6f3mmg2ro1v"]
+
+[ext_resource type="Script" uid="uid://dfylnyo0hj2qt" path="res://game/dating/ui_dialog.gd" id="1_cqeu6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jf5t"]
+
+[sub_resource type="Gradient" id="Gradient_dqnjq"]
+offsets = PackedFloat32Array(0.7, 0.8, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g1ugq"]
+gradient = SubResource("Gradient_dqnjq")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="UIDialog" type="PanelContainer" unique_id=2018421613]
+custom_minimum_size = Vector2(72, 0)
+offset_right = 68.0
+offset_bottom = 12.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6jf5t")
+script = ExtResource("1_cqeu6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1998098964]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_g1ugq")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=575347649]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=640135570]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
