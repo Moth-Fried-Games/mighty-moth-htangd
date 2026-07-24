@@ -10,8 +10,8 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g1ugq"]
 gradient = SubResource("Gradient_dqnjq")
-width = 32
-height = 32
+width = 128
+height = 128
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
@@ -26,17 +26,17 @@ script = ExtResource("1_cqeu6")
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1998098964]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_g1ugq")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=575347649]
 layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=640135570]
 layout_mode = 2

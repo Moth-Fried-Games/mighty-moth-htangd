@@ -6,14 +6,11 @@
 [node name="Dialog" type="Node2D" unique_id=2119953364]
 z_index = 10
 script = ExtResource("1_v8xbs")
-input_dialog = true
-dialog_list = Array[String](["Test", "Test 2", "Test 3"])
-dialog_width = 240.0
 
 [node name="UIDialog" parent="." unique_id=2018421613 instance=ExtResource("2_wmvkl")]
 modulate = Color(1, 1, 1, 0.75)
-custom_minimum_size = Vector2(240, 0)
-offset_left = -120.0
-offset_top = -35.0
-offset_right = 120.0
-offset_bottom = -23.0
+custom_minimum_size = Vector2(640, 0)
+offset_left = -320.0
+offset_top = -48.0
+offset_right = 320.0
+offset_bottom = 0.0
