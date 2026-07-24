@@ -8,4 +8,10 @@ script = ExtResource("1_d2p87")
 
 [node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
 position = Vector2(640, 700)
-dialog_width = 1260.0
+active = true
+input_dialog = true
+dialog_list = Array[String](["[font_size=32]Name[/font_size]
+[wait=1][font_size=28]Hi hi hi Hello hello :3[/font_size][/wait]", "[wait=1][font_size=32]Name[/font_size][/wait]
+[wait=2][font_size=28]hello hello hi <3[/font_size][/wait]", "[font_size=32]Name[/font_size]
+[wait=3][font_size=28]hihihihihi hello :3c[/font_size][/wait]"])
+dialog_width = 1240.0

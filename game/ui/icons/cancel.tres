@@ -1,0 +1,10 @@
+[gd_resource type="Texture2D" script_class="ControllerIconTexture" format=3 uid="uid://dxp6vja8bilas"]
+
+[ext_resource type="Script" uid="uid://bpcakcbada45g" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="1_1200e"]
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("1_1200e")
+path = "ui_cancel"
+metadata/_custom_type_script = "uid://bpcakcbada45g"

@@ -6,6 +6,7 @@ extends PanelContainer
 
 var ui_inputs: Array[String] = []
 var text: String = ""
+var original_text: String = ""
 var clean_text: String = ""
 
 var hide_tween: Tween = null
@@ -32,6 +33,7 @@ func message(new_text: String) -> void:
 	size.y = 0
 	ui_inputs = []
 	text = new_text
+	original_text = new_text
 	split_waits()
 	type_text()
 
@@ -39,14 +41,11 @@ func message(new_text: String) -> void:
 func message_input(new_text: String) -> void:
 	size.y = 0
 	text = new_text
+	original_text = new_text
 	#text = str(text, "[center]***************[/center]\n")
-	#update_inputs()
+	update_inputs()
 	split_waits()
 	type_text()
-
-
-func update_category() -> void:
-	pass
 
 
 func update_inputs() -> void:
@@ -55,11 +54,11 @@ func update_inputs() -> void:
 		var input_name: String = ui_input.split(" ")[1]
 		var input_texture_path: String = input_path(input_label)
 		var input_tag: String = img_tag(input_texture_path)
-		text = str(text, "[right]", input_name, " ", input_tag, "[/right]\n")
+		text = str(text, "[font_size=24][right]", input_name, " ", input_tag, "[/right]\n")
 
 
 func img_tag(image_path: String) -> String:
-	var tag_text: String = str("[img=8x8,center,center]", image_path, "[/img]")
+	var tag_text: String = str("[img=24x24,center,center]", image_path, "[/img]")
 	return tag_text
 
 
@@ -175,6 +174,7 @@ func type_text() -> void:
 	if rich_text_label.text != clean_text:
 		rich_text_label.text = clean_text
 	if text_wait_splits.is_empty():
+		print("Wait Splits Empty")
 		rich_text_label.visible_ratio = 1
 		text_typing = false
 		text_finished = true
@@ -183,6 +183,7 @@ func type_text() -> void:
 		text_typing = true
 		text_index = 0
 		text_character_ratio = 1.0 / rich_text_label.get_total_character_count()
+		## TODO REMOVE BBCODE FROM TEXT WAIT SPLITS
 		rich_text_label.visible_ratio = 0
 		type_tween()
 
