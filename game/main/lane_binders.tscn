@@ -1,13 +1,53 @@
 [gd_scene format=3 uid="uid://cj4qpblphlkas"]
 
 [ext_resource type="Script" uid="uid://b3gcf4t2na33" path="res://game/main/lane_binders.gd" id="1_40ei4"]
+[ext_resource type="Texture2D" uid="uid://c0iubcomd6mai" path="res://assets/object_sprites/PLACEHOLDER_rocket.png" id="2_7qpts"]
+[ext_resource type="Texture2D" uid="uid://cfu6ilidl775q" path="res://assets/character_sprites/PLACEHOLDER_goon.png" id="2_pb5gl"]
 
 [node name="LaneBinders" type="Node2D" unique_id=758711568]
 script = ExtResource("1_40ei4")
 
-[node name="Label" type="Label" parent="." unique_id=443531133]
-offset_left = 823.0
-offset_top = 220.0
-offset_right = 1284.0
-offset_bottom = 407.0
-text = "WE ARE TESTINGGGG YEAHHHHH"
+[node name="Middle Lane" type="Node2D" parent="." unique_id=1628555622]
+unique_name_in_owner = true
+position = Vector2(1, 1)
+
+[node name="Middle Left Anchor" type="Marker2D" parent="Middle Lane" unique_id=953809043]
+unique_name_in_owner = true
+position = Vector2(-111, 2)
+
+[node name="Middle Right Anchor" type="Marker2D" parent="Middle Lane" unique_id=1944633828]
+unique_name_in_owner = true
+position = Vector2(111, 1)
+
+[node name="Bottom Lane" type="Node2D" parent="Middle Lane" unique_id=1433448766]
+unique_name_in_owner = true
+position = Vector2(0, 68)
+
+[node name="Bottom Left Anchor" type="Marker2D" parent="Middle Lane/Bottom Lane" unique_id=816487434]
+unique_name_in_owner = true
+position = Vector2(-111, 2)
+
+[node name="Bottom Right Anchor" type="Marker2D" parent="Middle Lane/Bottom Lane" unique_id=376542532]
+unique_name_in_owner = true
+position = Vector2(111, 1)
+
+[node name="PLACEHOLDER_anchor_bottom_right" type="Sprite2D" parent="Middle Lane/Bottom Lane/Bottom Right Anchor" unique_id=517711480]
+texture = ExtResource("2_7qpts")
+
+[node name="Top Lane" type="Node2D" parent="Middle Lane" unique_id=1281279305]
+unique_name_in_owner = true
+position = Vector2(0, -63)
+
+[node name="Top Left Anchor" type="Marker2D" parent="Middle Lane/Top Lane" unique_id=1579905432]
+unique_name_in_owner = true
+position = Vector2(-111, 2)
+
+[node name="PLACEHOLDER_anchor_show" type="Sprite2D" parent="Middle Lane/Top Lane/Top Left Anchor" unique_id=1050145905]
+texture = ExtResource("2_7qpts")
+
+[node name="Top Right Anchor" type="Marker2D" parent="Middle Lane/Top Lane" unique_id=1996465120]
+unique_name_in_owner = true
+position = Vector2(111, 1)
+
+[node name="PLACEHOLDER_Sprite" type="Sprite2D" parent="." unique_id=1646101391]
+texture = ExtResource("2_pb5gl")

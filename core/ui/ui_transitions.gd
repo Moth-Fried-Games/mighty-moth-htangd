@@ -26,7 +26,6 @@ func _on_fade_finished(anim_name: String) -> void:
 	if anim_name == "fade_in":
 		if loading_bar:
 			toggle_transition(true)
-		GameGlobals.game_events.world_leaving.emit()
 		await get_tree().process_frame
 		get_tree().change_scene_to_file(scene_path)
 	if anim_name == "fade_out":
