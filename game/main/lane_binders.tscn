@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cj4qpblphlkas"]
+
+[ext_resource type="Script" uid="uid://b3gcf4t2na33" path="res://game/main/lane_binders.gd" id="1_40ei4"]
+
+[node name="LaneBinders" type="Node2D" unique_id=758711568]
+script = ExtResource("1_40ei4")
+
+[node name="Label" type="Label" parent="." unique_id=443531133]
+offset_left = 823.0
+offset_top = 220.0
+offset_right = 1284.0
+offset_bottom = 407.0
+text = "WE ARE TESTINGGGG YEAHHHHH"
