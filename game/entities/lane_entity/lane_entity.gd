@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 class_name LaneEntity
 
 enum direction {UP = -1, DOWN = 1}

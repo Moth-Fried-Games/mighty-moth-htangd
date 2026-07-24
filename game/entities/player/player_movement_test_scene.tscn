@@ -21,8 +21,9 @@ position = Vector2(-62, 256)
 [node name="Lane5" type="Marker2D" parent="." unique_id=54768817]
 position = Vector2(-62, 128)
 
-[node name="Player" parent="." unique_id=427807066 instance=ExtResource("1_qhxco")]
+[node name="Player" parent="." unique_id=427807066 node_paths=PackedStringArray("lanes") instance=ExtResource("1_qhxco")]
 position = Vector2(128, 160)
+lanes = [NodePath("../Lane"), NodePath("../Lane2"), NodePath("../Lane3"), NodePath("../Lane4"), NodePath("../Lane5")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=913473372]
 position = Vector2(640, 360)

@@ -41,14 +41,13 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(7, 9)
 
-[node name="Player" type="RigidBody2D" unique_id=427807066]
-gravity_scale = 0.0
+[node name="Player" type="Area2D" unique_id=48566076]
 script = ExtResource("1_gqtae")
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"idle"
-frame_progress = 0.20853457
+frame_progress = 0.18881154
 
 [node name="HurtBox" type="CollisionShape2D" parent="." unique_id=1854714996]
 position = Vector2(-2, 2)
