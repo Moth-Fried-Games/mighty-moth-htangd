@@ -33,11 +33,8 @@ func _ready() -> void:
 	spawn_timer.start()
 	return
 
-
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
-
+# Spawn another "wave" of obstacles as per the timer's timed interval
+## Currently, this is just one at a time. What if we sometimes spawn 2 or 3 at a time, with proper timing?
 func _spawn_obstacles_wave() -> void:
 	print("Timer has dinged!")
 	
@@ -52,24 +49,30 @@ func _spawn_obstacles_wave() -> void:
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map[lane_to_spawn_in].append(new_enemy_spawn)
 				print("Spawned a melee enemy!")
+			ObstacleType.RANGED_ENEMY:
+				pass # TODO create scene for this obstacle type and actually implement it
+			ObstacleType.DEBRIS:
+				pass # TODO create scene for this obstacle type and actually implement it
+			ObstacleType.SOUVENIR:
+				pass # TODO create scene for this obstacle type and actually implement it
 	else:
 		print("... but there's no valid spawns available!!!")
-	### CURRENTLY TESTING
-	#var new_enemy_spawn: MeleeEnemy = MELEE_ENEMY.instantiate() 
-	#var new_enemy_lane: Lanes.LaneId = (pattern_randomizer.randi() % 3 - 1)
-	#new_enemy_spawn.lane_id = new_enemy_lane
-	#owner.add_child(new_enemy_spawn)
-	#current_obstacle_map[new_enemy_lane].append(new_enemy_spawn)
-	### CURRENTLY TESTING
 	
 	spawn_timer.start()
 	return
 	
+# Algorithm to decide which obstacle type should spawn next
 func _decide_obstacles_to_spawn() -> ObstacleType:
+	## TODO; currently automatically returning MELEE_ENEMY for simple testing purposes. Need to algorithmically decide between different types
+	## Needs include...
+	### Guarantee a Souvenir spawn every X seconds or so
+	### Spawn a diverse range of melee enemies, ranged enemies, and debris
+	### Avoid spawning obs at a timing that would guarantee a combo break
 	return ObstacleType.MELEE_ENEMY
 	
+# Algorithm to decide which lane a given obstacle type should spawn in
 func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
-	if current_obstacle_map.values().all(func(obs_in_lane) -> bool:  ## Invalid access to property or key 'values' on a base object of type 'Dictionary'.
+	if current_obstacle_map.values().all(func(obs_in_lane) -> bool: 
 		return _find_obstacletype_in_array(spawn_type, obs_in_lane)):
 		return Lanes.LaneId.INVALID
 	
@@ -77,7 +80,8 @@ func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 	
 	while ret == Lanes.LaneId.INVALID:
 		ret = (pattern_randomizer.randi() % 3 - 1)
-		if current_obstacle_map[ret].size() > 0:
+		if current_obstacle_map[ret].size() > 0: # Re-assign the lane
+			## TODO this algorithm is inefficient, revise it to always roll once and only once when I have the time
 			print("Can't spawn another one on lane " + str(ret))
 			ret = Lanes.LaneId.INVALID
 		
@@ -85,13 +89,16 @@ func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 		
 	return ret
 
+# Returns true IF the array obs_in_lane contains one or more items matching a given obstacle type
 func _find_obstacletype_in_array(spawn_type: ObstacleType, obs_in_lane: Array) -> bool:
 	if obs_in_lane.any(func(single_obs): 
 		return _match_enum_by_class(spawn_type, single_obs)):
 		return true
 	return false
 
+# Confirms whether the obstacle enum matches the Node's class name
 func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 	if spawn_type == ObstacleType.MELEE_ENEMY:
 		return single_obs is MeleeEnemy
+	## TODO add checks for additional obstacle types and class names when implemented
 	return false
