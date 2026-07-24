@@ -21,7 +21,7 @@ extends Node2D
 ## List of Dialogs, BBCode Allowed.
 @export_multiline("Dialog") var dialog_list: Array[String] = []
 ## Pixel Width for the Dialog
-@export_range(24, 240) var dialog_width: float = 72
+@export_range(24, 1260) var dialog_width: float = 72
 ## Dialog Index to Preview in the Editor.
 @export var preview_dialog_index: int = 0:
 	set(v):

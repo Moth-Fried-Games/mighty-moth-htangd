@@ -6,7 +6,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @export var game_settings_scene: PackedScene:
 	set(value):
 		if is_instance_valid(value):
-			var value_instance = load(value.resource_path).instantiate()
+			var value_instance: GameSettings = load(value.resource_path).instantiate()
 			if value_instance is GameSettings:
 				game_settings_scene = value
 			else:
@@ -17,7 +17,7 @@ var game_settings: GameSettings = null
 @export var game_data_scene: PackedScene:
 	set(value):
 		if is_instance_valid(value):
-			var value_instance = load(value.resource_path).instantiate()
+			var value_instance: GameData = load(value.resource_path).instantiate()
 			if value_instance is GameData:
 				game_data_scene = value
 			else:

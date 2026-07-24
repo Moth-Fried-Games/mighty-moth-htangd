@@ -2,10 +2,10 @@
 extends Node
 class_name GameData
 
-@export_tool_button("Update Resources") var update_resources_button = update_resources
+@export_tool_button("Update Resources") var update_resources_button: Callable = update_resources
 @export_category("Configuration")
 @export_dir var configuration_directory: String = "res://game/configuration"
-@export var configuration_dictionary = {}
+@export var configuration_dictionary: Dictionary = {}
 @export_category("Audio")
 @export_dir var audio_directory: String = "res://assets/audio"
 @export var audio_resources: Array[AudioSettings] = []
@@ -19,7 +19,7 @@ func update_resources() -> void:
 	if DirAccess.dir_exists_absolute(configuration_directory):
 		for configuration_setting in GameUtils.get_all_files(configuration_directory, "tres"):
 			var configuration_setting_resource: Resource = load(configuration_setting)
-			var configuration_name = configuration_setting.get_basename().get_file()
+			var configuration_name: String = configuration_setting.get_basename().get_file()
 			configuration_dictionary[configuration_name] = configuration_setting_resource
 		print("Updated Configuration Resources")
 	else:
