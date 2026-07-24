@@ -473,15 +473,7 @@ custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
-text = "Help Professor Scales become the ultimate life form.
-
-Mix chemicals in the professor's lab to create a kaijuice with the potential to make professor scales reach his goal. 
-
-CLICK AND HOLD on the chemicals to add them to the mix, each mililiter(mL) gets more expensive the more you add. Then press the BIG RED BUTTON to test your creation!
-
-In the city, the professor will take care of testing on his own! Sit back and see how far he can get. The more he destroys, the more money you are paid by evilcorp to spend on stronger mixes. Eventually the projessor might need to release some excess radiation, click on the big radiation button to let off some steam!
-
-If your mix is strong enough to take you to alert level 1, you will be nuked! If you survive it, then Professor Scales has truly become the ultimate lifeform!"
+text = "tbd get hreter or cedi or someone to write this stuff"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1

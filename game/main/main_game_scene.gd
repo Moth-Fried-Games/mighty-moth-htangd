@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var lane_binders: Lanes = %LaneBinders
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

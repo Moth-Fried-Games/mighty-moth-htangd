@@ -12,7 +12,7 @@ extends Node2D
 @onready var top_left_anchor: Marker2D = %"Top Left Anchor"
 @onready var top_right_anchor: Marker2D = %"Top Right Anchor"
 
-enum LaneId { TOP, MIDDLE, BOTTOM }
+enum LaneId { TOP = -1, MIDDLE = 0, BOTTOM = 1, INVALID = -999 }
 
 @export var center_offset: int = 0:
 	set(v):
