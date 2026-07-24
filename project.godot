@@ -25,6 +25,10 @@ GameUi="*uid://dnty0uxfnuiic"
 
 files=Array[PackedStringArray]([])
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/size/viewport_width=1280
