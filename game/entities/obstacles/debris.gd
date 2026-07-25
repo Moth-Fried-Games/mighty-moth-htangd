@@ -40,6 +40,7 @@ func _ready() -> void:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
 	
 	global_position = Vector2(back_spawn_anchor.global_position.x + spawn_offset_from_anchor, back_spawn_anchor.global_position.y)
+	debris_warning.global_position.x = get_viewport_rect().size.x - 80
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
