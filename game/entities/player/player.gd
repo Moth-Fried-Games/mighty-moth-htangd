@@ -34,3 +34,6 @@ func _on_deflect_input():
 ## TODO
 func _on_collect_input():
 	pass
+## TODO
+func _on_super_input():
+	pass

@@ -21,10 +21,6 @@ ControllerIcons="*uid://5l43qeefbt46"
 GameGlobals="*uid://p2nokudrdkw6"
 GameUi="*uid://dnty0uxfnuiic"
 
-[copy_files_on_export]
-
-files=Array[PackedStringArray]([])
-
 [debug]
 
 gdscript/warnings/untyped_declaration=1
@@ -88,8 +84,11 @@ ultimate={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="enemy"
-2d_physics/layer_3="item"
+2d_physics/layer_2="melee enemy"
+2d_physics/layer_3="ranged enemy"
+2d_physics/layer_4="souvenir"
+2d_physics/layer_5="debris"
+2d_physics/layer_6="hostile rocket"
 
 [physics]
 
