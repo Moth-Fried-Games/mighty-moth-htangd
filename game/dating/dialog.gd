@@ -129,10 +129,12 @@ func process_input() -> void:
 	if accept_input:
 		if not ui_dialog.text_finished:
 			ui_dialog.finish_typing()
+			print("Input Text Not Finished")
 		else:
 			if not dialog_timer.is_stopped():
 				dialog_timer.stop()
 			next_dialog()
+			print("Input Text Finished")
 
 
 func next_dialog() -> void:

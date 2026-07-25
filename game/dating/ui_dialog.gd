@@ -73,11 +73,11 @@ func input_path(input_label: String) -> String:
 func split_waits() -> void:
 	text_wait_splits.clear()
 	text_wait_times.clear()
-	var regex: RegEx = RegEx.new()
+	var wait_regex: RegEx = RegEx.new()
 	var wait_open: Array[String] = []
 	var wait_close: Array[String] = []
-	regex.compile("\\[\\/?(?:wait){1,}.*?]")
-	var results: Array[RegExMatch] = regex.search_all(text)
+	wait_regex.compile("\\[\\/?(?:wait){1,}.*?]")
+	var results: Array[RegExMatch] = wait_regex.search_all(text)
 	if results.is_empty():
 		clean_text = text
 		return
@@ -140,6 +140,24 @@ func split_waits() -> void:
 			)
 			text_wait_times.append(0)
 		clean_text = "".join(text_wait_splits)
+
+		# Clean all other BBCode
+		if not text_wait_splits.is_empty():
+			var img_regex: RegEx = RegEx.new()
+			var bbcode_regex: RegEx = RegEx.new()
+			img_regex.compile("\\[(?:img){1,}.*?].*?\\[\\/?(?:img){1,}.*?]")
+			bbcode_regex.compile("\\[\\/?(?:){1,}.*?]")
+			for tws in text_wait_splits.size():
+				var clean_split: String = text_wait_splits[tws]
+				var img_results: Array[RegExMatch] = img_regex.search_all(text_wait_splits[tws])
+				for result in img_results:
+					clean_split = clean_split.replace(result.get_string(), "#")
+				var bbcode_results: Array[RegExMatch] = bbcode_regex.search_all(
+					text_wait_splits[tws]
+				)
+				for result in bbcode_results:
+					clean_split = clean_split.replace(result.get_string(), "")
+				text_wait_splits[tws] = clean_split
 		#print('Original Text: \n"', text, '"')
 		#print("Wait Split Text: \n", text_wait_splits)
 		#print("Wait Split Times: \n", text_wait_times)
@@ -174,13 +192,13 @@ func type_text() -> void:
 	if rich_text_label.text != clean_text:
 		rich_text_label.text = clean_text
 	if text_wait_splits.is_empty():
-		print("Wait Splits Empty")
 		rich_text_label.visible_ratio = 1
 		text_typing = false
 		text_finished = true
 		typing_finished.emit()
 	else:
 		text_typing = true
+		text_finished = false
 		text_index = 0
 		text_character_ratio = 1.0 / rich_text_label.get_total_character_count()
 		## TODO REMOVE BBCODE FROM TEXT WAIT SPLITS

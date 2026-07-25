@@ -11,7 +11,7 @@ position = Vector2(640, 700)
 active = true
 input_dialog = true
 dialog_list = Array[String](["[font_size=32]Name[/font_size]
-[wait=1][font_size=28]Hi hi hi Hello hello :3[/font_size][/wait]", "[wait=1][font_size=32]Name[/font_size][/wait]
-[wait=2][font_size=28]hello hello hi <3[/font_size][/wait]", "[font_size=32]Name[/font_size]
-[wait=3][font_size=28]hihihihihi hello :3c[/font_size][/wait]"])
+[font_size=28][wait=1]Hi hi hi Hello hello :3[/wait][/font_size]", "[font_size=32]Name[/font_size]
+[wait=2][font_size=28]hello hello hi <3[/wait][/font_size]", "[font_size=32]Name[/font_size]
+[font_size=28][wait=3]hihihihihi hello :3c[/wait][/font_size]"])
 dialog_width = 1240.0
