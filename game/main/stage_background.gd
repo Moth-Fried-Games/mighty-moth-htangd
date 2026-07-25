@@ -58,6 +58,7 @@ func scroll_planets(delta: float) -> void:
 		scrolling_planet = planets.pick_random()
 		scrolling_planet_size = planet_sizes[planets.find(scrolling_planet)] * 2
 		scrolling_planet.position.x = viewport_size.x + scrolling_planet_size
+		scrolling_planet.reset_physics_interpolation()
 	if is_instance_valid(scrolling_planet):
 		scrolling_planet.position.x -= scroll_speed * modifier_1 * delta
 		if scrolling_planet.position.x <= -scrolling_planet_size:
