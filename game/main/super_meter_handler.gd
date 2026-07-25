@@ -1,3 +1,4 @@
+class_name SuperMeterHandler
 extends Node
 
 const on_punch_meter_gain: int = 1

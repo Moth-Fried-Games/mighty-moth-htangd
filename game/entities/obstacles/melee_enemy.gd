@@ -12,12 +12,12 @@ const spawn_offset_from_anchor: float = 20
 const movement_per_second: float = 200
 
 @onready var obstacle_spawner: Node2D = %ObstacleSpawner
-@onready var super_meter_handler: Node2D = %SuperMeterHandler
 
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
-
+var super_meter_handler: SuperMeterHandler
+var main_game_scene: MainGameScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,26 +35,32 @@ func _ready() -> void:
 		
 	
 	global_position = Vector2(back_spawn_anchor.global_position.x, back_spawn_anchor.global_position.y)
+	
+	main_game_scene = get_tree().current_scene
+	super_meter_handler = main_game_scene.super_meter_handler
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#_wiggle_horiz_position(delta)
-	global_position.x = global_position.x - (delta * movement_per_second) #_get_horizontal_position()
+	global_position.x = global_position.x - (delta * movement_per_second)
 	return
 
 
 
 func _on_punched() -> void:
 	print("owie I am puncheded")
+	main_game_scene.apply_time_bonus(1)
+	super_meter_handler.on_successful_punch()
 	_on_defeated()
-	## TODO apply time and super meter bonus, animate
+	## TODO animate
 	
 func _on_deflected() -> void:
 	print("oh wow I am deflecteded")
+	main_game_scene.apply_time_bonus(2)
+	super_meter_handler.on_successful_deflect()
 	_on_defeated()
-	## TODO apply time and super meter bonus, animate
+	## TODO animate
 
 func _on_defeated() -> void:
 	print("and thus I am deadddd")
@@ -63,27 +69,25 @@ func _on_defeated() -> void:
 	pass
 	
 func _on_touching_player() -> void:
-	print("you SMELL")
+	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	## TODO break combo, annoy mightymoth a little
+	## TODO animate and annoy mightymoth a little
 	pass
 
 func _on_walk_past_player() -> void:
-	print("I've walked past the despawn boundary!")
+	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	## TODO break player's combo
 	pass
 
 func _begin_despawn() -> void:
-	print("I'm gonna despawn now byeeeeeee")
 	hurtboxarea.queue_free()
 	meleehitboxarea.queue_free()
 	parryhitboxarea.queue_free()
 	
-	var spawner = get_tree().current_scene.obstacle_spawner
+	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(lane_id, get_instance_id())
 	
-	var despawn_timer = Timer.new()
+	var despawn_timer: Timer = Timer.new()
 	despawn_timer.wait_time = 4
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: free())

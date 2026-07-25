@@ -30,14 +30,13 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_spawn_obstacles_wave)
 	spawn_timer.one_shot = false
 	add_child(spawn_timer)
-	print("Starting obstacle timer!")
 	spawn_timer.start()
 	return
 
 # Spawn another "wave" of obstacles as per the timer's timed interval
 ## Currently, this is just one at a time. What if we sometimes spawn 2 or 3 at a time, with proper timing?
 func _spawn_obstacles_wave() -> void:
-	print("Timer has dinged!")
+	print("Obstacle Timer has dinged!")
 	
 	var obstacle_to_spawn: ObstacleType = _decide_obstacles_to_spawn()
 	var lane_to_spawn_in: Lanes.LaneId = _decide_lane_to_spawn_in(obstacle_to_spawn)
@@ -83,7 +82,6 @@ func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 		ret = (pattern_randomizer.randi() % 3 - 1)
 		if current_obstacle_map[ret].size() > 0: # Re-assign the lane
 			## TODO this algorithm is inefficient, revise it to always roll once and only once when I have the time
-			print("Can't spawn another one on lane " + str(ret))
 			ret = Lanes.LaneId.INVALID
 		
 	
@@ -107,6 +105,4 @@ func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 func despawn_obstacle(laneId: Lanes.LaneId, nodeid: int) -> void:
 	var obstacle_to_remove = current_obstacle_map[laneId].find_custom(func(obs: LaneEntity) -> bool:
 		return obs.get_instance_id() == nodeid)
-		
-	print("Hey I found a thing to remove!!!")
 	current_obstacle_map[laneId].remove_at(obstacle_to_remove)

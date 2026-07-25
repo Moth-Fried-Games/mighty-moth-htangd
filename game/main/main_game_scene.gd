@@ -1,7 +1,9 @@
+class_name MainGameScene
 extends Node2D
 
 @onready var lane_binders: Lanes = %LaneBinders
 @onready var obstacle_spawner: ObstacleSpawner = %ObstacleSpawner
+@onready var super_meter_handler: SuperMeterHandler = %SuperMeterHandler
 
 var game_over_timer: Timer
 var finale_timer: Timer
@@ -38,6 +40,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	gameover_timer_display.text = "TIME 2 DOOMSDAY\n" + str(game_over_timer.time_left)
 	victory_timer_display.text = "SECRET VICTORY TIMER\n" + str(finale_timer.time_left)
+
+
+func apply_time_bonus(time_bonus: float) -> void:
+	var currenttime = game_over_timer.get_time_left()
+	game_over_timer.wait_time = currenttime + time_bonus
 
 
 func _on_game_over_countdown() -> void:
