@@ -4,13 +4,14 @@
 [ext_resource type="Script" uid="uid://crgpaqqrwpt01" path="res://game/main/main_game_scene.gd" id="1_te03x"]
 [ext_resource type="PackedScene" uid="uid://7opc6cr7h01p" path="res://game/main/obstacle_spawner.tscn" id="3_dp175"]
 [ext_resource type="PackedScene" uid="uid://7mtu3gycsbr" path="res://game/entities/player/player.tscn" id="4_2l1qw"]
+[ext_resource type="PackedScene" uid="uid://cuuij0yje7xb0" path="res://game/main/super_meter_handler.tscn" id="5_ita48"]
 
 [node name="MainGameScene" type="Node2D" unique_id=1787599848]
 script = ExtResource("1_te03x")
 
 [node name="LaneBinders" parent="." unique_id=758711568 instance=ExtResource("1_2eox0")]
 unique_name_in_owner = true
-position = Vector2(993, 587.5)
+position = Vector2(993, 472.5)
 center_offset = -15
 lane_gaps = 100
 
@@ -23,6 +24,26 @@ position = Vector2(0, -100)
 [node name="ObstacleSpawner" parent="." unique_id=699091262 instance=ExtResource("3_dp175")]
 
 [node name="Player" parent="." unique_id=48566076 node_paths=PackedStringArray("lanes") instance=ExtResource("4_2l1qw")]
+position = Vector2(-28, -35)
 lanes = [NodePath("../LaneBinders/Middle Lane/Top Lane"), NodePath("../LaneBinders/Middle Lane"), NodePath("../LaneBinders/Middle Lane/Bottom Lane")]
+
+[node name="SuperMeterHandler" parent="." unique_id=396938788 instance=ExtResource("5_ita48")]
+position = Vector2(36, 639)
+
+[node name="PlaceholderTimer" type="Label" parent="." unique_id=193409050]
+offset_left = 1091.0
+offset_top = 626.0
+offset_right = 1225.0
+offset_bottom = 691.0
+text = "TIME 2 DOOMSDAY
+"
+
+[node name="PlaceholderVICTORYTimer" type="Label" parent="." unique_id=1196940116]
+offset_left = 794.0
+offset_top = 15.0
+offset_right = 912.0
+offset_bottom = 94.0
+text = "SECRET TESTING WIN TIMER
+"
 
 [editable path="LaneBinders"]
