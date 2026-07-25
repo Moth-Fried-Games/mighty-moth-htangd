@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cj4qpblphlkas" path="res://game/main/lane_binders.tscn" id="1_2eox0"]
 [ext_resource type="Script" uid="uid://crgpaqqrwpt01" path="res://game/main/main_game_scene.gd" id="1_te03x"]
 [ext_resource type="PackedScene" uid="uid://d2fsgto15rg2i" path="res://game/main/stage_background.tscn" id="2_d7fhs"]
+[ext_resource type="PackedScene" uid="uid://bnabcha0s0pwj" path="res://game/main/main_ui.tscn" id="2_jmwre"]
 [ext_resource type="PackedScene" uid="uid://7opc6cr7h01p" path="res://game/main/obstacle_spawner.tscn" id="3_dp175"]
 [ext_resource type="PackedScene" uid="uid://7mtu3gycsbr" path="res://game/entities/player/player.tscn" id="4_2l1qw"]
 [ext_resource type="PackedScene" uid="uid://cuuij0yje7xb0" path="res://game/main/super_meter_handler.tscn" id="5_ita48"]
@@ -12,6 +13,8 @@ size = Vector2(450, 815)
 
 [node name="MainGameScene" type="Node2D" unique_id=1787599848]
 script = ExtResource("1_te03x")
+
+[node name="MainUI" parent="." unique_id=808601705 instance=ExtResource("2_jmwre")]
 
 [node name="StageBackground" parent="." unique_id=1460123268 instance=ExtResource("2_d7fhs")]
 
