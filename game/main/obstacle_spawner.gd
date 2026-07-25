@@ -3,6 +3,8 @@ extends Node2D
 
 const MELEE_ENEMY = preload("uid://bl702ass4bwy5")
 const SOUVENIR = preload("uid://pwnwhyevxnmt")
+const DEBRIS = preload("uid://ceg558w8g2nov")
+
 
 const starting_difficulty_value: int = 0
 const difficulty_increment_timer: float = 15
@@ -59,10 +61,17 @@ func _spawn_obstacles_wave() -> void:
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map[lane_to_spawn_in].append(new_enemy_spawn)
 				print("Spawned a melee enemy!")
+				
 			ObstacleType.RANGED_ENEMY:
 				pass # TODO create scene for this obstacle type and actually implement it
+				
 			ObstacleType.DEBRIS:
-				pass # TODO create scene for this obstacle type and actually implement it
+				var new_debris_spawn: Debris = DEBRIS.instantiate()
+				new_debris_spawn.lane_id = lane_to_spawn_in
+				owner.add_child(new_debris_spawn)
+				current_obstacle_map[lane_to_spawn_in].append(new_debris_spawn)
+				print("Spawned debris!")
+				
 			ObstacleType.SOUVENIR:
 				var new_souv_spawn: Souvenir = SOUVENIR.instantiate()
 				## TODO randomly assign this souv a texture using the rng and a memory of previously spawned souvs
@@ -90,10 +99,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 		return ObstacleType.SOUVENIR
 		
 	var weighted_choice_array: Array = [
-		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, 
+		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, 
 		#ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
-		#ObstacleType.DEBRIS, ObstacleType.DEBRIS,
-		ObstacleType.SOUVENIR,
+		ObstacleType.DEBRIS, ObstacleType.DEBRIS,
+		#ObstacleType.SOUVENIR,
 	]
 	
 	if souvenirs_spawned == souvenirs_total_spawnable:
@@ -128,6 +137,10 @@ func _find_obstacletype_in_array(spawn_type: ObstacleType, obs_in_lane: Array) -
 func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 	if spawn_type == ObstacleType.MELEE_ENEMY:
 		return single_obs is MeleeEnemy
+		
+	if spawn_type == ObstacleType.DEBRIS:
+		return single_obs is Debris
+		
 	if spawn_type == ObstacleType.SOUVENIR:
 		return single_obs is Souvenir
 	## TODO add checks for additional obstacle types and class names when implemented
