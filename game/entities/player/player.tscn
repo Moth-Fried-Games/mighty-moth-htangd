@@ -41,8 +41,9 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(7, 9)
 
-[node name="Player" type="Area2D" unique_id=48566076]
+[node name="Player" type="Area2D" unique_id=48566076 node_paths=PackedStringArray("lanes")]
 script = ExtResource("1_gqtae")
+lanes = [null]
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 sprite_frames = SubResource("SpriteFrames_g4v7s")

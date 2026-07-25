@@ -24,12 +24,12 @@ func _return_lane_positions():
 		i += 1
 	
 	lane_positions.sort_custom(func(a, b): return a.y < b.y)
-	
+	 ## TODO no lanes!!!
 	return lane_positions
 
 func _set_lane(lane : int):
 	current_lane = lane
-	global_position.y = lane_positions[current_lane].y
+	global_position.y = lane_positions[current_lane].y ## TODO no lanes!!!
 
 func  _change_lane(dir : direction):
 	var cant_move_condition = (

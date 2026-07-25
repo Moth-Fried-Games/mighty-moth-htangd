@@ -2,7 +2,7 @@ extends LaneEntity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var midle_lane : int = lanes_quantity / 2
+	var midle_lane : int = lanes_quantity / 2 
 	
 	current_lane = midle_lane
 	
