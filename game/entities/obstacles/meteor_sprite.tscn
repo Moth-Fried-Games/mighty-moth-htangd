@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://4esu4n2onqix"]
+
+[ext_resource type="Texture2D" uid="uid://c262vrqu0n3yf" path="res://assets/textures/object/mightymoth_enemy_meteor.png" id="1_1a4ti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8kxe"]
+atlas = ExtResource("1_1a4ti")
+region = Rect2(0, 0, 129, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkx8x"]
+atlas = ExtResource("1_1a4ti")
+region = Rect2(129, 0, 129, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8kxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkx8x")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="MeteorSprite" type="AnimatedSprite2D" unique_id=1956018591]
+sprite_frames = SubResource("SpriteFrames_qmg03")
+autoplay = "default"
+frame_progress = 0.99675834
