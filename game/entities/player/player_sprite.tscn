@@ -98,12 +98,13 @@ animations = [{
 }]
 
 [node name="PlayerSprite" type="AnimatedSprite2D" unique_id=1310412979]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
-animation = &"ultimate"
+animation = &"fly"
 autoplay = "fly"
 script = ExtResource("2_q352t")
 
 [node name="AuraSprite" type="AnimatedSprite2D" parent="." unique_id=843081888]
 sprite_frames = SubResource("SpriteFrames_ykh0f")
 autoplay = "default"
-frame_progress = 0.87324417
+frame_progress = 0.7056085
