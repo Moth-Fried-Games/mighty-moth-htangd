@@ -112,7 +112,7 @@ animations = [{
 [node name="PlayerSprite" type="AnimatedSprite2D" unique_id=1310412979]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
-animation = &"ultimate"
+animation = &"punch"
 autoplay = "fly"
 script = ExtResource("2_q352t")
 

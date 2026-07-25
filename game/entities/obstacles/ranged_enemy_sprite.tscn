@@ -54,6 +54,7 @@ region = Rect2(72, 240, 72, 80)
 [node name="RangedEnemySprite" type="AnimatedSprite2D" unique_id=2101253761]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
+animation = &"shoot"
 autoplay = "default"
 script = ExtResource("2_iwl60")
 

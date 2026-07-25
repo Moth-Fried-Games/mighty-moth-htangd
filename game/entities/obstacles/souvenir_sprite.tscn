@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c5bmn08vsk0bk"]
+
+[ext_resource type="Texture2D" uid="uid://bmdp5gh6nrqvg" path="res://assets/textures/object/mightymoth_pickups_1.png" id="1_kh488"]
+
+[node name="SouvenirSprite" type="Sprite2D" unique_id=992643243]
+scale = Vector2(2, 2)
+texture = ExtResource("1_kh488")
