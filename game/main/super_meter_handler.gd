@@ -17,6 +17,9 @@ const combo_multiplier_increment_threshold: int = 10
 const combo_multiplier_increment_value: float = 10
 const combo_multiplier_maximum: float = 10
 
+@onready var level_display: Label = $"LvLabel"
+@onready var meter_display: ProgressBar = $"ProgressBar"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -70,6 +73,10 @@ func apply_meter_gain(gain_value):
 				super_meter -= super_meter_max
 			else:
 				super_meter = super_meter_max
+				
+	level_display.text = "Lv " + str(super_level)
+	meter_display.value = super_meter
+	
 	return
 
 # Removes all super levels, adjusting for the level-3 specific meter display as needed

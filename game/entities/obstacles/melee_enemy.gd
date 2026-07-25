@@ -7,13 +7,6 @@ var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
 
-## NOTE this placeholder wiggle was like fun but it CANNOT stay, I gotta make the enemy WALK the whole way across the screen
-#const horizontal_offset_base: float = 150
-#var horizontal_offset_wiggle: float = 0
-#var horizontal_offset_wiggle_direction: int = -1
-#const horizontal_offset_wiggle_absolute_max: float = 15 
-#const horizontal_wiggle_per_second: float = 15
-
 
 const spawn_offset_from_anchor: float = 20
 const movement_per_second: float = 200
@@ -45,25 +38,6 @@ func _process(delta: float) -> void:
 	return
 
 
-#func _wiggle_horiz_position(delta: float) -> void:
-	#horizontal_offset_wiggle += (horizontal_offset_wiggle_direction * delta * horizontal_wiggle_per_second)
-	#
-	#if horizontal_offset_wiggle_direction == 1 and horizontal_offset_wiggle >= horizontal_offset_wiggle_absolute_max:
-		#horizontal_offset_wiggle_direction = -1
-		#var leftover_wiggle = horizontal_offset_wiggle - horizontal_offset_wiggle_absolute_max
-		#horizontal_offset_wiggle = horizontal_offset_wiggle - leftover_wiggle
-	#
-	#elif horizontal_offset_wiggle_direction == -1 and horizontal_offset_wiggle <= -horizontal_offset_wiggle_absolute_max:
-		#horizontal_offset_wiggle_direction = 1
-		#var leftover_wiggle = horizontal_offset_wiggle_absolute_max + horizontal_offset_wiggle
-		#horizontal_offset_wiggle = horizontal_offset_wiggle - leftover_wiggle
-	#
-	#
-	#return
-#
-#func _get_horizontal_position() -> float:
-	#return horizontal_offset_base + horizontal_offset_wiggle
-	
 
 func _on_punched() -> void:
 	_on_defeated()
