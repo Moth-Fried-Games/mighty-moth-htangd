@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="3_7qpts"]
 
 [node name="LaneBinders" type="Node2D" unique_id=758711568]
-position = Vector2(1, 1)
+position = Vector2(993, 487.5)
 script = ExtResource("1_40ei4")
 
 [node name="Middle Lane" type="Node2D" parent="." unique_id=1628555622]
@@ -13,11 +13,11 @@ unique_name_in_owner = true
 
 [node name="Middle Left Anchor" type="Marker2D" parent="Middle Lane" unique_id=953809043]
 unique_name_in_owner = true
-position = Vector2(-21, 0)
+position = Vector2(-1013, 0)
 
 [node name="Middle Right Anchor" type="Marker2D" parent="Middle Lane" unique_id=1944633828]
 unique_name_in_owner = true
-position = Vector2(21, 0)
+position = Vector2(1013, 0)
 
 [node name="Bottom Lane" type="Node2D" parent="Middle Lane" unique_id=1433448766]
 unique_name_in_owner = true
@@ -25,11 +25,11 @@ position = Vector2(0, 50)
 
 [node name="Bottom Left Anchor" type="Marker2D" parent="Middle Lane/Bottom Lane" unique_id=816487434]
 unique_name_in_owner = true
-position = Vector2(-21, 0)
+position = Vector2(-1013, 0)
 
 [node name="Bottom Right Anchor" type="Marker2D" parent="Middle Lane/Bottom Lane" unique_id=376542532]
 unique_name_in_owner = true
-position = Vector2(21, 0)
+position = Vector2(1013, 0)
 
 [node name="PLACEHOLDER_anchor_bottom_right" type="Sprite2D" parent="Middle Lane/Bottom Lane/Bottom Right Anchor" unique_id=517711480]
 texture = ExtResource("2_7qpts")
@@ -40,14 +40,14 @@ position = Vector2(0, -50)
 
 [node name="Top Left Anchor" type="Marker2D" parent="Middle Lane/Top Lane" unique_id=1579905432]
 unique_name_in_owner = true
-position = Vector2(-21, 0)
+position = Vector2(-1013, 0)
 
 [node name="PLACEHOLDER_anchor_show" type="Sprite2D" parent="Middle Lane/Top Lane/Top Left Anchor" unique_id=1050145905]
 texture = ExtResource("2_7qpts")
 
 [node name="Top Right Anchor" type="Marker2D" parent="Middle Lane/Top Lane" unique_id=1996465120]
 unique_name_in_owner = true
-position = Vector2(21, 0)
+position = Vector2(1013, 0)
 
 [node name="PLACEHOLDER_Sprite" type="Sprite2D" parent="." unique_id=1646101391]
 texture = ExtResource("3_7qpts")
