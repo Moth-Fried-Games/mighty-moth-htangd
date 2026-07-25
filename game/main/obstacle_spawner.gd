@@ -48,8 +48,6 @@ func _ready() -> void:
 # Spawn another "wave" of obstacles as per the timer's timed interval
 ## Currently, this is just one at a time. What if we sometimes spawn 2 or 3 at a time, with proper timing?
 func _spawn_obstacles_wave() -> void:
-	print("Obstacle Timer has dinged!")
-	
 	var obstacle_to_spawn: ObstacleType = _decide_obstacles_to_spawn()
 	var lane_to_spawn_in: Lanes.LaneId = _decide_lane_to_spawn_in(obstacle_to_spawn)
 	
@@ -58,6 +56,7 @@ func _spawn_obstacles_wave() -> void:
 			ObstacleType.MELEE_ENEMY:
 				var new_enemy_spawn: MeleeEnemy = MELEE_ENEMY.instantiate() 
 				new_enemy_spawn.lane_id = lane_to_spawn_in
+				new_enemy_spawn.global_position = global_position
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map[lane_to_spawn_in].append(new_enemy_spawn)
 				print("Spawned a melee enemy!")
@@ -68,6 +67,7 @@ func _spawn_obstacles_wave() -> void:
 			ObstacleType.DEBRIS:
 				var new_debris_spawn: Debris = DEBRIS.instantiate()
 				new_debris_spawn.lane_id = lane_to_spawn_in
+				new_debris_spawn.global_position = global_position
 				owner.add_child(new_debris_spawn)
 				current_obstacle_map[lane_to_spawn_in].append(new_debris_spawn)
 				print("Spawned debris!")
@@ -76,6 +76,7 @@ func _spawn_obstacles_wave() -> void:
 				var new_souv_spawn: Souvenir = SOUVENIR.instantiate()
 				## TODO randomly assign this souv a texture using the rng and a memory of previously spawned souvs
 				new_souv_spawn.lane_id = lane_to_spawn_in
+				new_souv_spawn.global_position = global_position
 				owner.add_child(new_souv_spawn)
 				current_obstacle_map[lane_to_spawn_in].append(new_souv_spawn)
 				souvenirs_spawned += 1
@@ -99,10 +100,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 		return ObstacleType.SOUVENIR
 		
 	var weighted_choice_array: Array = [
-		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, 
+		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, 
 		#ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
 		ObstacleType.DEBRIS, ObstacleType.DEBRIS,
-		#ObstacleType.SOUVENIR,
+		ObstacleType.SOUVENIR,
 	]
 	
 	if souvenirs_spawned == souvenirs_total_spawnable:
@@ -114,7 +115,6 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 	
 # Algorithm to decide which lane a given obstacle type should spawn in
 func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
-	
 	var lane_options: Array = current_obstacle_map.keys().filter(func(key) -> bool: 
 		return !_find_obstacletype_in_array(spawn_type, current_obstacle_map[key])
 	)
@@ -128,22 +128,19 @@ func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 
 # Returns true IF the array obs_in_lane contains one or more items matching a given obstacle type
 func _find_obstacletype_in_array(spawn_type: ObstacleType, obs_in_lane: Array) -> bool:
-	if obs_in_lane.any(func(single_obs): 
-		return _match_enum_by_class(spawn_type, single_obs)):
-		return true
-	return false
-
+	return obs_in_lane.any(func(single_obs) -> bool: 
+		return _match_enum_by_class(spawn_type, single_obs)
+	)
+	
 # Confirms whether the obstacle enum matches the Node's class name
 func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
-	if spawn_type == ObstacleType.MELEE_ENEMY:
-		return single_obs is MeleeEnemy
-		
-	if spawn_type == ObstacleType.DEBRIS:
-		return single_obs is Debris
-		
-	if spawn_type == ObstacleType.SOUVENIR:
-		return single_obs is Souvenir
-	## TODO add checks for additional obstacle types and class names when implemented
+	match spawn_type:
+		ObstacleType.MELEE_ENEMY:
+			return single_obs is MeleeEnemy
+		ObstacleType.DEBRIS:
+			return single_obs is Debris
+		ObstacleType.SOUVENIR:
+			return single_obs is Souvenir
 	return false
 	
 # Removes an obstacle from our list of tracked items per lane, freeing up another of that item to spawn in it again

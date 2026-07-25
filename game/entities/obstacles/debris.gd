@@ -3,7 +3,7 @@ extends LaneEntity
 
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
-const spawn_offset_from_anchor: float = 20
+const spawn_offset_from_anchor: float = 50
 const movement_per_second: float = 4333
 var is_moving: bool = false
 
@@ -39,18 +39,17 @@ func _ready() -> void:
 		Lanes.LaneId.BOTTOM:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
 	
-	global_position = Vector2(back_spawn_anchor.global_position.x, back_spawn_anchor.global_position.y)
+	global_position = Vector2(back_spawn_anchor.global_position.x + spawn_offset_from_anchor, back_spawn_anchor.global_position.y)
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
 	
 	var rando = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
-	warning_timer.wait_time = rando.randi() % 5 + 15 # TODO set to % 5 + 5
+	warning_timer.wait_time = rando.randi() % 5 + 5
 	warning_timer.one_shot = true
 	warning_timer.timeout.connect(func() -> void: 
 		debris_warning.queue_free()
-		## TODO hide warning!!!
 		is_moving = true
 	)
 	add_child(warning_timer)

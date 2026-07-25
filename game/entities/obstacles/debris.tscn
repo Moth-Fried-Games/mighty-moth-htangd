@@ -25,6 +25,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 126, 68)
 
 [node name="HurtBoxArea" type="Area2D" parent="." unique_id=914256096]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("3_4u4qr")
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtBoxArea" unique_id=2066910023]
@@ -32,6 +34,8 @@ position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_dnnxk")
 
 [node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=2142709142]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("4_wat4r")
 
 [node name="PunchHitBox" type="CollisionShape2D" parent="PunchHitBoxArea" unique_id=602330373]
@@ -39,6 +43,8 @@ position = Vector2(-15.5, 2.5)
 shape = SubResource("RectangleShape2D_jh3nx")
 
 [node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=129059001]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("5_8lbr2")
 
 [node name="ParryHitBox" type="CollisionShape2D" parent="ParryHitBoxArea" unique_id=898867086]
