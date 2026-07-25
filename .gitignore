@@ -22,3 +22,7 @@ mono_crash.*.json
 desktop.ini
 addons/godotsteam/win64/~godotsteam.debug.x86_64.dll
 addons/godotsteam/win64/~libgodotsteam.windows.template_debug.x86_64.dll
+
+# Ovani Sound ignores
+assets/audio/ovani/sounds/*.wav
+assets/audio/ovani/music/*.wav
