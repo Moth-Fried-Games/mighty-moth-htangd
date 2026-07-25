@@ -1,0 +1,434 @@
+[gd_scene format=3 uid="uid://d2fsgto15rg2i"]
+
+[ext_resource type="Script" uid="uid://bkn60vala1iy3" path="res://game/main/stage_background.gd" id="1_t7266"]
+[ext_resource type="Texture2D" uid="uid://b27ublkncwm0h" path="res://assets/textures/stage/mightymoth_bg0.png" id="2_5ub6l"]
+[ext_resource type="Texture2D" uid="uid://b68jlqbm4y6qf" path="res://assets/textures/stage/mightymoth_bg1.png" id="3_hy2k2"]
+[ext_resource type="Texture2D" uid="uid://bkokwioalwn4x" path="res://assets/textures/stage/mightymoth_bg2.png" id="4_ulva1"]
+[ext_resource type="Texture2D" uid="uid://wan0ydhs141c" path="res://assets/textures/stage/mightymoth_bg3.png" id="5_ti4sd"]
+[ext_resource type="Texture2D" uid="uid://dvqhcuq1o4xl1" path="res://assets/textures/stage/mightymoth_bg_planet1.png" id="6_7lp44"]
+[ext_resource type="Texture2D" uid="uid://d2fnxk5obvwyg" path="res://assets/textures/stage/mightymoth_bg_planet2.png" id="7_pv6ml"]
+[ext_resource type="Texture2D" uid="uid://scyn1i7ncg0o" path="res://assets/textures/stage/mightymoth_bg_planet3.png" id="8_6ns2i"]
+[ext_resource type="Texture2D" uid="uid://b4mi24hndo73b" path="res://assets/textures/stage/mightymoth_bg_planet4.png" id="9_m57kj"]
+[ext_resource type="Texture2D" uid="uid://cwmim87hglmla" path="res://assets/textures/stage/mightymoth_bg_station6.png" id="10_nwy7k"]
+[ext_resource type="Texture2D" uid="uid://dkm640rs5jeku" path="res://assets/textures/stage/mightymoth_bg_station5.png" id="11_doi1i"]
+[ext_resource type="Texture2D" uid="uid://bgjio78mydoh3" path="res://assets/textures/stage/mightymoth_bg_station4.png" id="12_wojsb"]
+[ext_resource type="Texture2D" uid="uid://es32m1m2vt0y" path="res://assets/textures/stage/mightymoth_bg_station3.png" id="13_lmx51"]
+[ext_resource type="Texture2D" uid="uid://cy8dknotioaxe" path="res://assets/textures/stage/mightymoth_bg_station2.png" id="14_ayk4h"]
+[ext_resource type="Texture2D" uid="uid://rvkeucdgwy5a" path="res://assets/textures/stage/mightymoth_bg_station1.png" id="15_beax7"]
+[ext_resource type="Texture2D" uid="uid://cerrkqndo6vad" path="res://assets/textures/stage/mightymoth_bg_station_fx.png" id="16_7lxr6"]
+
+[sub_resource type="Animation" id="Animation_pv6ml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpaceStation1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpaceStation2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpaceStation3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpaceStation4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpaceStation5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpaceStation6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../WinBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7lp44"]
+resource_name = "explode"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpaceStation1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(60, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpaceStation2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpaceStation3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(20, -10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpaceStation4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(40, 40)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpaceStation5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 10)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpaceStation6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 30)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6ns2i"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../WinBackground:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pv6ml"]
+_data = {
+&"RESET": SubResource("Animation_pv6ml"),
+&"explode": SubResource("Animation_7lp44"),
+&"fade_in": SubResource("Animation_6ns2i")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rssb5"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(0, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t07ng"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(245, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuxhf"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(490, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fsm7"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(735, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pehg"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(980, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7eod"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(1225, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndxu"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(1470, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm1op"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(1715, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npodj"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(1960, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gi8f"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(2205, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdyhd"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(2450, 0, 245, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m32qq"]
+atlas = ExtResource("16_7lxr6")
+region = Rect2(2695, 0, 245, 155)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rssb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t07ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuxhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fsm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pehg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7eod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vndxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm1op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npodj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gi8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdyhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m32qq")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="StageBackground" type="Node2D" unique_id=1460123268]
+script = ExtResource("1_t7266")
+scroll_speed = 50.0
+modifier_3 = 0.75
+modifier_4 = 0.5
+
+[node name="Parallax1" type="Parallax2D" parent="." unique_id=875467235]
+repeat_size = Vector2(1280, 0)
+repeat_times = 2
+
+[node name="Layer1" type="Sprite2D" parent="Parallax1" unique_id=1535003429]
+scale = Vector2(2, 2)
+texture = ExtResource("2_5ub6l")
+centered = false
+
+[node name="Parallax2" type="Parallax2D" parent="." unique_id=1003403447]
+scroll_offset = Vector2(-542.4315, 0)
+repeat_size = Vector2(1280, 0)
+repeat_times = 4
+
+[node name="Layer2" type="Sprite2D" parent="Parallax2" unique_id=566346533]
+scale = Vector2(2, 2)
+texture = ExtResource("3_hy2k2")
+centered = false
+
+[node name="Parallax4" type="Parallax2D" parent="." unique_id=1409639157]
+scroll_offset = Vector2(1240.1075, 0)
+repeat_size = Vector2(1280, 0)
+repeat_times = 4
+
+[node name="Layer4" type="Sprite2D" parent="Parallax4" unique_id=1493828320]
+scale = Vector2(2, 2)
+texture = ExtResource("5_ti4sd")
+centered = false
+
+[node name="Parallax3" type="Parallax2D" parent="." unique_id=1324184026]
+scroll_offset = Vector2(344.6139, 0)
+repeat_size = Vector2(1280, 0)
+repeat_times = 4
+
+[node name="Layer3" type="Sprite2D" parent="Parallax3" unique_id=1944808279]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ulva1")
+centered = false
+
+[node name="Planet1" type="Sprite2D" parent="." unique_id=4307794]
+position = Vector2(258.78436, 625)
+scale = Vector2(2, 2)
+texture = ExtResource("6_7lp44")
+
+[node name="Planet2" type="Sprite2D" parent="." unique_id=1984123476]
+position = Vector2(-114, 88)
+scale = Vector2(2, 2)
+texture = ExtResource("7_pv6ml")
+
+[node name="Planet3" type="Sprite2D" parent="." unique_id=720359318]
+position = Vector2(-41, 140)
+scale = Vector2(2, 2)
+texture = ExtResource("8_6ns2i")
+
+[node name="Planet4" type="Sprite2D" parent="." unique_id=252639186]
+position = Vector2(-170.3409, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("9_m57kj")
+
+[node name="WinBackground" type="ColorRect" parent="." unique_id=682681130]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="SpaceStationWin" type="Node2D" parent="." unique_id=2009148189]
+position = Vector2(1723, 360)
+scale = Vector2(2, 2)
+
+[node name="SpaceStation1" type="Sprite2D" parent="SpaceStationWin" unique_id=762321511]
+texture = ExtResource("10_nwy7k")
+
+[node name="SpaceStation2" type="Sprite2D" parent="SpaceStationWin" unique_id=1399422212]
+texture = ExtResource("11_doi1i")
+
+[node name="SpaceStation3" type="Sprite2D" parent="SpaceStationWin" unique_id=15699471]
+texture = ExtResource("12_wojsb")
+
+[node name="SpaceStation4" type="Sprite2D" parent="SpaceStationWin" unique_id=2111748318]
+texture = ExtResource("13_lmx51")
+
+[node name="SpaceStation5" type="Sprite2D" parent="SpaceStationWin" unique_id=1566034850]
+texture = ExtResource("14_ayk4h")
+
+[node name="SpaceStation6" type="Sprite2D" parent="SpaceStationWin" unique_id=778284679]
+texture = ExtResource("15_beax7")
+
+[node name="WinAnimationPlayer" type="AnimationPlayer" parent="SpaceStationWin" unique_id=1578013310]
+libraries/ = SubResource("AnimationLibrary_pv6ml")
+
+[node name="SpaceStationLose" type="AnimatedSprite2D" parent="." unique_id=516854991]
+position = Vector2(1723, 360)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qmg03")
