@@ -106,4 +106,4 @@ script = ExtResource("2_q352t")
 [node name="AuraSprite" type="AnimatedSprite2D" parent="." unique_id=843081888]
 sprite_frames = SubResource("SpriteFrames_ykh0f")
 autoplay = "default"
-frame_progress = 0.8500641
+frame_progress = 0.87324417
