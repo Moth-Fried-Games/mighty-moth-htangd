@@ -20,6 +20,8 @@ extends Node2D
 @export_multiline("Dialog") var dialog_list: Array[String] = []
 ## Pixel Width for the Dialog
 @export_range(24, 1280) var dialog_width: float = 640
+## Pixel Height for the Dialog
+@export_range(24, 720) var dialog_height: float = 240
 ## Dialog Index to Preview in the Editor.
 @export var preview_dialog_index: int = 0:
 	set(v):
@@ -33,6 +35,8 @@ var dialog_index: int = 0
 var dialog_playing: bool = false
 var dialog_finished: bool = true
 var hiding_finished: bool = false
+
+signal dialog_changed
 
 
 func _enter_tree() -> void:
@@ -63,6 +67,7 @@ func _process(delta: float) -> void:
 			if hide_on_finish and hiding_finished:
 				hiding_finished = false
 				dialog_index = 0
+				dialog_changed.emit()
 			if is_instance_valid(ui_dialog):
 				if ui_dialog.modulate.a != 0:
 					ui_dialog.toggle_hide_tween(false)
@@ -104,6 +109,10 @@ func adjust_dialog() -> void:
 		ui_dialog.custom_minimum_size.x = dialog_width
 		ui_dialog.size.x = dialog_width
 		ui_dialog.clear()
+	if ui_dialog.custom_minimum_size.y != dialog_height:
+		ui_dialog.custom_minimum_size.y = dialog_height
+		ui_dialog.size.y = dialog_height
+		ui_dialog.clear()
 	if ui_dialog.position.x != -ui_dialog.size.x / 2:
 		ui_dialog.position.x = -ui_dialog.size.x / 2
 	if ui_dialog.position.y != -ui_dialog.size.y:
@@ -138,9 +147,11 @@ func process_input() -> void:
 func next_dialog() -> void:
 	if dialog_index < dialog_list.size() - 1:
 		dialog_index += 1
+		dialog_changed.emit()
 	else:
 		if auto_loop and not input_dialog:
 			dialog_index = 0
+			dialog_changed.emit()
 		else:
 			if hide_on_finish:
 				if not hiding_finished:
@@ -168,3 +179,5 @@ func hide_on_obstruction() -> void:
 	if hide_on_finish and hiding_finished:
 		ui_dialog.toggle_hide_tween(false)
 		return
+	if active and ui_dialog.modulate.a != 1:
+		ui_dialog.toggle_hide_tween(true)

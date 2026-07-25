@@ -2,7 +2,8 @@
 class_name UIDialog
 extends PanelContainer
 
-@onready var rich_text_label: RichTextLabel = $MarginContainer/RichTextLabel
+@onready var dialog_rich_text_label: RichTextLabel = %DialogRichTextLabel
+@onready var input_rich_text_label: RichTextLabel = %InputRichTextLabel
 
 var ui_inputs: Array[String] = []
 var text: String = ""
@@ -30,6 +31,7 @@ func clear() -> void:
 
 
 func message(new_text: String) -> void:
+	input_rich_text_label.visible = false
 	size.y = 0
 	ui_inputs = []
 	text = new_text
@@ -42,19 +44,22 @@ func message_input(new_text: String) -> void:
 	size.y = 0
 	text = new_text
 	original_text = new_text
-	#text = str(text, "[center]***************[/center]\n")
 	update_inputs()
 	split_waits()
 	type_text()
 
 
 func update_inputs() -> void:
+	input_rich_text_label.text = ""
+	var input_text: String = ""
 	for ui_input in ui_inputs:
 		var input_label: String = ui_input.split(" ")[0]
 		var input_name: String = ui_input.split(" ")[1]
 		var input_texture_path: String = input_path(input_label)
 		var input_tag: String = img_tag(input_texture_path)
-		text = str(text, "[font_size=24][right]", input_name, " ", input_tag, "[/right]\n")
+		input_text = str(input_text, " [font_size=24]", input_name, "[/font_size] ", input_tag)
+	input_rich_text_label.text = str("[right]", input_text, "[/right]")
+	input_rich_text_label.visible = true
 
 
 func img_tag(image_path: String) -> String:
@@ -189,10 +194,10 @@ func toggle_hide_tween(toggle: bool) -> void:
 
 
 func type_text() -> void:
-	if rich_text_label.text != clean_text:
-		rich_text_label.text = clean_text
+	if dialog_rich_text_label.text != clean_text:
+		dialog_rich_text_label.text = clean_text
 	if text_wait_splits.is_empty():
-		rich_text_label.visible_ratio = 1
+		dialog_rich_text_label.visible_ratio = 1
 		text_typing = false
 		text_finished = true
 		typing_finished.emit()
@@ -200,8 +205,8 @@ func type_text() -> void:
 		text_typing = true
 		text_finished = false
 		text_index = 0
-		text_character_ratio = 1.0 / rich_text_label.get_total_character_count()
-		rich_text_label.visible_ratio = 0
+		text_character_ratio = 1.0 / dialog_rich_text_label.get_total_character_count()
+		dialog_rich_text_label.visible_ratio = 0
 		type_tween()
 
 
@@ -214,9 +219,9 @@ func type_tween() -> void:
 	var tween_length: int = text_wait_splits[text_index].length()
 	var tween_ratio: float = text_character_ratio * tween_length
 	var tween_time: float = text_wait_times[text_index]
-	var tween_next: float = rich_text_label.visible_ratio + tween_ratio
+	var tween_next: float = dialog_rich_text_label.visible_ratio + tween_ratio
 	if text_wait_times[text_index] == 0:
-		rich_text_label.visible_ratio = tween_next
+		dialog_rich_text_label.visible_ratio = tween_next
 		text_index += 1
 		type_tween()
 	else:
@@ -224,13 +229,13 @@ func type_tween() -> void:
 			text_tween.kill()
 		text_tween = create_tween().set_parallel()
 		text_tween.finished.connect(type_tween)
-		text_tween.tween_property(rich_text_label, "visible_ratio", tween_next, tween_time)
+		text_tween.tween_property(dialog_rich_text_label, "visible_ratio", tween_next, tween_time)
 		text_index += 1
 
 
 func finish_typing() -> void:
 	if is_instance_valid(text_tween):
 		text_tween.kill()
-	rich_text_label.visible_ratio = 1
+	dialog_rich_text_label.visible_ratio = 1
 	text_index = text_wait_splits.size()
 	type_tween()
