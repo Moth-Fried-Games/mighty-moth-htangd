@@ -1,22 +1,18 @@
-class_name MeleeEnemy
+class_name Souvenir
 extends LaneEntity
 
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
-
-
-enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
-
-
 const spawn_offset_from_anchor: float = 20
-const movement_per_second: float = 300
+const movement_per_second: float = 150
 
-@onready var hurtboxarea: Area2D = $"HurtBoxArea"
-@onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
+@onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
+@onready var collecthitboxarea: Area2D = $"CollectHitBoxArea"
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,41 +32,30 @@ func _ready() -> void:
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
-	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position.x = global_position.x - (delta * movement_per_second)
-	return
+
 
 
 
 func _on_punched() -> void:
-	print("owie I am puncheded")
-	main_game_scene.apply_time_bonus(1)
-	super_meter_handler.on_successful_punch()
-	_on_defeated()
-	## TODO animate
+	super_meter_handler.on_combo_break()
+	## TODO ANIMATION FOR NOOOOOOOO DON'T PUNCH THE PREZZIE
+	_begin_despawn()
 	
 func _on_deflected() -> void:
-	print("oh wow I am deflecteded")
-	main_game_scene.apply_time_bonus(2)
-	super_meter_handler.on_successful_deflect()
-	_on_defeated()
-	## TODO animate
-
-func _on_defeated() -> void:
-	print("and thus I am deadddd")
-	_begin_despawn()
-	## TODO defeat animation
-	pass
-	
-func _on_touching_player() -> void:
 	super_meter_handler.on_combo_break()
+	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
 	_begin_despawn()
-	## TODO animate and annoy mightymoth a little
-	pass
+	
+func _on_collected() -> void:
+	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
+	main_game_scene.souvenirs_collected.append(sprite_2d.texture)
+	super_meter_handler.on_successful_collect()
+	_begin_despawn()
 
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
@@ -78,7 +63,7 @@ func _on_walk_past_player() -> void:
 	pass
 
 func _begin_despawn() -> void:
-	hurtboxarea.queue_free()
+	collecthitboxarea.queue_free()
 	meleehitboxarea.queue_free()
 	parryhitboxarea.queue_free()
 	
