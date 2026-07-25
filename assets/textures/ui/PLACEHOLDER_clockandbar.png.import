@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0iubcomd6mai"
-path="res://.godot/imported/PLACEHOLDER_rocket.png-bf9d35983a1ac9e021bbdf54cac4d814.ctex"
+uid="uid://dtf6xd1275mxr"
+path="res://.godot/imported/PLACEHOLDER_clockandbar.png-1d8cb0073674b181906e03e3609fdb0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/object_sprites/PLACEHOLDER_rocket.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_rocket.png-bf9d35983a1ac9e021bbdf54cac4d814.ctex"]
+source_file="res://assets/textures/ui/PLACEHOLDER_clockandbar.png"
+dest_files=["res://.godot/imported/PLACEHOLDER_clockandbar.png-1d8cb0073674b181906e03e3609fdb0b.ctex"]
 
 [params]
 

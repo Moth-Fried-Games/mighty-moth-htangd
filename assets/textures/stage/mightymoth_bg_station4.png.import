@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfu6ilidl775q"
-path="res://.godot/imported/PLACEHOLDER_goon.png-fbef02864dbd1000bd75a874621c0764.ctex"
+uid="uid://bgjio78mydoh3"
+path="res://.godot/imported/mightymoth_bg_station4.png-d8eaa9733fecb8585d6909f96a2c5919.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_sprites/PLACEHOLDER_goon.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_goon.png-fbef02864dbd1000bd75a874621c0764.ctex"]
+source_file="res://assets/textures/stage/mightymoth_bg_station4.png"
+dest_files=["res://.godot/imported/mightymoth_bg_station4.png-d8eaa9733fecb8585d6909f96a2c5919.ctex"]
 
 [params]
 

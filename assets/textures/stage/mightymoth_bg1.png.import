@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmx5tm7lxxdfk"
-path="res://.godot/imported/placeholder-player-idle.png-ed2657c20ad5ef13f1561a8ace8282cd.ctex"
+uid="uid://b68jlqbm4y6qf"
+path="res://.godot/imported/mightymoth_bg1.png-dd4bf28435c8cde4d700c3446b9d195f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player_sprites/placeholder-player-idle.png"
-dest_files=["res://.godot/imported/placeholder-player-idle.png-ed2657c20ad5ef13f1561a8ace8282cd.ctex"]
+source_file="res://assets/textures/stage/mightymoth_bg1.png"
+dest_files=["res://.godot/imported/mightymoth_bg1.png-dd4bf28435c8cde4d700c3446b9d195f.ctex"]
 
 [params]
 
