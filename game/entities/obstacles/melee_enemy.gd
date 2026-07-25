@@ -11,8 +11,6 @@ enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
 const spawn_offset_from_anchor: float = 20
 const movement_per_second: float = 200
 
-@onready var obstacle_spawner: Node2D = %ObstacleSpawner
-
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
