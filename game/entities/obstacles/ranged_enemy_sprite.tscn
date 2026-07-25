@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cu72wutqpbe14"]
+
+[ext_resource type="Texture2D" uid="uid://bu8q4t362t8mm" path="res://assets/textures/enemies/mightymoth_enemy_cultists.png" id="1_0o8hf"]
+[ext_resource type="Script" uid="uid://ds5xqp6wwe752" path="res://game/entities/obstacles/ranged_enemy_sprite.gd" id="2_iwl60"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwl60"]
+atlas = ExtResource("1_0o8hf")
+region = Rect2(0, 80, 72, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or0td"]
+atlas = ExtResource("1_0o8hf")
+region = Rect2(72, 80, 72, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ixf"]
+atlas = ExtResource("1_0o8hf")
+region = Rect2(0, 160, 72, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfgp"]
+atlas = ExtResource("1_0o8hf")
+region = Rect2(72, 160, 72, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwl60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or0td")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ixf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfgp")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psmbb"]
+atlas = ExtResource("1_0o8hf")
+region = Rect2(72, 240, 72, 80)
+
+[node name="RangedEnemySprite" type="AnimatedSprite2D" unique_id=2101253761]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qmg03")
+autoplay = "default"
+script = ExtResource("2_iwl60")
+
+[node name="FireSprite" type="Sprite2D" parent="." unique_id=1306939968]
+visible = false
+texture = SubResource("AtlasTexture_psmbb")

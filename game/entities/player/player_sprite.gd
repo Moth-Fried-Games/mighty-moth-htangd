@@ -8,8 +8,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	aura_sprite.frame = frame
+	if aura_sprite.frame != frame:
+		aura_sprite.frame = frame
 	if animation == "ultimate":
-		aura_sprite.visible = true
+		if not aura_sprite.visible:
+			aura_sprite.visible = true
 	else:
-		aura_sprite.visible = false
+		if aura_sprite.visible:
+			aura_sprite.visible = false

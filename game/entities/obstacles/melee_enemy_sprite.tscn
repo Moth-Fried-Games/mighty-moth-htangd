@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://deglstlvnpb8b"]
+
+[ext_resource type="Texture2D" uid="uid://bu8q4t362t8mm" path="res://assets/textures/enemies/mightymoth_enemy_cultists.png" id="1_nsvrv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7udg"]
+atlas = ExtResource("1_nsvrv")
+region = Rect2(0, 0, 72, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7bdq"]
+atlas = ExtResource("1_nsvrv")
+region = Rect2(72, 0, 72, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7udg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7bdq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="MeleeEnemySprite" type="AnimatedSprite2D" unique_id=437403613]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qmg03")
+autoplay = "default"
+frame_progress = 0.5473134
