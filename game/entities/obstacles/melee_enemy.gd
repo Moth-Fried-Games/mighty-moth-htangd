@@ -67,15 +67,24 @@ func _process(delta: float) -> void:
 
 func _on_punched() -> void:
 	_on_defeated()
+	## TODO apply time and super meter bonus, animate
 	
 func _on_deflected() -> void:
 	_on_defeated()
+	## TODO apply time and super meter bonus, animate
 
 func _on_defeated() -> void:
+	## TODO Begin to despawn
 	pass
 	
 func _on_touching_player() -> void:
+	## TODO break combo, annoy mightymoth a little
 	pass
 
 func _on_walk_past_player() -> void:
+	## TODO _begin_despawn this enemy and, IF AND ONLY IF the enemy didn't touch this player, break their combo
+	pass
+
+func _begin_despawn() -> void:
+	## TODO remove the enemy from the ObstacleSpawner's tracker! Then, set a timer to WAIT a few seconds to ensure that completes. When the timer expires, delete this node
 	pass
