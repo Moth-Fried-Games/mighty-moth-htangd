@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cj4qpblphlkas"]
 
 [ext_resource type="Script" uid="uid://b3gcf4t2na33" path="res://game/main/lane_binders.gd" id="1_40ei4"]
-[ext_resource type="Texture2D" uid="uid://c0iubcomd6mai" path="res://assets/object_sprites/PLACEHOLDER_rocket.png" id="2_7qpts"]
+[ext_resource type="Texture2D" uid="uid://c0iubcomd6mai" path="res://assets/textures/object/PLACEHOLDER_rocket.png" id="2_7qpts"]
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="3_7qpts"]
 
 [node name="LaneBinders" type="Node2D" unique_id=758711568]

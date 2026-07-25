@@ -1,21 +1,30 @@
-class_name MeleeEnemy
+class_name Debris
 extends LaneEntity
 
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
+const spawn_offset_from_anchor: float = 50
+const movement_per_second: float = 4333
+var is_moving: bool = false
 
-
-enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
-
-
-const spawn_offset_from_anchor: float = 20
-const movement_per_second: float = 300
+var warning_timer: Timer
 
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
-@onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
+@onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
+@onready var debris_warning: Node2D = $DebrisWarning
+@onready var warning_label: Label = $DebrisWarning/WarningLabel
+@onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
+
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
+
+var incoming_distance_display: int:
+	get():
+		if warning_timer != null and !warning_timer.is_stopped():
+			return roundi(warning_timer.time_left * 100)
+		return 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,38 +38,54 @@ func _ready() -> void:
 			back_spawn_anchor = lane_binder.middle_right_anchor
 		Lanes.LaneId.BOTTOM:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
-		
 	
-	global_position = Vector2(back_spawn_anchor.global_position.x, back_spawn_anchor.global_position.y)
+	global_position = Vector2(back_spawn_anchor.global_position.x + spawn_offset_from_anchor, back_spawn_anchor.global_position.y)
+	debris_warning.global_position.x = get_viewport_rect().size.x - 80
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
+	
+	var rando = RandomNumberGenerator.new()
+	warning_timer = Timer.new()
+	warning_timer.wait_time = rando.randi() % 5 + 5
+	warning_timer.one_shot = true
+	warning_timer.timeout.connect(func() -> void: 
+		debris_warning.queue_free()
+		is_moving = true
+	)
+	add_child(warning_timer)
+	warning_timer.start()
 	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.x = global_position.x - (delta * movement_per_second)
+	if is_moving:
+		global_position.x = global_position.x - (delta * movement_per_second)
+		return
+	else:
+		distance_countdown.text = str(_get_distance_display()) + " m"
+		
+	## TODO update warning display
 	return
 
 
+func _get_distance_display() -> float:
+	return roundf(warning_timer.time_left * 100.0)
+
 
 func _on_punched() -> void:
-	print("owie I am puncheded")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
-	_on_defeated()
-	## TODO animate
+	_on_destroyed()
+	## TODO animate, confirm interaction
 	
 func _on_deflected() -> void:
-	print("oh wow I am deflecteded")
-	main_game_scene.apply_time_bonus(2)
+	#main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
-	_on_defeated()
-	## TODO animate
+	## TODO add logic to make this thing damage and defeat an enemy when deflected. Do not run _on_destroyed until AFTER this defeats something, or otherwise leaves the right side of the screen!
 
-func _on_defeated() -> void:
-	print("and thus I am deadddd")
+func _on_destroyed() -> void:
 	_begin_despawn()
 	## TODO defeat animation
 	pass

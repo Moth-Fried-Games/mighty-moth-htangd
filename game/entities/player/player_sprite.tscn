@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://lhykb8shtrrd"]
+
+[ext_resource type="Texture2D" uid="uid://ddvesk1i8d7ol" path="res://assets/textures/player/mightymoth_player.png" id="1_rehob"]
+[ext_resource type="Script" uid="uid://osrl2e3fen3w" path="res://game/entities/player/player_sprite.gd" id="2_q352t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q352t"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 264, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67x0s"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 0, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdr5q"]
+atlas = ExtResource("1_rehob")
+region = Rect2(157, 0, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32881"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 132, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvrj1"]
+atlas = ExtResource("1_rehob")
+region = Rect2(157, 132, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hajh0"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 528, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc2rj"]
+atlas = ExtResource("1_rehob")
+region = Rect2(157, 528, 157, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q352t")
+}],
+"loop": 0,
+"name": &"deflect",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67x0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdr5q")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32881")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvrj1")
+}],
+"loop": 0,
+"name": &"punch",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hajh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc2rj")
+}],
+"loop": 1,
+"name": &"ultimate",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtern"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 660, 157, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8y1u"]
+atlas = ExtResource("1_rehob")
+region = Rect2(157, 660, 157, 132)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykh0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtern")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8y1u")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="PlayerSprite" type="AnimatedSprite2D" unique_id=1310412979]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qmg03")
+animation = &"fly"
+autoplay = "fly"
+script = ExtResource("2_q352t")
+
+[node name="AuraSprite" type="AnimatedSprite2D" parent="." unique_id=843081888]
+sprite_frames = SubResource("SpriteFrames_ykh0f")
+autoplay = "default"
+frame_progress = 0.7056085

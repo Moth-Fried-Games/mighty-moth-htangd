@@ -9,8 +9,8 @@ script = ExtResource("1_v8xbs")
 
 [node name="UIDialog" parent="." unique_id=2018421613 instance=ExtResource("2_wmvkl")]
 modulate = Color(1, 1, 1, 0.75)
-custom_minimum_size = Vector2(640, 0)
+custom_minimum_size = Vector2(640, 240)
 offset_left = -320.0
-offset_top = -48.0
+offset_top = -240.0
 offset_right = 320.0
 offset_bottom = 0.0

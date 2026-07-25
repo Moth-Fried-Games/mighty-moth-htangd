@@ -1,17 +1,180 @@
 [gd_scene format=3 uid="uid://b0guybi8oysyt"]
 
 [ext_resource type="Script" uid="uid://dcutpxty2jcbp" path="res://game/dating/intro.gd" id="1_d2p87"]
+[ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_g1ugq"]
 [ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="2_pil35"]
+
+[sub_resource type="Gradient" id="Gradient_d2p87"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmg03"]
+gradient = SubResource("Gradient_d2p87")
+width = 1280
+height = 720
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_pil35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MothSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g1ugq"]
+resource_name = "crush_off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1tvt4"]
+resource_name = "crush_on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_31e0a"]
+resource_name = "moth_off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MothSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ywqbk"]
+resource_name = "moth_on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MothSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6pyc"]
+_data = {
+&"RESET": SubResource("Animation_pil35"),
+&"crush_off": SubResource("Animation_g1ugq"),
+&"crush_on": SubResource("Animation_1tvt4"),
+&"moth_off": SubResource("Animation_31e0a"),
+&"moth_on": SubResource("Animation_ywqbk")
+}
 
 [node name="Intro" type="Node2D" unique_id=346985930]
 script = ExtResource("1_d2p87")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1695284227]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2140844809]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_qmg03")
+
+[node name="MothSprite2D" type="Sprite2D" parent="." unique_id=957740780]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 360)
+texture = ExtResource("2_g1ugq")
+
+[node name="CrushSprite2D" type="Sprite2D" parent="." unique_id=1721743697]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(960, 360)
+texture = ExtResource("2_g1ugq")
+
 [node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
 position = Vector2(640, 700)
-active = true
+hide_on_finish = false
 input_dialog = true
-dialog_list = Array[String](["[font_size=32]Name[/font_size]
-[font_size=28][wait=1]Hi hi hi Hello hello :3[/wait][/font_size]", "[font_size=32]Name[/font_size]
-[wait=2][font_size=28]hello hello hi <3[/wait][/font_size]", "[font_size=32]Name[/font_size]
-[font_size=28][wait=3]hihihihihi hello :3c[/wait][/font_size]"])
+dialog_list = Array[String](["[b][font_size=32][wait=1]Cecropolis. 6:00 PM.[/wait][/font_size][/b]", "[b][font_size=32][wait=1]Just another regular day...[/wait][/font_size][/b]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]UGH!!![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Seriously, what is the deal with this city and constant interdimensional attacks?![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5](Sighs) if it weren’t for you, we’d all be cosmic jelly. Again. Thanks, Mighty Moth.[/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5]Just doing my duty![/wait][/font_size]", "[b][b][font_size=32]Mighty Moth[/font_size][/b][/b]
+[font_size=28][wait=0.5]But... you ARE always in the splash zone.[/wait][/font_size]", "[b][b][font_size=32]Mighty Moth[/font_size][/b][/b]
+[font_size=28][wait=0.5]N-not that I’m complaining! You’re a great reporter![/wait][/font_size]", "[b][b][font_size=32]Mighty Moth[/font_size][/b][/b]
+[font_size=28][wait=0.5]Maybe you could, you know.. Take pictures from further away?[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]And miss all the action?! Fat chance.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Besides, I know you’ll always be there to save my butt.[/wait][/font_size]", "[b][b][font_size=32]Mighty Moth[/font_size][/b][/b]
+[font_size=28][wait=0.5]B-but it’s dangerous! Look at your boss![/wait][/font_size]", "[b][b][font_size=32]Mighty Moth[/font_size][/b][/b]
+[font_size=28][wait=0.5]I warned him not to stare directly into the creature’s eye...[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Oh, he’ll be fine![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Give him a couple of months in that catatonic state and he’ll be good as new.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Honestly, we all needed a break from him anyway.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5]Even so, I wouldn’t want anything to happen to...[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Wait a minute! If he’s out of commission... that means...[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]I’M the chief editor now![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Oh, Mighty Moth! I’ve been waiting for this promotion forever![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]This calls for a celebration.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Say, do you like risotto?[/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5]Is it food? Then absolutely![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5](Giggles) Perfect. Dinner’s on me.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]My risotto isn’t enough to repay you for saving my life a dozen times, but it comes close.[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]I’ll pull it out of the oven at 8:00 PM sharp. Don’t be late![/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5]I’d never! In fact... I’ve been meaning to give you...[/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5](Points into the distance) Hey... isn’t that your base over there?! Why is it surrounded by dozens of creepy, cloaked figures?[/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5](Gasps) The cult! The interdimensional creature was just a distraction so they could break in and steal...[/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][shake][wait=0.5]THE GIFTS![/wait][/shake][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Gifts?![/wait][/font_size]", "[b][font_size=32]Mighty Moth[/font_size][/b]
+[font_size=28][wait=0.5]Gotta Go![/wait][/font_size]", "[b][font_size=32]The Crush[/font_size][/b]
+[font_size=28][wait=0.5]Remember! 8:00 PM! Don’t be late! [/wait][/font_size]", ""])
 dialog_width = 1240.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=77042420]
+libraries/ = SubResource("AnimationLibrary_a6pyc")

@@ -14,7 +14,7 @@ script = ExtResource("1_te03x")
 
 [node name="LaneBinders" parent="." unique_id=758711568 instance=ExtResource("1_2eox0")]
 unique_name_in_owner = true
-position = Vector2(993, 472.5)
+position = Vector2(993, 484.5)
 center_offset = -15
 lane_gaps = 100
 
@@ -26,6 +26,7 @@ position = Vector2(0, -100)
 
 [node name="ObstacleSpawner" parent="." unique_id=699091262 instance=ExtResource("3_dp175")]
 unique_name_in_owner = true
+position = Vector2(10240, 360)
 
 [node name="Player" parent="." unique_id=48566076 node_paths=PackedStringArray("lanes") instance=ExtResource("4_2l1qw")]
 position = Vector2(-28, -35)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtf6xd1275mxr"
-path="res://.godot/imported/PLACEHOLDER_clockandbar.png-a6fa029f9179d19c6b22170ea40c8ab4.ctex"
+uid="uid://dc71xnxg330bs"
+path="res://.godot/imported/PLACEHOLDER_flower.png-b9a715aa6338095a8e7bafaf1decb671.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui_sprites/PLACEHOLDER_clockandbar.png"
-dest_files=["res://.godot/imported/PLACEHOLDER_clockandbar.png-a6fa029f9179d19c6b22170ea40c8ab4.ctex"]
+source_file="res://assets/textures/object/PLACEHOLDER_flower.png"
+dest_files=["res://.godot/imported/PLACEHOLDER_flower.png-b9a715aa6338095a8e7bafaf1decb671.ctex"]
 
 [params]
 
