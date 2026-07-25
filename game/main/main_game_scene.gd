@@ -14,7 +14,7 @@ const finale_timer_start: float = 180
 @onready var gameover_timer_display: Label = $"PlaceholderTimer"
 @onready var victory_timer_display: Label = $"PlaceholderVICTORYTimer"
 
-var souvenirs_collected: Array = []
+var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
 # Called when the node enters the scene tree for the first time.

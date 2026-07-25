@@ -53,7 +53,7 @@ func _on_deflected() -> void:
 	
 func _on_collected() -> void:
 	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
-	main_game_scene.souvenirs_collected.append(sprite_2d.texture)
+	main_game_scene.souvenirs_collected += 1
 	super_meter_handler.on_successful_collect()
 	_begin_despawn()
 
