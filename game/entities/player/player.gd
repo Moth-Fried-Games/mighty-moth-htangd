@@ -25,15 +25,5 @@ func _movement():
 	if Input.is_action_just_pressed("move_down"):
 		_change_lane(direction.DOWN)
 
-## TODO
-func _on_attack_input():
-	pass
-## TODO
-func _on_deflect_input():
-	pass
-## TODO
-func _on_collect_input():
-	pass
-## TODO
 func _on_super_input():
 	pass
