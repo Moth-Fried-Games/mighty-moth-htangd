@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ddvesk1i8d7ol" path="res://assets/textures/player/mightymoth_player.png" id="1_rehob"]
 [ext_resource type="Script" uid="uid://osrl2e3fen3w" path="res://game/entities/player/player_sprite.gd" id="2_q352t"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebt0"]
+atlas = ExtResource("1_rehob")
+region = Rect2(0, 396, 157, 132)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q352t"]
 atlas = ExtResource("1_rehob")
 region = Rect2(0, 264, 157, 132)
@@ -33,6 +37,14 @@ region = Rect2(157, 528, 157, 132)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebt0")
+}],
+"loop": 1,
+"name": &"collect",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q352t")
@@ -100,7 +112,7 @@ animations = [{
 [node name="PlayerSprite" type="AnimatedSprite2D" unique_id=1310412979]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
-animation = &"fly"
+animation = &"ultimate"
 autoplay = "fly"
 script = ExtResource("2_q352t")
 
