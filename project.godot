@@ -21,6 +21,10 @@ ControllerIcons="*uid://5l43qeefbt46"
 GameGlobals="*uid://p2nokudrdkw6"
 GameUi="*uid://dnty0uxfnuiic"
 
+[copy_files_on_export]
+
+files=Array[PackedStringArray]([PackedStringArray("res://licenses", "licenses", "")])
+
 [debug]
 
 gdscript/warnings/untyped_declaration=1

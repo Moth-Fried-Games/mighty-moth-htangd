@@ -201,7 +201,6 @@ func type_text() -> void:
 		text_finished = false
 		text_index = 0
 		text_character_ratio = 1.0 / rich_text_label.get_total_character_count()
-		## TODO REMOVE BBCODE FROM TEXT WAIT SPLITS
 		rich_text_label.visible_ratio = 0
 		type_tween()
 
