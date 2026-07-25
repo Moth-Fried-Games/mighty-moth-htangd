@@ -1,3 +1,4 @@
+class_name ParryHitBoxArea
 extends Area2D
 
 
