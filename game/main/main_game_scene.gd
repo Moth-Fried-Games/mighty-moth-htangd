@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var lane_binders: Lanes = %LaneBinders
+@onready var obstacle_spawner: ObstacleSpawner = %ObstacleSpawner
 
 var game_over_timer: Timer
 var finale_timer: Timer

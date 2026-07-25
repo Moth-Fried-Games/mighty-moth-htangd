@@ -1,3 +1,4 @@
+class_name ObstacleSpawner
 extends Node2D
 
 const MELEE_ENEMY = preload("uid://bl702ass4bwy5")
@@ -102,3 +103,10 @@ func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 		return single_obs is MeleeEnemy
 	## TODO add checks for additional obstacle types and class names when implemented
 	return false
+	
+func despawn_obstacle(laneId: Lanes.LaneId, nodeid: int) -> void:
+	var obstacle_to_remove = current_obstacle_map[laneId].find_custom(func(obs: LaneEntity) -> bool:
+		return obs.get_instance_id() == nodeid)
+		
+	print("Hey I found a thing to remove!!!")
+	current_obstacle_map[laneId].remove_at(obstacle_to_remove)
