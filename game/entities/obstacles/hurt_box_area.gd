@@ -1,3 +1,4 @@
+class_name HurtBoxArea
 extends Area2D
 
 

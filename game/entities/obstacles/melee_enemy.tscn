@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://loc5k58x0g1w" path="res://game/entities/obstacles/melee_enemy.gd" id="1_7l27q"]
 [ext_resource type="Texture2D" uid="uid://cfu6ilidl775q" path="res://assets/character_sprites/PLACEHOLDER_goon.png" id="2_wonbq"]
-[ext_resource type="Script" uid="uid://c3jet7k0yri33" path="res://game/entities/obstacles/melee_enemy_hurt_box_area.gd" id="3_op28d"]
-[ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_enemy_melee_hit_box_area.gd" id="4_uapf1"]
-[ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/melee_enemy_parry_hit_box_area.gd" id="5_p2qwr"]
+[ext_resource type="Script" uid="uid://c3jet7k0yri33" path="res://game/entities/obstacles/hurt_box_area.gd" id="3_op28d"]
+[ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="4_uapf1"]
+[ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="5_p2qwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
 size = Vector2(82, 109)
