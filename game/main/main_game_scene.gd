@@ -2,13 +2,39 @@ extends Node2D
 
 @onready var lane_binders: Lanes = %LaneBinders
 
+var game_over_timer: Timer
+var finale_timer: Timer
+
+const game_over_timer_start: float = 60
+const finale_timer_start: float = 180
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
-	pass # Replace with function body.
+	
+	game_over_timer = Timer.new()
+	finale_timer = Timer.new()
+	
+	game_over_timer.wait_time = game_over_timer_start
+	game_over_timer.timeout.connect(_on_game_over_countdown)
+	game_over_timer.one_shot = true
+	
+	finale_timer.wait_time = finale_timer_start
+	finale_timer.timeout.connect(_on_finale_countdown)
+	finale_timer.one_shot = true
+	
+	game_over_timer.start()
+	finale_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func _on_game_over_countdown() -> void:
+	## TODO PROCESS MORE CHANGES AS A PRODUCT OF THE GAME OVER TRIGGER
+	finale_timer.stop()
+	
+func _on_finale_countdown() -> void:
+	## TODO PROCESS MORE CHANGES AS A PRODUCT OF THE FINALE TRIGGER
+	game_over_timer.stop()

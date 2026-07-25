@@ -3,14 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://cj4qpblphlkas" path="res://game/main/lane_binders.tscn" id="1_2eox0"]
 [ext_resource type="Script" uid="uid://crgpaqqrwpt01" path="res://game/main/main_game_scene.gd" id="1_te03x"]
 [ext_resource type="PackedScene" uid="uid://7opc6cr7h01p" path="res://game/main/obstacle_spawner.tscn" id="3_dp175"]
+[ext_resource type="PackedScene" uid="uid://7mtu3gycsbr" path="res://game/entities/player/player.tscn" id="4_2l1qw"]
 
 [node name="MainGameScene" type="Node2D" unique_id=1787599848]
 script = ExtResource("1_te03x")
 
 [node name="LaneBinders" parent="." unique_id=758711568 instance=ExtResource("1_2eox0")]
 unique_name_in_owner = true
-position = Vector2(993, 464.5)
+position = Vector2(993, 587.5)
 center_offset = -15
 lane_gaps = 100
 
+[node name="Bottom Lane" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="2" unique_id=1433448766]
+position = Vector2(0, 100)
+
+[node name="Top Lane" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="3" unique_id=1281279305]
+position = Vector2(0, -100)
+
 [node name="ObstacleSpawner" parent="." unique_id=699091262 instance=ExtResource("3_dp175")]
+
+[node name="Player" parent="." unique_id=48566076 node_paths=PackedStringArray("lanes") instance=ExtResource("4_2l1qw")]
+lanes = [NodePath("../LaneBinders/Middle Lane/Top Lane"), NodePath("../LaneBinders/Middle Lane"), NodePath("../LaneBinders/Middle Lane/Bottom Lane")]
+
+[editable path="LaneBinders"]
