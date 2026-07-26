@@ -10,8 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://12x457v6koqp" path="res://assets/textures/ui/mightymoth_ui_timer_0.png" id="8_jeacm"]
 [ext_resource type="Texture2D" uid="uid://r22rblnyigh0" path="res://assets/textures/ui/mightymoth_ui_timer_1.png" id="9_10vfd"]
 [ext_resource type="Texture2D" uid="uid://wak43m3okqu0" path="res://assets/textures/ui/mightymoth_ui_timer_2.png" id="10_x20yc"]
+[ext_resource type="Shader" uid="uid://b8absxgh7qjqi" path="res://game/main/invert_shader.tres" id="11_4o3v2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmg03"]
+shader = ExtResource("11_4o3v2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qmg03"]
+font_size = 48
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainUI" type="CanvasLayer" unique_id=808601705]
+process_mode = 3
 layer = 2
 script = ExtResource("1_alr7j")
 
@@ -158,3 +168,43 @@ offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("10_x20yc")
+
+[node name="Invert" type="ColorRect" parent="." unique_id=411164146]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_qmg03")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=2047326803]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_qmg03")
+
+[node name="PauseLabel" type="Label" parent="." unique_id=608897921]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_qmg03")

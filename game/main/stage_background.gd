@@ -10,6 +10,7 @@ extends Node2D
 @onready var space_station_win: Node2D = $SpaceStationWin
 @onready var space_station_lose: AnimatedSprite2D = $SpaceStationLose
 @onready var win_animation_player: AnimationPlayer = $SpaceStationWin/WinAnimationPlayer
+@onready var space_station_marker: Marker2D = %SpaceStationMarker
 
 @export var scroll_speed: float = 100
 @export var modifier_1: float = 1
@@ -37,11 +38,9 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	if not GameGlobals.audio_manager.persistent_audio.has("music_game"):
 		GameGlobals.audio_manager.create_persistent_audio("music_game")
-	if get_tree().current_scene == self:
-		GameUi.ui_transitions.toggle_transition(false)
-		await get_tree().create_timer(1).timeout
-		#win()
-		#lose()
+	#await get_tree().create_timer(1).timeout
+	#win()
+	#lose()
 
 
 func _process(delta: float) -> void:
@@ -113,7 +112,11 @@ func _on_win_animation_finished(anim_name: String) -> void:
 		await get_tree().create_timer(1).timeout
 		win_animation_player.play("explode")
 	if anim_name == "explode":
-		GameUi.ui_transitions.change_scene("")
+		var main_ui: MainUI = null
+		if GameGlobals.game_dictionary["node"].has("main_ui"):
+			main_ui = GameGlobals.game_dictionary["node"]["main_ui"]
+		if is_instance_valid(main_ui):
+			main_ui.win()
 
 
 func lose() -> void:
@@ -133,4 +136,8 @@ func _on_lose_tween_finished() -> void:
 
 
 func _on_lose_animation_finished() -> void:
-	GameUi.ui_transitions.change_scene("")
+	var main_ui: MainUI = null
+	if GameGlobals.game_dictionary["node"].has("main_ui"):
+		main_ui = GameGlobals.game_dictionary["node"]["main_ui"]
+	if is_instance_valid(main_ui):
+		main_ui.lose()

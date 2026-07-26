@@ -1,3 +1,4 @@
+class_name PlayerSprite
 extends AnimatedSprite2D
 
 @onready var aura_sprite: AnimatedSprite2D = $AuraSprite
