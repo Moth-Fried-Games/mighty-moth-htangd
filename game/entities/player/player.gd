@@ -1,29 +1,40 @@
+class_name Player
 extends LaneEntity
 
-enum PlayerState { IDLE, PUNCH, DEFLECT, COLLECT, SUPER_IDLE, SUPER_ATTACK, FINALE_SUPER}
+enum PlayerState { IDLE, PUNCH, DEFLECT, COLLECT, SUPER_IDLE, SUPER_ATTACK, FINALE_SUPER }
 
 const horizontal_offset_from_anchor = 150
 @onready var middle_left_anchor: Marker2D = $"../LaneBinders/Middle Lane/Middle Left Anchor"
 
+var cutscene: bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var midle_lane : int = lanes_quantity / 2 
-	
+	GameGlobals.game_dictionary["node"]["player"] = self
+
+	var midle_lane: int = int(float(lanes_quantity) / 2)
+
 	current_lane = midle_lane
-	
+
 	global_position.x = middle_left_anchor.global_position.x + horizontal_offset_from_anchor
-	
+
 	_set_lane(current_lane)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if cutscene:
+		return
 	_movement()
 
-func _movement():
+
+func _movement() -> void:
 	if Input.is_action_just_pressed("move_up"):
 		_change_lane(direction.UP)
 	if Input.is_action_just_pressed("move_down"):
 		_change_lane(direction.DOWN)
 
-func _on_super_input():
+
+func _on_super_input() -> void:
 	pass

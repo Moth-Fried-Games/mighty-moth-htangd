@@ -1,3 +1,4 @@
+class_name RangeEnemySprite
 extends AnimatedSprite2D
 
 @onready var fire_sprite: Sprite2D = $FireSprite
