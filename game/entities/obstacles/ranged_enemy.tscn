@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://ckkl1fo8xyo7d"]
 
 [ext_resource type="Script" uid="uid://cerne14ccsl6" path="res://game/entities/obstacles/ranged_enemy.gd" id="1_3onsk"]
+[ext_resource type="PackedScene" uid="uid://cu72wutqpbe14" path="res://game/entities/obstacles/ranged_enemy_sprite.tscn" id="2_e3yqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(46, 83)
 
 [node name="RangedEnemy" type="Area2D" unique_id=1357089293]
 script = ExtResource("1_3onsk")
+
+[node name="RangedEnemySprite" parent="." unique_id=2101253761 instance=ExtResource("2_e3yqd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747858716]
+position = Vector2(28, 23.5)
+shape = SubResource("RectangleShape2D_g4v7s")
