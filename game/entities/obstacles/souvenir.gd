@@ -58,7 +58,8 @@ func _on_deflected() -> void:
 	_begin_despawn()
 	
 func _on_collected() -> void:
-	print("Souvenir COLLECTED")
+	GameGlobals.audio_manager.create_audio("sound_collect")
+	
 	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
