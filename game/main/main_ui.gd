@@ -36,21 +36,32 @@ func _ready() -> void:
 		invert.modulate.a = 0
 		game_over_label.modulate.a = 0
 		pause_label.visible = false
+		get_tree().paused = false
 
 
 func _process(_delta: float) -> void:
-	_update_values()
-	_update_super()
-	_update_timer()
-	_update_date()
-
-	if Engine.is_editor_hint():
-		return
-
 	if not cutscene:
+		_update_values()
+		_update_super()
+		_update_timer()
+		_update_date()
+
+		if Engine.is_editor_hint():
+			return
+
 		if Input.is_action_just_pressed("pause"):
 			get_tree().paused = not get_tree().paused
 			pause_label.visible = get_tree().paused
+
+		if winning_time <= 0:
+			cutscene = true
+			time_left = 999
+			stage_background.win()
+
+		if time_left <= 0:
+			cutscene = true
+			winning_time = 999
+			stage_background.lose()
 
 	if game_over:
 		if not returning:
@@ -58,14 +69,6 @@ func _process(_delta: float) -> void:
 				returning = true
 				GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_bad", 1)
 				GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")
-
-	if not cutscene:
-		if time_left <= 0:
-			cutscene = true
-			stage_background.lose()
-		if winning_time <= 0:
-			cutscene = true
-			stage_background.win()
 
 
 func _update_values() -> void:

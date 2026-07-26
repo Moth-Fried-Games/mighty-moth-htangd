@@ -24,6 +24,7 @@ func _ready() -> void:
 		GameGlobals.audio_manager.create_persistent_audio("music_good")
 	dialog.dialog_changed.connect(_on_dialog_changed)
 	dialog.active = true
+	get_tree().paused = false
 
 
 func _process(delta: float) -> void:
@@ -51,4 +52,4 @@ func _on_dialog_changed() -> void:
 	# change to game
 	if dialog.dialog_index == 1:
 		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_good", 1)
-		GameUi.ui_transitions.change_scene("res://game/main/main_game_scene.tscn")
+		GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")

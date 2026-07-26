@@ -30,6 +30,7 @@ func _ready() -> void:
 		GameGlobals.audio_manager.create_persistent_audio("music_title")
 	dialog.dialog_changed.connect(_on_dialog_changed)
 	dialog.active = true
+	get_tree().paused = false
 
 
 func _process(delta: float) -> void:

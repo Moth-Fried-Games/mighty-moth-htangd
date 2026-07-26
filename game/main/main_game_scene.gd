@@ -14,24 +14,23 @@ const finale_timer_start: float = 180
 var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
-	
+
 	game_over_timer = Timer.new()
 	finale_timer = Timer.new()
-	
+
 	game_over_timer.wait_time = game_over_timer_start
-	game_over_timer.timeout.connect(_on_game_over_countdown)
 	game_over_timer.one_shot = true
-	
+
 	finale_timer.wait_time = finale_timer_start
-	finale_timer.timeout.connect(_on_finale_countdown)
 	finale_timer.one_shot = true
-	
+
 	add_child(game_over_timer)
 	add_child(finale_timer)
-	
+
 	game_over_timer.start()
 	finale_timer.start()
 
@@ -43,13 +42,4 @@ func _process(_delta: float) -> void:
 
 func apply_time_bonus(time_bonus: float) -> void:
 	var currenttime = game_over_timer.get_time_left()
-	game_over_timer.start(currenttime + (time_bonus * 3)) 
-
-
-func _on_game_over_countdown() -> void:
-	## TODO PROCESS MORE CHANGES AS A PRODUCT OF THE GAME OVER TRIGGER
-	finale_timer.stop()
-	
-func _on_finale_countdown() -> void:
-	## TODO PROCESS MORE CHANGES AS A PRODUCT OF THE FINALE TRIGGER
-	game_over_timer.stop()
+	game_over_timer.start(currenttime + (time_bonus * 3))

@@ -55,6 +55,7 @@ func _ready() -> void:
 	if not GameGlobals.audio_manager.persistent_audio.has("music_title"):
 		GameGlobals.audio_manager.create_persistent_audio("music_title")
 	tab_container.current_tab = 0
+	get_tree().paused = false
 
 
 func _input(_event: InputEvent) -> void:
