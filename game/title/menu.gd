@@ -63,24 +63,51 @@ func _input(_event: InputEvent) -> void:
 		main_menu()
 
 
+func _physics_process(_delta: float) -> void:
+	if tab_container.current_tab == 4:
+		if Input.is_action_pressed("ui_up"):
+			credits_rich_text_label.get_v_scroll_bar().value -= 10
+		if Input.is_action_pressed("ui_down"):
+			credits_rich_text_label.get_v_scroll_bar().value += 10
+
+
+func parse_ui_input(action_name: String) -> void:
+	var new_event: InputEventAction = InputEventAction.new()
+	new_event.action = action_name
+	new_event.pressed = false
+	Input.parse_input_event(new_event)
+	new_event = new_event.duplicate()
+	new_event.pressed = false
+	Input.parse_input_event(new_event)
+
+
 func main_menu() -> void:
+	GameGlobals.game_settings.save_settings()
 	GameGlobals.audio_manager.create_audio("sound_menu_click")
 	tab_container.current_tab = 1
+	await get_tree().create_timer(0.1).timeout
+	main_start_button.grab_focus()
 
 
 func howto_menu() -> void:
 	GameGlobals.audio_manager.create_audio("sound_menu_click")
 	tab_container.current_tab = 2
+	await get_tree().create_timer(0.1).timeout
+	how_to_return_button.grab_focus()
 
 
 func settings_menu() -> void:
 	GameGlobals.audio_manager.create_audio("sound_menu_click")
 	tab_container.current_tab = 3
+	await get_tree().create_timer(0.1).timeout
+	settings_master_h_slider.grab_focus()
 
 
 func credits_menu() -> void:
 	GameGlobals.audio_manager.create_audio("sound_menu_click")
 	tab_container.current_tab = 4
+	await get_tree().create_timer(0.1).timeout
+	credits_return_button.grab_focus()
 
 
 func credits_click_link(meta: Variant) -> void:
@@ -94,7 +121,7 @@ func change_to_game() -> void:
 		input_ready = false
 		GameGlobals.audio_manager.create_audio("sound_menu_click")
 		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_menu", 1)
-		GameUi.ui_transitions.change_scene_with_loading("res://game/main/main_game_scene.tscn")
+		GameUi.ui_transitions.change_scene("res://game/dating/intro.tscn")
 
 
 func quit_game() -> void:

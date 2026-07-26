@@ -127,6 +127,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_qmg03")
 
+[node name="SkipRichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1001982865]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][font_size=42]SKIPPING[/font_size][/b]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MothSprite2D" type="Sprite2D" parent="." unique_id=957740780]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 360)

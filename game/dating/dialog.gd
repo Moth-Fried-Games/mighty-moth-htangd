@@ -127,14 +127,14 @@ func play_dialog() -> void:
 			if not input_dialog:
 				ui_dialog.message(dialog_list[dialog_index])
 			else:
-				ui_dialog.ui_inputs = ["accept Next"]
+				ui_dialog.ui_inputs = ["accept Next", "cancel Skip"]
 				ui_dialog.message_input(dialog_list[dialog_index])
 
 
 func process_input() -> void:
 	if not active or not input_dialog:
 		return
-	var accept_input: bool = Input.is_action_just_pressed("punch")
+	var accept_input: bool = Input.is_action_just_pressed("deflect")
 	if accept_input:
 		if not ui_dialog.text_finished:
 			ui_dialog.finish_typing()

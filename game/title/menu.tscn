@@ -448,6 +448,8 @@ size_flags_vertical = 4
 [node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1781503961]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.976471, 0.882353, 0.584314, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
+theme_override_constants/outline_size = 20
 theme_override_font_sizes/bold_font_size = 38
 bbcode_enabled = true
 text = "[center][b]HOW TO PLAY"
@@ -463,6 +465,8 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=656814389]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
+theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 21
 text = "OBJECTIVE"
 horizontal_alignment = 1
@@ -484,6 +488,8 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.976471, 0.882353, 0.584314, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
+theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oaryu")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pqpth")
@@ -551,6 +557,7 @@ fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1416345655]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=325012084]
@@ -644,11 +651,15 @@ horizontal_alignment = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=281380707]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=947635708]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=715376014]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=947635708]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=844888482]
+[node name="DisplayLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=844888482]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -657,7 +668,7 @@ theme_override_font_sizes/font_size = 21
 text = "Display"
 horizontal_alignment = 1
 
-[node name="SettingsDisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1353294526]
+[node name="SettingsDisplayOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1353294526]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 2
@@ -666,29 +677,7 @@ popup/item_0/id = 0
 popup/item_1/text = "WINDOWED"
 popup/item_1/id = 1
 
-[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=168880270]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
-theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 21
-text = "VSync"
-horizontal_alignment = 1
-
-[node name="SettingsVSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1745819639]
-unique_name_in_owner = true
-layout_mode = 2
-item_count = 4
-popup/item_0/text = "DISABLED"
-popup/item_0/id = 0
-popup/item_1/text = "ENABLED"
-popup/item_1/id = 1
-popup/item_2/text = "ADAPTIVE"
-popup/item_2/id = 2
-popup/item_3/text = "MAILBOX"
-popup/item_3/id = 3
-
-[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=720812560]
+[node name="FrameCapLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=720812560]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -697,7 +686,7 @@ theme_override_font_sizes/font_size = 21
 text = "Frame Cap"
 horizontal_alignment = 1
 
-[node name="SettingsFrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1573688928]
+[node name="SettingsFrameCapOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1573688928]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 4
@@ -710,7 +699,33 @@ popup/item_2/id = 2
 popup/item_3/text = "AUTO"
 popup/item_3/id = 3
 
-[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=690789672]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=1991224726]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VSyncLabel" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=168880270]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 21
+text = "VSync"
+horizontal_alignment = 1
+
+[node name="SettingsVSyncOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=1745819639]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "DISABLED"
+popup/item_0/id = 0
+popup/item_1/text = "ENABLED"
+popup/item_1/id = 1
+popup/item_2/text = "ADAPTIVE"
+popup/item_2/id = 2
+popup/item_3/text = "MAILBOX"
+popup/item_3/id = 3
+
+[node name="FrameCapLabel2" type="Label" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=690789672]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.780392, 0.827451, 0.862745, 1)
 theme_override_colors/font_outline_color = Color(0.133333, 0.0745098, 0.0431373, 1)
@@ -719,7 +734,7 @@ theme_override_font_sizes/font_size = 21
 text = "Show Frames"
 horizontal_alignment = 1
 
-[node name="SettingsFrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=700254835]
+[node name="SettingsFrameLabelOptionButton" type="OptionButton" parent="Control/TabContainer/Settings/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=700254835]
 unique_name_in_owner = true
 layout_mode = 2
 item_count = 2
@@ -834,7 +849,7 @@ text = "[center][b]Art and Animation[/b]
 [url=https://github.com/Aarimous/AudioManager]AudioManager[/url]
 [url=https://github.com/ryan-haskell/gdformat-on-save]Format on Save[/url]
 
-Created for the [url=https://itch.io/jam/godot-wild-jam-79]Godot Wild Jam #79[/url]"
+Created for the [url=https://itch.io/jam/godot-wild-jam-79]GMTK/url]"
 
 [node name="CreditsReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer" unique_id=1524769763]
 unique_name_in_owner = true
