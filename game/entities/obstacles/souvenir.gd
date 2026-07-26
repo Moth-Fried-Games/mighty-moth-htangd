@@ -1,8 +1,6 @@
 class_name Souvenir
 extends LaneEntity
 
-## TODO CEDI MAKE THE DEFLECTED METEOR ACTUALLY HIT DUDES
-
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 const spawn_offset_from_anchor: float = 20

@@ -4,11 +4,12 @@ extends LaneEntity
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 const spawn_offset_from_anchor: float = 50
-const movement_per_second: float = 1000
+const movement_per_second: float = 1700
 var is_moving: bool = false
 var is_deflected: bool = false
 
 var warning_timer: Timer
+var despawn_timer: Timer = Timer.new()
 
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
@@ -49,7 +50,7 @@ func _ready() -> void:
 	
 	var rando = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
-	warning_timer.wait_time = rando.randi() % 2 + 1 ## TESTING reset to 5 + 5
+	warning_timer.wait_time = rando.randi() % 5 + 5 ## TESTING reset to 5 + 5
 	warning_timer.one_shot = true
 	warning_timer.timeout.connect(func() -> void: 
 		debris_warning.queue_free()
@@ -80,46 +81,52 @@ func _get_distance_display() -> float:
 
 
 func _on_punched() -> void:
-	print("Meteor PUNCHED")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
 	_on_destroyed()
 	## TODO animate, confirm interaction
 	
 func _on_deflected() -> void:
-	print("Meteor DEFLECTED")
-	#main_game_scene.apply_time_bonus(2)
-	print("AYOOOO cool meteor deflect bruh")
+	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
+	
 	is_deflected = true
 	sprite_2d.flip_h = true
-	var despawn_timer: Timer = Timer.new()
-	despawn_timer.wait_time = 1
+	
+	despawn_timer.wait_time = 3
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
 	
-	
-	## TODO add logic to make this thing damage and defeat an enemy when deflected. Do not run _on_destroyed until AFTER this defeats something, or otherwise leaves the right side of the screen!
+	hurtboxarea.collision_layer = 0
+	meleehitboxarea.collision_layer = 0
+	parryhitboxarea.collision_layer = 0
+	hurtboxarea.collision_mask = 2
+	hurtboxarea.area_entered.connect(_on_area_entered)
+
+func _on_area_entered(area: Area2D) -> void:
+	## TODO add " or area.owner is RangedEnemy" in the parenthesis below when rangedenemy is okay
+	if (area.owner is MeleeEnemy) and area.is_in_group("MeleeHitBoxArea"):
+		despawn_timer.stop()
+		area.owner._on_meteored()
+		_on_destroyed()
+	return
 
 func _on_destroyed() -> void:
 	sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
-	pass
+	return
 	
 func _on_touching_player() -> void:
-	### FOR TESTING PURPOSES ONLY
-	#_on_deflected()
-	### FOR TESTING PURPOSES ONLY
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	### TODO animate and annoy mightymoth a little
-	pass
+	return
 
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	pass
+	return
 
 func _begin_despawn() -> void:
 	hurtboxarea.queue_free()

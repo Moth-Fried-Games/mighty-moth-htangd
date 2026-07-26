@@ -34,7 +34,8 @@ func _on_area_exited(area: Area2D) -> void:
 func _stop_deflect():
 	is_deflecting = false
 	for object in hurtful_objects_colliding:
-		object._on_touching_player()
+		if is_instance_valid(object):
+			object._on_touching_player()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):
