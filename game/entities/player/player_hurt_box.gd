@@ -17,8 +17,6 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ParryHitBoxArea")  and is_deflecting:
 		area.owner._on_deflected()
-	#elif area.is_in_group("ParryHitBoxArea")  and !is_deflecting and area.owner is not Souvenir:
-		#area.owner._on_touching_player()
 	elif area.is_in_group("Collectable"):
 		collectable_objects_colliding.append(area)
 	elif area.is_in_group("HurtBoxArea"):

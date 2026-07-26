@@ -11,9 +11,6 @@ var finale_timer: Timer
 const game_over_timer_start: float = 60
 const finale_timer_start: float = 180
 
-@onready var gameover_timer_display: Label = $"PlaceholderTimer"
-@onready var victory_timer_display: Label = $"PlaceholderVICTORYTimer"
-
 var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
@@ -41,8 +38,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	gameover_timer_display.text = "TIME 2 DOOMSDAY\n" + str(game_over_timer.time_left)
-	victory_timer_display.text = "SECRET VICTORY TIMER\n" + str(finale_timer.time_left)
+	pass
 
 
 func apply_time_bonus(time_bonus: float) -> void:

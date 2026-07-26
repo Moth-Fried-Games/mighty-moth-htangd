@@ -4,16 +4,3 @@
 
 [node name="SuperMeterHandler" type="Node2D" unique_id=396938788]
 script = ExtResource("1_g6dws")
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1929536340]
-offset_left = 18.0
-offset_top = 35.0
-offset_right = 181.0
-offset_bottom = 62.0
-
-[node name="LvLabel" type="Label" parent="." unique_id=517134701]
-offset_left = 22.0
-offset_top = 5.0
-offset_right = 62.0
-offset_bottom = 28.0
-text = "Lv 0"
