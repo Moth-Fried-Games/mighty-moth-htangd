@@ -36,6 +36,7 @@ func _stop_deflect():
 	for object in hurtful_objects_colliding:
 		if is_instance_valid(object):
 			object.owner._on_touching_player()
+			hurtful_objects_colliding.erase(object)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):
