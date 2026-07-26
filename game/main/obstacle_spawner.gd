@@ -9,7 +9,7 @@ const DEBRIS = preload("uid://ceg558w8g2nov")
 const starting_difficulty_value: int = 0
 const difficulty_increment_timer: float = 15
 
-var spawn_timer_waittime: float = 1.6
+var spawn_timer_waittime: float = 1.5
 var spawn_time_maximum: float = 4.0
 var spawn_timer_minimum: float = 2.0
 var spawn_timer_decrement: float = 0.1
@@ -116,7 +116,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 # Algorithm to decide which lane a given obstacle type should spawn in
 func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 	var lane_options: Array = current_obstacle_map.keys().filter(func(key) -> bool: 
-		return !_find_obstacletype_in_array(spawn_type, current_obstacle_map[key])
+		if spawn_type == ObstacleType.MELEE_ENEMY:
+			return true
+		else:
+			return !_find_obstacletype_in_array(spawn_type, current_obstacle_map[key])
 	)
 	
 	if lane_options.size() > 1:
