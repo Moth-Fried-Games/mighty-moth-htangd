@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://loc5k58x0g1w" path="res://game/entities/obstacles/melee_enemy.gd" id="1_7l27q"]
 [ext_resource type="PackedScene" uid="uid://deglstlvnpb8b" path="res://game/entities/obstacles/melee_enemy_sprite.tscn" id="2_uapf1"]
-[ext_resource type="Texture2D" uid="uid://cfu6ilidl775q" path="res://assets/textures/enemies/PLACEHOLDER_goon.png" id="2_wonbq"]
 [ext_resource type="Script" uid="uid://c3jet7k0yri33" path="res://game/entities/obstacles/hurt_box_area.gd" id="3_op28d"]
 [ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="4_uapf1"]
 [ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="5_p2qwr"]
@@ -22,10 +21,6 @@ script = ExtResource("1_7l27q")
 metadata/_custom_type_script = "uid://cquk1yb8m660e"
 
 [node name="MeleeEnemySprite" parent="." unique_id=437403613 instance=ExtResource("2_uapf1")]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=687397588]
-visible = false
-texture = ExtResource("2_wonbq")
 
 [node name="HurtBoxArea" type="Area2D" parent="." unique_id=1111020950 groups=["HurtBoxArea"]]
 position = Vector2(20, 23)

@@ -17,7 +17,7 @@ var despawn_timer: Timer = Timer.new()
 @onready var debris_warning: Node2D = $DebrisWarning
 @onready var warning_label: Label = $DebrisWarning/WarningLabel
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Node = $Sprite2D
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
@@ -112,7 +112,8 @@ func _on_area_entered(area: Area2D) -> void:
 	return
 
 func _on_destroyed() -> void:
-	sprite_2d.queue_free()
+	if is_instance_valid(sprite_2d):
+		sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
 	return
@@ -129,14 +130,15 @@ func _on_walk_past_player() -> void:
 	return
 
 func _begin_despawn() -> void:
-	hurtboxarea.queue_free()
-	meleehitboxarea.queue_free()
-	parryhitboxarea.queue_free()
-	
-	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
-	spawner.despawn_obstacle(lane_id, get_instance_id())
-	
-	var despawn_timer: Timer = Timer.new()
-	despawn_timer.wait_time = 4
-	despawn_timer.one_shot = true
-	despawn_timer.timeout.connect(func() -> void: free())
+	if is_instance_valid(self):
+		hurtboxarea.queue_free()
+		meleehitboxarea.queue_free()
+		parryhitboxarea.queue_free()
+		
+		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
+		spawner.despawn_obstacle(lane_id, get_instance_id())
+		
+		var despawn_timer: Timer = Timer.new()
+		despawn_timer.wait_time = 4
+		despawn_timer.one_shot = true
+		despawn_timer.timeout.connect(func() -> void: free())
