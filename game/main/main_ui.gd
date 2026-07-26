@@ -17,9 +17,15 @@ extends CanvasLayer
 
 
 func _process(_delta: float) -> void:
+	_update_values()
 	_update_super()
 	_update_timer()
 	_update_date()
+
+
+func _update_values() -> void:
+	if not Engine.is_editor_hint():
+		pass
 
 
 func _update_super() -> void:
