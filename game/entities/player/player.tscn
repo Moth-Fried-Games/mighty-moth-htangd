@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmx5tm7lxxdfk" path="res://assets/textures/player/placeholder-player-idle.png" id="1_1a4jd"]
 [ext_resource type="Script" uid="uid://b1yrss7r4vhka" path="res://game/entities/player/player.gd" id="1_gqtae"]
+[ext_resource type="PackedScene" uid="uid://lhykb8shtrrd" path="res://game/entities/player/player_sprite.tscn" id="2_v0nmi"]
 [ext_resource type="Texture2D" uid="uid://cfu6ilidl775q" path="res://assets/textures/enemies/PLACEHOLDER_goon.png" id="3_oic1i"]
 [ext_resource type="Script" uid="uid://c4nohpo1p0f46" path="res://game/entities/player/player_hit_box.gd" id="3_x4rrl"]
 [ext_resource type="Script" uid="uid://dqkvslfgejgk4" path="res://game/entities/player/player_hurt_box.gd" id="4_cjfdk"]
@@ -50,6 +51,8 @@ collision_mask = 63
 script = ExtResource("1_gqtae")
 lanes = [null]
 
+[node name="PlayerSprite" parent="." unique_id=1310412979 instance=ExtResource("2_v0nmi")]
+
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 visible = false
 sprite_frames = SubResource("SpriteFrames_g4v7s")
@@ -57,10 +60,12 @@ animation = &"idle"
 frame_progress = 0.18881154
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1678379403]
+visible = false
 texture = ExtResource("3_oic1i")
 flip_h = true
 
 [node name="HitBox" type="Area2D" parent="." unique_id=989998704 groups=["Player"]]
+position = Vector2(-6, 10)
 collision_layer = 0
 collision_mask = 26
 script = ExtResource("3_x4rrl")
@@ -70,6 +75,7 @@ position = Vector2(71.5, -0.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1443696398 groups=["Player"]]
+position = Vector2(-5, 11)
 collision_mask = 62
 script = ExtResource("4_cjfdk")
 

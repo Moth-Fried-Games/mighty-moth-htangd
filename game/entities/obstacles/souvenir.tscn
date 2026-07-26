@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wjfoyd0rabbi" path="res://game/entities/obstacles/souvenir.gd" id="1_qv2js"]
 [ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="2_fad52"]
+[ext_resource type="PackedScene" uid="uid://c5bmn08vsk0bk" path="res://game/entities/obstacles/souvenir_sprite.tscn" id="2_imtpo"]
 [ext_resource type="Texture2D" uid="uid://dqvlx2p4dkr7c" path="res://assets/textures/object/PLACEHOLDER_rock.png" id="2_t2dnh"]
 [ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="3_wlllc"]
 [ext_resource type="Script" uid="uid://cu25qs5mqlw30" path="res://game/entities/obstacles/collect_hit_box_area.gd" id="4_wlllc"]
@@ -12,7 +13,10 @@ size = Vector2(145, 134.5)
 [node name="Souvenir" type="Area2D" unique_id=1462779500]
 script = ExtResource("1_qv2js")
 
+[node name="SouvenirSprite" parent="." unique_id=992643243 instance=ExtResource("2_imtpo")]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=51463990]
+visible = false
 texture = ExtResource("2_t2dnh")
 
 [node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=1437990953 groups=["MeleeHitBoxArea"]]
