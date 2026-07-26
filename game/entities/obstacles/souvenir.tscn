@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://wjfoyd0rabbi" path="res://game/entities/obstacles/souvenir.gd" id="1_qv2js"]
 [ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="2_fad52"]
-[ext_resource type="Texture2D" uid="uid://dqvlx2p4dkr7c" path="res://assets/textures/object/PLACEHOLDER_rock.png" id="2_t2dnh"]
+[ext_resource type="Texture2D" uid="uid://bmdp5gh6nrqvg" path="res://assets/textures/object/mightymoth_pickups_1.png" id="2_t2dnh"]
 [ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="3_wlllc"]
 [ext_resource type="Script" uid="uid://cu25qs5mqlw30" path="res://game/entities/obstacles/collect_hit_box_area.gd" id="4_wlllc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
-size = Vector2(145, 134.5)
+size = Vector2(55.5, 61.75)
 
 [node name="Souvenir" type="Area2D" unique_id=1462779500]
 script = ExtResource("1_qv2js")
@@ -21,7 +21,7 @@ collision_mask = 0
 script = ExtResource("2_fad52")
 
 [node name="PunchHitBox" type="CollisionShape2D" parent="PunchHitBoxArea" unique_id=921629786]
-position = Vector2(0, 2.5)
+position = Vector2(-2, 2)
 shape = SubResource("RectangleShape2D_dnnxk")
 
 [node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=308689639 groups=["ParryHitBoxArea"]]
