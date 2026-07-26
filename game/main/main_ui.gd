@@ -75,8 +75,8 @@ func _update_values() -> void:
 		if not is_instance_valid(super_scene):
 			super_scene = main_scene.super_meter_handler
 		if not is_instance_valid(stage_background):
-			if GameGlobals.game_dictionary["nodes"].has("stage_background"):
-				stage_background = GameGlobals.game_dictionary["nodes"]["stage_background"]
+			if GameGlobals.game_dictionary["node"].has("stage_background"):
+				stage_background = GameGlobals.game_dictionary["node"]["stage_background"]
 		super_level = clampi(super_scene.super_level, 0, 3)
 		super_value = clampf(super_scene.super_meter, 0, 100)
 		time_left = clampf(main_scene.game_over_timer.time_left, 0, 60)
