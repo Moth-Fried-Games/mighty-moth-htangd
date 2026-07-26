@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://ykdaoram1kkw"]
+
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="1_i2u0e"]
+[ext_resource type="AudioStream" uid="uid://ceovvmjt28t2f" path="res://assets/audio/ovani/music/Anime Vol3 Umbrella Walk Main.wav" id="1_nxaxn"]
+
+[resource]
+script = ExtResource("1_i2u0e")
+audio_name = "music_title"
+limit = 1
+audio_stream = ExtResource("1_nxaxn")
+reverb_tail = 3.186
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

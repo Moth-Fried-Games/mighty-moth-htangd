@@ -217,7 +217,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 3
+current_tab = 1
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer" unique_id=619077342]
@@ -265,7 +265,6 @@ libraries/ = SubResource("AnimationLibrary_0kw5f")
 autoplay = &"blink"
 
 [node name="Main" type="Control" parent="Control/TabContainer" unique_id=1329184529]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -505,6 +504,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_7vx1u")
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer" unique_id=1752485961]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

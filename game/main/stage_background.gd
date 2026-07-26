@@ -1,4 +1,5 @@
 @tool
+class_name StageBackground
 extends Node2D
 
 @onready var parallax_1: Parallax2D = $Parallax1
@@ -33,6 +34,9 @@ func _ready() -> void:
 	adjust_space_stations()
 	for planet in planets.size():
 		planets[planet].position.x = -planet_sizes[planet]
+	await get_tree().create_timer(1).timeout
+	if not GameGlobals.audio_manager.persistent_audio.has("music_game"):
+		GameGlobals.audio_manager.create_persistent_audio("music_game")
 	if get_tree().current_scene == self:
 		GameUi.ui_transitions.toggle_transition(false)
 		await get_tree().create_timer(1).timeout
@@ -96,6 +100,7 @@ func win() -> void:
 	win_tween.finished.connect(_on_win_tween_finished)
 	win_tween.tween_property(space_station_win, "position:x", viewport_offset, 5)
 	win_tween.tween_property(self, "speed_modifier", 0, 5)
+	GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_game", 1)
 
 
 func _on_win_tween_finished() -> void:
@@ -119,6 +124,7 @@ func lose() -> void:
 	lose_tween.finished.connect(_on_lose_tween_finished)
 	lose_tween.tween_property(space_station_lose, "position:x", viewport_offset, 5)
 	lose_tween.tween_property(self, "speed_modifier", 0, 5)
+	GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_game", 1)
 
 
 func _on_lose_tween_finished() -> void:

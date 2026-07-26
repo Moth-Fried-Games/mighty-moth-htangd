@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://cvvdnqg5i4m7k"]
 
 [ext_resource type="Script" uid="uid://8lurt17bw4vg" path="res://core/game_data.gd" id="1_p8hlm"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_plx6u"]
+[ext_resource type="Resource" uid="uid://bbuit7q5urekb" path="res://assets/audio/music/music_game.tres" id="3_1h416"]
+[ext_resource type="Resource" uid="uid://c3y6xff4dxrgg" path="res://assets/audio/ovani/music/music_bad.tres" id="4_y0v5b"]
+[ext_resource type="Resource" uid="uid://b2md8kn7doqiu" path="res://assets/audio/ovani/music/music_better.tres" id="5_dkx5u"]
+[ext_resource type="Resource" uid="uid://5j3kgcndl4oy" path="res://assets/audio/ovani/music/music_good.tres" id="6_rlvm8"]
+[ext_resource type="Resource" uid="uid://ykdaoram1kkw" path="res://assets/audio/ovani/music/music_title.tres" id="7_w5nja"]
+[ext_resource type="Resource" uid="uid://oahx1tckirdv" path="res://assets/audio/sounds/sound_menu.tres" id="8_1h416"]
+[ext_resource type="Resource" uid="uid://c4bxcayvfwbqs" path="res://assets/audio/sounds/sound_collect.tres" id="8_oj4to"]
+[ext_resource type="Resource" uid="uid://3d2fs8fdj1pq" path="res://assets/audio/sounds/sound_deflect.tres" id="9_dk842"]
+[ext_resource type="Resource" uid="uid://cm6fdfwa0mqcm" path="res://assets/audio/sounds/sound_explosion.tres" id="10_mdt3l"]
+[ext_resource type="Resource" uid="uid://c4hls6dukbtqf" path="res://assets/audio/sounds/sound_meteor_alert.tres" id="12_17olv"]
+[ext_resource type="Resource" uid="uid://idnfi5k653pr" path="res://assets/audio/sounds/sound_meteor_approach.tres" id="13_mmf7f"]
+[ext_resource type="Resource" uid="uid://d112gmu6p1s7u" path="res://assets/audio/sounds/sound_punch.tres" id="14_662bu"]
+[ext_resource type="Resource" uid="uid://bbrd4iuxwbltl" path="res://assets/audio/sounds/sound_super.tres" id="15_au6h3"]
+[ext_resource type="Resource" uid="uid://lk8op2n52yn4" path="res://assets/audio/sounds/sound_timer.tres" id="16_pdg20"]
 
 [node name="GameData" type="Node" unique_id=295051271]
 script = ExtResource("1_p8hlm")
+audio_resources = Array[ExtResource("2_plx6u")]([ExtResource("3_1h416"), ExtResource("4_y0v5b"), ExtResource("5_dkx5u"), ExtResource("6_rlvm8"), ExtResource("7_w5nja"), ExtResource("8_oj4to"), ExtResource("9_dk842"), ExtResource("10_mdt3l"), ExtResource("8_1h416"), ExtResource("12_17olv"), ExtResource("13_mmf7f"), ExtResource("14_662bu"), ExtResource("15_au6h3"), ExtResource("16_pdg20")])
