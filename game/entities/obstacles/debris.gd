@@ -50,14 +50,18 @@ func _ready() -> void:
 	
 	var rando = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
-	warning_timer.wait_time = rando.randi() % 5 + 5 ## TESTING reset to 5 + 5
+	warning_timer.wait_time = rando.randi() % 5 + 5
 	warning_timer.one_shot = true
 	warning_timer.timeout.connect(func() -> void: 
 		debris_warning.queue_free()
 		is_moving = true
+		GameGlobals.audio_manager.create_audio("sound_meteor_approach")
 	)
 	add_child(warning_timer)
 	warning_timer.start()
+	
+	GameGlobals.audio_manager.create_audio("sound_meteor_alert")
+	
 	return
 
 
@@ -81,12 +85,14 @@ func _get_distance_display() -> float:
 
 
 func _on_punched() -> void:
+	GameGlobals.audio_manager.create_audio("sound_punch")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
 	_on_destroyed()
 	## TODO animate, confirm interaction
 	
 func _on_deflected() -> void:
+	GameGlobals.audio_manager.create_audio("sound_deflect")
 	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
 	

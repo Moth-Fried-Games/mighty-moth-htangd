@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 
 
 func _on_punched() -> void:
-	print("Souvenir PUNCHED")
+	GameGlobals.audio_manager.create_audio("sound_punch")
 	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
@@ -50,7 +50,7 @@ func _on_punched() -> void:
 	_begin_despawn()
 	
 func _on_deflected() -> void:
-	print("Souvenir DEFLECTED")
+	GameGlobals.audio_manager.create_audio("sound_deflect")
 	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()

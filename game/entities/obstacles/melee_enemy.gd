@@ -48,15 +48,18 @@ func _process(delta: float) -> void:
 
 
 func _on_punched() -> void:
+	GameGlobals.audio_manager.create_audio("sound_punch")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
 	_on_defeated()
 	## TODO animate
 	
 func _on_meteored() -> void:
+	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()
 	
 func _on_deflected() -> void:
+	GameGlobals.audio_manager.create_audio("sound_deflect")
 	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
 	_on_defeated()
