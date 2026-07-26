@@ -35,7 +35,7 @@ func _stop_deflect():
 	is_deflecting = false
 	for object in hurtful_objects_colliding:
 		if is_instance_valid(object):
-			object._on_touching_player()
+			object._on_touching_player() # BUG Invalid call. Nonexistent function '_on_touching_player' in base 'Area2D (HurtBoxArea)'.
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):
