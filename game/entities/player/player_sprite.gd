@@ -8,6 +8,7 @@ var punching: bool = false
 
 func _ready() -> void:
 	aura_sprite.visible = false
+	animation_finished.connect(_on_animation_finished)
 
 
 func _process(_delta: float) -> void:
@@ -25,3 +26,7 @@ func _process(_delta: float) -> void:
 	else:
 		if punching:
 			punching = false
+
+func _on_animation_finished():
+	if animation != "fly":
+		play("fly")

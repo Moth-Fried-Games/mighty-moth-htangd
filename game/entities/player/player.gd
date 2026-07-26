@@ -42,10 +42,6 @@ func _movement() -> void:
 func _animate() -> void:
 	if Input.is_action_just_pressed("punch"):
 		player_sprite.play("punch")
-	if Input.is_action_just_pressed("collect"):
-		player_sprite.play("collect")
-	if Input.is_action_just_pressed("deflect"):
-		player_sprite.play("deflect")
 
 func _on_super_input() -> void:
 	pass

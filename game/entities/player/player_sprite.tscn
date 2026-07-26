@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sebt0")
 }],
-"loop": 1,
+"loop": 2,
 "name": &"collect",
 "speed": 6.0
 }, {
@@ -112,7 +112,7 @@ animations = [{
 [node name="PlayerSprite" type="AnimatedSprite2D" unique_id=1310412979]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
-animation = &"punch"
+animation = &"ultimate"
 autoplay = "fly"
 script = ExtResource("2_q352t")
 
