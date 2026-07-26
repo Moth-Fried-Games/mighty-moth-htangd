@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(57, 71)
+size = Vector2(128, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(84, 110)
@@ -52,6 +52,8 @@ script = ExtResource("1_gqtae")
 lanes = [null]
 
 [node name="PlayerSprite" parent="." unique_id=1310412979 instance=ExtResource("2_v0nmi")]
+frame = 1
+frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 visible = false
@@ -71,7 +73,7 @@ collision_mask = 26
 script = ExtResource("3_x4rrl")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox" unique_id=1561059737]
-position = Vector2(71.5, -0.5)
+position = Vector2(107, -7)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1443696398 groups=["Player"]]
