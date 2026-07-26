@@ -14,6 +14,8 @@ const movement_per_second: float = 300
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
@@ -46,21 +48,22 @@ func _process(delta: float) -> void:
 
 
 func _on_punched() -> void:
-	print("owie I am puncheded")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
 	_on_defeated()
 	## TODO animate
 	
+func _on_meteored() -> void:
+	_on_defeated()
+	
 func _on_deflected() -> void:
-	print("oh wow I am deflecteded")
 	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
 	_on_defeated()
 	## TODO animate
 
 func _on_defeated() -> void:
-	print("and thus I am deadddd")
+	sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
 	pass

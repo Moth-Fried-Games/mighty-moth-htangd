@@ -4,10 +4,12 @@ extends LaneEntity
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 const spawn_offset_from_anchor: float = 50
-const movement_per_second: float = 4333
+const movement_per_second: float = 1700
 var is_moving: bool = false
+var is_deflected: bool = false
 
 var warning_timer: Timer
+var despawn_timer: Timer = Timer.new()
 
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
@@ -15,6 +17,7 @@ var warning_timer: Timer
 @onready var debris_warning: Node2D = $DebrisWarning
 @onready var warning_label: Label = $DebrisWarning/WarningLabel
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
@@ -47,7 +50,7 @@ func _ready() -> void:
 	
 	var rando = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
-	warning_timer.wait_time = rando.randi() % 5 + 5
+	warning_timer.wait_time = rando.randi() % 5 + 5 ## TESTING reset to 5 + 5
 	warning_timer.one_shot = true
 	warning_timer.timeout.connect(func() -> void: 
 		debris_warning.queue_free()
@@ -61,7 +64,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_moving:
-		global_position.x = global_position.x - (delta * movement_per_second)
+		var movement = (delta * movement_per_second)
+		if is_deflected:
+			movement *= -1
+		global_position.x = global_position.x - movement
 		return
 	else:
 		distance_countdown.text = str(_get_distance_display()) + " m"
@@ -81,25 +87,46 @@ func _on_punched() -> void:
 	## TODO animate, confirm interaction
 	
 func _on_deflected() -> void:
-	#main_game_scene.apply_time_bonus(2)
+	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
-	## TODO add logic to make this thing damage and defeat an enemy when deflected. Do not run _on_destroyed until AFTER this defeats something, or otherwise leaves the right side of the screen!
+	
+	is_deflected = true
+	sprite_2d.flip_h = true
+	
+	despawn_timer.wait_time = 3
+	despawn_timer.one_shot = true
+	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
+	
+	hurtboxarea.collision_layer = 0
+	meleehitboxarea.collision_layer = 0
+	parryhitboxarea.collision_layer = 0
+	hurtboxarea.collision_mask = 2
+	hurtboxarea.area_entered.connect(_on_area_entered)
+
+func _on_area_entered(area: Area2D) -> void:
+	## TODO add " or area.owner is RangedEnemy" in the parenthesis below when rangedenemy is okay
+	if (area.owner is MeleeEnemy) and area.is_in_group("MeleeHitBoxArea"):
+		despawn_timer.stop()
+		area.owner._on_meteored()
+		_on_destroyed()
+	return
 
 func _on_destroyed() -> void:
+	sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
-	pass
+	return
 	
 func _on_touching_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	## TODO animate and annoy mightymoth a little
-	pass
+	### TODO animate and annoy mightymoth a little
+	return
 
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	pass
+	return
 
 func _begin_despawn() -> void:
 	hurtboxarea.queue_free()

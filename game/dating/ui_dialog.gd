@@ -63,7 +63,7 @@ func update_inputs() -> void:
 
 
 func img_tag(image_path: String) -> String:
-	var tag_text: String = str("[img=24x24,center,center]", image_path, "[/img]")
+	var tag_text: String = str("[img=48x48,center,center]", image_path, "[/img]")
 	return tag_text
 
 

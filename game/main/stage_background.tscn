@@ -347,7 +347,7 @@ texture = ExtResource("2_5ub6l")
 centered = false
 
 [node name="Parallax2" type="Parallax2D" parent="." unique_id=1003403447]
-scroll_offset = Vector2(647.96405, 0)
+scroll_offset = Vector2(-580.04114, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -357,7 +357,7 @@ texture = ExtResource("3_hy2k2")
 centered = false
 
 [node name="Parallax4" type="Parallax2D" parent="." unique_id=1409639157]
-scroll_offset = Vector2(1060.8821, 0)
+scroll_offset = Vector2(1164.8667, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -367,7 +367,7 @@ texture = ExtResource("5_ti4sd")
 centered = false
 
 [node name="Parallax3" type="Parallax2D" parent="." unique_id=1324184026]
-scroll_offset = Vector2(-1204.2108, 0)
+scroll_offset = Vector2(231.78934, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -377,22 +377,22 @@ texture = ExtResource("4_ulva1")
 centered = false
 
 [node name="Planet1" type="Sprite2D" parent="." unique_id=4307794]
-position = Vector2(-406.03378, 625)
+position = Vector2(1423.5887, 625)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7lp44")
 
 [node name="Planet2" type="Sprite2D" parent="." unique_id=1984123476]
-position = Vector2(-228.2146, 88)
+position = Vector2(-228.20122, 88)
 scale = Vector2(2, 2)
 texture = ExtResource("7_pv6ml")
 
 [node name="Planet3" type="Sprite2D" parent="." unique_id=720359318]
-position = Vector2(-86.0025, 140)
+position = Vector2(-82.14671, 140)
 scale = Vector2(2, 2)
 texture = ExtResource("8_6ns2i")
 
 [node name="Planet4" type="Sprite2D" parent="." unique_id=252639186]
-position = Vector2(1219.2513, 540)
+position = Vector2(-171.97876, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_m57kj")
 
@@ -406,6 +406,10 @@ offset_bottom = 1440.0
 [node name="SpaceStationWin" type="Node2D" parent="." unique_id=2009148189]
 position = Vector2(1723, 360)
 scale = Vector2(2, 2)
+
+[node name="SpaceStationMarker" type="Marker2D" parent="SpaceStationWin" unique_id=450457467]
+unique_name_in_owner = true
+position = Vector2(-50.5, 35.5)
 
 [node name="SpaceStation1" type="Sprite2D" parent="SpaceStationWin" unique_id=762321511]
 texture = ExtResource("10_nwy7k")

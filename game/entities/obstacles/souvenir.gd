@@ -42,17 +42,23 @@ func _process(delta: float) -> void:
 
 
 func _on_punched() -> void:
+	print("Souvenir PUNCHED")
 	super_meter_handler.on_combo_break()
+	sprite_2d.queue_free()
 	## TODO ANIMATION FOR NOOOOOOOO DON'T PUNCH THE PREZZIE
 	_begin_despawn()
 	
 func _on_deflected() -> void:
+	print("Souvenir DEFLECTED")
 	super_meter_handler.on_combo_break()
+	sprite_2d.queue_free()
 	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
 	_begin_despawn()
 	
 func _on_collected() -> void:
+	print("Souvenir COLLECTED")
 	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
+	sprite_2d.queue_free()
 	main_game_scene.souvenirs_collected += 1
 	super_meter_handler.on_successful_collect()
 	_begin_despawn()
