@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckkl1fo8xyo7d"]
+
+[ext_resource type="Script" uid="uid://cerne14ccsl6" path="res://game/entities/obstacles/ranged_enemy.gd" id="1_3onsk"]
+
+[node name="RangedEnemy" type="Area2D" unique_id=1357089293]
+script = ExtResource("1_3onsk")

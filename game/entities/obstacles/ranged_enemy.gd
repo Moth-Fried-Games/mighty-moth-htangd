@@ -1,21 +1,19 @@
-class_name EnemyProjectile
+class_name RangedEnemy
 extends LaneEntity
 
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
-
+const PROJECTILE = preload("uid://ceg558w8g2nov")
 
 enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
 
 
 const spawn_offset_from_anchor: float = 20
-var movement_per_second: float = 300
+const movement_per_second: float = 300
 
-@onready var enemy_projectile_sprite: AnimatedSprite2D = $RangeEnemyProjectileSprite
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
+@onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
-
-var enemy_that_shoot : RangedEnemy
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
@@ -37,36 +35,45 @@ func _ready() -> void:
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
+	_spawn_projectile
+	return
+
+
+func _on_punched() -> void:
+	print("owie I am puncheded")
+	main_game_scene.apply_time_bonus(1)
+	super_meter_handler.on_successful_punch()
+	_on_defeated()
+	## TODO animate
 	
-	area_entered.connect(_on_area_entered)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	global_position.x = global_position.x - (delta * movement_per_second)
-
-
 func _on_deflected() -> void:
 	print("oh wow I am deflecteded")
-	enemy_projectile_sprite.flip_h = true
-	monitoring = true
-	movement_per_second *= -1
 	main_game_scene.apply_time_bonus(2)
 	super_meter_handler.on_successful_deflect()
+	_on_defeated()
+	## TODO animate
 
+func _on_defeated() -> void:
+	print("and thus I am deadddd")
+	_begin_despawn()
+	## TODO defeat animation
+	pass
+	
 func _on_touching_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	## TODO animate and annoy mightymoth a little
+	pass
 
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
+	pass
 
 func _begin_despawn() -> void:
 	hurtboxarea.queue_free()
+	meleehitboxarea.queue_free()
 	parryhitboxarea.queue_free()
-	enemy_that_shoot._spawn_projectile()
 	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(lane_id, get_instance_id())
@@ -76,7 +83,9 @@ func _begin_despawn() -> void:
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: free())
 
-func _on_area_entered(area: Area2D) -> void:
-	if area == enemy_that_shoot:
-		area._spawn_projectile()
- 
+func _spawn_projectile():
+	var new_projectile: EnemyProjectile = PROJECTILE.instantiate()
+	new_projectile.lane_id = lane_id
+	new_projectile.global_position = global_position
+	new_projectile.enemy_that_shoot = self
+	owner.add_child(new_projectile)
