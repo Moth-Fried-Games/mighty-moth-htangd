@@ -103,6 +103,20 @@ func win() -> void:
 
 
 func _on_win_tween_finished() -> void:
+	var player: Player = null
+	if GameGlobals.game_dictionary["node"].has("player"):
+		player = GameGlobals.game_dictionary["node"]["player"]
+	if is_instance_valid(player):
+		player.cutscene = true
+		var player_tween: Tween = create_tween().set_parallel()
+		player_tween.finished.connect(_on_player_tween_finished)
+		player_tween.tween_property(
+			player, "global_position", space_station_marker.global_position, 1
+		)
+		player_tween.tween_property(player, "scale", Vector2.ZERO, 1)
+
+
+func _on_player_tween_finished() -> void:
 	await get_tree().create_timer(1).timeout
 	win_animation_player.play("fade_in")
 

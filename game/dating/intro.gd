@@ -1,5 +1,17 @@
 extends Node2D
 
+const MM_SPRITE_ANGRY = preload("uid://cbkngg2bsj150")
+const MM_SPRITE_FLUSTERED = preload("uid://b8w0ta154motm")
+const MM_SPRITE_LAUGH = preload("uid://b48j3ymvrht04")
+const MM_SPRITE_NEUTRAL = preload("uid://bvigysf356rdi")
+const MM_SPRITE_SADGE = preload("uid://cbd2d1tq6yk0a")
+
+const BAE_SPRITE_ANGRY = preload("uid://cmxipkf166231")
+const BAE_SPRITE_GIGGLY = preload("uid://cijok6ncqro5a")
+const BAE_SPRITE_NEUTRAL = preload("uid://dsrqpkltvwpnc")
+const BAE_SPRITE_SADGE = preload("uid://h865nanm1veu")
+const BAE_SPRITE_SCARED = preload("uid://byugc72hf3exs")
+
 @onready var dialog: Dialog = $Dialog
 @onready var moth_sprite_2d: Sprite2D = $MothSprite2D
 @onready var crush_sprite_2d: Sprite2D = $CrushSprite2D
@@ -50,75 +62,77 @@ func _on_dialog_changed() -> void:
 	# crush scared
 	if dialog.dialog_index == 3:
 		animation_player.play("crush_on")
+		crush_sprite_2d.texture = BAE_SPRITE_SCARED
 
 	# crush neutral
 	if dialog.dialog_index == 4:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth appears
 	# moth neutral
 	if dialog.dialog_index == 5:
 		animation_player.play("moth_on")
+		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
 
 	# moth flustered
 	if dialog.dialog_index == 7:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
 
 	# crush flirty
 	if dialog.dialog_index == 10:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
 
 	# moth angry
 	if dialog.dialog_index == 11:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_ANGRY
 
 	# moth sad
 	if dialog.dialog_index == 12:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_SADGE
 
 	# crush neutral
 	if dialog.dialog_index == 13:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# crush angry
 	if dialog.dialog_index == 15:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_ANGRY
 
 	# crush neutral
 	if dialog.dialog_index == 16:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# crush flirty
 	if dialog.dialog_index == 19:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
 
 	# crush neutral
 	if dialog.dialog_index == 22:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth laughing
 	if dialog.dialog_index == 23:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_LAUGH
 
 	# crush flirty
 	if dialog.dialog_index == 24:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
 
 	# crush neutral
 	if dialog.dialog_index == 25:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth flustered
 	if dialog.dialog_index == 27:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
 
 	# crush scared
 	if dialog.dialog_index == 28:
-		pass
+		crush_sprite_2d.texture = BAE_SPRITE_SCARED
 
 	# moth angry
 	if dialog.dialog_index == 29:
-		pass
+		moth_sprite_2d.texture = MM_SPRITE_ANGRY
 
 	# moth disappears
 	# crush neutral

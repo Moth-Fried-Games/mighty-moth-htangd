@@ -1,5 +1,11 @@
 extends Node2D
 
+const MM_SPRITE_ANGRY = preload("uid://cbkngg2bsj150")
+const MM_SPRITE_FLUSTERED = preload("uid://b8w0ta154motm")
+const MM_SPRITE_LAUGH = preload("uid://b48j3ymvrht04")
+const MM_SPRITE_NEUTRAL = preload("uid://bvigysf356rdi")
+const MM_SPRITE_SADGE = preload("uid://cbd2d1tq6yk0a")
+
 @onready var dialog: Dialog = $Dialog
 @onready var moth_sprite_2d: Sprite2D = $MothSprite2D
 @onready var crush_sprite_2d: Sprite2D = $CrushSprite2D
@@ -42,90 +48,7 @@ func _on_dialog_changed() -> void:
 	if dialog.dialog_index == 0:
 		animation_player.play("RESET")
 
-	# shake screen
-	if dialog.dialog_index == 2:
-		pass
-
-	# crush appears
-	# crush scared
-	if dialog.dialog_index == 3:
-		animation_player.play("crush_on")
-
-	# crush neutral
-	if dialog.dialog_index == 4:
-		pass
-
-	# moth appears
-	# moth neutral
-	if dialog.dialog_index == 5:
-		animation_player.play("moth_on")
-
-	# moth flustered
-	if dialog.dialog_index == 7:
-		pass
-
-	# crush flirty
-	if dialog.dialog_index == 10:
-		pass
-
-	# moth angry
-	if dialog.dialog_index == 11:
-		pass
-
-	# moth sad
-	if dialog.dialog_index == 12:
-		pass
-
-	# crush neutral
-	if dialog.dialog_index == 13:
-		pass
-
-	# crush angry
-	if dialog.dialog_index == 15:
-		pass
-
-	# crush neutral
-	if dialog.dialog_index == 16:
-		pass
-
-	# crush flirty
-	if dialog.dialog_index == 19:
-		pass
-
-	# crush neutral
-	if dialog.dialog_index == 22:
-		pass
-
-	# moth laughing
-	if dialog.dialog_index == 23:
-		pass
-
-	# crush flirty
-	if dialog.dialog_index == 24:
-		pass
-
-	# crush neutral
-	if dialog.dialog_index == 25:
-		pass
-
-	# moth flustered
-	if dialog.dialog_index == 27:
-		pass
-
-	# crush scared
-	if dialog.dialog_index == 28:
-		pass
-
-	# moth angry
-	if dialog.dialog_index == 29:
-		pass
-
-	# moth disappears
-	# crush neutral
-	if dialog.dialog_index == 33:
-		animation_player.play("moth_off")
-
 	# change to game
-	if dialog.dialog_index == 34:
-		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_title", 1)
+	if dialog.dialog_index == 1:
+		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_good", 1)
 		GameUi.ui_transitions.change_scene("res://game/main/main_game_scene.tscn")

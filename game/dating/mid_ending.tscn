@@ -2,16 +2,8 @@
 
 [ext_resource type="Script" uid="uid://7e76jtprpjqo" path="res://game/dating/mid_ending.gd" id="1_6b2gd"]
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_g30tk"]
+[ext_resource type="Texture2D" uid="uid://db5i3bxc5nfsc" path="res://assets/textures/ui/pexels-artbovich-7174391.jpg" id="2_tbk1l"]
 [ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="3_tbk1l"]
-
-[sub_resource type="Gradient" id="Gradient_d2p87"]
-colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmg03"]
-gradient = SubResource("Gradient_d2p87")
-width = 1280
-height = 720
-fill_to = Vector2(0, 1)
 
 [sub_resource type="Animation" id="Animation_pil35"]
 length = 0.001
@@ -114,6 +106,7 @@ _data = {
 }
 
 [node name="MidEnding" type="Node2D" unique_id=346985930]
+texture_filter = 2
 script = ExtResource("1_6b2gd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1695284227]
@@ -125,7 +118,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_qmg03")
+texture = ExtResource("2_tbk1l")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="SkipRichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1001982865]
 anchors_preset = 10
@@ -152,41 +147,11 @@ texture = ExtResource("2_g30tk")
 
 [node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("3_tbk1l")]
 position = Vector2(640, 700)
-hide_on_finish = false
 input_dialog = true
-dialog_list = Array[String](["[b][font_size=32][wait=1]Cecropolis. 6:00 PM.[/wait][/font_size][/b]", "[b][font_size=32][wait=1]Just another regular day...[/wait][/font_size][/b]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][shake][wait=0.5]UGH!!![/wait][/shake][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Seriously, what is the deal with this city and constant interdimensional attacks?![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5](Sighs) if it weren’t for you, we’d all be cosmic jelly. Again. Thanks, Mighty Moth.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Just doing my duty![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]But... you ARE always in the splash zone.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]N-not that I’m complaining! You’re a great reporter![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Maybe you could, you know.. Take pictures from further away?[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]And miss all the action?! Fat chance.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Besides, I know you’ll always be there to save my butt.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]B-but it’s dangerous! Look at your boss![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]I warned him not to stare directly into the creature’s eye...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Oh, he’ll be fine![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Give him a couple of months in that catatonic state and he’ll be good as new.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Honestly, we all needed a break from him anyway.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Even so, I wouldn’t want anything to happen to...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Wait a minute! If he’s out of commission... that means...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]I’M the chief editor now![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Oh, Mighty Moth! I’ve been waiting for this promotion forever![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]This calls for a celebration.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Say, do you like risotto?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Is it food? Then absolutely![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5](Giggles) Perfect. Dinner’s on me.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]My risotto isn’t enough to repay you for saving my life a dozen times, but it comes close.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]I’ll pull it out of the oven at 8:00 PM sharp. Don’t be late![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]I’d never! In fact... I’ve been meaning to give you...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5](Points into the distance) Hey... isn’t that your base over there?! Why is it surrounded by dozens of creepy, cloaked figures?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5](Gasps) The cult! The interdimensional creature was just a distraction so they could break in and steal...[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][shake][wait=0.5]THE GIFTS![/wait][/shake][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Gifts?![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Gotta Go![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Remember! 8:00 PM! Don’t be late! [/wait][/font_size]", ""])
+dialog_list = Array[String](["
+
+
+[center][b][font_size=32][wait=1]GOOD ENDING[/wait][/font_size][/b][/center]", ""])
 dialog_width = 1240.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=77042420]

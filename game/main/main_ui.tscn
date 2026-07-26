@@ -180,6 +180,7 @@ grow_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="." unique_id=2047326803]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -195,6 +196,7 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_qmg03")
 
 [node name="PauseLabel" type="Label" parent="." unique_id=608897921]
+texture_filter = 2
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

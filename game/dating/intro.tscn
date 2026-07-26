@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://b0guybi8oysyt"]
 
 [ext_resource type="Script" uid="uid://dcutpxty2jcbp" path="res://game/dating/intro.gd" id="1_d2p87"]
+[ext_resource type="Texture2D" uid="uid://crkkigotvxt70" path="res://assets/textures/ui/pexels-abhishek-verma-209130-670261.jpg" id="2_1tvt4"]
 [ext_resource type="Texture2D" uid="uid://dhcwybhoxgwhe" path="res://icon.svg" id="2_g1ugq"]
 [ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="2_pil35"]
-
-[sub_resource type="Gradient" id="Gradient_d2p87"]
-colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qmg03"]
-gradient = SubResource("Gradient_d2p87")
-width = 1280
-height = 720
-fill_to = Vector2(0, 1)
+[ext_resource type="Texture2D" uid="uid://bvigysf356rdi" path="res://assets/textures/ui/MM_SPRITE_NEUTRAL.png" id="3_1tvt4"]
 
 [sub_resource type="Animation" id="Animation_pil35"]
 length = 0.001
@@ -114,6 +107,7 @@ _data = {
 }
 
 [node name="Intro" type="Node2D" unique_id=346985930]
+texture_filter = 2
 script = ExtResource("1_d2p87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1695284227]
@@ -125,7 +119,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_qmg03")
+texture = ExtResource("2_1tvt4")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="SkipRichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1001982865]
 anchors_preset = 10
@@ -142,17 +138,18 @@ vertical_alignment = 1
 
 [node name="MothSprite2D" type="Sprite2D" parent="." unique_id=957740780]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(320, 360)
-texture = ExtResource("2_g1ugq")
+position = Vector2(320, 270)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1tvt4")
 
 [node name="CrushSprite2D" type="Sprite2D" parent="." unique_id=1721743697]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(960, 360)
+position = Vector2(960, 270)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_g1ugq")
 
 [node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
 position = Vector2(640, 700)
-hide_on_finish = false
 input_dialog = true
 dialog_list = Array[String](["[b][font_size=32][wait=1]Cecropolis. 6:00 PM.[/wait][/font_size][/b]", "[b][font_size=32][wait=1]Just another regular day...[/wait][/font_size][/b]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][shake][wait=0.5]UGH!!![/wait][/shake][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
