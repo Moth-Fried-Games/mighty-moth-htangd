@@ -39,7 +39,7 @@ func _stop_deflect():
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):
 		for object in collectable_objects_colliding:
-			pass
+			object.owner._on_collected()
 	if Input.is_action_just_pressed("deflect"):
 		print("deflect pressed")
 		is_deflecting = true

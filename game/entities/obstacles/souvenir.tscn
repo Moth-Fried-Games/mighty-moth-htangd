@@ -33,7 +33,7 @@ script = ExtResource("3_wlllc")
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_dnnxk")
 
-[node name="CollectHitBoxArea" type="Area2D" parent="." unique_id=90287914]
+[node name="CollectHitBoxArea" type="Area2D" parent="." unique_id=90287914 groups=["Collectable"]]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("4_wlllc")
