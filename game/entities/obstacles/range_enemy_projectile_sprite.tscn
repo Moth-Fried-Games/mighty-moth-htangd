@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://buigp7q67aalk"]
+
+[ext_resource type="Texture2D" uid="uid://hjr0j2srhlrt" path="res://assets/textures/object/mightymoth_enemy_missile.png" id="1_b7spj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51iyv"]
+atlas = ExtResource("1_b7spj")
+region = Rect2(0, 0, 43, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py8xc"]
+atlas = ExtResource("1_b7spj")
+region = Rect2(43, 0, 43, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmg03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51iyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py8xc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="RangeEnemyProjectileSprite" type="AnimatedSprite2D" unique_id=1436960274]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qmg03")
+autoplay = "default"
+frame_progress = 0.55309314

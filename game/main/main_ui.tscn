@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://bnabcha0s0pwj"]
 
 [ext_resource type="Script" uid="uid://1wcg5wuan1rl" path="res://game/main/main_ui.gd" id="1_alr7j"]
+[ext_resource type="Texture2D" uid="uid://cavkffiulqxu1" path="res://assets/textures/ui/mightymoth_ui_super_0.png" id="2_8id5d"]
+[ext_resource type="Texture2D" uid="uid://bfd86ldth3okb" path="res://assets/textures/ui/mightymoth_ui_super_2.png" id="3_ebukx"]
+[ext_resource type="Texture2D" uid="uid://bttvnikrhoj63" path="res://assets/textures/ui/mightymoth_ui_super_1.png" id="3_j47m5"]
+[ext_resource type="Texture2D" uid="uid://b723jg4cw5gbr" path="res://assets/textures/ui/mightymoth_ui_score_0.png" id="5_bfoft"]
+[ext_resource type="Texture2D" uid="uid://brr850rppwfks" path="res://assets/textures/ui/mightymoth_ui_score_1.png" id="6_jeacm"]
+[ext_resource type="Texture2D" uid="uid://bq074x830d8vb" path="res://assets/textures/ui/mightymoth_ui_score_2.png" id="7_10vfd"]
+[ext_resource type="Texture2D" uid="uid://12x457v6koqp" path="res://assets/textures/ui/mightymoth_ui_timer_0.png" id="8_jeacm"]
+[ext_resource type="Texture2D" uid="uid://r22rblnyigh0" path="res://assets/textures/ui/mightymoth_ui_timer_1.png" id="9_10vfd"]
+[ext_resource type="Texture2D" uid="uid://wak43m3okqu0" path="res://assets/textures/ui/mightymoth_ui_timer_2.png" id="10_x20yc"]
 
 [node name="MainUI" type="CanvasLayer" unique_id=808601705]
 layer = 2
@@ -16,3 +25,136 @@ grow_vertical = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
 mouse_behavior_recursive = 1
+
+[node name="Super" type="Control" parent="Control" unique_id=807660328]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="SuperBar" type="TextureProgressBar" parent="Control/Super" unique_id=1719382612]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 114)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -114.0
+offset_right = 300.0
+grow_vertical = 0
+value = 23.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("2_8id5d")
+texture_over = ExtResource("3_ebukx")
+texture_progress = ExtResource("3_j47m5")
+
+[node name="Date" type="Control" parent="Control" unique_id=494895584]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DateBar" type="TextureProgressBar" parent="Control/Date" unique_id=1758210303]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 114)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -114.0
+grow_horizontal = 0
+grow_vertical = 0
+value = 23.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_bfoft")
+texture_over = ExtResource("7_10vfd")
+texture_progress = ExtResource("6_jeacm")
+
+[node name="Time" type="Control" parent="Control" unique_id=1220481649]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TimeBG" type="TextureRect" parent="Control/Time" unique_id=1767022301]
+custom_minimum_size = Vector2(158, 156)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_jeacm")
+
+[node name="TimeNeedlePivot" type="Control" parent="Control/Time/TimeBG" unique_id=1485083858]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 69.0
+offset_top = 85.0
+offset_right = 69.0
+offset_bottom = 85.0
+rotation = 0.7853982
+
+[node name="TimeNeedle" type="TextureRect" parent="Control/Time/TimeBG/TimeNeedlePivot" unique_id=368418315]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 48)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -42.0
+offset_right = 12.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(12, 42)
+texture = ExtResource("9_10vfd")
+
+[node name="TimeWarning" type="TextureRect" parent="Control/Time" unique_id=794834958]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(68, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -200.0
+offset_right = 34.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_x20yc")

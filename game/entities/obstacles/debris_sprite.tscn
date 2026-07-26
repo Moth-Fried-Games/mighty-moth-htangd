@@ -21,11 +21,11 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 6.0
+"speed": 12.0
 }]
 
 [node name="MeteorSprite" type="AnimatedSprite2D" unique_id=1956018591]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")
 autoplay = "default"
-frame_progress = 0.90880805
+frame_progress = 0.36233965
