@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://bbuit7q5urekb"]
+
+[ext_resource type="AudioStream" uid="uid://cmwivk3ku35jp" path="res://assets/audio/music/countdown_in_space_loop_3824302_-_7576798.wav" id="1_6ylpc"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="1_10mv2"]
+
+[resource]
+script = ExtResource("1_10mv2")
+audio_name = "music_game"
+limit = 1
+audio_stream = ExtResource("1_6ylpc")
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://5j3kgcndl4oy"]
+
+[ext_resource type="AudioStream" uid="uid://bqlpakaso3n0r" path="res://assets/audio/ovani/music/Anime Darling Main.wav" id="1_ljm8w"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_2wob1"]
+
+[resource]
+script = ExtResource("2_2wob1")
+audio_name = "music_good"
+limit = 1
+audio_stream = ExtResource("1_ljm8w")
+reverb_tail = 4.171
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

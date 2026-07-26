@@ -14,6 +14,8 @@ func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
 	skip_rich_text_label.modulate.a = 0
 	await get_tree().create_timer(1).timeout
+	if not GameGlobals.audio_manager.persistent_audio.has("music_title"):
+		GameGlobals.audio_manager.create_persistent_audio("music_title")
 	dialog.dialog_changed.connect(_on_dialog_changed)
 	dialog.active = true
 
@@ -23,6 +25,7 @@ func _process(delta: float) -> void:
 		skip_time -= delta
 		if skip_time <= 0:
 			skipping = true
+			GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_title", 1)
 			GameUi.ui_transitions.change_scene("res://game/main/main_game_scene.tscn")
 	else:
 		if skip_time != 1:
@@ -124,4 +127,5 @@ func _on_dialog_changed() -> void:
 
 	# change to game
 	if dialog.dialog_index == 34:
+		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_title", 1)
 		GameUi.ui_transitions.change_scene("res://game/main/main_game_scene.tscn")

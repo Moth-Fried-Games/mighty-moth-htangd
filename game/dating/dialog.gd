@@ -136,6 +136,7 @@ func process_input() -> void:
 		return
 	var accept_input: bool = Input.is_action_just_pressed("deflect")
 	if accept_input:
+		GameGlobals.audio_manager.create_audio("sound_menu")
 		if not ui_dialog.text_finished:
 			ui_dialog.finish_typing()
 		else:
