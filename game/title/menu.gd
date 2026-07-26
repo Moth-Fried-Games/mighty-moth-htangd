@@ -52,8 +52,8 @@ func _ready() -> void:
 	credits_rich_text_label.meta_clicked.connect(credits_click_link)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameUi.ui_transitions.toggle_transition(false)
-	if not GameGlobals.audio_manager.persistent_audio.has("music_menu"):
-		GameGlobals.audio_manager.create_persistent_audio("music_menu")
+	if not GameGlobals.audio_manager.persistent_audio.has("music_title"):
+		GameGlobals.audio_manager.create_persistent_audio("music_title")
 	tab_container.current_tab = 0
 
 
@@ -83,28 +83,28 @@ func parse_ui_input(action_name: String) -> void:
 
 func main_menu() -> void:
 	GameGlobals.game_settings.save_settings()
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	tab_container.current_tab = 1
 	await get_tree().create_timer(0.1).timeout
 	main_start_button.grab_focus()
 
 
 func howto_menu() -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	tab_container.current_tab = 2
 	await get_tree().create_timer(0.1).timeout
 	how_to_return_button.grab_focus()
 
 
 func settings_menu() -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	tab_container.current_tab = 3
 	await get_tree().create_timer(0.1).timeout
 	settings_master_h_slider.grab_focus()
 
 
 func credits_menu() -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	tab_container.current_tab = 4
 	await get_tree().create_timer(0.1).timeout
 	credits_return_button.grab_focus()
@@ -112,15 +112,15 @@ func credits_menu() -> void:
 
 func credits_click_link(meta: Variant) -> void:
 	if input_ready:
-		GameGlobals.audio_manager.create_audio("sound_menu_click")
+		GameGlobals.audio_manager.create_audio("sound_menu")
 		OS.shell_open(meta)
 
 
 func change_to_game() -> void:
 	if input_ready:
 		input_ready = false
-		GameGlobals.audio_manager.create_audio("sound_menu_click")
-		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_menu", 1)
+		GameGlobals.audio_manager.create_audio("sound_menu")
+		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_title", 1)
 		GameUi.ui_transitions.change_scene("res://game/dating/intro.tscn")
 
 
@@ -165,25 +165,25 @@ func load_settings() -> void:
 
 
 func _on_master_value_changed(value: float) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	settings_master_label.text = str("%d" % [value])
 	GameGlobals.game_settings.update_master_volume(value / 100)
 
 
 func _on_music_value_changed(value: float) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	settings_music_label.text = str("%d" % [value])
 	GameGlobals.game_settings.update_music_volume(value / 100)
 
 
 func _on_sound_value_changed(value: float) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	settings_sound_label.text = str("%d" % [value])
 	GameGlobals.game_settings.update_sound_volume(value / 100)
 
 
 func _on_display_item_selected(index: int) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	match index:
 		0:
 			GameGlobals.game_settings.update_display_mode(
@@ -194,15 +194,15 @@ func _on_display_item_selected(index: int) -> void:
 
 
 func _on_vsync_item_selected(index: int) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	GameGlobals.game_settings.update_vsync_mode(index)
 
 
 func _on_framecap_item_selected(index: int) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	GameGlobals.game_settings.update_frame_rate_cap(index)
 
 
 func _on_framelabel_item_selected(index: int) -> void:
-	GameGlobals.audio_manager.create_audio("sound_menu_click")
+	GameGlobals.audio_manager.create_audio("sound_menu")
 	GameGlobals.game_settings.update_show_fps(index)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://c4bxcayvfwbqs"]
+
+[ext_resource type="AudioStream" uid="uid://brp4u5bnf02a2" path="res://assets/audio/sounds/mightymoth_sfx_collect.wav" id="1_dav04"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_txd63"]
+
+[resource]
+script = ExtResource("2_txd63")
+audio_name = "sound_collect"
+limit = 5
+audio_type = 1
+audio_stream = ExtResource("1_dav04")
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cxwuxelio1bot"

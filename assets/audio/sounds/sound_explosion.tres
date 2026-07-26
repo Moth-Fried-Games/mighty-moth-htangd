@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://cm6fdfwa0mqcm"]
+
+[ext_resource type="AudioStream" uid="uid://dqk3tu0sgfsep" path="res://assets/audio/sounds/mightymoth_sfx_explosion.wav" id="1_8won2"]
+[ext_resource type="Script" uid="uid://cxwuxelio1bot" path="res://core/audio/audio_settings.gd" id="2_8xaw2"]
+
+[resource]
+script = ExtResource("2_8xaw2")
+audio_name = "sound_explosion"
+audio_type = 1
+audio_stream = ExtResource("1_8won2")
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://cxwuxelio1bot"
