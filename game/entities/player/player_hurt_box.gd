@@ -17,10 +17,12 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ParryHitBoxArea")  and is_deflecting:
 		area.owner._on_deflected()
+	#elif area.is_in_group("ParryHitBoxArea")  and !is_deflecting and area.owner is not Souvenir:
+		#area.owner._on_touching_player()
 	elif area.is_in_group("Collectable"):
 		collectable_objects_colliding.append(area)
 	elif area.is_in_group("HurtBoxArea"):
-		if is_deflecting:
+		if !is_deflecting:
 			area.owner._on_touching_player()
 		else:
 			hurtful_objects_colliding.append(area)
@@ -38,8 +40,11 @@ func _stop_deflect():
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):
+		print("collect pressed")
 		for object in collectable_objects_colliding:
-			object.owner._on_collected()
+			if is_instance_valid(object):
+				object.owner._on_collected()
+			collectable_objects_colliding.erase(object)
 	if Input.is_action_just_pressed("deflect"):
 		print("deflect pressed")
 		is_deflecting = true

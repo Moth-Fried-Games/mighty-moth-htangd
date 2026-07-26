@@ -17,5 +17,6 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("punch"):
+		print("punch pressed")
 		for object in punchble_objects_colliding:
 			object.owner._on_punched()

@@ -4,8 +4,9 @@ extends LaneEntity
 var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 const spawn_offset_from_anchor: float = 50
-const movement_per_second: float = 4333
+const movement_per_second: float = 1000
 var is_moving: bool = false
+var is_deflected: bool = false
 
 var warning_timer: Timer
 
@@ -15,6 +16,7 @@ var warning_timer: Timer
 @onready var debris_warning: Node2D = $DebrisWarning
 @onready var warning_label: Label = $DebrisWarning/WarningLabel
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
@@ -47,7 +49,7 @@ func _ready() -> void:
 	
 	var rando = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
-	warning_timer.wait_time = rando.randi() % 5 + 5
+	warning_timer.wait_time = rando.randi() % 2 + 1 ## TESTING reset to 5 + 5
 	warning_timer.one_shot = true
 	warning_timer.timeout.connect(func() -> void: 
 		debris_warning.queue_free()
@@ -61,7 +63,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_moving:
-		global_position.x = global_position.x - (delta * movement_per_second)
+		var movement = (delta * movement_per_second)
+		if is_deflected:
+			movement *= -1
+		global_position.x = global_position.x - movement
 		return
 	else:
 		distance_countdown.text = str(_get_distance_display()) + " m"
@@ -75,25 +80,40 @@ func _get_distance_display() -> float:
 
 
 func _on_punched() -> void:
+	print("Meteor PUNCHED")
 	main_game_scene.apply_time_bonus(1)
 	super_meter_handler.on_successful_punch()
 	_on_destroyed()
 	## TODO animate, confirm interaction
 	
 func _on_deflected() -> void:
+	print("Meteor DEFLECTED")
 	#main_game_scene.apply_time_bonus(2)
+	print("AYOOOO cool meteor deflect bruh")
 	super_meter_handler.on_successful_deflect()
+	is_deflected = true
+	sprite_2d.flip_h = true
+	var despawn_timer: Timer = Timer.new()
+	despawn_timer.wait_time = 1
+	despawn_timer.one_shot = true
+	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
+	
+	
 	## TODO add logic to make this thing damage and defeat an enemy when deflected. Do not run _on_destroyed until AFTER this defeats something, or otherwise leaves the right side of the screen!
 
 func _on_destroyed() -> void:
+	sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
 	pass
 	
 func _on_touching_player() -> void:
+	### FOR TESTING PURPOSES ONLY
+	#_on_deflected()
+	### FOR TESTING PURPOSES ONLY
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
-	## TODO animate and annoy mightymoth a little
+	### TODO animate and annoy mightymoth a little
 	pass
 
 func _on_walk_past_player() -> void:

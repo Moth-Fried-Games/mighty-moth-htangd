@@ -20,33 +20,15 @@ script = ExtResource("1_te03x")
 
 [node name="LaneBinders" parent="." unique_id=758711568 instance=ExtResource("1_2eox0")]
 unique_name_in_owner = true
-position = Vector2(616.5, 416.5)
+position = Vector2(1, -14)
 center_offset = -15
 lane_gaps = 100
-
-[node name="Middle Left Anchor" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="0" unique_id=953809043]
-position = Vector2(-636.5, 0)
-
-[node name="Middle Right Anchor" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="1" unique_id=1944633828]
-position = Vector2(636.5, 0)
 
 [node name="Bottom Lane" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="2" unique_id=1433448766]
 position = Vector2(0, 100)
 
-[node name="Bottom Left Anchor" parent="LaneBinders/Middle Lane/Bottom Lane" index="0" unique_id=816487434]
-position = Vector2(-636.5, 0)
-
-[node name="Bottom Right Anchor" parent="LaneBinders/Middle Lane/Bottom Lane" index="1" unique_id=376542532]
-position = Vector2(636.5, 0)
-
 [node name="Top Lane" parent="LaneBinders/Middle Lane" parent_id_path=PackedInt32Array(758711568, 1628555622) index="3" unique_id=1281279305]
 position = Vector2(0, -100)
-
-[node name="Top Left Anchor" parent="LaneBinders/Middle Lane/Top Lane" index="0" unique_id=1579905432]
-position = Vector2(-636.5, 0)
-
-[node name="Top Right Anchor" parent="LaneBinders/Middle Lane/Top Lane" index="1" unique_id=1996465120]
-position = Vector2(636.5, 0)
 
 [node name="ObstacleSpawner" parent="." unique_id=699091262 instance=ExtResource("3_dp175")]
 unique_name_in_owner = true

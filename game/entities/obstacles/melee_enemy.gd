@@ -14,6 +14,8 @@ const movement_per_second: float = 300
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
@@ -61,6 +63,7 @@ func _on_deflected() -> void:
 
 func _on_defeated() -> void:
 	print("and thus I am deadddd")
+	sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
 	pass

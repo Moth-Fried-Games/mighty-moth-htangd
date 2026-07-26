@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cu25qs5mqlw30" path="res://game/entities/obstacles/collect_hit_box_area.gd" id="4_wlllc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
-size = Vector2(36, 39)
+size = Vector2(145, 134.5)
 
 [node name="Souvenir" type="Area2D" unique_id=1462779500]
 script = ExtResource("1_qv2js")
@@ -15,18 +15,18 @@ script = ExtResource("1_qv2js")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=51463990]
 texture = ExtResource("2_t2dnh")
 
-[node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=1437990953]
-collision_layer = 0
-collision_mask = 8
+[node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=1437990953 groups=["MeleeHitBoxArea"]]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("2_fad52")
 
 [node name="PunchHitBox" type="CollisionShape2D" parent="PunchHitBoxArea" unique_id=921629786]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_dnnxk")
 
-[node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=308689639]
-collision_layer = 0
-collision_mask = 8
+[node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=308689639 groups=["ParryHitBoxArea"]]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("3_wlllc")
 
 [node name="ParryHitBox" type="CollisionShape2D" parent="ParryHitBoxArea" unique_id=198810077]
@@ -34,10 +34,10 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_dnnxk")
 
 [node name="CollectHitBoxArea" type="Area2D" parent="." unique_id=90287914 groups=["Collectable"]]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("4_wlllc")
 
 [node name="CollectHixBox" type="CollisionShape2D" parent="CollectHitBoxArea" unique_id=903191320]
-position = Vector2(0, 2.5)
+position = Vector2(0.5, -1.75)
 shape = SubResource("RectangleShape2D_dnnxk")
