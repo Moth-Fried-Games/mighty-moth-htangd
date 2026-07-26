@@ -20,7 +20,10 @@ extends CanvasLayer
 @export_range(0, 60) var time_left: float = 60
 
 var main_scene: Node2D = null
-var super_scene: Node2D = null
+var super_scene: SuperMeterHandler = null
+var stage_background: StageBackground = null
+
+var winning_time: float = 300
 
 var cutscene: bool = false
 var game_over: bool = false
@@ -56,6 +59,14 @@ func _process(_delta: float) -> void:
 				GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_bad", 1)
 				GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")
 
+	if not cutscene:
+		if time_left <= 0:
+			cutscene = true
+			stage_background.lose()
+		if winning_time <= 0:
+			cutscene = true
+			stage_background.win()
+
 
 func _update_values() -> void:
 	if not Engine.is_editor_hint():
@@ -63,9 +74,13 @@ func _update_values() -> void:
 			main_scene = get_parent()
 		if not is_instance_valid(super_scene):
 			super_scene = main_scene.super_meter_handler
+		if not is_instance_valid(stage_background):
+			if GameGlobals.game_dictionary["nodes"].has("stage_background"):
+				stage_background = GameGlobals.game_dictionary["nodes"]["stage_background"]
 		super_level = clampi(super_scene.super_level, 0, 3)
 		super_value = clampf(super_scene.super_meter, 0, 100)
 		time_left = clampf(main_scene.game_over_timer.time_left, 0, 60)
+		winning_time = main_scene.finale_timer.time_left
 		souvenirs = clampi(main_scene.souvenirs_collected, 0, 10)
 
 

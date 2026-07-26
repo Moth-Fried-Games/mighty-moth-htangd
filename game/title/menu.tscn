@@ -75,7 +75,7 @@ variation_opentype = {
 base_font = ExtResource("6_nogmj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_6potn"]
-font_size = 21
+font_size = 18
 font_color = Color(0.780392, 0.827451, 0.862745, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qfiv"]
@@ -114,6 +114,7 @@ process_mode = 3
 script = ExtResource("1_tbimj")
 
 [node name="Control" type="Control" parent="." unique_id=115326563]
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,10 +142,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 0
+current_tab = 4
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer" unique_id=619077342]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -334,7 +336,18 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = SubResource("FontVariation_ibdkp")
-text = "tbd get hreter or cedi or someone to write this stuff"
+text = "Save the day and save your date, one punch at a time!
+
+You’re Mighty Moth, hero of the universe, defender of Cecropolis and helpless romantic! After saving your crush for the millionth time, you finally score a dinner date for 8:00PM. But your excitement is cut short, as the nefarious Shocked Cult has broken into your base and stolen all the galactic gifts you gathered for your date!
+
+Help Mighty Moth beat up cultists, recover her gifts and get to her date before the risotto gets cold!
+
+Features:
+·	Punch and Parry: KO melee enemies up close, or deflect their ranged missiles back to their shooters!
+·	Unleash the Mighty Moth Masher: Consistently hit enemies to charge Mighty Moth’s combo meter and unleash a massive hit to delay the end of the universe!
+·	Collect, don’t Smash: Keep an eye out for the souvenirs flying in your direction. But be careful! You don’t want to punch your crush’s gifts to pieces!
+
+Hint: Sometimes, style is all it takes for a successful mission! Time your deflections against incoming melee strikes to hurl cultists into other foes, charging your Moth Masher even faster!"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -583,7 +596,6 @@ theme_override_colors/font_color = Color(0.92156863, 0.7019608, 0.4627451, 1)
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer" unique_id=168381721]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -647,26 +659,49 @@ theme_override_fonts/bold_font = SubResource("FontVariation_6x4wt")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
-text = "[center][b]Art and Animation[/b]
-[url=https://explorermoo.com/]Atlas[/url]
+text = "[center]
+Game Concept by
+[url=https://mothfriedgames.neocities.org/team]Moth Fried Games[/url]
 
-[b]Programming[/b]
-[url=https://myrthemoth.neocities.org/]Myr the Moth[/url]
+Game Design by
+[url=https://myrthemoth.neocities.org/]Myr the Moth[/url] and [url=https://lobbamattos.itch.io/]Lobba Mattos[/url]
 
-[b]Game Design[/b]
-[url=https://myrthemoth.neocities.org/]Myr the Moth[/url] and [url=https://explorermoo.com/]Atlas[/url]
+Concept Art by
+[url=https://jojuticaba.itch.io/]Jojo[/url]
 
-[b]Audio[/b]
-[url=https://ovanisound.com/]Music and SFX by Ovani Sound[/url]
+Narrative by
+[url=https://bsky.app/profile/hreter.bsky.social]Hreter[/url]
 
-[b]Fonts[/b]
-[url=https://fonts.google.com/?query=Jason+Kottke]Silkscreen by Jason Kottke[/url]
+Programming by
+[url=https://myrthemoth.neocities.org/]Myr the Moth[/url], [url=https://cedi-fonei.neocities.org/]Cedi[/url] and [url=https://romuboy.itch.io/]ROMUBOY[/url]
 
-[b]Resources[/b]
+Game Art by
+[url=https://explorermoo.com/]Atlas[/url] and [url=https://jojuticaba.itch.io/]Jojo[/url]
+
+Sounds
+[url=https://softbrewmobile.com/apps/fm77/]FM·77 Game SFX Generator[/url]
+
+Music
+[url=https://erikmcclure.com/]Erik McClure[/url]
+[url=https://ovanisound.com/]Ovani Sound[/url]
+
+Fonts
+[url=https://fonts.google.com/specimen/Slackey]Slackey[/url]
+[url=https://fonts.google.com/specimen/Open+Sans]Open Sans[/url]
+
+Resources
 [url=https://github.com/Aarimous/AudioManager]AudioManager[/url]
 [url=https://github.com/ryan-haskell/gdformat-on-save]Format on Save[/url]
+[url=https://github.com/rsubtil/controller_icons/]Controller Icons[/url]
+[url=https://github.com/paskausks/gd-copy-files-on-export]Copy Files On Export[/url]
+[url=https://www.pexels.com/photo/architectural-photography-of-metropolis-under-stratus-clouds-670261/]City Background[/url]
+[url=https://www.pexels.com/photo/open-kitchen-with-counter-and-chairs-near-cupboards-7174391/]Kitchen Background[/url]
+[url=https://www.pexels.com/pt-br/foto/passaro-ave-passarinho-animal-12365156/]Owl 1[/url]
+[url=https://www.pexels.com/pt-br/foto/natureza-passaro-ave-passarinho-15290046/]Owl 2[/url]
+[url=https://www.pexels.com/pt-br/foto/passaro-ave-passarinho-animal-17481292/]Owl 3[/url]
+[url=https://freesound.org/people/differentieel/sounds/245455/]Old Clock Ticking[/url]
 
-Created for the [url=https://itch.io/jam/godot-wild-jam-79]GMTK/url]"
+Created for the [url=https://itch.io/jam/gmtk-jam-2026]GMTK Jam 2026[/url]"
 
 [node name="CreditsReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer" unique_id=1524769763]
 unique_name_in_owner = true
