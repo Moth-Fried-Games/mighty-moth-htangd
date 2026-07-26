@@ -16,6 +16,8 @@ extends Node2D
 @export var modifier_3: float = 0.5
 @export var modifier_4: float = 0.75
 
+var speed_modifier: float = 1
+
 var show_win_station: bool = false
 var show_lose_station: bool = false
 var scrolling_planet: Node2D = null
@@ -46,7 +48,7 @@ func _process(delta: float) -> void:
 
 func scroll_planet(planet: Node2D, size: float, delta: float) -> bool:
 	var finished: bool = false
-	planet.position.x -= scroll_speed * modifier_1 * delta
+	planet.position.x -= scroll_speed * speed_modifier * modifier_1 * delta
 	if planet.position.x <= -size:
 		finished = true
 	return finished
@@ -60,17 +62,17 @@ func scroll_planets(delta: float) -> void:
 		scrolling_planet.position.x = viewport_size.x + scrolling_planet_size
 		scrolling_planet.reset_physics_interpolation()
 	if is_instance_valid(scrolling_planet):
-		scrolling_planet.position.x -= scroll_speed * modifier_1 * delta
+		scrolling_planet.position.x -= scroll_speed * speed_modifier * modifier_1 * delta
 		if scrolling_planet.position.x <= -scrolling_planet_size:
 			scrolling_planet = null
 
 
 func scroll_parallax(delta: float) -> void:
-	parallax_2.scroll_offset.x -= scroll_speed * modifier_2 * delta
+	parallax_2.scroll_offset.x -= scroll_speed * speed_modifier * modifier_2 * delta
 	parallax_2.scroll_offset.x = wrapf(parallax_2.scroll_offset.x, -1280, 1280)
-	parallax_3.scroll_offset.x -= scroll_speed * modifier_3 * delta
+	parallax_3.scroll_offset.x -= scroll_speed * speed_modifier * modifier_3 * delta
 	parallax_3.scroll_offset.x = wrapf(parallax_3.scroll_offset.x, -1280, 1280)
-	parallax_4.scroll_offset.x -= scroll_speed * modifier_4 * delta
+	parallax_4.scroll_offset.x -= scroll_speed * speed_modifier * modifier_4 * delta
 	parallax_4.scroll_offset.x = wrapf(parallax_4.scroll_offset.x, -1280, 1280)
 
 
@@ -93,6 +95,7 @@ func win() -> void:
 	var win_tween: Tween = create_tween().set_parallel()
 	win_tween.finished.connect(_on_win_tween_finished)
 	win_tween.tween_property(space_station_win, "position:x", viewport_offset, 5)
+	win_tween.tween_property(self, "speed_modifier", 0, 5)
 
 
 func _on_win_tween_finished() -> void:
@@ -115,6 +118,7 @@ func lose() -> void:
 	var lose_tween: Tween = create_tween().set_parallel()
 	lose_tween.finished.connect(_on_lose_tween_finished)
 	lose_tween.tween_property(space_station_lose, "position:x", viewport_offset, 5)
+	lose_tween.tween_property(self, "speed_modifier", 0, 5)
 
 
 func _on_lose_tween_finished() -> void:

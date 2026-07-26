@@ -134,7 +134,7 @@ func play_dialog() -> void:
 func process_input() -> void:
 	if not active or not input_dialog:
 		return
-	var accept_input: bool = Input.is_action_just_pressed("ui_accept")
+	var accept_input: bool = Input.is_action_just_pressed("punch")
 	if accept_input:
 		if not ui_dialog.text_finished:
 			ui_dialog.finish_typing()
