@@ -41,5 +41,5 @@ func _process(_delta: float) -> void:
 
 
 func apply_time_bonus(time_bonus: float) -> void:
-	var currenttime = game_over_timer.get_time_left()
+	var currenttime: float = game_over_timer.get_time_left()
 	game_over_timer.start(currenttime + (time_bonus * 3))

@@ -144,7 +144,7 @@ func _begin_despawn() -> void:
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 		spawner.despawn_obstacle(lane_id, get_instance_id())
 		
-		var despawn_timer: Timer = Timer.new()
+		#var despawn_timer: Timer = Timer.new()
 		despawn_timer.wait_time = 4
 		despawn_timer.one_shot = true
 		despawn_timer.timeout.connect(func() -> void: free())
