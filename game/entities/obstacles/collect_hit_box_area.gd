@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if has_overlapping_areas():
-		if get_overlapping_areas().any(func(area) -> bool: return area.name == "CollectHurtBoxArea"):
+		if get_overlapping_areas().any(func(area: Area2D) -> bool: return area.name == "CollectHurtBoxArea"):
 			owner._on_collected()

@@ -48,7 +48,7 @@ func _ready() -> void:
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
 	
-	var rando = RandomNumberGenerator.new()
+	var rando: RandomNumberGenerator = RandomNumberGenerator.new()
 	warning_timer = Timer.new()
 	warning_timer.wait_time = rando.randi() % 5 + 5
 	warning_timer.one_shot = true
@@ -68,7 +68,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_moving:
-		var movement = (delta * movement_per_second)
+		var movement: float = (delta * movement_per_second)
 		if is_deflected:
 			movement *= -1
 		global_position.x = global_position.x - movement

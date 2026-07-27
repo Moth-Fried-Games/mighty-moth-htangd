@@ -27,6 +27,6 @@ func _process(_delta: float) -> void:
 		if punching:
 			punching = false
 
-func _on_animation_finished():
+func _on_animation_finished() -> void:
 	if animation != "fly":
 		play("fly")

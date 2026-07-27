@@ -58,7 +58,7 @@ func _spawn_obstacles_wave() -> void:
 				new_enemy_spawn.lane_id = lane_to_spawn_in
 				new_enemy_spawn.global_position = global_position
 				owner.add_child(new_enemy_spawn)
-				current_obstacle_map[lane_to_spawn_in].append(new_enemy_spawn)
+				current_obstacle_map.get(lane_to_spawn_in).append(new_enemy_spawn)
 				print("Spawned a melee enemy!")
 				
 			ObstacleType.RANGED_ENEMY:
@@ -69,7 +69,7 @@ func _spawn_obstacles_wave() -> void:
 				new_debris_spawn.lane_id = lane_to_spawn_in
 				new_debris_spawn.global_position = global_position
 				owner.add_child(new_debris_spawn)
-				current_obstacle_map[lane_to_spawn_in].append(new_debris_spawn)
+				current_obstacle_map.get(lane_to_spawn_in).append(new_debris_spawn)
 				print("Spawned debris!")
 				
 			ObstacleType.SOUVENIR:
@@ -78,7 +78,7 @@ func _spawn_obstacles_wave() -> void:
 				new_souv_spawn.lane_id = lane_to_spawn_in
 				new_souv_spawn.global_position = global_position
 				owner.add_child(new_souv_spawn)
-				current_obstacle_map[lane_to_spawn_in].append(new_souv_spawn)
+				current_obstacle_map.get(lane_to_spawn_in).append(new_souv_spawn)
 				souvenirs_spawned += 1
 				print("Spawned a souv!! GET IT NERD")
 	else:
@@ -115,11 +115,11 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 	
 # Algorithm to decide which lane a given obstacle type should spawn in
 func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
-	var lane_options: Array = current_obstacle_map.keys().filter(func(key) -> bool: 
+	var lane_options: Array = current_obstacle_map.keys().filter(func(key: Lanes.LaneId) -> bool: 
 		if spawn_type == ObstacleType.MELEE_ENEMY:
 			return true
 		else:
-			return !_find_obstacletype_in_array(spawn_type, current_obstacle_map[key])
+			return !_find_obstacletype_in_array(spawn_type, current_obstacle_map.get(key))
 	)
 	
 	if lane_options.size() > 1:
@@ -131,7 +131,7 @@ func _decide_lane_to_spawn_in(spawn_type: ObstacleType) -> Lanes.LaneId:
 
 # Returns true IF the array obs_in_lane contains one or more items matching a given obstacle type
 func _find_obstacletype_in_array(spawn_type: ObstacleType, obs_in_lane: Array) -> bool:
-	return obs_in_lane.any(func(single_obs) -> bool: 
+	return obs_in_lane.any(func(single_obs: LaneEntity) -> bool: 
 		return _match_enum_by_class(spawn_type, single_obs)
 	)
 	
@@ -148,6 +148,7 @@ func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 	
 # Removes an obstacle from our list of tracked items per lane, freeing up another of that item to spawn in it again
 func despawn_obstacle(laneId: Lanes.LaneId, nodeid: int) -> void:
-	var obstacle_to_remove = current_obstacle_map[laneId].find_custom(func(obs: LaneEntity) -> bool:
+	var obstacle_to_remove: int = current_obstacle_map.get(laneId).find_custom(func(obs: LaneEntity) -> bool:
 		return obs.get_instance_id() == nodeid)
-	current_obstacle_map[laneId].remove_at(obstacle_to_remove)
+	if obstacle_to_remove != -1:
+		current_obstacle_map.get(laneId).remove_at(obstacle_to_remove)

@@ -33,21 +33,21 @@ func _on_area_exited(area: Area2D) -> void:
 	elif area is HurtBoxArea:
 		hurtful_objects_colliding.erase(area)
 
-func _stop_deflect():
+func _stop_deflect() -> void:
 	is_deflecting = false
 	for object in hurtful_objects_colliding:
 		if is_instance_valid(object):
 			object.owner._on_touching_player()
 		hurtful_objects_colliding.erase(object)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):     
 		if collectable_objects_colliding.size() > 0:
 			player_sprite.play("collect")   
 		for object in collectable_objects_colliding:
 			if is_instance_valid(object):
 				object.owner._on_collected()
-			collectable_objects_colliding.erase(object)
+			collectable_objects_colliding.erase(object) # ERROR Attempted to erase an invalid (previously freed?) object instance into a TypedArray
 	if Input.is_action_just_pressed("deflect"):        
 		is_deflecting = true
 		timer.start()
