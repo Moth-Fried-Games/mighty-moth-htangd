@@ -32,8 +32,8 @@ func _ready() -> void:
 	GameUi.ui_transitions.toggle_transition(false)
 	skip_rich_text_label.modulate.a = 0
 	await get_tree().create_timer(1).timeout
-	if not GameGlobals.audio_manager.persistent_audio.has("music_better"):
-		GameGlobals.audio_manager.create_persistent_audio("music_better")
+	if not GameGlobals.audio_manager.persistent_audio.has("music_good"):
+		GameGlobals.audio_manager.create_persistent_audio("music_good")
 	dialog.dialog_changed.connect(_on_dialog_changed)
 	dialog.active = true
 	get_tree().paused = false
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		skip_time -= delta
 		if not skipping and skip_time <= 0:
 			skipping = true
-			GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_better", 1)
+			GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_good", 1)
 			GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")
 	else:
 		if skip_time != 1:
@@ -104,88 +104,72 @@ func _on_dialog_changed() -> void:
 	if dialog.dialog_index == 16:
 		moth_sprite_2d.texture = MM_SPRITE_SADGE
 
-	# crush scared
+	# crush sad
 	if dialog.dialog_index == 17:
-		crush_sprite_2d.texture = BAE_SPRITE_SCARED
+		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
-	# crush flirty
+	# moth laugh
 	if dialog.dialog_index == 18:
-		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
-
-	# moth neutral
-	if dialog.dialog_index == 19:
-		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
+		moth_sprite_2d.texture = MM_SPRITE_LAUGH
 
 	# cultist angry
 	# cultist appears
-	if dialog.dialog_index == 21:
+	if dialog.dialog_index == 20:
 		goon_sprite_2d.texture = GRUNT_SPRITE_ANGRY
 		animation_player.play("goon_on")
 
 	# crush angry
-	if dialog.dialog_index == 22:
+	if dialog.dialog_index == 21:
 		crush_sprite_2d.texture = BAE_SPRITE_ANGRY
 
 	# moth angry
-	if dialog.dialog_index == 23:
+	if dialog.dialog_index == 22:
 		moth_sprite_2d.texture = MM_SPRITE_ANGRY
 
 	# cultist laugh
-	if dialog.dialog_index == 24:
+	if dialog.dialog_index == 23:
 		goon_sprite_2d.texture = GRUNT_SPRITE_EVILLAUGH
 
 	# cultist neutral
-	if dialog.dialog_index == 25:
+	if dialog.dialog_index == 24:
 		goon_sprite_2d.texture = GRUNT_SPRITE_NEUTRAL
 
-	# crush angry
-	if dialog.dialog_index == 26:
-		crush_sprite_2d.texture = BAE_SPRITE_SCARED
+	# cultist angry
+	if dialog.dialog_index == 27:
+		goon_sprite_2d.texture = GRUNT_SPRITE_ANGRY
 
-	# cultist beaten
+	# moth neutral
+	if dialog.dialog_index == 27:
+		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
+
+	# moth flustered
+	# cultist disappears
 	if dialog.dialog_index == 31:
-		goon_sprite_2d.texture = GRUNT_SPRITE_BEATENUP
-
-	# crush sad
-	# goon disappears
-	if dialog.dialog_index == 32:
-		crush_sprite_2d.texture = BAE_SPRITE_SADGE
+		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
 		animation_player.play("goon_off")
 
-	# moth sad
-	if dialog.dialog_index == 33:
-		moth_sprite_2d.texture = MM_SPRITE_SADGE
+	# crush sad
+	if dialog.dialog_index == 32:
+		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# crush neutral
 	if dialog.dialog_index == 34:
 		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
-	# moth flustered
+	# moth neutral
 	if dialog.dialog_index == 35:
-		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
+		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
 
-	# crush flirty
+	# crush sad
+	if dialog.dialog_index == 36:
+		crush_sprite_2d.texture = BAE_SPRITE_SADGE
+
+	# moth sad
 	if dialog.dialog_index == 37:
-		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
-
-	# moth laugh
-	if dialog.dialog_index == 38:
-		moth_sprite_2d.texture = MM_SPRITE_LAUGH
+		moth_sprite_2d.texture = MM_SPRITE_SADGE
 
 	# crush neutral
-	if dialog.dialog_index == 39:
-		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
-
-	# crush flirty
 	if dialog.dialog_index == 40:
-		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
-
-	# moth flustered
-	if dialog.dialog_index == 42:
-		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
-
-	# crush neutral
-	if dialog.dialog_index == 43:
 		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth laugh
@@ -194,5 +178,5 @@ func _on_dialog_changed() -> void:
 
 	# change to game
 	if dialog.dialog_index == 45:
-		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_better", 1)
+		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_good", 1)
 		GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")

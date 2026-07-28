@@ -124,7 +124,7 @@ func win() -> void:
 	if souvenirs >= 10:
 		GameUi.ui_transitions.change_scene("res://game/dating/good_ending.tscn")
 	else:
-		GameUi.ui_transitions.change_scene("res://game/dating/mid_ending.tscn")
+		GameUi.ui_transitions.change_scene("res://game/dating/normal_ending.tscn")
 
 
 func lose() -> void:

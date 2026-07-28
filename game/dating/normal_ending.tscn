@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://b0r88l7ec126k"]
+[gd_scene format=3 uid="uid://c7jvav8p2264"]
 
-[ext_resource type="Script" uid="uid://7e76jtprpjqo" path="res://game/dating/good_ending.gd" id="1_y1cvs"]
-[ext_resource type="Texture2D" uid="uid://db5i3bxc5nfsc" path="res://assets/textures/ui/pexels-artbovich-7174391.jpg" id="2_bedpc"]
-[ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="3_bedpc"]
-[ext_resource type="Texture2D" uid="uid://5gmchrmlyxhj" path="res://assets/textures/ui/GRUNT_SPRITE_NEUTRAL.png" id="3_uqtq1"]
-[ext_resource type="Texture2D" uid="uid://bvigysf356rdi" path="res://assets/textures/ui/MM_SPRITE_NEUTRAL.png" id="3_y1cvs"]
-[ext_resource type="Texture2D" uid="uid://dsrqpkltvwpnc" path="res://assets/textures/ui/BAE_SPRITE_NEUTRAL.png" id="4_bedpc"]
+[ext_resource type="Script" uid="uid://ggvangov14ha" path="res://game/dating/normal_ending.gd" id="1_g6jfu"]
+[ext_resource type="Texture2D" uid="uid://db5i3bxc5nfsc" path="res://assets/textures/ui/pexels-artbovich-7174391.jpg" id="2_ylxjd"]
+[ext_resource type="Texture2D" uid="uid://5gmchrmlyxhj" path="res://assets/textures/ui/GRUNT_SPRITE_NEUTRAL.png" id="3_mwbhb"]
+[ext_resource type="Texture2D" uid="uid://bvigysf356rdi" path="res://assets/textures/ui/MM_SPRITE_NEUTRAL.png" id="4_esrx3"]
+[ext_resource type="Texture2D" uid="uid://dsrqpkltvwpnc" path="res://assets/textures/ui/BAE_SPRITE_NEUTRAL.png" id="5_mpwqt"]
+[ext_resource type="PackedScene" uid="uid://xpblm7xhbfof" path="res://game/dating/dialog.tscn" id="6_827x6"]
 
 [sub_resource type="Animation" id="Animation_pil35"]
 length = 0.001
@@ -189,9 +189,9 @@ _data = {
 &"moth_on": SubResource("Animation_ywqbk")
 }
 
-[node name="GoodEnding" type="Node2D" unique_id=346985930]
+[node name="NormalEnding" type="Node2D" unique_id=346985930]
 texture_filter = 2
-script = ExtResource("1_y1cvs")
+script = ExtResource("1_g6jfu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1695284227]
 layer = -1
@@ -202,7 +202,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bedpc")
+texture = ExtResource("2_ylxjd")
 expand_mode = 1
 stretch_mode = 6
 
@@ -219,26 +219,26 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoonSprite2D" type="Sprite2D" parent="." unique_id=1188640592]
+[node name="GoonSprite2D" type="Sprite2D" parent="." unique_id=246652358]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(640, 270)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_uqtq1")
+texture = ExtResource("3_mwbhb")
 flip_h = true
 
 [node name="MothSprite2D" type="Sprite2D" parent="." unique_id=957740780]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 270)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_y1cvs")
+texture = ExtResource("4_esrx3")
 
 [node name="CrushSprite2D" type="Sprite2D" parent="." unique_id=1721743697]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 270)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_bedpc")
+texture = ExtResource("5_mpwqt")
 
-[node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("3_bedpc")]
+[node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("6_827x6")]
 position = Vector2(640, 700)
 hide_on_finish = false
 input_dialog = true
@@ -246,44 +246,44 @@ dialog_list = Array[String](["[b][font_size=32][color=#CD7F32]Ollie[/color][/fon
 [font_size=28][wait=0.5]Okay, the risotto is almost done. It just needs ten more seconds in the oven.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][wait=0.5]10… 9… 8… 7… 6… 5…[/wait][/font_size]", "[b][font_size=32][shake][wait=1](CRASH!)[/wait][/shake][/font_size][/b]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]Ollie! I’m here, I’m… (wheezes) …I’m here.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Ah, Mighty Moth! Right on time! I knew those bad guys wouldn’t be any trouble for you.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]The cult almost brought about the end of the universe! If I hadn’t…[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]Ah, Mighty Moth! You were almost late! I thought those bad guys would be easier for you.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]They almost brought about the end of the universe! If I hadn’t…[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5](Sniffs) Oh damn, that smells great.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][wait=0.5](Giggles) Your surprise insults me![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][wait=0.5]Now, go wash your taste receptors so we can eat.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]B-before that![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Ollie, I… I’ve been meaning to give you this.[/wait][/font_size]", "[b][font_size=32][wait=1]Mighty Moth hands Ollie all the recovered gifts.[/wait][/font_size][/b]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Oooh, what are these?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]Ollie, I… I’ve been meaning to give you this.[/wait][/font_size]", "[b][font_size=32][wait=1]Mighty Moth hands Ollie all the gifts she managed to recover.[/wait][/font_size][/b]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]Huh! What are these?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]They’re little souvenirs from my adventures across the galaxy. Every time I saw something pretty, it reminded me of you… So I kept it.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]The first one was supposed to be your birthday gift… two years ago. But I never could gather enough courage to give it to you. So I kept collecting more and more until…[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][wait=0.5]Until they accumulated enough cosmic energy to end the universe, huh? Is that why those guys wanted them so much?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]You hate it! I knew it![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Oh, no, no, no![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]They’re beautiful, Mighty Moth. I simply had no idea you thought of me that way.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Ever since I saved you the first time. You had such a cute scream of terror. And the way you look like you’re about to shoot deadly lasers through your huge, menacing eyes…[/wait][/font_size]", "[b][font_size=32][shake][wait=1](CRASH!)[/wait][/shake][/font_size][/b]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
+[font_size=28][wait=0.5]I don’t! It’s just… my apartment is so crowded already, plus there’s the cosmic radiation. What if the bad guys try to steal them back?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]Don’t worry! They’re definitely done for![/wait][/font_size]", "[b][font_size=32][shake][wait=1](CRASH!)[/wait][/shake][/font_size][/b]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
 [font_size=28][wait=0.5]Mighty Moth! It’s not over yet![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]What the hell?! My window![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]Not you guys again![/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
-[font_size=28][wait=0.5]Mweheheh! The heat death of the universe is unavoidable! We just need to give it a little pu…[/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
-[font_size=28][wait=0.5](Sniffs) Oh damn, that smells great.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Thanks.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]I am UP TO MY ANTENNAE with you guys! I finally have a chance to confess my feelings and eat her delicious food with the owl of my dreams and you are NOT going to ruin this for me!![/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
-[font_size=28][wait=0.5]Could I at least take a plate for the trip?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]You can take some of THIS![/wait][/font_size]", "[b][font_size=32][wait=1][shake]PUNCH! CRACK! VOOSH![/shake] And the cultist flies out of the cracked hole that once had been a window.[/wait][/font_size][/b]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
-[font_size=28][wait=0.5]Nooooooo[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]S-sorry about the hole in your wall. I’ll fix it right away![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Do you really like me that much?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]You were saying?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]You never give up, do you?[/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
+[font_size=28][wait=0.5]Mweheheh! Now that we’ve tasted the power of your cosmic relics, the relentless heat death of the universe is inevitable![/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
+[font_size=28][wait=0.5]Hand over the rest of them, or we’ll turn the owl into roast chicken![/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5](Gasps) You can’t…[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]You DARE barge into MY home, insult me to my beak, and bring up CHICKEN while there’s risotto right THERE![/wait][/font_size]", "[b][font_size=32][color=#D22B2B]Cultist[/color][/font_size][/b]
+[font_size=28][wait=0.5]Shut up, bird, intergalactic super-beings are talking.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]Oh, you really shouldn’t have said…[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]Let’s see how well you talk without your intergalactic HEAD![/wait][/font_size]", "[b][font_size=32][wait=1][shake]SLASH! CRUNCH! SPLAT![/shake] Ollie hurls the cultist back out through the hole in the wall.[/wait][/font_size][/b]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]Damn, that stain is going to be a pain to clean.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]Please marry me![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]What?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]What?![/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5](Sighs) Look, Mighty Moth… Do you really like me that much?[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]…[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5]…Yeah.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]You should’ve told me, you dummy. And the gifts are really cute.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]You’re not mad?[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Mighty Moth, I don’t just invite anyone over to eat my risotto. Only people I can trust to show up right on time. Like you always do.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
-[font_size=28][wait=0.5]Besides… I’ve always loved your cute yoga pants.[/wait][/font_size]", "[b][font_size=32][wait=1]Ollie leans down to give Mighty Moth a peck on the cheek. The superhero turns red like a star about to burst into a supernova.[/wait][/font_size][/b]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
-[font_size=28][wait=0.5]I… oh, gosh…[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]I like you too, but with my new promotion, I’m going to be way too busy for a relationship right now.[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
+[font_size=28][wait=0.5]I still appreciate you getting here on time, though. Like you always do.[/wait][/font_size]", "[b][font_size=32][wait=1]Ollie leans down to give Mighty Moth a little peck between her antennae. The superhero brightens up.[/wait][/font_size][/b]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
+[font_size=28][wait=0.5]...[/wait][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][wait=0.5]Now shut up and eat. The universe isn’t freezing tonight, and neither is my risotto.[/wait][/font_size]", "[b][font_size=32][color=#FF00FF]Mighty Moth[/color][/font_size][/b]
 [font_size=28][wait=0.5](Sighs happily) Yes, ma’am.[/wait][/font_size]", ""])
 dialog_width = 1240.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=77042420]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=609217716]
 libraries/ = SubResource("AnimationLibrary_a6pyc")

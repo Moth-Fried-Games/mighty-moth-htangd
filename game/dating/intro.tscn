@@ -150,6 +150,7 @@ texture = ExtResource("4_1tvt4")
 
 [node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
 position = Vector2(640, 700)
+hide_on_finish = false
 input_dialog = true
 dialog_list = Array[String](["[b][font_size=32][wait=1]Cecropolis. 6:00 PM.[/wait][/font_size][/b]", "[b][font_size=32][wait=1]Just another regular day...[/wait][/font_size][/b]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]
 [font_size=28][shake][wait=0.5]UGH!!![/wait][/shake][/font_size]", "[b][font_size=32][color=#CD7F32]Ollie[/color][/font_size][/b]

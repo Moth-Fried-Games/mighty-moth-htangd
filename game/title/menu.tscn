@@ -78,17 +78,6 @@ base_font = ExtResource("6_nogmj")
 font_size = 18
 font_color = Color(0.780392, 0.827451, 0.862745, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qfiv"]
-bg_color = Color(0.37254903, 0.105882354, 0.49019608, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lerck"]
 expand_margin_left = 75.0
 expand_margin_top = 50.0
@@ -359,7 +348,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_weauo")
 theme_override_colors/font_color = Color(0.92156863, 0.7019608, 0.4627451, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_6qfiv")
+theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer" unique_id=1752485961]
@@ -593,6 +582,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_weauo")
 theme_override_colors/font_color = Color(0.92156863, 0.7019608, 0.4627451, 1)
+theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer" unique_id=168381721]

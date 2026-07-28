@@ -36,7 +36,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ultimate"):
 		skip_time -= delta
-		if skip_time <= 0:
+		if not skipping and skip_time <= 0:
 			skipping = true
 			GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_title", 1)
 			GameUi.ui_transitions.change_scene("res://game/main/main_game_scene.tscn")
