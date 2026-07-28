@@ -68,14 +68,3 @@ func get_y_position(lane_id: LaneId) -> float:
 		LaneId.BOTTOM:
 			return bottom_lane.global_position.y
 	return INF
-
-
-func get_collision_mask(lane_id: LaneId) -> int:  # COLLISION MASKS PENDING REVISION
-	match lane_id:
-		LaneId.TOP:
-			return 1
-		LaneId.MIDDLE:
-			return 2
-		LaneId.BOTTOM:
-			return 3
-	return -1

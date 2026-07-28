@@ -1,8 +1,6 @@
 class_name RangedEnemy
 extends LaneEntity
 
-var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
-
 const PROJECTILE = preload("uid://ceg558w8g2nov")
 
 enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
@@ -22,7 +20,7 @@ func _ready() -> void:
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
-	match lane_id:
+	match current_lane:
 		Lanes.LaneId.TOP:
 			back_spawn_anchor = lane_binder.top_right_anchor
 		Lanes.LaneId.MIDDLE:
@@ -76,7 +74,7 @@ func _begin_despawn() -> void:
 	parryhitboxarea.queue_free()
 	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
-	spawner.despawn_obstacle(lane_id, get_instance_id())
+	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	var despawn_timer: Timer = Timer.new()
 	despawn_timer.wait_time = 4
@@ -85,7 +83,7 @@ func _begin_despawn() -> void:
 
 func _spawn_projectile():
 	var new_projectile: EnemyProjectile = PROJECTILE.instantiate()
-	new_projectile.lane_id = lane_id
+	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
 	owner.add_child(new_projectile)

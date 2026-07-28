@@ -55,7 +55,7 @@ func _spawn_obstacles_wave() -> void:
 		match obstacle_to_spawn:
 			ObstacleType.MELEE_ENEMY:
 				var new_enemy_spawn: MeleeEnemy = MELEE_ENEMY.instantiate() 
-				new_enemy_spawn.lane_id = lane_to_spawn_in
+				new_enemy_spawn.current_lane = lane_to_spawn_in
 				new_enemy_spawn.global_position = global_position
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_enemy_spawn)
@@ -66,7 +66,7 @@ func _spawn_obstacles_wave() -> void:
 				
 			ObstacleType.DEBRIS:
 				var new_debris_spawn: Debris = DEBRIS.instantiate()
-				new_debris_spawn.lane_id = lane_to_spawn_in
+				new_debris_spawn.current_lane = lane_to_spawn_in
 				new_debris_spawn.global_position = global_position
 				owner.add_child(new_debris_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_debris_spawn)
@@ -75,7 +75,7 @@ func _spawn_obstacles_wave() -> void:
 			ObstacleType.SOUVENIR:
 				var new_souv_spawn: Souvenir = SOUVENIR.instantiate()
 				## TODO randomly assign this souv a texture using the rng and a memory of previously spawned souvs
-				new_souv_spawn.lane_id = lane_to_spawn_in
+				new_souv_spawn.current_lane = lane_to_spawn_in
 				new_souv_spawn.global_position = global_position
 				owner.add_child(new_souv_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_souv_spawn)

@@ -1,9 +1,6 @@
 class_name MeleeEnemy
 extends LaneEntity
 
-var lane_id: Lanes.LaneId = Lanes.LaneId.MIDDLE
-
-
 
 enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
 
@@ -24,7 +21,7 @@ func _ready() -> void:
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
-	match lane_id:
+	match current_lane:
 		Lanes.LaneId.TOP:
 			back_spawn_anchor = lane_binder.top_right_anchor
 		Lanes.LaneId.MIDDLE:
@@ -89,7 +86,7 @@ func _begin_despawn() -> void:
 	parryhitboxarea.queue_free()
 	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
-	spawner.despawn_obstacle(lane_id, get_instance_id())
+	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	var despawn_timer: Timer = Timer.new()
 	despawn_timer.wait_time = 4

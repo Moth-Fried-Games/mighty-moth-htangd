@@ -14,9 +14,8 @@ var cutscene: bool = false
 func _ready() -> void:
 	GameGlobals.game_dictionary["node"]["player"] = self
 
-	var midle_lane: int = int(float(lanes_quantity) / 2)
-
-	current_lane = midle_lane
+	#var midle_lane: int = int(float(lanes_quantity) / 2)
+	current_lane = Lanes.LaneId.MIDDLE
 
 	global_position.x = middle_left_anchor.global_position.x + horizontal_offset_from_anchor
 

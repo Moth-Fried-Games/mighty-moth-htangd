@@ -14,6 +14,11 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	timer.timeout.connect(_stop_deflect)
+	
+func _is_in_same_lane(colliding_area: Area2D) -> bool:
+	if colliding_area.owner is LaneEntity:
+		return colliding_area.owner.current_lane == owner.current_lane
+	return false
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ParryHitBoxArea")  and is_deflecting:
@@ -38,7 +43,7 @@ func _stop_deflect() -> void:
 	for object in hurtful_objects_colliding:
 		if is_instance_valid(object):
 			object.owner._on_touching_player()
-		hurtful_objects_colliding.erase(object)
+			hurtful_objects_colliding.erase(object)
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("collect"):     
@@ -47,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 		for object in collectable_objects_colliding:
 			if is_instance_valid(object):
 				object.owner._on_collected()
-			collectable_objects_colliding.erase(object) # ERROR Attempted to erase an invalid (previously freed?) object instance into a TypedArray
+				collectable_objects_colliding.erase(object) # ERROR Attempted to erase an invalid (previously freed?) object instance into a TypedArray
 	if Input.is_action_just_pressed("deflect"):        
 		is_deflecting = true
 		timer.start()
