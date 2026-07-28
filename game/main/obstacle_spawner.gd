@@ -2,6 +2,7 @@ class_name ObstacleSpawner
 extends Node2D
 
 const MELEE_ENEMY = preload("uid://bl702ass4bwy5")
+const RANGED_ENEMY = preload("uid://ckkl1fo8xyo7d")
 const SOUVENIR = preload("uid://pwnwhyevxnmt")
 const DEBRIS = preload("uid://ceg558w8g2nov")
 
@@ -62,7 +63,12 @@ func _spawn_obstacles_wave() -> void:
 				print("Spawned a melee enemy!")
 				
 			ObstacleType.RANGED_ENEMY:
-				pass # TODO create scene for this obstacle type and actually implement it
+				var new_enemy_spawn: RangedEnemy = RANGED_ENEMY.instantiate() 
+				new_enemy_spawn.current_lane = lane_to_spawn_in
+				new_enemy_spawn.global_position = global_position
+				owner.add_child(new_enemy_spawn)
+				current_obstacle_map.get(lane_to_spawn_in).append(new_enemy_spawn)
+				print("Spawned a ranged enemy!")
 				
 			ObstacleType.DEBRIS:
 				var new_debris_spawn: Debris = DEBRIS.instantiate()
@@ -100,10 +106,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 		return ObstacleType.SOUVENIR
 		
 	var weighted_choice_array: Array = [
-		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, 
-		#ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
-		ObstacleType.DEBRIS, ObstacleType.DEBRIS,
-		ObstacleType.SOUVENIR,
+		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
+		ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
+		#ObstacleType.DEBRIS, ObstacleType.DEBRIS, ObstacleType.DEBRIS,
+		#ObstacleType.SOUVENIR,
 	]
 	
 	if souvenirs_spawned == souvenirs_total_spawnable:
@@ -140,6 +146,8 @@ func _match_enum_by_class(spawn_type: ObstacleType, single_obs: Node) -> bool:
 	match spawn_type:
 		ObstacleType.MELEE_ENEMY:
 			return single_obs is MeleeEnemy
+		ObstacleType.RANGED_ENEMY:
+			return single_obs is RangedEnemy
 		ObstacleType.DEBRIS:
 			return single_obs is Debris
 		ObstacleType.SOUVENIR:

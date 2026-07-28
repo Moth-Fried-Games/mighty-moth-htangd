@@ -40,6 +40,9 @@ func  _change_lane(dir : direction) -> void:
 	if cant_move_condition:
 		return
 	
-	current_lane += dir as Lanes.LaneId
+	var dir_int: int = dir
+	var shifted_lane_int: int = current_lane as int
+	shifted_lane_int += dir_int
+	current_lane = shifted_lane_int as Lanes.LaneId
 	
 	_set_lane(current_lane)
