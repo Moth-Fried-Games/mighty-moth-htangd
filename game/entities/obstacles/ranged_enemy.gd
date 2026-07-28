@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
-	_spawn_projectile
+	_spawn_projectile()
 	return
 
 
@@ -81,7 +81,7 @@ func _begin_despawn() -> void:
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: free())
 
-func _spawn_projectile():
+func _spawn_projectile() -> void:
 	var new_projectile: EnemyProjectile = PROJECTILE.instantiate()
 	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position

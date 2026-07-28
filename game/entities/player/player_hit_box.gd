@@ -13,11 +13,11 @@ func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	return false
 
 func _on_area_entered(area: Area2D) -> void:	
-	if area.is_in_group("MeleeHitBoxArea"):
+	if _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
 		punchble_objects_colliding.append(area)
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.is_in_group("MeleeHitBoxArea"):
+	if punchble_objects_colliding.has(area) and area.is_in_group("MeleeHitBoxArea"):
 		punchble_objects_colliding.erase(area)
 
 func _physics_process(_delta: float) -> void:

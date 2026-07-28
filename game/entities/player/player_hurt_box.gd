@@ -21,21 +21,22 @@ func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	return false
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("ParryHitBoxArea")  and is_deflecting:
-		player_sprite.play("deflect")
-		area.owner._on_deflected()
-	elif area.is_in_group("Collectable"):
-		collectable_objects_colliding.append(area)
-	elif area.is_in_group("HurtBoxArea"):
-		if !is_deflecting:
-			area.owner._on_touching_player()
-		else:
-			hurtful_objects_colliding.append(area)
+	if _is_in_same_lane(area):
+		if area.is_in_group("ParryHitBoxArea")  and is_deflecting:
+			player_sprite.play("deflect")
+			area.owner._on_deflected()
+		elif area.is_in_group("Collectable"):
+			collectable_objects_colliding.append(area)
+		elif area.is_in_group("HurtBoxArea"):
+			if !is_deflecting:
+				area.owner._on_touching_player()
+			else:
+				hurtful_objects_colliding.append(area)
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.has_method("collect"):
+	if area.has_method("collect") and collectable_objects_colliding.has(area):
 		collectable_objects_colliding.erase(area)
-	elif area is HurtBoxArea:
+	elif area is HurtBoxArea and hurtful_objects_colliding.has(area):
 		hurtful_objects_colliding.erase(area)
 
 func _stop_deflect() -> void:
