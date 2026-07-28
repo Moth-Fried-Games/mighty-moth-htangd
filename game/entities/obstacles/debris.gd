@@ -82,7 +82,9 @@ func _get_distance_display() -> float:
 	return roundf(warning_timer.time_left * 100.0)
 
 func _is_in_same_lane(colliding_area: Area2D) -> bool:
-	if colliding_area.owner is LaneEntity:
+	if colliding_area is RangedEnemy:
+		return colliding_area.current_lane == current_lane
+	elif colliding_area.owner is LaneEntity:
 		return colliding_area.owner.current_lane == current_lane
 	return false
 
@@ -113,7 +115,7 @@ func _on_deflected() -> void:
 
 func _on_deflected_area_entered(area: Area2D) -> void:
 	## TODO add " or area.owner is RangedEnemy" in the parenthesis below when rangedenemy is okay
-	if (area.owner is MeleeEnemy) and _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
+	if (area is RangedEnemy or area.owner is MeleeEnemy) and _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
 		despawn_timer.stop()
 		area.owner._on_meteored()
 		_on_destroyed()
