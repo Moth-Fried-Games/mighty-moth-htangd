@@ -82,9 +82,6 @@ func _on_destroyed() -> void:
 	_begin_despawn()
 	## TODO defeat animation
 	return
-	
-	#main_game_scene.apply_time_bonus(2)
-	#super_meter_handler.on_successful_deflect()
 
 func _on_touching_player() -> void:
 	pass
@@ -99,7 +96,7 @@ func _on_walk_past_player() -> void:
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
 		if is_instance_valid(hurtboxarea):
-			hurtboxarea.queue_free() # BUG Cannot call method 'queue_free' on a previously freed instance.
+			hurtboxarea.queue_free()
 		if is_instance_valid(parryhitboxarea):
 			parryhitboxarea.queue_free()
 		if !is_deflected:

@@ -42,45 +42,22 @@ func _ready() -> void:
 func process() -> void:
 	return
 
-
-#func _on_punched() -> void:
-	#print("owie I am puncheded")
-	#main_game_scene.apply_time_bonus(1)
-	#super_meter_handler.on_successful_punch()
-	#_on_defeated()
-	### TODO animate
-	
-func _on_meteored() -> void: ## BUG NOTE
-	## The RangedEnemy currently has the WRONG collision layer and mask! But if I set it to the correct one, it begins firing infinite rockets??? What's causing that and why?
-	print("ouch I hate rocks")
+func _on_meteored() -> void:
 	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()
 	
 func _on_missle_countered() -> void:
-	print("NOOOOO I'M GETTING EXPLODED")
+	main_game_scene.apply_time_bonus(2)
+	super_meter_handler.on_successful_deflect()
 	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()
-	
-#func _on_deflected() -> void:
-	#print("oh wow I am deflecteded")
-	#main_game_scene.apply_time_bonus(2)
-	#super_meter_handler.on_successful_deflect()
-	#_on_defeated()
-	### TODO animate
 
 func _on_defeated() -> void:
-	print("and thus I am deadddd")
 	if is_instance_valid(ranged_enemy_sprite):
 		ranged_enemy_sprite.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
 	pass
-	
-#func _on_touching_player() -> void:
-	#super_meter_handler.on_combo_break()
-	#_begin_despawn()
-	### TODO animate and annoy mightymoth a little
-	#pass
 
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
@@ -89,10 +66,6 @@ func _on_walk_past_player() -> void:
 
 func _begin_despawn() -> void:
 	$"CollisionShape2D".queue_free()
-	
-	#hurtboxarea.queue_free()
-	#meleehitboxarea.queue_free()
-	#parryhitboxarea.queue_free()
 	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())
@@ -108,5 +81,3 @@ func _spawn_projectile() -> void:
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
 	call_deferred("add_child", new_projectile)
-	#add_child(new_projectile) ## Cannot call method 'add_child' on a null value.
-	# _spawn_projectile(): Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.

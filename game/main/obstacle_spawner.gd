@@ -92,7 +92,6 @@ func _spawn_obstacles_wave() -> void:
 				var souv_texture_index: int = pattern_randomizer.randi() % 5
 				new_souv_spawn.assignedSprite = SOUVENIR_RANDOM_TEXTURES[souv_texture_index]
 				
-				## TODO randomly assign this souv a texture using the rng and a memory of previously spawned souvs
 				new_souv_spawn.current_lane = lane_to_spawn_in
 				new_souv_spawn.global_position = global_position
 				owner.add_child(new_souv_spawn)
@@ -108,10 +107,7 @@ func _spawn_obstacles_wave() -> void:
 	
 # Algorithm to decide which obstacle type should spawn next
 func _decide_obstacles_to_spawn() -> ObstacleType:
-	## TODO; currently automatically returning MELEE_ENEMY for simple testing purposes. Need to algorithmically decide between different types
-	## Needs include...
-	### Guarantee a Souvenir spawn every X seconds or so
-	### Spawn a diverse range of melee enemies, ranged enemies, and debris
+	## TODO
 	### Avoid spawning obs at a timing that would guarantee a combo break
 	
 	if ((main_game_scene.finale_timer_start - main_game_scene.finale_timer.time_left) / souv_guaranteed_spawn_time) > souvenirs_spawned:
