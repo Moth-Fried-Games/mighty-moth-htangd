@@ -118,10 +118,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 		return ObstacleType.SOUVENIR
 		
 	var weighted_choice_array: Array = [
-		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
+		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
 		ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
 		ObstacleType.DEBRIS, ObstacleType.DEBRIS, ObstacleType.DEBRIS,
-		#ObstacleType.SOUVENIR,
+		ObstacleType.SOUVENIR,
 	]
 	
 	if souvenirs_spawned == souvenirs_total_spawnable:
