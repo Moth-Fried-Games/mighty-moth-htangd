@@ -7,6 +7,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	
+# Confirming the colliding entity is in the same lane as the player
 func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	if colliding_area.owner is LaneEntity:
 		return colliding_area.owner.current_lane == owner.current_lane

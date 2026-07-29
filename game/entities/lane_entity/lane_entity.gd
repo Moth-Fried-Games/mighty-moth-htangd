@@ -12,8 +12,6 @@ enum direction {UP = -1, DOWN = 1}
 var current_lane: Lanes.LaneId = Lanes.LaneId.MIDDLE
 
 func _return_lane_positions() -> Array[Vector2]:
-	#var lane_positions : Array[Vector2]
-	
 	lane_positions = []
 	
 	lane_positions.resize(lanes_quantity)
@@ -27,10 +25,12 @@ func _return_lane_positions() -> Array[Vector2]:
 	
 	return lane_positions
 
+# Sets current lane and updates Y position accordingly.
 func _set_lane(lane: Lanes.LaneId) -> void:
 	current_lane = lane
 	global_position.y = lane_positions[current_lane + 1].y
 
+# Changes the entity's lane. Only the player can change lanes
 func  _change_lane(dir : direction) -> void:
 	var cant_move_condition: bool = (
 			(current_lane == Lanes.LaneId.TOP and dir == direction.UP) 

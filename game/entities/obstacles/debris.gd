@@ -113,6 +113,7 @@ func _on_deflected() -> void:
 	hurtboxarea.collision_mask = 6 ## Can now hit melee enemies and ranged enemies
 	hurtboxarea.area_entered.connect(_on_deflected_area_entered)
 
+# After this has been deflected, and is colliding with something, determine if it should destroy both this and the collliding entity
 func _on_deflected_area_entered(area: Area2D) -> void:
 	if _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
 		if area is RangedEnemy:
@@ -138,11 +139,13 @@ func _on_touching_player() -> void:
 	### TODO animate and annoy mightymoth a little
 	return
 
+# When this goes off the edge of the screen
 func _on_walk_past_player() -> void:
 	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	return
 
+# Finally, begin to despawn, free resources, and inform the obstacle spawner that this can spawn in the same lane again
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
 		hurtboxarea.queue_free()

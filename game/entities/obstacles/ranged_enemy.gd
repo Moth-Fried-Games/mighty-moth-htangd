@@ -10,9 +10,6 @@ const spawn_offset_from_anchor: float = 20
 const movement_per_second: float = 300
 const arrival_move_speed: float = 100
 
-#@onready var hurtboxarea: Area2D = $"HurtBoxArea"
-#@onready var meleehitboxarea: Area2D = $"MeleeHitBoxArea"
-#@onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
 @onready var ranged_enemy_sprite: RangeEnemySprite = $RangedEnemySprite
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene

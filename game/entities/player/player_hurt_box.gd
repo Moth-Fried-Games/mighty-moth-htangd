@@ -15,6 +15,7 @@ func _ready() -> void:
 	area_exited.connect(_on_area_exited)
 	timer.timeout.connect(_stop_deflect)
 	
+# Confirming the colliding entity is in the same lane as the player
 func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	if colliding_area.owner is LaneEntity:
 		return colliding_area.owner.current_lane == owner.current_lane
@@ -53,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 		for object in collectable_objects_colliding:
 			if is_instance_valid(object):
 				object.owner._on_collected()
-				collectable_objects_colliding.erase(object) # ERROR Attempted to erase an invalid (previously freed?) object instance into a TypedArray
+				collectable_objects_colliding.erase(object)
 	if Input.is_action_just_pressed("deflect"):        
 		is_deflecting = true
 		timer.start()

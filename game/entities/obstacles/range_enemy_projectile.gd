@@ -85,8 +85,6 @@ func _on_destroyed() -> void:
 
 func _on_touching_player() -> void:
 	pass
-	#super_meter_handler.on_combo_break()
-	#_begin_despawn()
 	## TODO animate and annoy mightymoth a little
 
 func _on_walk_past_player() -> void:
