@@ -111,11 +111,30 @@ func _on_deflected() -> void:
 	meleehitboxarea.collision_layer = 0
 	parryhitboxarea.collision_layer = 0
 	hurtboxarea.collision_mask = 2
+	#hurtboxarea.collision_mask = 6
+	#hurtboxarea.set_collision_mask_value(3, true)
 	hurtboxarea.area_entered.connect(_on_deflected_area_entered)
 
 func _on_deflected_area_entered(area: Area2D) -> void:
 	## TODO add " or area.owner is RangedEnemy" in the parenthesis below when rangedenemy is okay
+	print("I smell........ SOMETHING.......")
+	
+	if area is RangedEnemy: ## TODO why isn't this detecting the ranged enemy???
+		print("I smell a ranged enemy...")
+		
+	if _is_in_same_lane(area):
+		print("it's in MY lane...")
+	
+	if area.owner is Souvenir:
+		print("My bad, it's a souv")
+		
+	
+	if area.owner is EnemyProjectile:
+		print("My bad, it's a rocket")
+		
+		
 	if (area is RangedEnemy or area.owner is MeleeEnemy) and _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
+		print("Yep, you gotta GO nerd")
 		despawn_timer.stop()
 		area.owner._on_meteored()
 		_on_destroyed()

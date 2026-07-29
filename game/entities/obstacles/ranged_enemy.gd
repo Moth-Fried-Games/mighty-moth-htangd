@@ -106,5 +106,6 @@ func _spawn_projectile() -> void:
 	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
-	add_child(new_projectile) ## Cannot call method 'add_child' on a null value.
+	call_deferred("add_child", new_projectile)
+	#add_child(new_projectile) ## Cannot call method 'add_child' on a null value.
 	# _spawn_projectile(): Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.

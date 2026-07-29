@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(46, 83)
 
-[node name="RangedEnemy" type="Area2D" unique_id=1357089293]
+[node name="RangedEnemy" type="Area2D" unique_id=1357089293 groups=["MeleeHitBoxArea"]]
 script = ExtResource("1_3onsk")
 
 [node name="RangedEnemySprite" parent="." unique_id=2101253761 instance=ExtResource("2_e3yqd")]

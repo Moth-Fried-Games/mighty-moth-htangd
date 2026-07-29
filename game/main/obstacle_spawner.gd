@@ -6,6 +6,14 @@ const RANGED_ENEMY = preload("uid://ckkl1fo8xyo7d")
 const SOUVENIR = preload("uid://pwnwhyevxnmt")
 const DEBRIS = preload("uid://ceg558w8g2nov")
 
+const SOUVENIR_RANDOM_TEXTURES = [
+	preload("uid://bmdp5gh6nrqvg"),
+	preload("uid://dpjid314waj0n"),
+	preload("uid://w3idkocc38k"),
+	preload("uid://bl2104j32ygpw"),
+	preload("uid://by5q8td5b7jtf")
+]
+
 
 const starting_difficulty_value: int = 0
 const difficulty_increment_timer: float = 15
@@ -80,6 +88,10 @@ func _spawn_obstacles_wave() -> void:
 				
 			ObstacleType.SOUVENIR:
 				var new_souv_spawn: Souvenir = SOUVENIR.instantiate()
+				
+				var souv_texture_index: int = pattern_randomizer.randi() % 5
+				new_souv_spawn.assignedSprite = SOUVENIR_RANDOM_TEXTURES[souv_texture_index]
+				
 				## TODO randomly assign this souv a texture using the rng and a memory of previously spawned souvs
 				new_souv_spawn.current_lane = lane_to_spawn_in
 				new_souv_spawn.global_position = global_position
@@ -108,7 +120,7 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 	var weighted_choice_array: Array = [
 		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
 		ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
-		#ObstacleType.DEBRIS, ObstacleType.DEBRIS, ObstacleType.DEBRIS,
+		ObstacleType.DEBRIS, ObstacleType.DEBRIS, ObstacleType.DEBRIS,
 		#ObstacleType.SOUVENIR,
 	]
 	

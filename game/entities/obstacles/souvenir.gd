@@ -9,6 +9,8 @@ const movement_per_second: float = 150
 @onready var collecthitboxarea: Area2D = $"CollectHitBoxArea"
 @onready var sprite_2d: Sprite2D = $SouvenirSprite
 
+var assignedSprite: Resource
+
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
@@ -30,6 +32,9 @@ func _ready() -> void:
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
+	
+	if assignedSprite:
+		sprite_2d.texture = assignedSprite
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

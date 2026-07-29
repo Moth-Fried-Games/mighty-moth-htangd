@@ -70,14 +70,7 @@ func _on_deflected() -> void:
 	hurtboxarea.area_entered.connect(_on_deflected_area_entered)
 	
 func _on_deflected_area_entered(area: Area2D) -> void:
-	print("Huh, I think I hit...... something.....?")
-	if area == enemy_that_shoot:
-		print("it's my owner?")
-	if _is_in_same_lane(area):
-		print("it's in my lane?")
-	
 	if area == enemy_that_shoot and _is_in_same_lane(area):
-		print("Heyo, I think I'm about to hit the guy who shot me")
 		despawn_timer.stop()
 		area._on_missle_countered()
 		_on_destroyed()
