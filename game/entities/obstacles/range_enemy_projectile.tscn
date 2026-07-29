@@ -16,7 +16,7 @@ size = Vector2(77, 36)
 
 [node name="RangeEnemyProjectile" type="Area2D" unique_id=760863421]
 collision_layer = 32
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_n5p3x")
 
 [node name="RangeEnemyProjectileSprite" parent="." unique_id=1436960274 instance=ExtResource("2_n5p3x")]

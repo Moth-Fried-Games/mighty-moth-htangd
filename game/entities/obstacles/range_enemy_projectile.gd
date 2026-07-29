@@ -66,7 +66,7 @@ func _on_deflected() -> void:
 	
 	hurtboxarea.collision_layer = 0
 	parryhitboxarea.collision_layer = 0
-	hurtboxarea.collision_mask = 3
+	hurtboxarea.collision_mask = 4 ## Can now hit ranged enemies
 	hurtboxarea.area_entered.connect(_on_deflected_area_entered)
 	
 func _on_deflected_area_entered(area: Area2D) -> void:
@@ -87,8 +87,9 @@ func _on_destroyed() -> void:
 	#super_meter_handler.on_successful_deflect()
 
 func _on_touching_player() -> void:
-	super_meter_handler.on_combo_break()
-	_begin_despawn()
+	pass
+	#super_meter_handler.on_combo_break()
+	#_begin_despawn()
 	## TODO animate and annoy mightymoth a little
 
 func _on_walk_past_player() -> void:

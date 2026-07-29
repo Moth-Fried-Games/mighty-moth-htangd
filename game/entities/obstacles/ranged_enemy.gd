@@ -50,7 +50,8 @@ func process() -> void:
 	#_on_defeated()
 	### TODO animate
 	
-func _on_meteored() -> void:
+func _on_meteored() -> void: ## BUG NOTE
+	## The RangedEnemy currently has the WRONG collision layer and mask! But if I set it to the correct one, it begins firing infinite rockets??? What's causing that and why?
 	print("ouch I hate rocks")
 	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()
