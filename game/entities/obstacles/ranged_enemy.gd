@@ -18,6 +18,8 @@ var main_game_scene: MainGameScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -39,6 +41,21 @@ func _ready() -> void:
 
 
 func process() -> void:
+	return
+	
+func _on_window_size_changed() -> void:
+	var lane_binder: Lanes = get_tree().current_scene.lane_binders
+	var back_spawn_anchor: Marker2D = null
+	match current_lane:
+		Lanes.LaneId.TOP:
+			back_spawn_anchor = lane_binder.top_right_anchor
+		Lanes.LaneId.MIDDLE:
+			back_spawn_anchor = lane_binder.middle_right_anchor
+		Lanes.LaneId.BOTTOM:
+			back_spawn_anchor = lane_binder.bottom_right_anchor
+	
+	if global_position.x != (back_spawn_anchor.global_position.x - 50):
+		global_position.x = (back_spawn_anchor.global_position.x - 50)
 	return
 
 func _on_meteored() -> void:
@@ -76,7 +93,8 @@ func _begin_despawn() -> void:
 
 
 func _spawn_projectile() -> void:
-	ranged_enemy_sprite.play("shoot")
+	if is_instance_valid(ranged_enemy_sprite):
+		ranged_enemy_sprite.play("shoot")
 
 
 func _on_ranged_enemy_sprite_rocket_fired() -> void:

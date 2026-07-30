@@ -22,6 +22,8 @@ var main_game_scene: MainGameScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -46,6 +48,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position.x = global_position.x - (delta * movement_per_second)
 
+func _on_window_size_changed() -> void:
+	var viewport_length: float = get_viewport_rect().size.x
+	var sprite_width: float = 80.0
+	
+	if position.x > (viewport_length - sprite_width):
+		position.x = (viewport_length - sprite_width)
+	return
+
 
 func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	if colliding_area is RangedEnemy:
@@ -60,7 +70,7 @@ func _on_deflected() -> void:
 	enemy_projectile_sprite.flip_h = true
 	movement_per_second *= -3
 	
-	despawn_timer.wait_time = 10
+	despawn_timer.wait_time = 12
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
 	add_child(despawn_timer)

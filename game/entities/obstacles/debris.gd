@@ -126,7 +126,7 @@ func _on_deflected() -> void:
 	is_deflected = true
 	sprite_2d.flip_h = true
 	
-	despawn_timer.wait_time = 2.0
+	despawn_timer.wait_time = 12.0
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: _begin_despawn() )
 	add_child(despawn_timer)

@@ -111,10 +111,10 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 	## TODO DEBRIS TESTING
 	# An array used to randomly roll spawns, one entry per part chance
 	var weighted_choice_array: Array = [
-		#ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
-		#ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
+		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
+		ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
 		ObstacleType.DEBRIS, ObstacleType.DEBRIS, ObstacleType.DEBRIS,
-		#ObstacleType.SOUVENIR,
+		ObstacleType.SOUVENIR,
 	]
 	
 	# If we have spawned all souvenirs, remove the chance of them spawning

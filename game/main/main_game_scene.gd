@@ -16,11 +16,6 @@ var good_ending_threshold: int = 10
 
 var player: Player
 
-## CEDI'S TODO LIST
-#Fix responsiveness to changed screen sizes
-## Looking good for Meteors! But now that I've done that... how about I adjust it for other obstacles?
-## CEDI'S TODO LIST
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
