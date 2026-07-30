@@ -103,9 +103,12 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 	## TODO
 	### Avoid spawning obs at a timing that would guarantee a combo break
 	
-	if ((main_game_scene.finale_timer_start - main_game_scene.finale_timer.time_left) / souv_guaranteed_spawn_time) > souvenirs_spawned:
+	# Guarantee a souvenir spawn IF they are spawning below the rate to guarantee hitting cap before the end of the run.
+	# Will not run if we have already spawned all souvenirs.
+	if ((main_game_scene.finale_timer_start - main_game_scene.finale_timer.time_left) / souv_guaranteed_spawn_time) > souvenirs_spawned and souvenirs_spawned < souvenirs_total_spawnable:
 		return ObstacleType.SOUVENIR
-		
+	
+	# An array used to randomly roll spawns, one entry per part chance
 	var weighted_choice_array: Array = [
 		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,
 		ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY, ObstacleType.RANGED_ENEMY,
@@ -113,6 +116,7 @@ func _decide_obstacles_to_spawn() -> ObstacleType:
 		ObstacleType.SOUVENIR,
 	]
 	
+	# If we have spawned all souvenirs, remove the chance of them spawning
 	if souvenirs_spawned == souvenirs_total_spawnable:
 		weighted_choice_array.remove_at(weighted_choice_array.find(ObstacleType.SOUVENIR))
 	
