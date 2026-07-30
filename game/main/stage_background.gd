@@ -39,8 +39,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	if not GameGlobals.audio_manager.persistent_audio.has("music_game"):
 		GameGlobals.audio_manager.create_persistent_audio("music_game")
-	await get_tree().create_timer(1).timeout
-	win()
+	#await get_tree().create_timer(1).timeout
+	#win()
 	#lose()
 
 
