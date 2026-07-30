@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c3jet7k0yri33" path="res://game/entities/obstacles/hurt_box_area.gd" id="3_4u4qr"]
 [ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="4_wat4r"]
 [ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="5_8lbr2"]
+[ext_resource type="Texture2D" uid="uid://ba456gbm3h0sh" path="res://assets/textures/ui/mightymoth_ui_meteoralert.png" id="6_wat4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
 size = Vector2(125, 133)
@@ -51,17 +52,14 @@ shape = SubResource("RectangleShape2D_1dxyy")
 [node name="DebrisWarning" type="Node2D" parent="." unique_id=432866142]
 position = Vector2(-85, 1)
 
-[node name="WarningLabel" type="Label" parent="DebrisWarning" unique_id=2139851580]
-offset_left = -44.0
-offset_top = -27.0
-offset_right = 38.0
-offset_bottom = -4.0
-text = "WARNING!"
-horizontal_alignment = 1
-
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
-offset_left = -45.0
-offset_right = 37.0
-offset_bottom = 23.0
+offset_left = -67.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 7.0
 text = "X m"
-horizontal_alignment = 1
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DebrisWarning" unique_id=239104862]
+position = Vector2(31, -1)
+texture = ExtResource("6_wat4r")

@@ -17,7 +17,6 @@ var good_ending_threshold: int = 10
 var player: Player
 
 ## CEDI'S TODO LIST
-#Fix Meteors to use their warning sprite
 #Fix Meteors being visible in non-standard viewport sizes
 #Fix responsiveness to changed screen sizes
 ## CEDI'S TODO LIST
