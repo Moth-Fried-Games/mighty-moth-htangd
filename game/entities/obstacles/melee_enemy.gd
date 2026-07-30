@@ -67,13 +67,13 @@ func _on_defeated() -> void:
 		sprite_2d.queue_free()
 	_begin_despawn()
 	## TODO defeat animation
-	pass
+	return
 	
 func _on_touching_player() -> void:
-	super_meter_handler.on_combo_break()
+	get_tree().current_scene.player._on_hit_reaction()
 	_begin_despawn()
 	## TODO animate and annoy mightymoth a little
-	pass
+	return
 
 func _on_walk_past_player() -> void:
 	_begin_despawn()

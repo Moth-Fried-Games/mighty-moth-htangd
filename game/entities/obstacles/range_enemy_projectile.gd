@@ -86,7 +86,8 @@ func _on_destroyed() -> void:
 	return
 
 func _on_touching_player() -> void:
-	super_meter_handler.on_combo_break()
+	get_tree().current_scene.player._on_hit_reaction()
+	_begin_despawn()
 	return
 	## TODO animate and annoy mightymoth a little
 

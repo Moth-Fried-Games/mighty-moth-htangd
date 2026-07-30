@@ -14,6 +14,8 @@ const finale_timer_start: float = 180
 var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
+var player: Player
+
 ## CEDI'S TODO LIST
 #Add Explosions to Entities that die via punch/deflect/etc
 #Add Sparkle to Gifts when properly collected
@@ -23,7 +25,6 @@ var good_ending_threshold: int = 10
 #Fix Meteors to use their warning sprite
 #Fix Meteors being visible in non-standard viewport sizes
 #Fix Meteors to use their animated sprite
-#Have player flicker and sound effect when hit by a hostile
 ## CEDI'S TODO LIST
 
 
@@ -45,6 +46,8 @@ func _ready() -> void:
 
 	game_over_timer.start()
 	finale_timer.start()
+	
+	player = $"Player"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
