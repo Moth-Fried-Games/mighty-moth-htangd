@@ -2,6 +2,8 @@
 class_name MainUI
 extends CanvasLayer
 
+@onready var control: Control = $Control
+
 @onready var super_bar: TextureProgressBar = %SuperBar
 @onready var date_bar: TextureProgressBar = %DateBar
 @onready var time_needle: TextureRect = %TimeNeedle
@@ -158,3 +160,8 @@ func invert_screen() -> void:
 
 func _on_invert_complete() -> void:
 	game_over = true
+
+
+func hide_ui() -> void:
+	var ui_tween: Tween = create_tween()
+	ui_tween.tween_property(control, "modulate:a", 0, 1)

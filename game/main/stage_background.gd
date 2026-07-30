@@ -39,9 +39,9 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	if not GameGlobals.audio_manager.persistent_audio.has("music_game"):
 		GameGlobals.audio_manager.create_persistent_audio("music_game")
-	#await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1).timeout
 	#win()
-	#lose()
+	lose()
 
 
 func _process(delta: float) -> void:
@@ -107,6 +107,10 @@ func _on_win_tween_finished() -> void:
 	var player: Player = null
 	if GameGlobals.game_dictionary["node"].has("player"):
 		player = GameGlobals.game_dictionary["node"]["player"]
+	var main_ui: MainUI = null
+	if GameGlobals.game_dictionary["node"].has("main_ui"):
+		main_ui = GameGlobals.game_dictionary["node"]["main_ui"]
+		main_ui.hide_ui()
 	if is_instance_valid(player):
 		player.cutscene = true
 		var player_tween: Tween = create_tween().set_parallel()
@@ -157,6 +161,10 @@ func lose() -> void:
 
 
 func _on_lose_tween_finished() -> void:
+	var main_ui: MainUI = null
+	if GameGlobals.game_dictionary["node"].has("main_ui"):
+		main_ui = GameGlobals.game_dictionary["node"]["main_ui"]
+		main_ui.hide_ui()
 	await get_tree().create_timer(1).timeout
 	space_station_lose.play()
 
