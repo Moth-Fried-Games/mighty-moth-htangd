@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 func apply_time_bonus(time_bonus: float) -> void:
 	var currenttime: float = game_over_timer.get_time_left()
 	
-	var newtime = (currenttime + (time_bonus * 3)) ## TEST the *3 multiplier is an arbitrary test, rebalance for real release
+	var newtime: float = (currenttime + (time_bonus * 3)) ## TEST the *3 multiplier is an arbitrary test, rebalance for real release
 	if newtime > game_over_timer_start: # Capping the timer to never go over the starting time limit
 		newtime = game_over_timer_start
 	
