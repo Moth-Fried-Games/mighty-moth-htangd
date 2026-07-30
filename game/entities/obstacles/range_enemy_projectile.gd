@@ -63,6 +63,8 @@ func _on_deflected() -> void:
 	despawn_timer.wait_time = 10
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
+	add_child(despawn_timer)
+	despawn_timer.start()
 	
 	hurtboxarea.collision_layer = 0
 	parryhitboxarea.collision_layer = 0

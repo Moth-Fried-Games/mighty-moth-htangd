@@ -103,9 +103,11 @@ func _on_deflected() -> void:
 	is_deflected = true
 	sprite_2d.flip_h = true
 	
-	despawn_timer.wait_time = 3
+	despawn_timer.wait_time = 2.0
 	despawn_timer.one_shot = true
-	despawn_timer.timeout.connect(func() -> void: _begin_despawn())
+	despawn_timer.timeout.connect(func() -> void: _begin_despawn() )
+	add_child(despawn_timer)
+	despawn_timer.start()
 	
 	hurtboxarea.collision_layer = 0
 	meleehitboxarea.collision_layer = 0

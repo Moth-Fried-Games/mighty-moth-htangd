@@ -68,7 +68,6 @@ func _spawn_obstacles_wave() -> void:
 				new_enemy_spawn.global_position = global_position
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_enemy_spawn)
-				print("Spawned a melee enemy!")
 				
 			ObstacleType.RANGED_ENEMY:
 				var new_enemy_spawn: RangedEnemy = RANGED_ENEMY.instantiate() 
@@ -76,7 +75,6 @@ func _spawn_obstacles_wave() -> void:
 				new_enemy_spawn.global_position = global_position
 				owner.add_child(new_enemy_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_enemy_spawn)
-				print("Spawned a ranged enemy!")
 				
 			ObstacleType.DEBRIS:
 				var new_debris_spawn: Debris = DEBRIS.instantiate()
@@ -84,7 +82,6 @@ func _spawn_obstacles_wave() -> void:
 				new_debris_spawn.global_position = global_position
 				owner.add_child(new_debris_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_debris_spawn)
-				print("Spawned debris!")
 				
 			ObstacleType.SOUVENIR:
 				var new_souv_spawn: Souvenir = SOUVENIR.instantiate()
@@ -97,10 +94,6 @@ func _spawn_obstacles_wave() -> void:
 				owner.add_child(new_souv_spawn)
 				current_obstacle_map.get(lane_to_spawn_in).append(new_souv_spawn)
 				souvenirs_spawned += 1
-				print("Spawned a souv!! GET IT NERD")
-	else:
-		print("... but there's no valid spawns available!!!")
-	
 	
 	spawn_timer.start()
 	return
