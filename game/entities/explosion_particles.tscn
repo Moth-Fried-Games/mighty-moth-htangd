@@ -45,5 +45,6 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ykh0f")
 script = ExtResource("1_56fil")

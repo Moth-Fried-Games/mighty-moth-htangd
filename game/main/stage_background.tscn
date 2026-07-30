@@ -347,7 +347,7 @@ texture = ExtResource("2_5ub6l")
 centered = false
 
 [node name="Parallax2" type="Parallax2D" parent="." unique_id=1003403447]
-scroll_offset = Vector2(-741.5203, 0)
+scroll_offset = Vector2(-651.2702, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -357,7 +357,7 @@ texture = ExtResource("3_hy2k2")
 centered = false
 
 [node name="Parallax4" type="Parallax2D" parent="." unique_id=1409639157]
-scroll_offset = Vector2(841.86383, 0)
+scroll_offset = Vector2(1022.3715, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -367,7 +367,7 @@ texture = ExtResource("5_ti4sd")
 centered = false
 
 [node name="Parallax3" type="Parallax2D" parent="." unique_id=1324184026]
-scroll_offset = Vector2(-252.7155, 0)
+scroll_offset = Vector2(18.037344, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -377,22 +377,22 @@ texture = ExtResource("4_ulva1")
 centered = false
 
 [node name="Planet1" type="Sprite2D" parent="." unique_id=4307794]
-position = Vector2(1607.0128, 625)
+position = Vector2(1222.3578, 625)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7lp44")
 
 [node name="Planet2" type="Sprite2D" parent="." unique_id=1984123476]
-position = Vector2(-228.09158, 88)
+position = Vector2(-228.04756, 88)
 scale = Vector2(2, 2)
 texture = ExtResource("7_pv6ml")
 
 [node name="Planet3" type="Sprite2D" parent="." unique_id=720359318]
-position = Vector2(-82.1107, 140)
+position = Vector2(-82.17661, 140)
 scale = Vector2(2, 2)
 texture = ExtResource("8_6ns2i")
 
 [node name="Planet4" type="Sprite2D" parent="." unique_id=252639186]
-position = Vector2(-170.36238, 540)
+position = Vector2(-170.3936, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_m57kj")
 
