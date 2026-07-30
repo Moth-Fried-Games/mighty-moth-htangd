@@ -43,7 +43,7 @@ func on_successful_collect() -> void:
 # Maths how much meter the player gets, accounting for their combo multiplier
 func calculate_meter_gain_value(base_gain_value: float) -> float:
 	var combo_bonus: float = (1.00 + 0.01 * combo_multiplier)/1
-	return base_gain_value * combo_bonus
+	return base_gain_value * (combo_bonus * 20) ## TEST buffing combo gain value for testing purposes only
 	
 # Increases combo counter and, if applicable, combo multiplier
 func increment_combo(increment_value: int) -> void:
