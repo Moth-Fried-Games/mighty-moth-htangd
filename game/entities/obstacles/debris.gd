@@ -143,7 +143,6 @@ func _on_touching_player() -> void:
 
 # When this goes off the edge of the screen
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	return
 

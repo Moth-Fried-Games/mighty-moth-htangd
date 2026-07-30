@@ -14,6 +14,18 @@ const finale_timer_start: float = 180
 var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
+## CEDI'S TODO LIST
+#Add Explosions to Entities that die via punch/deflect/etc
+#Add Sparkle to Gifts when properly collected
+#Make Ranged Enemies play their shooting animation
+#Make Range Enemy Projectiles spawn on the rocket_fired signal for Range Enemy's sprite
+#Make Ranged Enemy go back to Idle after their shooting animation is over
+#Fix Meteors to use their warning sprite
+#Fix Meteors being visible in non-standard viewport sizes
+#Fix Meteors to use their animated sprite
+#Have player flicker and sound effect when hit by a hostile
+## CEDI'S TODO LIST
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

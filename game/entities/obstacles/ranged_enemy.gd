@@ -57,7 +57,6 @@ func _on_defeated() -> void:
 	pass
 
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	pass
 

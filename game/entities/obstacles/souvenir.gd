@@ -54,7 +54,6 @@ func _on_punched() -> void:
 	
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
 	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
@@ -71,7 +70,6 @@ func _on_collected() -> void:
 	_begin_despawn()
 
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	pass
 
