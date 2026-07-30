@@ -32,7 +32,8 @@ var game_dictionary: Dictionary = {
 	"flag": {},
 	"stat": {},
 	"node": {},
-	"resource": {},
+	"resource":
+	{"explosion": preload("uid://dfqffce3j7sd4"), "sparkle": preload("uid://b07opuye2di21")},
 }
 
 

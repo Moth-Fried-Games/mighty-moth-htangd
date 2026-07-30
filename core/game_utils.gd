@@ -39,3 +39,23 @@ static func get_all_files(path: String, file_ext := "", files: Array[String] = [
 	else:
 		print("[get_all_files()] An error occurred when trying to access %s." % path)
 	return files
+
+
+static func spawn_explosion(
+	parent: Node2D, position: Vector2, scale: Vector2 = Vector2.ONE
+) -> void:
+	var explosion_instance: GPUParticles2D = (
+		GameGlobals.game_dictionary["resource"]["explosion"].instantiate()
+	)
+	explosion_instance.global_position = position
+	explosion_instance.scale = scale
+	parent.add_child(explosion_instance)
+
+
+static func spawn_sparkle(parent: Node2D, position: Vector2, scale: Vector2 = Vector2.ONE) -> void:
+	var explosion_instance: GPUParticles2D = (
+		GameGlobals.game_dictionary["resource"]["sparkle"].instantiate()
+	)
+	explosion_instance.global_position = position
+	explosion_instance.scale = scale
+	parent.add_child(explosion_instance)

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b07opuye2di21"]
+
+[ext_resource type="Script" uid="uid://d3gvv6tu6ytv3" path="res://game/entities/sparkle_partickles.gd" id="1_ppa3w"]
+
+[sub_resource type="Gradient" id="Gradient_ppa3w"]
+offsets = PackedFloat32Array(0, 0.99, 1)
+colors = PackedColorArray(1, 1, 0.49803922, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lsu6n"]
+gradient = SubResource("Gradient_ppa3w")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Curve" id="Curve_4pt2n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sjg42"]
+curve = SubResource("Curve_4pt2n")
+
+[sub_resource type="Curve" id="Curve_56fil"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_psmbb"]
+curve = SubResource("Curve_56fil")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykh0f"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_psmbb")
+alpha_curve = SubResource("CurveTexture_sjg42")
+
+[node name="SparkleParticles" type="GPUParticles2D" unique_id=1765639764]
+emitting = false
+amount = 25
+texture = SubResource("GradientTexture2D_lsu6n")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ykh0f")
+script = ExtResource("1_ppa3w")
