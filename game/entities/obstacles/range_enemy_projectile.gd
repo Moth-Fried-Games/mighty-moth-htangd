@@ -81,6 +81,7 @@ func _on_deflected_area_entered(area: Area2D) -> void:
 func _on_destroyed() -> void:
 	if is_instance_valid(enemy_projectile_sprite):
 		enemy_projectile_sprite.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
 	return

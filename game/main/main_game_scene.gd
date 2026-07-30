@@ -17,8 +17,6 @@ var good_ending_threshold: int = 10
 var player: Player
 
 ## CEDI'S TODO LIST
-#Add Explosions to Entities that die via punch/deflect/etc
-#Add Sparkle to Gifts when properly collected
 #Make Ranged Enemies play their shooting animation
 #Make Range Enemy Projectiles spawn on the rocket_fired signal for Range Enemy's sprite
 #Make Ranged Enemy go back to Idle after their shooting animation is over

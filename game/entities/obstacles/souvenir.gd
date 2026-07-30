@@ -49,6 +49,7 @@ func _on_punched() -> void:
 	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	## TODO ANIMATION FOR NOOOOOOOO DON'T PUNCH THE PREZZIE
 	_begin_despawn()
 	
@@ -56,6 +57,7 @@ func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
 	_begin_despawn()
 	
@@ -65,6 +67,7 @@ func _on_collected() -> void:
 	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_sparkle(get_tree().current_scene, global_position)
 	main_game_scene.souvenirs_collected += 1
 	super_meter_handler.on_successful_collect()
 	_begin_despawn()

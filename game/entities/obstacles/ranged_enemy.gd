@@ -52,6 +52,7 @@ func _on_missle_countered() -> void:
 func _on_defeated() -> void:
 	if is_instance_valid(ranged_enemy_sprite):
 		ranged_enemy_sprite.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
 	pass

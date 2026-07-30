@@ -65,6 +65,7 @@ func _on_deflected() -> void:
 func _on_defeated() -> void:
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
 	return
