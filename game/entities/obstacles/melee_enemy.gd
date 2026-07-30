@@ -18,6 +18,8 @@ var main_game_scene: MainGameScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -42,6 +44,13 @@ func _process(delta: float) -> void:
 	global_position.x = global_position.x - (delta * movement_per_second)
 	return
 
+func _on_window_size_changed() -> void:
+	var viewport_length: float = get_viewport_rect().size.x
+	var sprite_width: float = 60.0
+	
+	if position.x > (viewport_length - sprite_width):
+		position.x = (viewport_length - sprite_width)
+	return
 
 
 func _on_punched() -> void:
@@ -65,18 +74,18 @@ func _on_deflected() -> void:
 func _on_defeated() -> void:
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
-	pass
+	return
 	
 func _on_touching_player() -> void:
-	super_meter_handler.on_combo_break()
+	get_tree().current_scene.player._on_hit_reaction()
 	_begin_despawn()
 	## TODO animate and annoy mightymoth a little
-	pass
+	return
 
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	pass
 

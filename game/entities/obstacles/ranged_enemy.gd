@@ -14,8 +14,12 @@ const arrival_move_speed: float = 100
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
+#signal rocket_fired
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -38,6 +42,21 @@ func _ready() -> void:
 
 func process() -> void:
 	return
+	
+func _on_window_size_changed() -> void:
+	var lane_binder: Lanes = get_tree().current_scene.lane_binders
+	var back_spawn_anchor: Marker2D = null
+	match current_lane:
+		Lanes.LaneId.TOP:
+			back_spawn_anchor = lane_binder.top_right_anchor
+		Lanes.LaneId.MIDDLE:
+			back_spawn_anchor = lane_binder.middle_right_anchor
+		Lanes.LaneId.BOTTOM:
+			back_spawn_anchor = lane_binder.bottom_right_anchor
+	
+	if global_position.x != (back_spawn_anchor.global_position.x - 50):
+		global_position.x = (back_spawn_anchor.global_position.x - 50)
+	return
 
 func _on_meteored() -> void:
 	GameGlobals.audio_manager.create_audio("sound_explosion")
@@ -52,12 +71,12 @@ func _on_missle_countered() -> void:
 func _on_defeated() -> void:
 	if is_instance_valid(ranged_enemy_sprite):
 		ranged_enemy_sprite.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
 	pass
 
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	pass
 
@@ -72,9 +91,16 @@ func _begin_despawn() -> void:
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: free())
 
+
 func _spawn_projectile() -> void:
+	if is_instance_valid(ranged_enemy_sprite):
+		ranged_enemy_sprite.play("shoot")
+
+
+func _on_ranged_enemy_sprite_rocket_fired() -> void:
 	var new_projectile: EnemyProjectile = RANGE_ENEMY_PROJECTILE.instantiate()
 	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
 	call_deferred("add_child", new_projectile)
+	return

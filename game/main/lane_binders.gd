@@ -34,6 +34,7 @@ enum LaneId { TOP = -1, MIDDLE = 0, BOTTOM = 1, INVALID = -999 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_update_lanes)
 	_update_lanes()
 
 

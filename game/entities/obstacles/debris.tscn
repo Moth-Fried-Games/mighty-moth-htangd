@@ -1,69 +1,67 @@
 [gd_scene format=3 uid="uid://ceg558w8g2nov"]
 
 [ext_resource type="Script" uid="uid://q5m27cm08ski" path="res://game/entities/obstacles/debris.gd" id="1_iysvr"]
-[ext_resource type="Texture2D" uid="uid://c262vrqu0n3yf" path="res://assets/textures/object/mightymoth_enemy_meteor.png" id="2_rihlq"]
+[ext_resource type="PackedScene" uid="uid://4esu4n2onqix" path="res://game/entities/obstacles/debris_sprite.tscn" id="2_wat4r"]
 [ext_resource type="Script" uid="uid://c3jet7k0yri33" path="res://game/entities/obstacles/hurt_box_area.gd" id="3_4u4qr"]
 [ext_resource type="Script" uid="uid://56h7dv4f5aln" path="res://game/entities/obstacles/melee_hit_box_area.gd" id="4_wat4r"]
 [ext_resource type="Script" uid="uid://cy8b4bdqrkecl" path="res://game/entities/obstacles/parry_hit_box_area.gd" id="5_8lbr2"]
+[ext_resource type="Texture2D" uid="uid://ba456gbm3h0sh" path="res://assets/textures/ui/mightymoth_ui_meteoralert.png" id="6_wat4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
-size = Vector2(69, 66)
+size = Vector2(125, 133)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh3nx"]
-size = Vector2(59, 65)
+size = Vector2(62, 133)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dxyy"]
-size = Vector2(82, 67)
+size = Vector2(66, 137)
 
 [node name="Debris" type="Area2D" unique_id=1549825374]
 script = ExtResource("1_iysvr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1655538501]
-position = Vector2(28, 1)
-texture = ExtResource("2_rihlq")
-region_enabled = true
-region_rect = Rect2(0, 0, 126, 68)
+[node name="MeteorSprite" parent="." unique_id=1956018591 instance=ExtResource("2_wat4r")]
+position = Vector2(133, 0)
 
 [node name="HurtBoxArea" type="Area2D" parent="." unique_id=914256096 groups=["HurtBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 script = ExtResource("3_4u4qr")
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtBoxArea" unique_id=2066910023]
-position = Vector2(1.5, 2)
+position = Vector2(31.5, 3.5)
 shape = SubResource("RectangleShape2D_dnnxk")
 
 [node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=2142709142 groups=["MeleeHitBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("4_wat4r")
 
 [node name="PunchHitBox" type="CollisionShape2D" parent="PunchHitBoxArea" unique_id=602330373]
-position = Vector2(-28.5, 2.5)
+position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_jh3nx")
 
 [node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=129059001 groups=["ParryHitBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_8lbr2")
 
 [node name="ParryHitBox" type="CollisionShape2D" parent="ParryHitBoxArea" unique_id=898867086]
-position = Vector2(-7, 2.5)
+position = Vector2(64, 1.5)
 shape = SubResource("RectangleShape2D_1dxyy")
 
 [node name="DebrisWarning" type="Node2D" parent="." unique_id=432866142]
-position = Vector2(-85, 1)
-
-[node name="WarningLabel" type="Label" parent="DebrisWarning" unique_id=2139851580]
-offset_left = -44.0
-offset_top = -27.0
-offset_right = 38.0
-offset_bottom = -4.0
-text = "WARNING!"
-horizontal_alignment = 1
+position = Vector2(-49, 1)
 
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
-offset_left = -45.0
-offset_right = 37.0
-offset_bottom = 23.0
+offset_left = -67.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 7.0
 text = "X m"
-horizontal_alignment = 1
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DebrisWarning" unique_id=239104862]
+position = Vector2(31, -1)
+texture = ExtResource("6_wat4r")

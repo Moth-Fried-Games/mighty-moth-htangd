@@ -13,9 +13,8 @@ var despawn_timer: Timer = Timer.new()
 @onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
 @onready var debris_warning: Node2D = $DebrisWarning
-@onready var warning_label: Label = $DebrisWarning/WarningLabel
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
-@onready var sprite_2d: Node = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $MeteorSprite
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
@@ -29,6 +28,8 @@ var incoming_distance_display: int:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -41,7 +42,14 @@ func _ready() -> void:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
 	
 	global_position = Vector2(back_spawn_anchor.global_position.x + spawn_offset_from_anchor, back_spawn_anchor.global_position.y)
-	debris_warning.global_position.x = get_viewport_rect().size.x - 80
+	
+	var viewport_length: float = get_viewport_rect().size.x
+	var meteor_width: float = 257.0 ## Measuring meteor's width by hand
+	if position.x != (viewport_length + meteor_width):
+		position.x = (viewport_length + meteor_width)
+	
+	var warning_distance: float = 50.0 # Measuring warning's distance by hand
+	debris_warning.global_position.x = get_viewport_rect().size.x - warning_distance
 	
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
@@ -78,6 +86,21 @@ func _process(delta: float) -> void:
 	return
 
 
+func _on_window_size_changed() -> void:
+	var viewport_length: float = get_viewport_rect().size.x
+	var meteor_width: float = 257.0 ## Measuring meteor's width by hand
+	if !warning_timer.is_stopped():
+		if position.x != (viewport_length + meteor_width):
+			position.x = (viewport_length + meteor_width)
+		
+		var warning_distance: float = 50.0 # Measuring warning's distance by hand
+		debris_warning.global_position.x = get_viewport_rect().size.x - warning_distance
+		
+	elif position.x > (viewport_length + meteor_width):
+		position.x = (viewport_length + meteor_width)
+	return
+
+
 func _get_distance_display() -> float:
 	return roundf(warning_timer.time_left * 100.0)
 
@@ -103,7 +126,7 @@ func _on_deflected() -> void:
 	is_deflected = true
 	sprite_2d.flip_h = true
 	
-	despawn_timer.wait_time = 2.0
+	despawn_timer.wait_time = 12.0
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: _begin_despawn() )
 	add_child(despawn_timer)
@@ -131,19 +154,19 @@ func _on_deflected_area_entered(area: Area2D) -> void:
 func _on_destroyed() -> void:
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
 	## TODO defeat animation
 	return
 	
 func _on_touching_player() -> void:
-	super_meter_handler.on_combo_break()
+	get_tree().current_scene.player._on_hit_reaction()
 	_begin_despawn()
 	### TODO animate and annoy mightymoth a little
 	return
 
 # When this goes off the edge of the screen
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	return
 

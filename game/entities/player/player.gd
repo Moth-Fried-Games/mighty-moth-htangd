@@ -10,11 +10,13 @@ const horizontal_offset_from_anchor = 150
 var cutscene: bool = false
 var super_mode: bool = false
 var super_level_active: int = 0
-var super_meter_handler: SuperMeterHandler = null
+var super_meter_handler: SuperMeterHandler
 
 var super_mode_timer: Timer
 var super_mode_time_limit: float = 3.0
 var super_mode_counter: int = 0
+
+var on_hit_timer: Timer
 
 ## TODO LIST FOR SUPER MODE
 #Super Mode:
@@ -48,6 +50,14 @@ func _ready() -> void:
 	)
 	
 	add_child(super_mode_timer)
+	
+	on_hit_timer = Timer.new()
+	on_hit_timer.one_shot = true
+	on_hit_timer.wait_time = 0.5
+	on_hit_timer.timeout.connect(func () -> void:
+		player_sprite.visible = true
+	)
+	add_child(on_hit_timer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,6 +84,16 @@ func _movement() -> void:
 func _animate() -> void:
 	if Input.is_action_just_pressed("punch"):
 		player_sprite.play("punch")
+	if !on_hit_timer.is_stopped():
+		player_sprite.visible = !player_sprite.visible
+		return
+
+func _on_hit_reaction() -> void:
+	if on_hit_timer.is_stopped():
+		super_meter_handler = get_tree().current_scene.super_meter_handler
+		super_meter_handler.on_combo_break()
+		GameGlobals.audio_manager.create_audio("sound_punch")
+		on_hit_timer.start()
 
 # TODO; super implementation
 func _on_super_input() -> void:

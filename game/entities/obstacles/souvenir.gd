@@ -16,6 +16,8 @@ var main_game_scene: MainGameScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().root.size_changed.connect(_on_window_size_changed)
+	
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	
 	var back_spawn_anchor: Marker2D = null
@@ -41,7 +43,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position.x = global_position.x - (delta * movement_per_second)
 
-
+func _on_window_size_changed() -> void:
+	var viewport_length: float = get_viewport_rect().size.x
+	var sprite_width: float = 70.0 # Assuming longest sprite, flower
+	
+	if position.x > (viewport_length - sprite_width):
+		position.x = (viewport_length - sprite_width)
+	return
 
 
 func _on_punched() -> void:
@@ -49,14 +57,15 @@ func _on_punched() -> void:
 	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	## TODO ANIMATION FOR NOOOOOOOO DON'T PUNCH THE PREZZIE
 	_begin_despawn()
 	
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	super_meter_handler.on_combo_break()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
 	_begin_despawn()
 	
@@ -66,12 +75,12 @@ func _on_collected() -> void:
 	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
+		GameUtils.spawn_sparkle(get_tree().current_scene, global_position)
 	main_game_scene.souvenirs_collected += 1
 	super_meter_handler.on_successful_collect()
 	_begin_despawn()
 
 func _on_walk_past_player() -> void:
-	super_meter_handler.on_combo_break()
 	_begin_despawn()
 	pass
 

@@ -14,6 +14,8 @@ const finale_timer_start: float = 180
 var souvenirs_collected: int = 0
 var good_ending_threshold: int = 10
 
+var player: Player
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +35,8 @@ func _ready() -> void:
 
 	game_over_timer.start()
 	finale_timer.start()
+	
+	player = $"Player"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
