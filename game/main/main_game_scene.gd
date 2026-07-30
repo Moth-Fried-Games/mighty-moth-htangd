@@ -20,7 +20,6 @@ var player: Player
 #Fix Meteors to use their warning sprite
 #Fix Meteors being visible in non-standard viewport sizes
 #Fix responsiveness to changed screen sizes
-#Fix Meteors to use their animated sprite
 ## CEDI'S TODO LIST
 
 

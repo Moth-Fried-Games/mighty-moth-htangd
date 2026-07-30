@@ -15,7 +15,7 @@ var despawn_timer: Timer = Timer.new()
 @onready var debris_warning: Node2D = $DebrisWarning
 @onready var warning_label: Label = $DebrisWarning/WarningLabel
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
-@onready var sprite_2d: Node = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $MeteorSprite
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
