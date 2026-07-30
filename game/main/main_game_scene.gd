@@ -17,11 +17,9 @@ var good_ending_threshold: int = 10
 var player: Player
 
 ## CEDI'S TODO LIST
-#Make Ranged Enemies play their shooting animation
-#Make Range Enemy Projectiles spawn on the rocket_fired signal for Range Enemy's sprite
-#Make Ranged Enemy go back to Idle after their shooting animation is over
 #Fix Meteors to use their warning sprite
 #Fix Meteors being visible in non-standard viewport sizes
+#Fix responsiveness to changed screen sizes
 #Fix Meteors to use their animated sprite
 ## CEDI'S TODO LIST
 

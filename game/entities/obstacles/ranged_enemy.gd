@@ -14,6 +14,8 @@ const arrival_move_speed: float = 100
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
 
+#signal rocket_fired
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
@@ -72,9 +74,15 @@ func _begin_despawn() -> void:
 	despawn_timer.one_shot = true
 	despawn_timer.timeout.connect(func() -> void: free())
 
+
 func _spawn_projectile() -> void:
+	ranged_enemy_sprite.play("shoot")
+
+
+func _on_ranged_enemy_sprite_rocket_fired() -> void:
 	var new_projectile: EnemyProjectile = RANGE_ENEMY_PROJECTILE.instantiate()
 	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
 	call_deferred("add_child", new_projectile)
+	return

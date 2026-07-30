@@ -15,3 +15,5 @@ script = ExtResource("1_3onsk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747858716]
 position = Vector2(28, 23.5)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="rocket_fired" from="RangedEnemySprite" to="." method="_on_ranged_enemy_sprite_rocket_fired"]
