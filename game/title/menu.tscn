@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duy7quoh4dbld"]
 
 [ext_resource type="Script" uid="uid://n64wmsrvlj7a" path="res://game/title/menu.gd" id="1_tbimj"]
+[ext_resource type="Texture2D" uid="uid://b27ublkncwm0h" path="res://assets/textures/stage/mightymoth_bg0.png" id="2_a8ts1"]
 [ext_resource type="Texture2D" uid="uid://m84c4moovuk1" path="res://assets/textures/ui/mightymoth_menu.png" id="2_nogmj"]
 [ext_resource type="Theme" uid="uid://bpsprmxlytbmr" path="res://mightymoth_theme_small.tres" id="3_8fmxf"]
 [ext_resource type="Theme" uid="uid://d3k1u3x3225rk" path="res://mightymoth_theme.tres" id="3_weauo"]
@@ -110,6 +111,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control" unique_id=846405178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a8ts1")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Key Art" type="TextureRect" parent="Control" unique_id=311977983]
 layout_mode = 1

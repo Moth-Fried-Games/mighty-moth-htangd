@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/path = NodePath("Anchor/CrushSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MothSprite2D:modulate")
+tracks/1/path = NodePath("Anchor/MothSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,7 +39,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/path = NodePath("Anchor/CrushSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +55,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CrushSprite2D:modulate")
+tracks/0/path = NodePath("Anchor/CrushSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -71,7 +71,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MothSprite2D:modulate")
+tracks/0/path = NodePath("Anchor/MothSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +87,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MothSprite2D:modulate")
+tracks/0/path = NodePath("Anchor/MothSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -136,19 +136,21 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MothSprite2D" type="Sprite2D" parent="." unique_id=957740780]
+[node name="Anchor" type="Node2D" parent="." unique_id=1548242493]
+
+[node name="MothSprite2D" type="Sprite2D" parent="Anchor" unique_id=957740780]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(320, 270)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1tvt4")
 
-[node name="CrushSprite2D" type="Sprite2D" parent="." unique_id=1721743697]
+[node name="CrushSprite2D" type="Sprite2D" parent="Anchor" unique_id=1721743697]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 270)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_1tvt4")
 
-[node name="Dialog" parent="." unique_id=2119953364 instance=ExtResource("2_pil35")]
+[node name="Dialog" parent="Anchor" unique_id=2119953364 instance=ExtResource("2_pil35")]
 position = Vector2(640, 700)
 hide_on_finish = false
 input_dialog = true
@@ -187,5 +189,6 @@ dialog_list = Array[String](["[b][font_size=32][wait=1]Cecropolis. 6:00 PM.[/wai
 [font_size=28][wait=0.5]Remember! 8:00 PM! Don’t be late! [/wait][/font_size]", ""])
 dialog_width = 1240.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=77042420]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Anchor" unique_id=77042420]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_a6pyc")

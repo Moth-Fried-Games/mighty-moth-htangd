@@ -9,11 +9,15 @@ extends CanvasLayer
 @onready var invert: ColorRect = $Invert
 @onready var game_over_label: Label = $GameOverLabel
 @onready var pause_label: Label = $PauseLabel
+@onready var combo: Label = $Control/Super/Combo
+@onready var combo_count: Label = $Control/Super/Combo/ComboCount
+@onready var super_ready: Label = $Control/Super/SuperReady
 
 @export_range(0, 3) var super_level: int = 0
 @export_range(0, 100) var super_value: float = 0
 @export_range(0, 100) var super_minimums: Array[float] = [23, 53, 76, 100]
 @export_range(0, 100) var super_maximums: Array[float] = [52, 75, 100, 100]
+@export_range(0, 999) var combo_value: int = 0
 @export_range(0, 10) var souvenirs: int = 0
 @export_range(0, 100) var souvenir_minimum: float = 23
 @export_range(0, 100) var souvenir_maximum: float = 100
@@ -80,6 +84,7 @@ func _update_values() -> void:
 		if not is_instance_valid(stage_background):
 			if GameGlobals.game_dictionary["node"].has("stage_background"):
 				stage_background = GameGlobals.game_dictionary["node"]["stage_background"]
+		combo_value = super_scene.combo_count
 		super_level = clampi(super_scene.super_level, 0, 3)
 		super_value = clampf(super_scene.super_meter, 0, 100)
 		time_left = clampf(main_scene.game_over_timer.time_left, 0, 60)
@@ -96,6 +101,16 @@ func _update_super() -> void:
 		super_minimums[super_level],
 		super_maximums[super_level]
 	)
+	if super_level > 0:
+		super_ready.visible = true
+		super_ready.text = str("Level ", super_level, "\nReady")
+	else:
+		super_ready.visible = false
+	if combo_value > 0:
+		combo.visible = true
+		combo_count.text = str(combo_value)
+	else:
+		combo.visible = false
 
 
 func _update_timer() -> void:

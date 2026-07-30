@@ -12,6 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://wak43m3okqu0" path="res://assets/textures/ui/mightymoth_ui_timer_2.png" id="10_x20yc"]
 [ext_resource type="Shader" uid="uid://b8absxgh7qjqi" path="res://game/main/invert_shader.tres" id="11_4o3v2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4o3v2"]
+font_size = 24
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wn71n"]
+font_size = 48
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmg03"]
 shader = ExtResource("11_4o3v2")
 
@@ -24,6 +34,7 @@ outline_color = Color(0, 0, 0, 1)
 process_mode = 3
 layer = 2
 script = ExtResource("1_alr7j")
+combo_value = 9
 
 [node name="Control" type="Control" parent="." unique_id=1874978837]
 layout_mode = 3
@@ -63,6 +74,56 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_8id5d")
 texture_over = ExtResource("3_ebukx")
 texture_progress = ExtResource("3_j47m5")
+
+[node name="Combo" type="Label" parent="Control/Super" unique_id=468595939]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 312.0
+offset_top = -34.0
+offset_right = 394.0
+grow_vertical = 0
+text = "
+Combo"
+label_settings = SubResource("LabelSettings_4o3v2")
+
+[node name="ComboCount" type="Label" parent="Control/Super/Combo" unique_id=1900684937]
+show_behind_parent = true
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -91.0
+offset_right = 41.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "9"
+label_settings = SubResource("LabelSettings_wn71n")
+horizontal_alignment = 1
+
+[node name="SuperReady" type="Label" parent="Control/Super" unique_id=943614762]
+visible = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -127.0
+offset_right = 210.0
+offset_bottom = -56.0
+grow_vertical = 0
+text = "Level 1
+Ready"
+label_settings = SubResource("LabelSettings_4o3v2")
+horizontal_alignment = 1
 
 [node name="Date" type="Control" parent="Control" unique_id=494895584]
 layout_mode = 1

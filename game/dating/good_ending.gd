@@ -17,11 +17,12 @@ const GRUNT_SPRITE_BEATENUP = preload("uid://bm0jpam4m3c2")
 const GRUNT_SPRITE_EVILLAUGH = preload("uid://hjt41n7ytka4")
 const GRUNT_SPRITE_NEUTRAL = preload("uid://5gmchrmlyxhj")
 
-@onready var dialog: Dialog = $Dialog
-@onready var moth_sprite_2d: Sprite2D = $MothSprite2D
-@onready var crush_sprite_2d: Sprite2D = $CrushSprite2D
-@onready var goon_sprite_2d: Sprite2D = $GoonSprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var anchor: Node2D = $Anchor
+@onready var dialog: Dialog = $Anchor/Dialog
+@onready var moth_sprite_2d: Sprite2D = $Anchor/MothSprite2D
+@onready var crush_sprite_2d: Sprite2D = $Anchor/CrushSprite2D
+@onready var goon_sprite_2d: Sprite2D = $Anchor/GoonSprite2D
+@onready var animation_player: AnimationPlayer = $Anchor/AnimationPlayer
 @onready var skip_rich_text_label: RichTextLabel = $CanvasLayer/SkipRichTextLabel
 
 var skip_time: float = 1
@@ -42,6 +43,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	var viewport_length: float = get_viewport_rect().size.x
+	if viewport_length > 1280:
+		if anchor.position.x != ((viewport_length - 1280) / 2):
+			anchor.position.x = ((viewport_length - 1280) / 2)
+	else:
+		if anchor.position.x != 0:
+			anchor.position.x = 0
 	if Input.is_action_pressed("ultimate"):
 		skip_time -= delta
 		if not skipping and skip_time <= 0:
