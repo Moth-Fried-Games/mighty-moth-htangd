@@ -17,13 +17,13 @@ size = Vector2(62, 133)
 size = Vector2(66, 137)
 
 [node name="Debris" type="Area2D" unique_id=1549825374]
-position = Vector2(31, 2)
 script = ExtResource("1_iysvr")
 
 [node name="MeteorSprite" parent="." unique_id=1956018591 instance=ExtResource("2_wat4r")]
-position = Vector2(95, 1)
+position = Vector2(133, 0)
 
 [node name="HurtBoxArea" type="Area2D" parent="." unique_id=914256096 groups=["HurtBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 script = ExtResource("3_4u4qr")
 
@@ -32,6 +32,7 @@ position = Vector2(31.5, 3.5)
 shape = SubResource("RectangleShape2D_dnnxk")
 
 [node name="PunchHitBoxArea" type="Area2D" parent="." unique_id=2142709142 groups=["MeleeHitBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("4_wat4r")
@@ -41,6 +42,7 @@ position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_jh3nx")
 
 [node name="ParryHitBoxArea" type="Area2D" parent="." unique_id=129059001 groups=["ParryHitBoxArea"]]
+position = Vector2(36, -1)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("5_8lbr2")
@@ -50,7 +52,7 @@ position = Vector2(64, 1.5)
 shape = SubResource("RectangleShape2D_1dxyy")
 
 [node name="DebrisWarning" type="Node2D" parent="." unique_id=432866142]
-position = Vector2(-85, 1)
+position = Vector2(-49, 1)
 
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
 offset_left = -67.0
