@@ -84,7 +84,8 @@ func _process(_delta: float) -> void:
 		if not is_super_defeat:
 			super_kill()
 	if not is_moving:
-		distance_countdown.text = str(_get_distance_display()) + " m"
+		if is_instance_valid(distance_countdown):
+			distance_countdown.text = str(_get_distance_display()) + " m"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -129,7 +130,7 @@ func _is_in_same_lane(colliding_area: Area2D) -> bool:
 
 func _on_punched() -> void:
 	GameGlobals.audio_manager.create_audio("sound_punch")
-	main_game_scene.apply_time_bonus(1)
+	main_game_scene.apply_time_bonus(0.1)
 	super_meter_handler.on_successful_punch()
 	_on_destroyed()
 	## TODO animate, confirm interaction
@@ -137,7 +138,7 @@ func _on_punched() -> void:
 
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	main_game_scene.apply_time_bonus(2)
+	main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 
 	is_deflected = true
@@ -172,7 +173,7 @@ func _on_deflected_area_entered(area: Area2D) -> void:
 
 func _on_destroyed() -> void:
 	is_defeat = true
-	if is_editable_instance(debris_warning):
+	if is_instance_valid(debris_warning):
 		debris_warning.queue_free()
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
@@ -216,4 +217,5 @@ func _begin_despawn() -> void:
 
 func super_kill() -> void:
 	is_super_defeat = true
+	main_game_scene.apply_time_bonus(1 * super_meter_handler.super_level)
 	_on_destroyed()

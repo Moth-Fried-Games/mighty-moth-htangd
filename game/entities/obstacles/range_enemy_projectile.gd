@@ -145,4 +145,5 @@ func _on_area_entered(area: Area2D) -> void:
 
 func super_kill() -> void:
 	is_super_defeat = true
+	main_game_scene.apply_time_bonus(1 * super_meter_handler.super_level)
 	_on_destroyed()

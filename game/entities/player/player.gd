@@ -106,7 +106,6 @@ func _on_super_input() -> void:
 			process_mode = Node.PROCESS_MODE_ALWAYS
 
 			super_level_active = super_meter_handler.super_level
-			super_meter_handler.expend_super_meter()
 
 			#self.paused = false ## Invalid assignment of property or key 'paused' with value of type 'bool' on a base object of type 'Area2D (Player)'.
 			## hmmm
@@ -128,7 +127,11 @@ func _super_animation() -> void:
 	for target in get_tree().get_nodes_in_group("ultimate"):
 		if is_instance_valid(target):
 			if not target.is_defeat:
-				super_targets.append(target as Node2D)
+				if "is_moving" in target:
+					if target.is_moving:
+						super_targets.append(target as Node2D)
+				else:
+					super_targets.append(target as Node2D)
 	super_targets.shuffle()
 	player_sprite.play("ultimate")
 	ultimate_tween = create_tween()
@@ -163,7 +166,7 @@ func _super_animation() -> void:
 
 func _on_super_finished() -> void:
 	print("Ding! Super Mode is over!")
-
+	super_meter_handler.expend_super_meter()
 	super_mode = false
 	get_tree().paused = false
 	process_mode = Node.PROCESS_MODE_INHERIT

@@ -76,7 +76,7 @@ func _on_meteored() -> void:
 
 
 func _on_missle_countered() -> void:
-	main_game_scene.apply_time_bonus(2)
+	main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()
@@ -123,6 +123,8 @@ func _on_ranged_enemy_sprite_rocket_fired() -> void:
 	call_deferred("add_child", new_projectile)
 	return
 
+
 func super_kill() -> void:
 	is_super_defeat = true
+	main_game_scene.apply_time_bonus(1*super_meter_handler.super_level)
 	_on_defeated()

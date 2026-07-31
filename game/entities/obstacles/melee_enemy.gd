@@ -11,6 +11,7 @@ const movement_per_second: float = 300
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
 @onready var sprite_2d: Node = $MeleeEnemySprite
 
+
 var is_super_kill: bool = false
 var is_super_defeat: bool = false
 var is_defeat: bool = false
@@ -67,7 +68,7 @@ func _on_window_size_changed() -> void:
 
 func _on_punched() -> void:
 	GameGlobals.audio_manager.create_audio("sound_punch")
-	main_game_scene.apply_time_bonus(1)
+	main_game_scene.apply_time_bonus(0.1)
 	super_meter_handler.on_successful_punch()
 	_on_defeated()
 	## TODO animate
@@ -80,7 +81,7 @@ func _on_meteored() -> void:
 
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	main_game_scene.apply_time_bonus(2)
+	main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 	_on_defeated()
 	## TODO animate
@@ -127,4 +128,5 @@ func _begin_despawn() -> void:
 
 func super_kill() -> void:
 	is_super_defeat = true
+	main_game_scene.apply_time_bonus(1*super_meter_handler.super_level)
 	_on_defeated()
