@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cfu6ilidl775q" path="res://assets/textures/enemies/PLACEHOLDER_goon.png" id="3_oic1i"]
 [ext_resource type="Script" uid="uid://c4nohpo1p0f46" path="res://game/entities/player/player_hit_box.gd" id="3_x4rrl"]
 [ext_resource type="Script" uid="uid://dqkvslfgejgk4" path="res://game/entities/player/player_hurt_box.gd" id="4_cjfdk"]
+[ext_resource type="Script" uid="uid://cfbuad5p4xvhs" path="res://game/entities/player/collect_box.gd" id="7_dhej3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqtae"]
 atlas = ExtResource("1_1a4jd")
@@ -45,6 +46,9 @@ size = Vector2(128, 84)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(84, 110)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnnxk"]
+size = Vector2(92.5, 81)
+
 [node name="Player" type="Area2D" unique_id=48566076 node_paths=PackedStringArray("lanes") groups=["Player"]]
 collision_layer = 63
 collision_mask = 63
@@ -52,8 +56,6 @@ script = ExtResource("1_gqtae")
 lanes = [null]
 
 [node name="PlayerSprite" parent="." unique_id=1310412979 instance=ExtResource("2_v0nmi")]
-frame = 1
-frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 visible = false
@@ -86,3 +88,11 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Timer" type="Timer" parent="HurtBox" unique_id=2055223774]
 one_shot = true
+
+[node name="CollectBox" type="Area2D" parent="." unique_id=1493263157]
+collision_mask = 8
+script = ExtResource("7_dhej3")
+
+[node name="CollectBox" type="CollisionShape2D" parent="CollectBox" unique_id=457423809]
+position = Vector2(46.75, 9)
+shape = SubResource("RectangleShape2D_dnnxk")

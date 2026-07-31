@@ -18,6 +18,15 @@ var good_ending_threshold: int = 10
 
 var player: Player
 
+## TODOS
+# Sometimes when you collect the gifts are 'Deflected'? weird bug, hard to say what the reproduce trigger is, 
+## but seems like 'Deflect' gets stuck or queued somehow and sometimes it does its thing when punching or collecting, 
+## consider this one low priority since I can't reproduce it easily
+
+# New error in my console; on debris beginning to despawn, 
+## Object Freed while signal is being emitted error? Try using CONNECT_DEFERRED flag to connect or queue_free() to free instead of free()?
+##
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
