@@ -199,20 +199,21 @@ func _on_walk_past_player() -> void:
 # Finally, begin to despawn, free resources, and inform the obstacle spawner that this can spawn in the same lane again
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
-		if is_instance_valid(hurtboxarea):
-			hurtboxarea.queue_free()
-		if is_instance_valid(meleehitboxarea):
-			meleehitboxarea.queue_free()
-		if is_instance_valid(parryhitboxarea):
-			parryhitboxarea.queue_free()
+		#if is_instance_valid(hurtboxarea):
+			#hurtboxarea.queue_free()
+		#if is_instance_valid(meleehitboxarea):
+			#meleehitboxarea.queue_free()
+		#if is_instance_valid(parryhitboxarea):
+			#parryhitboxarea.queue_free()
 
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 		spawner.despawn_obstacle(current_lane, get_instance_id())
+		
+		queue_free()
 
-		#var despawn_timer: Timer = Timer.new()
-		despawn_timer.wait_time = 4
-		despawn_timer.one_shot = true
-		despawn_timer.timeout.connect(func() -> void: free())
+		#despawn_timer.wait_time = 4
+		#despawn_timer.one_shot = true
+		#despawn_timer.timeout.connect(func() -> void: queue_free())
 
 
 func super_kill() -> void:

@@ -89,7 +89,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 [node name="Timer" type="Timer" parent="HurtBox" unique_id=2055223774]
 one_shot = true
 
-[node name="CollectBox" type="Area2D" parent="." unique_id=1493263157]
+[node name="CollectBox" type="Area2D" parent="." unique_id=1493263157 groups=["Player"]]
 collision_mask = 8
 script = ExtResource("7_dhej3")
 

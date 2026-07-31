@@ -123,19 +123,21 @@ func _on_walk_past_player() -> void:
 
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
-		if is_instance_valid(hurtboxarea):
-			hurtboxarea.queue_free()
-		if is_instance_valid(parryhitboxarea):
-			parryhitboxarea.queue_free()
-		if !is_deflected:
-			enemy_that_shoot._spawn_projectile()
+		#if is_instance_valid(hurtboxarea):
+			#hurtboxarea.queue_free()
+		#if is_instance_valid(parryhitboxarea):
+			#parryhitboxarea.queue_free()
+		#if !is_deflected:
+			#enemy_that_shoot._spawn_projectile()
 
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 		spawner.despawn_obstacle(current_lane, get_instance_id())
+		
+		queue_free()
 
-		despawn_timer.wait_time = 4
-		despawn_timer.one_shot = true
-		despawn_timer.timeout.connect(func() -> void: free())
+		#despawn_timer.wait_time = 4
+		#despawn_timer.one_shot = true
+		#despawn_timer.timeout.connect(func() -> void: queue_free())
 
 
 func _on_area_entered(area: Area2D) -> void:
