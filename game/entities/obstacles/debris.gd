@@ -85,7 +85,7 @@ func _process(_delta: float) -> void:
 			super_kill()
 	if not is_moving:
 		if is_instance_valid(distance_countdown):
-			distance_countdown.text = str(_get_distance_display()) + " m"
+			distance_countdown.text = str(int(_get_distance_display())) + " m"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -196,7 +196,7 @@ func _begin_despawn() -> void:
 	if is_instance_valid(self):
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 		spawner.despawn_obstacle(current_lane, get_instance_id())
-		
+
 		queue_free()
 
 
