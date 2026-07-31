@@ -98,7 +98,7 @@ func _on_hit_reaction() -> void:
 # TODO; super implementation
 func _on_super_input() -> void:
 	if Input.is_action_just_pressed("ultimate"):
-		super_meter_handler.apply_meter_gain(100)
+		#super_meter_handler.apply_meter_gain(100)
 		print("I think my super meter is... " + str(super_meter_handler.super_level))
 		if super_meter_handler.super_level >= 1:
 			print("Testing the super pause!!!")
