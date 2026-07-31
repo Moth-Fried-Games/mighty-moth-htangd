@@ -127,8 +127,8 @@ func _begin_despawn() -> void:
 			#hurtboxarea.queue_free()
 		#if is_instance_valid(parryhitboxarea):
 			#parryhitboxarea.queue_free()
-		#if !is_deflected:
-			#enemy_that_shoot._spawn_projectile()
+		if !is_deflected:
+			enemy_that_shoot._spawn_projectile()
 
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 		spawner.despawn_obstacle(current_lane, get_instance_id())

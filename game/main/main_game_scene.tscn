@@ -21,7 +21,7 @@ script = ExtResource("1_te03x")
 
 [node name="LaneBinders" parent="." unique_id=758711568 instance=ExtResource("1_2eox0")]
 unique_name_in_owner = true
-position = Vector2(955, 552.5)
+position = Vector2(955, 437.5)
 center_offset = -50
 lane_gaps = 180
 

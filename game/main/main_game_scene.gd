@@ -19,8 +19,6 @@ var good_ending_threshold: int = 10
 var player: Player
 
 ## TODOS
-# There is a new bug stopping rockets from getting fired more than once? Huh????
-
 # Go with my gut and make additional adjustments before handing off for Myr to build!
 ##
 
