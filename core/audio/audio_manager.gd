@@ -314,7 +314,7 @@ func create_persistent_3d_audio_at_parent(
 		return null
 
 
-func create_audio(audio_name: String) -> AudioStreamPlayer:
+func create_audio(audio_name: String, pitch_modifier: float = 1.0) -> AudioStreamPlayer:
 	if audio_setting_dict.has(audio_name):
 		var audio_setting: AudioSettings = audio_setting_dict[audio_name]
 		if audio_setting.has_open_limit():
@@ -331,7 +331,7 @@ func create_audio(audio_name: String) -> AudioStreamPlayer:
 					new_audio.bus = "UI"
 			new_audio.stream = audio_setting.audio_stream
 			new_audio.volume_db = audio_setting.volume
-			new_audio.pitch_scale = audio_setting.pitch_scale
+			new_audio.pitch_scale = audio_setting.pitch_scale * pitch_modifier
 			new_audio.pitch_scale += GameGlobals.rng.randf_range(
 				-audio_setting.pitch_randomness, audio_setting.pitch_randomness
 			)

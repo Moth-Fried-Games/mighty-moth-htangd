@@ -18,10 +18,6 @@ var good_ending_threshold: int = 10
 
 var player: Player
 
-## TODOS
-# Go with my gut and make additional adjustments before handing off for Myr to build!
-##
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

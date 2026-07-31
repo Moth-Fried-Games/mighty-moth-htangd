@@ -87,6 +87,11 @@ script = ExtResource("4_cjfdk")
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Timer" type="Timer" parent="HurtBox" unique_id=2055223774]
+wait_time = 0.8
+one_shot = true
+
+[node name="ParryCooldownTimer" type="Timer" parent="HurtBox" unique_id=65998670]
+wait_time = 1.5
 one_shot = true
 
 [node name="CollectBox" type="Area2D" parent="." unique_id=1493263157 groups=["Player"]]
@@ -96,3 +101,6 @@ script = ExtResource("7_dhej3")
 [node name="CollectBox" type="CollisionShape2D" parent="CollectBox" unique_id=457423809]
 position = Vector2(46.75, 9)
 shape = SubResource("RectangleShape2D_dnnxk")
+
+[connection signal="on_parry_recharge" from="HurtBox" to="." method="_on_parry_recharge"]
+[connection signal="timeout" from="HurtBox/ParryCooldownTimer" to="." method="_on_parry_recharge"]

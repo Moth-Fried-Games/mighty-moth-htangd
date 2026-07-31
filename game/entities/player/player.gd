@@ -6,6 +6,7 @@ enum PlayerState { IDLE, PUNCH, DEFLECT, COLLECT, SUPER_IDLE, SUPER_ATTACK, FINA
 const horizontal_offset_from_anchor = 200
 @onready var middle_left_anchor: Marker2D = $"../LaneBinders/Middle Lane/Middle Left Anchor"
 @onready var player_sprite: PlayerSprite = $PlayerSprite
+@onready var hurt_box: PlayerHurtBox = $HurtBox
 
 var cutscene: bool = false
 var super_mode: bool = false
@@ -59,9 +60,11 @@ func _physics_process(_delta: float) -> void:
 # Up and down input processing
 func _movement() -> void:
 	if Input.is_action_just_pressed("move_up"):
+		hurt_box._reset_parry_timers()
 		_change_lane(direction.UP)
 		player_sprite.play("fly")
 	if Input.is_action_just_pressed("move_down"):
+		hurt_box._reset_parry_timers()
 		_change_lane(direction.DOWN)
 		player_sprite.play("fly")
 
@@ -81,6 +84,12 @@ func _on_hit_reaction() -> void:
 		GameGlobals.audio_manager.create_audio("sound_punch")
 		on_hit_timer.start()
 
+func _on_parry_recharge() -> void:
+	player_sprite.modulate = Color.LIGHT_CYAN
+	GameGlobals.audio_manager.create_audio("sound_deflect", 3)
+	await get_tree().create_timer(0.1).timeout
+	player_sprite.modulate = Color.WHITE
+	return
 
 func _on_super_input() -> void:
 	if Input.is_action_just_pressed("ultimate"):
