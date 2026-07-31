@@ -85,9 +85,12 @@ func _on_walk_past_player() -> void:
 	pass
 
 func _begin_despawn() -> void:
-	collecthitboxarea.queue_free()
-	meleehitboxarea.queue_free()
-	parryhitboxarea.queue_free()
+	if is_instance_valid(collecthitboxarea):
+		collecthitboxarea.queue_free()
+	if is_instance_valid(collecthitboxarea):
+		meleehitboxarea.queue_free()
+	if is_instance_valid(collecthitboxarea):
+		parryhitboxarea.queue_free()
 	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())

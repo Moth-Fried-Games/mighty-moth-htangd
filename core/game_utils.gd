@@ -44,18 +44,38 @@ static func get_all_files(path: String, file_ext := "", files: Array[String] = [
 static func spawn_explosion(
 	parent: Node2D, position: Vector2, scale: Vector2 = Vector2.ONE
 ) -> void:
+	var player: Player = null
+	if not is_instance_valid(player):
+		if GameGlobals.game_dictionary["node"].has("player"):
+			player = GameGlobals.game_dictionary["node"]["player"]
 	var explosion_instance: GPUParticles2D = (
 		GameGlobals.game_dictionary["resource"]["explosion"].instantiate()
 	)
 	explosion_instance.global_position = position
 	explosion_instance.scale = scale
+	if player.super_mode:
+		explosion_instance.process_mode = Node.PROCESS_MODE_ALWAYS
 	parent.add_child(explosion_instance)
 
 
-static func spawn_sparkle(parent: Node2D, position: Vector2, scale: Vector2 = Vector2.ONE) -> void:
+static func spawn_sparkle(
+	parent: Node2D, global_position: Vector2, scale: Vector2 = Vector2.ONE
+) -> void:
 	var explosion_instance: GPUParticles2D = (
 		GameGlobals.game_dictionary["resource"]["sparkle"].instantiate()
 	)
-	explosion_instance.global_position = position
+	explosion_instance.global_position = global_position
 	explosion_instance.scale = scale
 	parent.add_child(explosion_instance)
+
+
+static func spawn_punch(parent: Node2D, position: Vector2, target: Node2D) -> void:
+	var player: Player = null
+	if not is_instance_valid(player):
+		if GameGlobals.game_dictionary["node"].has("player"):
+			player = GameGlobals.game_dictionary["node"]["player"]
+	var punch_instance: Node2D = GameGlobals.game_dictionary["resource"]["ultimate"].instantiate()
+	punch_instance.global_position = position
+	punch_instance.target = target
+	punch_instance.process_mode = Node.PROCESS_MODE_ALWAYS
+	parent.add_child(punch_instance)

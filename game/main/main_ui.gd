@@ -28,6 +28,7 @@ extends CanvasLayer
 var main_scene: Node2D = null
 var super_scene: SuperMeterHandler = null
 var stage_background: StageBackground = null
+var player: Player = null
 
 var winning_time: float = 300
 
@@ -56,8 +57,9 @@ func _process(_delta: float) -> void:
 			return
 
 		if Input.is_action_just_pressed("pause"):
-			get_tree().paused = not get_tree().paused
-			pause_label.visible = get_tree().paused
+			if not player.super_mode:
+				get_tree().paused = not get_tree().paused
+				pause_label.visible = get_tree().paused
 
 		if winning_time <= 0:
 			cutscene = true
@@ -86,6 +88,9 @@ func _update_values() -> void:
 		if not is_instance_valid(stage_background):
 			if GameGlobals.game_dictionary["node"].has("stage_background"):
 				stage_background = GameGlobals.game_dictionary["node"]["stage_background"]
+		if not is_instance_valid(player):
+			if GameGlobals.game_dictionary["node"].has("player"):
+				player = GameGlobals.game_dictionary["node"]["player"]
 		combo_value = super_scene.combo_count
 		super_level = clampi(super_scene.super_level, 0, 3)
 		super_value = clampf(super_scene.super_meter, 0, 100)

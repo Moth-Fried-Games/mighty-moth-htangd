@@ -4,6 +4,8 @@ extends Node2D
 @onready var lane_binders: Lanes = %LaneBinders
 @onready var obstacle_spawner: ObstacleSpawner = %ObstacleSpawner
 @onready var super_meter_handler: SuperMeterHandler = %SuperMeterHandler
+@onready var ultimate: Marker2D = $Ultimate
+@onready var stage_background: StageBackground = $StageBackground
 
 var game_over_timer: Timer
 var finale_timer: Timer
@@ -35,7 +37,7 @@ func _ready() -> void:
 
 	game_over_timer.start()
 	finale_timer.start()
-	
+
 	player = $"Player"
 
 
@@ -46,9 +48,9 @@ func _process(_delta: float) -> void:
 
 func apply_time_bonus(time_bonus: float) -> void:
 	var currenttime: float = game_over_timer.get_time_left()
-	
-	var newtime: float = (currenttime + (time_bonus * 3)) ## TEST the *3 multiplier is an arbitrary test, rebalance for real release
-	if newtime > game_over_timer_start: # Capping the timer to never go over the starting time limit
+
+	var newtime: float = currenttime + (time_bonus * 3)  ## TEST the *3 multiplier is an arbitrary test, rebalance for real release
+	if newtime > game_over_timer_start:  # Capping the timer to never go over the starting time limit
 		newtime = game_over_timer_start
-	
+
 	game_over_timer.start(newtime)

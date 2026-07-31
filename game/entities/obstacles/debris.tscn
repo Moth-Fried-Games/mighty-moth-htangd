@@ -52,6 +52,7 @@ position = Vector2(64, 1.5)
 shape = SubResource("RectangleShape2D_1dxyy")
 
 [node name="DebrisWarning" type="Node2D" parent="." unique_id=432866142]
+z_index = 1
 position = Vector2(-49, 1)
 
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
