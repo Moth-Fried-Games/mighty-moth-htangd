@@ -88,7 +88,6 @@ func _on_defeated() -> void:
 		ranged_enemy_sprite.queue_free()
 		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
-	## TODO defeat animation
 	pass
 
 
@@ -98,18 +97,10 @@ func _on_walk_past_player() -> void:
 
 
 func _begin_despawn() -> void:
-	#if is_instance_valid($"CollisionShape2D"):
-		#$"CollisionShape2D".queue_free()
-
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	queue_free()
-
-	#var despawn_timer: Timer = Timer.new()
-	#despawn_timer.wait_time = 4
-	#despawn_timer.one_shot = true
-	#despawn_timer.timeout.connect(func() -> void: queue_free())
 
 
 func _spawn_projectile() -> void:

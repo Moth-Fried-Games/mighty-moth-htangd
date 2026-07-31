@@ -20,19 +20,6 @@ var on_hit_timer: Timer
 var super_targets: Array[Node2D] = []
 var ultimate_tween: Tween = null
 
-## TODO LIST FOR SUPER MODE
-#Super Mode:
-#- The game 'pauses'
-#- Timers pause
-#- A QTE minigame plays with an input for each hostile entity visible in the screen (enemies, debris, projectiles)
-#- Destroying everything (doing all the inputs) or messing up before the last input ends the Super and resumes normal gameplay
-#- Destroying things during the super makes the Countdown increase
-#- At lvl 1 you get x1 times the Countdown recovery
-#- At lvl 2 you get x2 times the Countdown recovery
-#- At lvl 3 you get x4 times the Countdown recovery
-#- After Super is over, Reset Lvl and Bar to 0
-## TODO LIST FOR SUPER MODE
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -95,10 +82,8 @@ func _on_hit_reaction() -> void:
 		on_hit_timer.start()
 
 
-# TODO; super implementation
 func _on_super_input() -> void:
 	if Input.is_action_just_pressed("ultimate"):
-		#super_meter_handler.apply_meter_gain(100)
 		print("I think my super meter is... " + str(super_meter_handler.super_level))
 		if super_meter_handler.super_level >= 1:
 			print("Testing the super pause!!!")
@@ -107,8 +92,6 @@ func _on_super_input() -> void:
 
 			super_level_active = super_meter_handler.super_level
 
-			#self.paused = false ## Invalid assignment of property or key 'paused' with value of type 'bool' on a base object of type 'Area2D (Player)'.
-			## hmmm
 			get_tree().paused = true
 			super_mode = true
 			_super_animation()

@@ -100,15 +100,11 @@ func _spawn_obstacles_wave() -> void:
 	
 # Algorithm to decide which obstacle type should spawn next
 func _decide_obstacles_to_spawn() -> ObstacleType:
-	## TODO
-	### Avoid spawning obs at a timing that would guarantee a combo break
-	
 	# Guarantee a souvenir spawn IF they are spawning below the rate to guarantee hitting cap before the end of the run.
-	# Will not run if we have already spawned all souvenirs.
+	## Will not run if we have already spawned all souvenirs.
 	if ((main_game_scene.finale_timer_start - main_game_scene.finale_timer.time_left) / souv_guaranteed_spawn_time) > souvenirs_spawned and souvenirs_spawned < souvenirs_total_spawnable:
 		return ObstacleType.SOUVENIR
 	
-	## TODO DEBRIS TESTING
 	# An array used to randomly roll spawns, one entry per part chance
 	var weighted_choice_array: Array = [
 		ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY, ObstacleType.MELEE_ENEMY,

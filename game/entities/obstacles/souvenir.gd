@@ -58,7 +58,6 @@ func _on_punched() -> void:
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
 		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
-	## TODO ANIMATION FOR NOOOOOOOO DON'T PUNCH THE PREZZIE
 	_begin_despawn()
 	
 func _on_deflected() -> void:
@@ -66,13 +65,11 @@ func _on_deflected() -> void:
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
 		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
-	## TODO ANIMATION FOR  NOOOO DON'T PARRY THE PREZZIE
 	_begin_despawn()
 	
 func _on_collected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_collect")
 	
-	## TODO YIPPIEEEE YOU GOT IT!!! but todo animate it
 	if is_instance_valid(sprite_2d):
 		sprite_2d.queue_free()
 		GameUtils.spawn_sparkle(get_tree().current_scene, global_position)
@@ -85,18 +82,7 @@ func _on_walk_past_player() -> void:
 	pass
 
 func _begin_despawn() -> void:
-	#if is_instance_valid(collecthitboxarea):
-		#collecthitboxarea.queue_free()
-	#if is_instance_valid(collecthitboxarea):
-		#meleehitboxarea.queue_free()
-	#if is_instance_valid(collecthitboxarea):
-		#parryhitboxarea.queue_free()
-	
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	queue_free()
-	#var despawn_timer: Timer = Timer.new()
-	#despawn_timer.wait_time = 4
-	#despawn_timer.one_shot = true
-	#despawn_timer.timeout.connect(func() -> void: queue_free())

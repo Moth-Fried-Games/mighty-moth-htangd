@@ -71,7 +71,6 @@ func _on_punched() -> void:
 	main_game_scene.apply_time_bonus(0.1)
 	super_meter_handler.on_successful_punch()
 	_on_defeated()
-	## TODO animate
 
 
 func _on_meteored() -> void:
@@ -84,7 +83,6 @@ func _on_deflected() -> void:
 	main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 	_on_defeated()
-	## TODO animate
 
 
 func _on_defeated() -> void:
@@ -93,14 +91,12 @@ func _on_defeated() -> void:
 		sprite_2d.queue_free()
 		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
-	## TODO defeat animation
 	return
 
 
 func _on_touching_player() -> void:
 	get_tree().current_scene.player._on_hit_reaction()
 	_begin_despawn()
-	## TODO animate and annoy mightymoth a little
 	return
 
 
@@ -110,22 +106,10 @@ func _on_walk_past_player() -> void:
 
 
 func _begin_despawn() -> void:
-	#if is_instance_valid(hurtboxarea):
-		#hurtboxarea.queue_free()
-	#if is_instance_valid(meleehitboxarea):
-		#meleehitboxarea.queue_free()
-	#if is_instance_valid(parryhitboxarea):
-		#parryhitboxarea.queue_free()
-
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	queue_free()
-
-	#var despawn_timer: Timer = Timer.new()
-	#despawn_timer.wait_time = 4
-	#despawn_timer.one_shot = true
-	#despawn_timer.timeout.connect(func() -> void: queue_free())
 
 
 func super_kill() -> void:

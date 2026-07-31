@@ -106,7 +106,6 @@ func _on_destroyed() -> void:
 		enemy_projectile_sprite.queue_free()
 		GameUtils.spawn_explosion(get_tree().current_scene, global_position)
 	_begin_despawn()
-	## TODO defeat animation
 	return
 
 
@@ -114,7 +113,6 @@ func _on_touching_player() -> void:
 	get_tree().current_scene.player._on_hit_reaction()
 	_begin_despawn()
 	return
-	## TODO animate and annoy mightymoth a little
 
 
 func _on_walk_past_player() -> void:
@@ -123,10 +121,6 @@ func _on_walk_past_player() -> void:
 
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
-		#if is_instance_valid(hurtboxarea):
-			#hurtboxarea.queue_free()
-		#if is_instance_valid(parryhitboxarea):
-			#parryhitboxarea.queue_free()
 		if !is_deflected:
 			enemy_that_shoot._spawn_projectile()
 
@@ -134,10 +128,6 @@ func _begin_despawn() -> void:
 		spawner.despawn_obstacle(current_lane, get_instance_id())
 		
 		queue_free()
-
-		#despawn_timer.wait_time = 4
-		#despawn_timer.one_shot = true
-		#despawn_timer.timeout.connect(func() -> void: queue_free())
 
 
 func _on_area_entered(area: Area2D) -> void:
