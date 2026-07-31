@@ -14,8 +14,8 @@ const super_level_max: int = 3
 const super_meter_max: float = 100
 const combo_increment_on_punch: int = 1
 const combo_increment_on_deflect: int = 2
-const combo_multiplier_increment_threshold: int = 10
-const combo_multiplier_increment_value: float = 10
+const combo_multiplier_increment_threshold: int = 5
+const combo_multiplier_increment_value: float = 5
 const combo_multiplier_maximum: float = 10
 
 # Called when the node enters the scene tree for the first time.
@@ -42,15 +42,19 @@ func on_successful_collect() -> void:
 	
 # Maths how much meter the player gets, accounting for their combo multiplier
 func calculate_meter_gain_value(base_gain_value: float) -> float:
-	var combo_bonus: float = (1.00 + 0.01 * combo_multiplier)/1
-	return base_gain_value * (combo_bonus * 20) ## TEST buffing combo gain value for testing purposes only
+	var multiplier: float = combo_multiplier
+	if multiplier <= 0:
+		multiplier = 1
+	#var combo_bonus: float = (1.00 + (0.01 * combo_multiplier))
+	print("Combo multiplier is currently...... " + str(multiplier))
+	return base_gain_value * multiplier
 	
 # Increases combo counter and, if applicable, combo multiplier
 func increment_combo(increment_value: int) -> void:
-	var previous_combo_increment_threshold: int = combo_count % combo_multiplier_increment_threshold
+	var previous_combo_increment_threshold: int = combo_count / combo_multiplier_increment_threshold
 	
 	combo_count += increment_value
-	if combo_multiplier < combo_multiplier_maximum and combo_count % combo_multiplier_increment_threshold > previous_combo_increment_threshold:
+	if combo_multiplier < combo_multiplier_maximum and combo_count / combo_multiplier_increment_threshold > previous_combo_increment_threshold:
 		combo_multiplier += combo_multiplier_increment_value
 	return
 
