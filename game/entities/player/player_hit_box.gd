@@ -22,7 +22,8 @@ func _on_area_exited(area: Area2D) -> void:
 		punchble_objects_colliding.erase(area)
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("punch"):
+	var isPunching: bool = owner.player_sprite.punching
+	if isPunching:
 		for object in punchble_objects_colliding:
 			if is_instance_valid(object):
 				object.owner._on_punched()
