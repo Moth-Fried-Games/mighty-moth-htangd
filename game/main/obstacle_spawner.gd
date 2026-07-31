@@ -18,7 +18,7 @@ const SOUVENIR_RANDOM_TEXTURES = [
 const starting_difficulty_value: int = 0
 const difficulty_increment_timer: float = 15
 
-var spawn_timer_waittime: float = 1.5
+var spawn_timer_waittime: float = 1.2
 var spawn_time_maximum: float = 4.0
 var spawn_timer_minimum: float = 2.0
 var spawn_timer_decrement: float = 0.1
