@@ -32,6 +32,8 @@ func _ready() -> void:
 	dialog.dialog_changed.connect(_on_dialog_changed)
 	dialog.active = true
 	get_tree().paused = false
+	animation_player.play("RESET")
+	_on_dialog_changed()
 
 
 func _process(delta: float) -> void:
@@ -61,13 +63,6 @@ func _process(delta: float) -> void:
 
 
 func _on_dialog_changed() -> void:
-	if dialog.dialog_index == 0:
-		animation_player.play("RESET")
-
-	# shake screen
-	if dialog.dialog_index == 2:
-		pass
-
 	# crush appears
 	# crush scared
 	if dialog.dialog_index == 3:

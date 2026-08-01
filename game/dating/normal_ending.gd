@@ -39,7 +39,7 @@ func _ready() -> void:
 	dialog.active = true
 	get_tree().paused = false
 	animation_player.play("RESET")
-	animation_player.play("crush_on")
+	_on_dialog_changed()
 
 
 func _process(delta: float) -> void:
@@ -68,17 +68,25 @@ func _process(delta: float) -> void:
 
 
 func _on_dialog_changed() -> void:
-	# crush neutral
+	# crush flirty
 	# crush appears
 	if dialog.dialog_index == 0:
-		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
+		crush_sprite_2d.texture = BAE_SPRITE_GIGGLY
 		animation_player.play("crush_on")
 
-	# moth neutral
+	# crush scared
+	if dialog.dialog_index == 2:
+		crush_sprite_2d.texture = BAE_SPRITE_SCARED
+
+	# moth sad
 	# moth appears
 	if dialog.dialog_index == 3:
-		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
+		moth_sprite_2d.texture = MM_SPRITE_SADGE
 		animation_player.play("moth_on")
+
+	# crush sad
+	if dialog.dialog_index == 4:
+		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# moth angry
 	if dialog.dialog_index == 5:
@@ -96,8 +104,12 @@ func _on_dialog_changed() -> void:
 	if dialog.dialog_index == 8:
 		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
-	# moth flustered
+	# moth angry
 	if dialog.dialog_index == 9:
+		moth_sprite_2d.texture = MM_SPRITE_ANGRY
+
+	# moth flustered
+	if dialog.dialog_index == 10:
 		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
 
 	# moth laugh
@@ -112,79 +124,99 @@ func _on_dialog_changed() -> void:
 	if dialog.dialog_index == 16:
 		moth_sprite_2d.texture = MM_SPRITE_SADGE
 
-	# crush sad
+	# crush scared
 	if dialog.dialog_index == 17:
+		crush_sprite_2d.texture = BAE_SPRITE_SCARED
+
+	# crush sad
+	if dialog.dialog_index == 18:
 		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# moth laugh
-	if dialog.dialog_index == 18:
+	if dialog.dialog_index == 19:
 		moth_sprite_2d.texture = MM_SPRITE_LAUGH
 
+	# crush scared
+	# moth angry
 	# cultist angry
 	# cultist appears
 	if dialog.dialog_index == 20:
+		crush_sprite_2d.texture = BAE_SPRITE_SCARED
+		moth_sprite_2d.texture = MM_SPRITE_ANGRY
 		goon_sprite_2d.texture = GRUNT_SPRITE_ANGRY
 		animation_player.play("goon_on")
 
-	# crush angry
-	if dialog.dialog_index == 21:
-		crush_sprite_2d.texture = BAE_SPRITE_ANGRY
+	# crush sad
+	if dialog.dialog_index == 22:
+		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# moth angry
-	if dialog.dialog_index == 22:
+	if dialog.dialog_index == 23:
 		moth_sprite_2d.texture = MM_SPRITE_ANGRY
 
 	# cultist laugh
-	if dialog.dialog_index == 23:
+	if dialog.dialog_index == 24:
 		goon_sprite_2d.texture = GRUNT_SPRITE_EVILLAUGH
 
 	# cultist neutral
-	if dialog.dialog_index == 24:
+	if dialog.dialog_index == 25:
 		goon_sprite_2d.texture = GRUNT_SPRITE_NEUTRAL
 
-	# cultist angry
+	# crush angry
 	if dialog.dialog_index == 27:
+		crush_sprite_2d.texture = BAE_SPRITE_ANGRY
+
+	# cultist angry
+	if dialog.dialog_index == 28:
 		goon_sprite_2d.texture = GRUNT_SPRITE_ANGRY
 
 	# moth neutral
-	if dialog.dialog_index == 27:
+	if dialog.dialog_index == 29:
 		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
+
+	# cultist beatup
+	if dialog.dialog_index == 31:
+		goon_sprite_2d.texture = GRUNT_SPRITE_BEATENUP
 
 	# moth flustered
 	# cultist disappears
-	if dialog.dialog_index == 31:
+	if dialog.dialog_index == 32:
 		moth_sprite_2d.texture = MM_SPRITE_FLUSTERED
 		animation_player.play("goon_off")
 
 	# crush sad
-	if dialog.dialog_index == 32:
+	if dialog.dialog_index == 33:
 		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# crush neutral
-	if dialog.dialog_index == 34:
+	if dialog.dialog_index == 35:
 		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth neutral
-	if dialog.dialog_index == 35:
+	if dialog.dialog_index == 36:
 		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
 
 	# crush sad
-	if dialog.dialog_index == 36:
+	if dialog.dialog_index == 37:
 		crush_sprite_2d.texture = BAE_SPRITE_SADGE
 
 	# moth sad
-	if dialog.dialog_index == 37:
+	if dialog.dialog_index == 38:
 		moth_sprite_2d.texture = MM_SPRITE_SADGE
 
 	# crush neutral
-	if dialog.dialog_index == 40:
+	if dialog.dialog_index == 41:
 		crush_sprite_2d.texture = BAE_SPRITE_NEUTRAL
 
 	# moth laugh
-	if dialog.dialog_index == 42:
+	if dialog.dialog_index == 43:
 		moth_sprite_2d.texture = MM_SPRITE_LAUGH
 
-	# change to game
+	# moth laugh
 	if dialog.dialog_index == 45:
+		moth_sprite_2d.texture = MM_SPRITE_NEUTRAL
+
+	# change to game
+	if dialog.dialog_index == 46:
 		GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_good", 1)
 		GameUi.ui_transitions.change_scene("res://game/title/menu.tscn")
