@@ -1,7 +1,15 @@
 extends Area2D
 class_name PlayerHitBox
 
+@onready var player_sprite: PlayerSprite = $"../PlayerSprite"
+
 var punchble_objects_colliding : Array[Area2D]
+var collectable_objects_colliding : Array[Area2D]
+var parryable_objects_colliding : Array[Area2D]
+
+## TODO
+### Move all Collect action code HERE
+### Move all Parry action code HERE... and update signals accordingly
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
@@ -14,17 +22,31 @@ func _is_in_same_lane(colliding_area: Area2D) -> bool:
 	return false
 
 func _on_area_entered(area: Area2D) -> void:	
-	if _is_in_same_lane(area) and area.is_in_group("MeleeHitBoxArea"):
-		punchble_objects_colliding.append(area)
+	if _is_in_same_lane(area):
+		
+		if area.is_in_group("MeleeHitBoxArea"):
+			punchble_objects_colliding.append(area)
+		
+		if area.is_in_group("Collectable"):
+			collectable_objects_colliding.append(area)
 
 func _on_area_exited(area: Area2D) -> void:
 	if punchble_objects_colliding.has(area) and area.is_in_group("MeleeHitBoxArea"):
 		punchble_objects_colliding.erase(area)
+		
+	if collectable_objects_colliding.has(area) and area.has_method("collect"):
+		collectable_objects_colliding.erase(area)
 
 func _physics_process(_delta: float) -> void:
-	var isPunching: bool = owner.player_sprite.punching
+	var isPunching: bool = player_sprite.punching
 	if isPunching:
 		for object in punchble_objects_colliding:
 			if is_instance_valid(object):
 				object.owner._on_punched()
 				punchble_objects_colliding.erase(object)
+	elif Input.is_action_just_pressed("collect"):     
+		player_sprite.play("collect")   
+		for object in collectable_objects_colliding:
+			if is_instance_valid(object):
+				object.owner._on_collected()
+				collectable_objects_colliding.erase(object)
