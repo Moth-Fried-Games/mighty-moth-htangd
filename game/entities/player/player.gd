@@ -6,7 +6,7 @@ enum PlayerState { IDLE, PUNCH, DEFLECT, COLLECT, SUPER_IDLE, SUPER_ATTACK, FINA
 const horizontal_offset_from_anchor = 200
 @onready var middle_left_anchor: Marker2D = $"../LaneBinders/Middle Lane/Middle Left Anchor"
 @onready var player_sprite: PlayerSprite = $PlayerSprite
-@onready var hurt_box: PlayerHurtBox = $HurtBox
+@onready var hit_box: PlayerHitBox = $HitBox
 
 var cutscene: bool = false
 var super_mode: bool = false
@@ -60,11 +60,11 @@ func _physics_process(_delta: float) -> void:
 # Up and down input processing
 func _movement() -> void:
 	if Input.is_action_just_pressed("move_up"):
-		hurt_box._reset_parry_timers()
+		hit_box._reset_parry_timers()
 		_change_lane(direction.UP)
 		player_sprite.play("fly")
 	if Input.is_action_just_pressed("move_down"):
-		hurt_box._reset_parry_timers()
+		hit_box._reset_parry_timers()
 		_change_lane(direction.DOWN)
 		player_sprite.play("fly")
 
