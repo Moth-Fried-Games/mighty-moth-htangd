@@ -63,8 +63,10 @@ func update_inputs() -> void:
 	input_rich_text_label.text = ""
 	var input_text: String = ""
 	for ui_input in ui_inputs:
-		var input_label: String = ui_input.split(" ")[0]
-		var input_name: String = ui_input.split(" ")[1]
+		var input_splits: PackedStringArray = ui_input.split(" ")
+		var input_label: String = input_splits[0]
+		input_splits.remove_at(0)
+		var input_name: String = " ".join(input_splits)
 		var input_texture_path: String = input_path(input_label)
 		var input_tag: String = img_tag(input_texture_path)
 		input_text = str(input_text, " [font_size=24]", input_name, "[/font_size] ", input_tag)

@@ -127,7 +127,7 @@ func play_dialog() -> void:
 			if not input_dialog:
 				ui_dialog.message(dialog_list[dialog_index])
 			else:
-				ui_dialog.ui_inputs = ["accept Next", "cancel Skip"]
+				ui_dialog.ui_inputs = ["accept Next", "cancel Skip (Hold)"]
 				ui_dialog.message_input(dialog_list[dialog_index])
 
 
