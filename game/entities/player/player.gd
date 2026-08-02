@@ -96,9 +96,10 @@ func _on_super_input() -> void:
 		if GameGlobals.game_dictionary["flag"].has("cutscene"):
 			if GameGlobals.game_dictionary["flag"]["cutscene"]:
 				return
-		print("I think my super meter is... " + str(super_meter_handler.super_level))
+		#print("I think my super meter is... " + str(super_meter_handler.super_level))
+		#super_meter_handler.apply_meter_gain(999)
 		if super_meter_handler.super_level >= 1:
-			print("Testing the super pause!!!")
+			#print("Testing the super pause!!!")
 
 			process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -163,7 +164,7 @@ func _super_animation() -> void:
 
 
 func _on_super_finished() -> void:
-	print("Ding! Super Mode is over!")
+	#print("Ding! Super Mode is over!")
 	super_meter_handler.expend_super_meter()
 	super_mode = false
 	get_tree().paused = false

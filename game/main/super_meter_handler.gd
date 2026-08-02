@@ -50,7 +50,7 @@ func calculate_meter_gain_value(base_gain_value: float) -> float:
 	if multiplier <= 0:
 		multiplier = 1
 	#var combo_bonus: float = (1.00 + (0.01 * combo_multiplier))
-	print("Combo multiplier is currently...... " + str(multiplier))
+	#print("Combo multiplier is currently...... " + str(multiplier))
 	return base_gain_value * multiplier
 
 

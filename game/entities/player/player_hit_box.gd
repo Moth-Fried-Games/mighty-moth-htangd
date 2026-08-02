@@ -55,8 +55,8 @@ func _stop_deflect() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var is_cutscene: bool = get_parent().cutscene
-
-	if is_cutscene:
+	var is_super: bool = get_parent().super_mode
+	if is_cutscene or is_super:
 		return
 
 	if is_deflecting:

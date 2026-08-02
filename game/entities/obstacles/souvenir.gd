@@ -52,7 +52,7 @@ func _ready() -> void:
 		parry_hit_box.shape.set_size(Vector2(width, height))
 		collect_hix_box.shape.set_size(Vector2(width, height))
 		
-		print("Souv of sprite " + str(assignedSprite.resource_path) + " is now " + str(punch_hit_box.shape.size))
+		#print("Souv of sprite " + str(assignedSprite.resource_path) + " is now " + str(punch_hit_box.shape.size))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
