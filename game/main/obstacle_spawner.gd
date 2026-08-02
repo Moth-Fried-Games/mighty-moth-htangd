@@ -18,10 +18,10 @@ const SOUVENIR_RANDOM_TEXTURES = [
 const starting_difficulty_value: int = 0
 const difficulty_increment_timer: float = 15
 
-var spawn_timer_waittime: float = 1.2
-var spawn_time_maximum: float = 4.0
-var spawn_timer_minimum: float = 2.0
-var spawn_timer_decrement: float = 0.1
+var spawn_timer_waittime: float = 0.15
+#var spawn_time_maximum: float = 4.0
+#var spawn_timer_minimum: float = 2.0
+#var spawn_timer_decrement: float = 0.1
 
 var souvenirs_spawned: int = 0
 const souvenirs_total_spawnable: int = 20
@@ -44,7 +44,7 @@ var main_game_scene: MainGameScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_timer = Timer.new()
-	spawn_timer.wait_time = 2.0
+	spawn_timer.wait_time = 1.5
 	spawn_timer.timeout.connect(_spawn_obstacles_wave)
 	spawn_timer.one_shot = false
 	add_child(spawn_timer)

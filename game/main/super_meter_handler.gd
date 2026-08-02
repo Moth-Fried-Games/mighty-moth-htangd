@@ -8,14 +8,14 @@ const on_collect_meter_gain: int = 3
 var super_level: int = 0
 var super_meter: float = 0
 var combo_count: int = 0
-var combo_multiplier: float = 0
+var combo_multiplier: float = 1
 
 const super_level_max: int = 3
 const super_meter_max: float = 100
 const combo_increment_on_punch: int = 1
 const combo_increment_on_deflect: int = 2
 const combo_multiplier_increment_threshold: int = 5
-const combo_multiplier_increment_value: float = 5
+const combo_multiplier_increment_value: float = 1
 const combo_multiplier_maximum: float = 10
 
 
@@ -56,17 +56,13 @@ func calculate_meter_gain_value(base_gain_value: float) -> float:
 
 # Increases combo counter and, if applicable, combo multiplier
 func increment_combo(increment_value: int) -> void:
-	var previous_combo_increment_threshold: float = (
-		combo_count / float(combo_multiplier_increment_threshold)
-	)
-
 	combo_count += increment_value
+	
+	var combo_COMPARE:float = floor(combo_count / float(combo_multiplier_increment_threshold))
+	
 	if (
 		combo_multiplier < combo_multiplier_maximum
-		and (
-			combo_count / float(combo_multiplier_increment_threshold)
-			> previous_combo_increment_threshold
-		)
+		and combo_COMPARE > combo_multiplier
 	):
 		combo_multiplier += combo_multiplier_increment_value
 	return
@@ -100,5 +96,5 @@ func expend_super_meter() -> void:
 # Breaks the player's combo count and multiplier
 func on_combo_break() -> void:
 	combo_count = 0
-	combo_multiplier = 0
+	combo_multiplier = 1
 	return
