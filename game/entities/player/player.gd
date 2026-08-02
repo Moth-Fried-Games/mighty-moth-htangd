@@ -138,8 +138,11 @@ func _super_animation() -> void:
 
 	# attack the targets
 	while super_targets.size() > 0:
-		var current_target: Node2D = super_targets.pop_back()
-		GameUtils.spawn_punch(ultimate_scene, current_target.global_position, current_target)
+		if is_instance_valid(super_targets[super_targets.size() -1]):
+			var current_target: Node2D = super_targets.pop_back()
+			GameUtils.spawn_punch(ultimate_scene, current_target.global_position, current_target)
+		else: ## Catching edge cases where a target is already freed before it gets punched
+			super_targets.remove_at(super_targets.size() - 1)
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(0.5).timeout
 
