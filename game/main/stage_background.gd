@@ -42,8 +42,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	if not GameGlobals.audio_manager.persistent_audio.has("music_game"):
 		GameGlobals.audio_manager.create_persistent_audio("music_game")
-	#await get_tree().create_timer(1).timeout
-	#win()
+	await get_tree().create_timer(1).timeout
+	win()
 	#lose()
 
 
@@ -117,7 +117,6 @@ func win() -> void:
 
 func _on_win_tween_finished() -> void:
 	station_shown = true
-	GameGlobals.game_dictionary["flag"]["ending"] = true
 	var player: Player = null
 	if GameGlobals.game_dictionary["node"].has("player"):
 		player = GameGlobals.game_dictionary["node"]["player"]
@@ -153,6 +152,7 @@ func _on_player_tween_finished() -> void:
 			Vector2(0.25, 0.25)
 		)
 		await get_tree().create_timer(0.1).timeout
+	GameGlobals.game_dictionary["flag"]["ending"] = true
 	win_animation_player.play("fade_in")
 
 

@@ -47,14 +47,12 @@ func _physics_process(_delta: float) -> void:
 		ultimate_scene = main_scene.ultimate
 		super_meter_handler = main_scene.super_meter_handler
 
-	if cutscene:
+	if super_mode or cutscene:
 		return
-	if !super_mode:
-		_movement()
-		_animate()
-		_on_super_input()
-	else:  ## Processing movement/animations/changes during super mode
-		return
+
+	_movement()
+	_animate()
+	_on_super_input()
 
 
 # Up and down input processing
