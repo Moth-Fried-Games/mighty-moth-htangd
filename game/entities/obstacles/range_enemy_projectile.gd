@@ -121,7 +121,7 @@ func _on_walk_past_player() -> void:
 
 func _begin_despawn() -> void:
 	if is_instance_valid(self):
-		if !is_deflected:
+		if !is_deflected and is_instance_valid(enemy_that_shoot):
 			enemy_that_shoot._spawn_projectile()
 
 		var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner

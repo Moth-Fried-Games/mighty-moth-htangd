@@ -113,7 +113,7 @@ func _on_ranged_enemy_sprite_rocket_fired() -> void:
 	new_projectile.current_lane = current_lane
 	new_projectile.global_position = global_position
 	new_projectile.enemy_that_shoot = self
-	call_deferred("add_child", new_projectile)
+	get_tree().current_scene.call_deferred("add_child", new_projectile)
 	return
 
 
