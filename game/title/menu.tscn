@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://d3k1u3x3225rk" path="res://mightymoth_theme.tres" id="3_weauo"]
 [ext_resource type="FontFile" uid="uid://bx8xliwdar5a" path="res://assets/fonts/Slackey-Regular.ttf" id="4_lybkc"]
 [ext_resource type="FontFile" uid="uid://cc05l24rsyjqf" path="res://assets/fonts/OpenSans-VariableFont_wdth,wght.ttf" id="6_nogmj"]
+[ext_resource type="Script" uid="uid://bpcakcbada45g" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="7_ycd5b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr41j"]
 
@@ -79,6 +80,118 @@ base_font = ExtResource("6_nogmj")
 font_size = 18
 font_color = Color(0.780392, 0.827451, 0.862745, 1)
 
+[sub_resource type="Texture2D" id="Texture2D_ycd5b"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_up"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_bi2it"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_up"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_m3rjc"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_down"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_pmbcw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_down"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_ykh0f"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "punch"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_qmg03"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "punch"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_qt2fo"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "deflect"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_475ka"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "deflect"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_qttoe"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "collect"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_1qdra"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "collect"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_yrjxa"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "ultimate"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_uk11u"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "ultimate"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_ybbod"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "pause"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_2jxjo"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "pause"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lerck"]
 expand_margin_left = 75.0
 expand_margin_top = 50.0
@@ -143,7 +256,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 4
+current_tab = 2
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer" unique_id=619077342]
@@ -261,7 +374,6 @@ theme = ExtResource("3_weauo")
 text = "QUIT"
 
 [node name="HowTo" type="Control" parent="Control/TabContainer" unique_id=2060671812]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -287,10 +399,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -539.5
-offset_top = -265.0
-offset_right = 539.5
-offset_bottom = 265.0
+offset_left = -510.0
+offset_top = -332.0
+offset_right = 510.0
+offset_bottom = 332.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -301,12 +413,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_e05k4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer" unique_id=1291270224]
+[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer" unique_id=1028534245]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer" unique_id=1291270224]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1781503961]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1781503961]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.92156863, 0.7019608, 0.4627451, 1)
 theme_override_fonts/normal_font = ExtResource("4_lybkc")
@@ -315,14 +436,12 @@ bbcode_enabled = true
 text = "[center]HOW TO PLAY"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer" unique_id=47276113]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2087632387]
 layout_mode = 2
-theme_override_constants/separation = 15
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=2087632387]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=656814389]
+[node name="Label2" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=656814389]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
 theme_override_fonts/font = SubResource("FontVariation_e05k4")
@@ -331,28 +450,253 @@ text = "OBJECTIVE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1289255233]
+[node name="Label3" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1289255233]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = SubResource("FontVariation_ibdkp")
-text = "Save the day and save your date, one punch at a time!
+text = "Save the universe and get yourself a successful date, one punch at a time! 
 
-You’re Mighty Moth, hero of the universe, defender of Cecropolis and helpless romantic! After saving your crush for the millionth time, you finally score a dinner date for 8:00PM. But your excitement is cut short, as the nefarious Shocked Cult has broken into your base and stolen all the galactic gifts you gathered for your date!
-
-Help Mighty Moth beat up cultists, recover her gifts and get to her date before the risotto gets cold!
-
-Features:
-·	Punch and Parry: KO melee enemies up close, or deflect their ranged missiles back to their shooters!
-·	Unleash the Mighty Moth Masher: Consistently hit enemies to charge Mighty Moth’s combo meter and unleash a massive hit to delay the end of the universe!
-·	Collect, don’t Smash: Keep an eye out for the souvenirs flying in your direction. But be careful! You don’t want to punch your crush’s gifts to pieces!
-
-Hint: Sometimes, style is all it takes for a successful mission! Time your deflections against incoming melee strikes to hurl cultists into other foes, charging your Moth Masher even faster!"
+The Shocked Cult has done it, and now the end of the universe is nigh, just before Mighty Moth's date night! Rush towards your crush's side while sorting out the cult's mess, and don't forget to bring her gifts from all over the universe!"
 label_settings = SubResource("LabelSettings_6potn")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1120600663]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "CONTROLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2135652438]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=492457304]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_ycd5b")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=2094407793]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_bi2it")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=1047573218]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "MOVE UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1547295851]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1267363075]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_m3rjc")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=2131567245]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_pmbcw")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1717826101]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "MOVE DOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2043398476]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=235932184]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_ykh0f")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1954303837]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_qmg03")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=894228862]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "PUNCH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=902670511]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=856630713]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_qt2fo")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1971764006]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_475ka")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2123988320]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "DEFLECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=109623309]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1803497917]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_qttoe")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=235869938]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_1qdra")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=168509577]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "COLLECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=981904168]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1043065125]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_yrjxa")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=24326156]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_uk11u")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1697153489]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "SUPER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1556441076]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=444561075]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_ybbod")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1337112241]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_2jxjo")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=289787294]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HowToReturnButton" type="Button" parent="Control/TabContainer/HowTo/VBoxContainer" unique_id=670409487]
 unique_name_in_owner = true
@@ -598,6 +942,7 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Credits" type="Control" parent="Control/TabContainer" unique_id=168381721]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
