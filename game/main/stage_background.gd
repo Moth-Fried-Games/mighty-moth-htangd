@@ -27,6 +27,9 @@ var scrolling_planet_size: float = 0
 
 var planet_sizes: Array[float] = [203, 114, 41, 85]
 
+var station_viewport_offset: float = 0
+var station_shown: bool = false
+
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -83,27 +86,35 @@ func scroll_parallax(delta: float) -> void:
 func adjust_space_stations() -> void:
 	var viewport_size: Vector2 = get_viewport_rect().size
 	var viewport_offset: float = viewport_size.x + (245 * 2)
+	station_viewport_offset = viewport_size.x - (245)
 
 	if not show_win_station:
 		if space_station_win.position.x != viewport_offset:
 			space_station_win.position.x = viewport_offset
+	else:
+		if station_shown:
+			if space_station_win.position.x != station_viewport_offset:
+				space_station_win.position.x = station_viewport_offset
 	if not show_lose_station:
 		if space_station_lose.position.x != viewport_offset:
 			space_station_lose.position.x = viewport_offset
+	else:
+		if station_shown:
+			if space_station_lose.position.x != station_viewport_offset:
+				space_station_lose.position.x = station_viewport_offset
 
 
 func win() -> void:
 	show_win_station = true
-	var viewport_size: Vector2 = get_viewport_rect().size
-	var viewport_offset: float = viewport_size.x - (245)
 	var win_tween: Tween = create_tween().set_parallel()
 	win_tween.finished.connect(_on_win_tween_finished)
-	win_tween.tween_property(space_station_win, "position:x", viewport_offset, 5)
+	win_tween.tween_property(space_station_win, "position:x", station_viewport_offset, 5)
 	win_tween.tween_property(self, "speed_modifier", 0, 5)
 	GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_game", 1)
 
 
 func _on_win_tween_finished() -> void:
+	station_shown = true
 	var player: Player = null
 	if GameGlobals.game_dictionary["node"].has("player"):
 		player = GameGlobals.game_dictionary["node"]["player"]
@@ -151,16 +162,15 @@ func _on_win_animation_finished(anim_name: String) -> void:
 
 func lose() -> void:
 	show_lose_station = true
-	var viewport_size: Vector2 = get_viewport_rect().size
-	var viewport_offset: float = viewport_size.x - (245)
 	var lose_tween: Tween = create_tween().set_parallel()
 	lose_tween.finished.connect(_on_lose_tween_finished)
-	lose_tween.tween_property(space_station_lose, "position:x", viewport_offset, 5)
+	lose_tween.tween_property(space_station_lose, "position:x", station_viewport_offset, 5)
 	lose_tween.tween_property(self, "speed_modifier", 0, 5)
 	GameGlobals.audio_manager.fade_persistent_audio_out_and_destroy("music_game", 1)
 
 
 func _on_lose_tween_finished() -> void:
+	station_shown = true
 	var main_ui: MainUI = null
 	if GameGlobals.game_dictionary["node"].has("main_ui"):
 		main_ui = GameGlobals.game_dictionary["node"]["main_ui"]
