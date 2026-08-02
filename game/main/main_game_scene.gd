@@ -6,6 +6,7 @@ extends Node2D
 @onready var super_meter_handler: SuperMeterHandler = %SuperMeterHandler
 @onready var ultimate: Marker2D = $Ultimate
 @onready var stage_background: StageBackground = $StageBackground
+@onready var camera_2d: Camera2D = $Camera2D
 
 var game_over_timer: Timer
 var finale_timer: Timer
@@ -43,7 +44,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if camera_2d.global_position != get_viewport_rect().size / 2:
+		camera_2d.global_position = get_viewport_rect().size / 2
+	if camera_2d.limit_right != get_viewport_rect().size.x:
+		camera_2d.limit_right = int(get_viewport_rect().size.x)
 
 
 func apply_time_bonus(time_bonus: float) -> void:
