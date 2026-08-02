@@ -23,7 +23,17 @@ var text_character_ratio: float = 0
 var text_typing: bool = false
 var text_finished: bool = true
 
+var wait_regex: RegEx = RegEx.new()
+var img_regex: RegEx = RegEx.new()
+var bbcode_regex: RegEx = RegEx.new()
+
 signal typing_finished
+
+
+func _ready() -> void:
+	wait_regex.compile("\\[\\/?(?:wait){1,}.*?]")
+	img_regex.compile("\\[(?:img){1,}.*?].*?\\[\\/?(?:img){1,}.*?]")
+	bbcode_regex.compile("\\[\\/?(?:){1,}.*?]")
 
 
 func clear() -> void:
@@ -78,10 +88,8 @@ func input_path(input_label: String) -> String:
 func split_waits() -> void:
 	text_wait_splits.clear()
 	text_wait_times.clear()
-	var wait_regex: RegEx = RegEx.new()
 	var wait_open: Array[String] = []
 	var wait_close: Array[String] = []
-	wait_regex.compile("\\[\\/?(?:wait){1,}.*?]")
 	var results: Array[RegExMatch] = wait_regex.search_all(text)
 	if results.is_empty():
 		clean_text = text
@@ -148,10 +156,6 @@ func split_waits() -> void:
 
 		# Clean all other BBCode
 		if not text_wait_splits.is_empty():
-			var img_regex: RegEx = RegEx.new()
-			var bbcode_regex: RegEx = RegEx.new()
-			img_regex.compile("\\[(?:img){1,}.*?].*?\\[\\/?(?:img){1,}.*?]")
-			bbcode_regex.compile("\\[\\/?(?:){1,}.*?]")
 			for tws in text_wait_splits.size():
 				var clean_split: String = text_wait_splits[tws]
 				var img_results: Array[RegExMatch] = img_regex.search_all(text_wait_splits[tws])

@@ -107,6 +107,7 @@ func adjust_space_stations() -> void:
 
 func win() -> void:
 	show_win_station = true
+	GameGlobals.game_dictionary["flag"]["cutscene"] = true
 	var win_tween: Tween = create_tween().set_parallel()
 	win_tween.finished.connect(_on_win_tween_finished)
 	win_tween.tween_property(space_station_win, "position:x", station_viewport_offset, 5)
@@ -116,6 +117,7 @@ func win() -> void:
 
 func _on_win_tween_finished() -> void:
 	station_shown = true
+	GameGlobals.game_dictionary["flag"]["ending"] = true
 	var player: Player = null
 	if GameGlobals.game_dictionary["node"].has("player"):
 		player = GameGlobals.game_dictionary["node"]["player"]
@@ -125,6 +127,11 @@ func _on_win_tween_finished() -> void:
 		main_ui.hide_ui()
 	if is_instance_valid(player):
 		player.cutscene = true
+		player.player_sprite.play("ultimate")
+		for i in 10:
+			await get_tree().create_timer(0.1).timeout
+			GameGlobals.audio_manager.create_audio("sound_super")
+		player.player_sprite.play("fly")
 		var player_tween: Tween = create_tween().set_parallel()
 		player_tween.finished.connect(_on_player_tween_finished)
 		player_tween.tween_property(
@@ -163,6 +170,7 @@ func _on_win_animation_finished(anim_name: String) -> void:
 
 func lose() -> void:
 	show_lose_station = true
+	GameGlobals.game_dictionary["flag"]["cutscene"] = true
 	var lose_tween: Tween = create_tween().set_parallel()
 	lose_tween.finished.connect(_on_lose_tween_finished)
 	lose_tween.tween_property(space_station_lose, "position:x", station_viewport_offset, 5)

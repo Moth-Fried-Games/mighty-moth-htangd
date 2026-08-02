@@ -46,6 +46,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	_ending_fade()
 	if is_super_kill:
 		if not is_super_defeat:
 			super_kill()
@@ -116,3 +117,10 @@ func super_kill() -> void:
 	is_super_defeat = true
 	main_game_scene.apply_time_bonus(1*super_meter_handler.super_level)
 	_on_defeated()
+
+func _ending_fade() -> void:
+	if GameGlobals.game_dictionary["flag"].has("ending"):
+		if GameGlobals.game_dictionary["flag"]["ending"]:
+			var ending_tween: Tween = create_tween()
+			ending_tween.finished.connect(_begin_despawn)
+			ending_tween.tween_property(self,"modulate:a",0,1)

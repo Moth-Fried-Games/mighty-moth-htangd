@@ -84,6 +84,7 @@ func _on_hit_reaction() -> void:
 		GameGlobals.audio_manager.create_audio("sound_punch")
 		on_hit_timer.start()
 
+
 func _on_parry_recharge() -> void:
 	player_sprite.modulate = Color.LIGHT_CYAN
 	GameGlobals.audio_manager.create_audio("sound_deflect", 3)
@@ -91,8 +92,12 @@ func _on_parry_recharge() -> void:
 	player_sprite.modulate = Color.WHITE
 	return
 
+
 func _on_super_input() -> void:
 	if Input.is_action_just_pressed("ultimate"):
+		if GameGlobals.game_dictionary["flag"].has("cutscene"):
+			if GameGlobals.game_dictionary["flag"]["cutscene"]:
+				return
 		print("I think my super meter is... " + str(super_meter_handler.super_level))
 		if super_meter_handler.super_level >= 1:
 			print("Testing the super pause!!!")
@@ -138,10 +143,10 @@ func _super_animation() -> void:
 
 	# attack the targets
 	while super_targets.size() > 0:
-		if is_instance_valid(super_targets[super_targets.size() -1]):
+		if is_instance_valid(super_targets[super_targets.size() - 1]):
 			var current_target: Node2D = super_targets.pop_back()
 			GameUtils.spawn_punch(ultimate_scene, current_target.global_position, current_target)
-		else: ## Catching edge cases where a target is already freed before it gets punched
+		else:  ## Catching edge cases where a target is already freed before it gets punched
 			super_targets.remove_at(super_targets.size() - 1)
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(0.5).timeout

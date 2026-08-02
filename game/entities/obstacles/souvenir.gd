@@ -57,6 +57,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_ending_fade()
 	global_position.x = global_position.x - (delta * movement_per_second)
 
 func _on_window_size_changed() -> void:
@@ -102,3 +103,10 @@ func _begin_despawn() -> void:
 	spawner.despawn_obstacle(current_lane, get_instance_id())
 	
 	queue_free()
+
+func _ending_fade() -> void:
+	if GameGlobals.game_dictionary["flag"].has("ending"):
+		if GameGlobals.game_dictionary["flag"]["ending"]:
+			var ending_tween: Tween = create_tween()
+			ending_tween.finished.connect(_begin_despawn)
+			ending_tween.tween_property(self,"modulate:a",0,1)
