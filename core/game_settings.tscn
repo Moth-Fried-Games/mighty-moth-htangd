@@ -4,4 +4,6 @@
 
 [node name="GameSettings" type="Node" unique_id=2082667040]
 script = ExtResource("1_be2fd")
+game_size = Vector2i(1280, 720)
+stretch_mode = true
 metadata/_custom_type_script = "uid://cfgtjil6gu31y"

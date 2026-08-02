@@ -75,4 +75,11 @@ shape = SubResource("RectangleShape2D_jh3nx")
 [node name="Ultimate" type="Marker2D" parent="." unique_id=1779362396]
 process_mode = 3
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1625519546]
+position = Vector2(640, 360)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+
 [editable path="LaneBinders"]
