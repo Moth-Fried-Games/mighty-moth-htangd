@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 	if camera_2d.global_position != get_viewport_rect().size / 2:
 		camera_2d.global_position = get_viewport_rect().size / 2
 	if camera_2d.limit_right != get_viewport_rect().size.x:
-		camera_2d.limit_right = get_viewport_rect().size.x
+		camera_2d.limit_right = int(get_viewport_rect().size.x)
 
 
 func apply_time_bonus(time_bonus: float) -> void:
