@@ -5,8 +5,11 @@ const spawn_offset_from_anchor: float = 20
 const movement_per_second: float = 150
 
 @onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
+@onready var punch_hit_box: CollisionShape2D = $PunchHitBoxArea/PunchHitBox
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
+@onready var parry_hit_box: CollisionShape2D = $ParryHitBoxArea/ParryHitBox
 @onready var collecthitboxarea: Area2D = $"CollectHitBoxArea"
+@onready var collect_hix_box: CollisionShape2D = $CollectHitBoxArea/CollectHixBox
 @onready var sprite_2d: Sprite2D = $SouvenirSprite
 
 var assignedSprite: Resource
@@ -37,6 +40,19 @@ func _ready() -> void:
 	
 	if assignedSprite:
 		sprite_2d.texture = assignedSprite
+		# Sprite pixels seem to be x2 as big as actual engine pixels, remind me to check with Myr to Learn How That Happen, 
+		# assuming & hard-coding this scaling here is a bit of a spaghet solution
+		var width: float = sprite_2d.texture.get_width() * 2
+		var height: float = sprite_2d.texture.get_height() * 2
+		
+		punch_hit_box.shape = RectangleShape2D.new()
+		parry_hit_box.shape = RectangleShape2D.new()
+		collect_hix_box.shape = RectangleShape2D.new()
+		punch_hit_box.shape.set_size(Vector2(width, height))
+		parry_hit_box.shape.set_size(Vector2(width, height))
+		collect_hix_box.shape.set_size(Vector2(width, height))
+		
+		print("Souv of sprite " + str(assignedSprite.resource_path) + " is now " + str(punch_hit_box.shape.size))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
