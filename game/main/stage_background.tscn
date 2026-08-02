@@ -332,71 +332,85 @@ animations = [{
 }]
 
 [node name="StageBackground" type="Node2D" unique_id=1460123268]
+process_mode = 3
 script = ExtResource("1_t7266")
 scroll_speed = 50.0
 modifier_3 = 0.75
 modifier_4 = 0.5
 
 [node name="Parallax1" type="Parallax2D" parent="." unique_id=875467235]
+process_mode = 1
 repeat_size = Vector2(1280, 0)
 repeat_times = 2
 
 [node name="Layer1" type="Sprite2D" parent="Parallax1" unique_id=1535003429]
+process_mode = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_5ub6l")
 centered = false
 
 [node name="Parallax2" type="Parallax2D" parent="." unique_id=1003403447]
-scroll_offset = Vector2(752.3736, 0)
+process_mode = 1
+scroll_offset = Vector2(796.8815, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
 [node name="Layer2" type="Sprite2D" parent="Parallax2" unique_id=566346533]
+process_mode = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_hy2k2")
 centered = false
 
 [node name="Parallax4" type="Parallax2D" parent="." unique_id=1409639157]
-scroll_offset = Vector2(1269.668, 0)
+process_mode = 1
+scroll_offset = Vector2(-1201.3143, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
 [node name="Layer4" type="Sprite2D" parent="Parallax4" unique_id=1493828320]
+process_mode = 1
 scale = Vector2(2, 2)
 texture = ExtResource("5_ti4sd")
 centered = false
 
 [node name="Parallax3" type="Parallax2D" parent="." unique_id=1324184026]
-scroll_offset = Vector2(-891.0432, 0)
+process_mode = 1
+scroll_offset = Vector2(-757.49335, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
 [node name="Layer3" type="Sprite2D" parent="Parallax3" unique_id=1944808279]
+process_mode = 1
 scale = Vector2(2, 2)
 texture = ExtResource("4_ulva1")
 centered = false
 
 [node name="Planet1" type="Sprite2D" parent="." unique_id=4307794]
-position = Vector2(-406.02985, 625)
+process_mode = 1
+position = Vector2(-406.4036, 625)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7lp44")
 
 [node name="Planet2" type="Sprite2D" parent="." unique_id=1984123476]
-position = Vector2(-114, 88)
+process_mode = 1
+position = Vector2(43.911076, 88)
 scale = Vector2(2, 2)
 texture = ExtResource("7_pv6ml")
 
 [node name="Planet3" type="Sprite2D" parent="." unique_id=720359318]
-position = Vector2(976.97845, 140)
+process_mode = 1
+position = Vector2(-82.2231, 140)
 scale = Vector2(2, 2)
 texture = ExtResource("8_6ns2i")
 
 [node name="Planet4" type="Sprite2D" parent="." unique_id=252639186]
-position = Vector2(-85, 540)
+process_mode = 1
+position = Vector2(-171.98415, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_m57kj")
 
 [node name="WinBackground" type="ColorRect" parent="." unique_id=682681130]
+process_mode = 1
 modulate = Color(1, 1, 1, 0)
 offset_left = -1280.0
 offset_top = -720.0
@@ -404,6 +418,7 @@ offset_right = 2560.0
 offset_bottom = 1440.0
 
 [node name="SpaceStationWin" type="Node2D" parent="." unique_id=2009148189]
+process_mode = 1
 position = Vector2(1723, 360)
 scale = Vector2(2, 2)
 
@@ -433,6 +448,7 @@ texture = ExtResource("15_beax7")
 libraries/ = SubResource("AnimationLibrary_pv6ml")
 
 [node name="SpaceStationLose" type="AnimatedSprite2D" parent="." unique_id=516854991]
+process_mode = 1
 position = Vector2(1723, 360)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qmg03")

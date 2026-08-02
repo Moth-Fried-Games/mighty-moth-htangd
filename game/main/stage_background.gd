@@ -48,8 +48,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	scroll_parallax(delta)
-	scroll_planets(delta)
+	if not get_tree().paused:
+		scroll_parallax(delta)
+		scroll_planets(delta)
 	adjust_space_stations()
 
 
