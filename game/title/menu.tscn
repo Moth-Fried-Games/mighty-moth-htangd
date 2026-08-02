@@ -96,22 +96,6 @@ path = "move_up"
 force_type = 2
 metadata/_custom_type_script = "uid://bpcakcbada45g"
 
-[sub_resource type="Texture2D" id="Texture2D_m3rjc"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("7_ycd5b")
-path = "move_down"
-force_type = 1
-metadata/_custom_type_script = "uid://bpcakcbada45g"
-
-[sub_resource type="Texture2D" id="Texture2D_pmbcw"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("7_ycd5b")
-path = "move_down"
-force_type = 2
-metadata/_custom_type_script = "uid://bpcakcbada45g"
-
 [sub_resource type="Texture2D" id="Texture2D_ykh0f"]
 resource_local_to_scene = false
 resource_name = ""
@@ -141,6 +125,22 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("7_ycd5b")
 path = "deflect"
+force_type = 2
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_m3rjc"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_down"
+force_type = 1
+metadata/_custom_type_script = "uid://bpcakcbada45g"
+
+[sub_resource type="Texture2D" id="Texture2D_pmbcw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_ycd5b")
+path = "move_down"
 force_type = 2
 metadata/_custom_type_script = "uid://bpcakcbada45g"
 
@@ -474,12 +474,22 @@ text = "CONTROLS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2135652438]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2130185022]
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=492457304]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=881194172]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2135652438]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6" unique_id=492457304]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -487,7 +497,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_ycd5b")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=2094407793]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6" unique_id=2094407793]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -495,7 +505,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_bi2it")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=1047573218]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6" unique_id=1047573218]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -506,44 +516,13 @@ text = "MOVE UP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1547295851]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2043398476]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1267363075]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("Texture2D_m3rjc")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=2131567245]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("Texture2D_pmbcw")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1717826101]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
-theme_override_fonts/font = SubResource("FontVariation_e05k4")
-theme_override_font_sizes/font_size = 21
-text = "MOVE DOWN"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2043398476]
-layout_mode = 2
-size_flags_vertical = 4
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=235932184]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=235932184]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -551,7 +530,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_ykh0f")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1954303837]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1954303837]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -559,7 +538,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_qmg03")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=894228862]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=894228862]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -570,12 +549,13 @@ text = "PUNCH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=902670511]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=902670511]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=856630713]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=856630713]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -583,7 +563,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_qt2fo")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1971764006]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1971764006]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -591,7 +571,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_475ka")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2123988320]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2123988320]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -602,12 +582,50 @@ text = "DEFLECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=109623309]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1485082586]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1547295851]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1803497917]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7" unique_id=1267363075]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_m3rjc")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7" unique_id=2131567245]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("Texture2D_pmbcw")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7" unique_id=1717826101]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.90588236, 0.78431374, 0.6509804, 1)
+theme_override_fonts/font = SubResource("FontVariation_e05k4")
+theme_override_font_sizes/font_size = 21
+text = "MOVE DOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=109623309]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1803497917]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -615,7 +633,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_qttoe")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=235869938]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=235869938]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -623,7 +641,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_1qdra")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=168509577]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=168509577]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -634,12 +652,13 @@ text = "COLLECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=981904168]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=981904168]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1043065125]
+[node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" unique_id=1043065125]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -647,7 +666,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_yrjxa")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=24326156]
+[node name="TextureRect2" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" unique_id=24326156]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -655,7 +674,7 @@ size_flags_vertical = 4
 texture = SubResource("Texture2D_uk11u")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1697153489]
+[node name="Label" type="Label" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" unique_id=1697153489]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -669,6 +688,7 @@ vertical_alignment = 1
 [node name="HBoxContainer5" type="HBoxContainer" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1556441076]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Control/TabContainer/HowTo/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=444561075]
