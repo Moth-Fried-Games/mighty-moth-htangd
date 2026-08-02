@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		if anchor.position.x != 0:
 			anchor.position.x = 0
 
-	if Input.is_action_pressed("ultimate"):
+	if Input.is_action_pressed("ui_cancel"):
 		skip_time -= delta
 		if not skipping and skip_time <= 0:
 			skipping = true

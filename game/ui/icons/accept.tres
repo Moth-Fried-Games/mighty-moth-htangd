@@ -6,5 +6,5 @@
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("1_nmh7t")
-path = "deflect"
+path = "ui_accept"
 metadata/_custom_type_script = "uid://bpcakcbada45g"
