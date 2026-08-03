@@ -11,7 +11,6 @@ const movement_per_second: float = 300
 @onready var parryhitboxarea: Area2D = $"ParryHitBoxArea"
 @onready var sprite_2d: Node = $MeleeEnemySprite
 
-
 var is_super_kill: bool = false
 var is_super_defeat: bool = false
 var is_defeat: bool = false
@@ -109,19 +108,20 @@ func _on_walk_past_player() -> void:
 func _begin_despawn() -> void:
 	var spawner: ObstacleSpawner = get_tree().current_scene.obstacle_spawner
 	spawner.despawn_obstacle(current_lane, get_instance_id())
-	
+
 	queue_free()
 
 
 func super_kill() -> void:
 	is_super_defeat = true
-	super_meter_handler.increment_combo(1)
-	main_game_scene.apply_time_bonus(1*super_meter_handler.super_level)
+	super_meter_handler.increment_combo(super_meter_handler.combo_increment_on_punch)
+	main_game_scene.apply_time_bonus(1 * super_meter_handler.super_level)
 	_on_defeated()
+
 
 func _ending_fade() -> void:
 	if GameGlobals.game_dictionary["flag"].has("ending"):
 		if GameGlobals.game_dictionary["flag"]["ending"]:
 			var ending_tween: Tween = create_tween()
 			ending_tween.finished.connect(_begin_despawn)
-			ending_tween.tween_property(self,"modulate:a",0,1)
+			ending_tween.tween_property(self, "modulate:a", 0, 1)

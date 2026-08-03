@@ -40,7 +40,7 @@ func on_successful_deflect() -> void:
 
 # Gives meter on a collect
 func on_successful_collect() -> void:
-	increment_combo(1)
+	increment_combo(combo_increment_on_punch)
 	apply_meter_gain(on_collect_meter_gain)
 	return
 

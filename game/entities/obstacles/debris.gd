@@ -208,7 +208,7 @@ func _begin_despawn() -> void:
 
 func super_kill() -> void:
 	is_super_defeat = true
-	super_meter_handler.increment_combo(1)
+	super_meter_handler.increment_combo(super_meter_handler.combo_increment_on_punch)
 	main_game_scene.apply_time_bonus(1 * super_meter_handler.super_level)
 	_on_destroyed()
 
