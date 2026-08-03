@@ -87,6 +87,11 @@ func _process(_delta: float) -> void:
 	if not is_moving:
 		if is_instance_valid(distance_countdown):
 			distance_countdown.text = str(int(_get_distance_display())) + " m"
+	if is_moving:
+		var viewport_length: float = get_viewport_rect().size.x
+		var meteor_width: float = 257.0
+		if position.x >= (viewport_length + meteor_width):
+			_begin_despawn()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -161,11 +166,11 @@ func _on_deflected_area_entered(area: Area2D) -> void:
 		if area is RangedEnemy:
 			despawn_timer.stop()
 			area._on_meteored()
-			_on_destroyed()
+			#_on_destroyed()
 		if area.owner is MeleeEnemy:
 			despawn_timer.stop()
 			area.owner._on_meteored()
-			_on_destroyed()
+			#_on_destroyed()
 	return
 
 
