@@ -23,7 +23,9 @@ var deflect_cooldown_on_mistake: float = 1.5
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
-	#timer.timeout.connect(_stop_deflect)
+	
+	deflect_duration = 1.0 / 6.0 * 2 ## One second over Deflect animation FPS (6), multiplied by Deflect animation frames (2)
+	print("Deflect duration is " + str(deflect_duration))
 
 
 # Confirming the colliding entity is in the same lane as the player
@@ -57,20 +59,15 @@ func _on_area_exited(area: Area2D) -> void:
 
 
 func _stop_deflect() -> void:
-	print("This is MY method!!!! BE HERE")
 	is_deflecting = false
 	if has_deflected_correct_object:
-		print("Ayo GOOOOD parry!")
 		parry_cooldown_timer.stop()
 		on_parry_recharge.emit()
 		return
 	elif has_deflected_incorrect_object:
-		print("that parry sucked ass")
 		var current_cooldown_time: float = parry_cooldown_timer.wait_time
 		parry_cooldown_timer.start((deflect_cooldown_on_mistake - deflect_cooldown_on_whiff) + current_cooldown_time)
 		return
-	else:
-		print("Yeah I guess that's a soso parry")
 
 
 func _physics_process(_delta: float) -> void:

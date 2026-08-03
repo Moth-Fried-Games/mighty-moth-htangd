@@ -30,5 +30,3 @@ func _process(_delta: float) -> void:
 func _on_animation_finished() -> void:
 	if animation != "fly":
 		play("fly")
-	#if animation == "deflect":
-	#	owner.hit_box.stop_deflect()

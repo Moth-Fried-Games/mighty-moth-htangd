@@ -53,7 +53,6 @@ lanes = [null]
 
 [node name="PlayerSprite" parent="." unique_id=1310412979 instance=ExtResource("2_v0nmi")]
 animation = &"fly"
-frame_progress = 0.22644316
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=781639028]
 visible = false
