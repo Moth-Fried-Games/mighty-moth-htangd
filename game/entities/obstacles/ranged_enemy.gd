@@ -120,6 +120,7 @@ func _on_ranged_enemy_sprite_rocket_fired() -> void:
 
 func super_kill() -> void:
 	is_super_defeat = true
+	super_meter_handler.increment_combo(1)
 	main_game_scene.apply_time_bonus(1*super_meter_handler.super_level)
 	_on_defeated()
 
