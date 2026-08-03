@@ -12,11 +12,18 @@ var parryable_objects_colliding: Array[Area2D]
 var is_deflecting: bool = false
 signal on_parry_recharge
 
+var has_deflected_correct_object: bool = false
+var has_deflected_incorrect_object: bool = false
+
+var deflect_duration: float = 0.6
+var deflect_cooldown_on_whiff: float = 1.1
+var deflect_cooldown_on_mistake: float = 1.5
+
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
-	timer.timeout.connect(_stop_deflect)
+	#timer.timeout.connect(_stop_deflect)
 
 
 # Confirming the colliding entity is in the same lane as the player
@@ -50,7 +57,20 @@ func _on_area_exited(area: Area2D) -> void:
 
 
 func _stop_deflect() -> void:
+	print("This is MY method!!!! BE HERE")
 	is_deflecting = false
+	if has_deflected_correct_object:
+		print("Ayo GOOOOD parry!")
+		parry_cooldown_timer.stop()
+		on_parry_recharge.emit()
+		return
+	elif has_deflected_incorrect_object:
+		print("that parry sucked ass")
+		var current_cooldown_time: float = parry_cooldown_timer.wait_time
+		parry_cooldown_timer.start((deflect_cooldown_on_mistake - deflect_cooldown_on_whiff) + current_cooldown_time)
+		return
+	else:
+		print("Yeah I guess that's a soso parry")
 
 
 func _physics_process(_delta: float) -> void:
@@ -61,20 +81,28 @@ func _physics_process(_delta: float) -> void:
 
 	if is_deflecting:
 		for object in parryable_objects_colliding:
+			if object.owner is Debris or object.owner is EnemyProjectile:
+				has_deflected_correct_object = true
+			elif object.owner is MeleeEnemy or object.owner is Souvenir:
+				has_deflected_incorrect_object = true
+			
 			object.owner._on_deflected()
 			parryable_objects_colliding.erase(object)
 
 	if Input.is_action_just_pressed("deflect") and parry_cooldown_timer.is_stopped():
 		player_sprite.play("deflect")
 		is_deflecting = true
-		timer.start()
-		parry_cooldown_timer.start()
+		has_deflected_correct_object = false
+		has_deflected_incorrect_object = false
+		
+		timer.start(deflect_duration)
+		parry_cooldown_timer.start(deflect_cooldown_on_whiff)
 		return
 	elif (
 		is_deflecting
 		and (Input.is_action_just_pressed("collect") or Input.is_action_just_pressed("punch"))
 	):
-		is_deflecting = false
+		_stop_deflect()
 
 	var isPunching: bool = player_sprite.punching
 	if isPunching:
@@ -88,7 +116,6 @@ func _physics_process(_delta: float) -> void:
 			if is_instance_valid(object):
 				object.owner._on_collected()
 				collectable_objects_colliding.erase(object)
-
 
 func _reset_parry_timers() -> void:
 	is_deflecting = false
