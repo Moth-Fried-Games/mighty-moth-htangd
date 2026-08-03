@@ -87,7 +87,7 @@ func _process(_delta: float) -> void:
 	if not is_moving:
 		if is_instance_valid(distance_countdown):
 			distance_countdown.text = str(int(_get_distance_display())) + " m"
-	if is_moving:
+	if is_deflected:
 		var viewport_length: float = get_viewport_rect().size.x
 		var meteor_width: float = 257.0
 		if position.x >= (viewport_length + meteor_width):
