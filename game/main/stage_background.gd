@@ -33,6 +33,8 @@ var station_shown: bool = false
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
+		GameGlobals.game_dictionary["flag"]["cutscene"] = false
+		GameGlobals.game_dictionary["flag"]["ending"] = false
 		GameGlobals.game_dictionary["node"]["stage_background"] = self
 		win_animation_player.animation_finished.connect(_on_win_animation_finished)
 		space_station_lose.animation_finished.connect(_on_lose_animation_finished)
