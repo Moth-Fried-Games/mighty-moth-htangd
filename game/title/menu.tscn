@@ -1003,9 +1003,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
+offset_left = -315.0
 offset_top = -283.5
-offset_right = 300.0
+offset_right = 315.0
 offset_bottom = 283.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -1017,12 +1017,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_e05k4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer" unique_id=364311509]
+[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer" unique_id=2038857464]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/MarginContainer" unique_id=364311509]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer" unique_id=260845071]
+[node name="Label" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=260845071]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.92156863, 0.7019608, 0.4627451, 1)
 theme_override_fonts/normal_font = ExtResource("4_lybkc")
@@ -1031,7 +1038,7 @@ bbcode_enabled = true
 text = "[center]CREDITS"
 fit_content = true
 
-[node name="CreditsRichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1843268134]
+[node name="CreditsRichTextLabel" type="RichTextLabel" parent="Control/TabContainer/Credits/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1843268134]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 2
@@ -1042,36 +1049,36 @@ theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "[center]
-Game Concept by
+[b]Game Concept[/b]
 [url=https://mothfriedgames.neocities.org/team]Moth Fried Games[/url]
 
-Game Design by
+[b]Game Design[/b]
 [url=https://myrthemoth.neocities.org/]Myr the Moth[/url] and [url=https://lobbamattos.itch.io/]Lobba Mattos[/url]
 
-Concept Art by
+[b]Concept Art[/b]
 [url=https://jojuticaba.itch.io/]Jojo[/url]
 
-Narrative by
+[b]Narrative[/b]
 [url=https://bsky.app/profile/hreter.bsky.social]Hreter[/url]
 
-Programming by
+[b]Programming[/b]
 [url=https://myrthemoth.neocities.org/]Myr the Moth[/url], [url=https://cedi-fonei.neocities.org/]Cedi[/url] and [url=https://romuboy.itch.io/]ROMUBOY[/url]
 
-Game Art by
+[b]Game Art[/b]
 [url=https://explorermoo.com/]Atlas[/url] and [url=https://jojuticaba.itch.io/]Jojo[/url]
 
-Sounds
+[b]Sounds[/b]
 [url=https://softbrewmobile.com/apps/fm77/]FM·77 Game SFX Generator[/url]
 
-Music
+[b]Music[/b]
 [url=https://erikmcclure.com/]Erik McClure[/url]
 [url=https://ovanisound.com/]Ovani Sound[/url]
 
-Fonts
+[b]Fonts[/b]
 [url=https://fonts.google.com/specimen/Slackey]Slackey[/url]
 [url=https://fonts.google.com/specimen/Open+Sans]Open Sans[/url]
 
-Resources
+[b]Resources[/b]
 [url=https://github.com/Aarimous/AudioManager]AudioManager[/url]
 [url=https://github.com/ryan-haskell/gdformat-on-save]Format on Save[/url]
 [url=https://github.com/rsubtil/controller_icons/]Controller Icons[/url]
@@ -1083,7 +1090,7 @@ Resources
 [url=https://www.pexels.com/pt-br/foto/passaro-ave-passarinho-animal-17481292/]Owl 3[/url]
 [url=https://freesound.org/people/differentieel/sounds/245455/]Old Clock Ticking[/url]
 
-Created for the [url=https://itch.io/jam/gmtk-jam-2026]GMTK Jam 2026[/url]"
+[b]Created for the [url=https://itch.io/jam/gmtk-jam-2026]GMTK Jam 2026[/url][/b]"
 
 [node name="CreditsReturnButton" type="Button" parent="Control/TabContainer/Credits/VBoxContainer" unique_id=1524769763]
 unique_name_in_owner = true
