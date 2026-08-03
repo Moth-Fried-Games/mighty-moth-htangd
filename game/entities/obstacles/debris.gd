@@ -11,6 +11,7 @@ var is_defeat: bool = false
 
 var warning_timer: Timer
 var despawn_timer: Timer = Timer.new()
+var starting_time: float = 0
 
 @onready var hurtboxarea: Area2D = $"HurtBoxArea"
 @onready var meleehitboxarea: Area2D = $"PunchHitBoxArea"
@@ -18,6 +19,7 @@ var despawn_timer: Timer = Timer.new()
 @onready var debris_warning: Node2D = $DebrisWarning
 @onready var distance_countdown: Label = $DebrisWarning/DistanceCountdown
 @onready var sprite_2d: AnimatedSprite2D = $MeteorSprite
+@onready var line_2d: Line2D = $DebrisWarning/Line2D
 
 var super_meter_handler: SuperMeterHandler
 var main_game_scene: MainGameScene
@@ -74,6 +76,9 @@ func _ready() -> void:
 	add_child(warning_timer)
 	warning_timer.start()
 
+	starting_time = warning_timer.wait_time
+	line_2d.modulate.a = 0
+
 	GameGlobals.audio_manager.create_audio("sound_meteor_alert")
 	add_to_group("ultimate")
 	return
@@ -87,6 +92,7 @@ func _process(_delta: float) -> void:
 	if not is_moving:
 		if is_instance_valid(distance_countdown):
 			distance_countdown.text = str(int(_get_distance_display())) + " m"
+			line_2d.modulate.a = 1 - (warning_timer.time_left / starting_time)
 	if is_deflected:
 		var viewport_length: float = get_viewport_rect().size.x
 		var meteor_width: float = 257.0
@@ -134,14 +140,14 @@ func _is_in_same_lane(colliding_area: Area2D) -> bool:
 
 func _on_punched() -> void:
 	GameGlobals.audio_manager.create_audio("sound_punch")
-	main_game_scene.apply_time_bonus(0.1)
+	#main_game_scene.apply_time_bonus(0.1)
 	super_meter_handler.on_successful_punch()
 	_on_destroyed()
 
 
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	main_game_scene.apply_time_bonus(0.2)
+	#main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 
 	is_deflected = true

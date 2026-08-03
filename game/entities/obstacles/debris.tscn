@@ -16,6 +16,14 @@ size = Vector2(62, 133)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dxyy"]
 size = Vector2(66, 137)
 
+[sub_resource type="Gradient" id="Gradient_wat4r"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 0.75000006, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ykh0f"]
+gradient = SubResource("Gradient_wat4r")
+fill_to = Vector2(0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_wat4r"]
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -57,7 +65,14 @@ shape = SubResource("RectangleShape2D_1dxyy")
 
 [node name="DebrisWarning" type="Node2D" parent="." unique_id=432866142]
 z_index = 1
-position = Vector2(-49, 1)
+position = Vector2(-50, 0)
+
+[node name="Line2D" type="Line2D" parent="DebrisWarning" unique_id=1362132222]
+z_index = -2
+points = PackedVector2Array(3000, 0, -9999, 0)
+width = 50.0
+texture = SubResource("GradientTexture2D_ykh0f")
+texture_mode = 2
 
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
 offset_left = -41.0

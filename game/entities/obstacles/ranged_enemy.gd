@@ -86,7 +86,7 @@ func _on_meteored() -> void:
 
 
 func _on_missle_countered() -> void:
-	main_game_scene.apply_time_bonus(0.2)
+	#main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 	GameGlobals.audio_manager.create_audio("sound_explosion")
 	_on_defeated()

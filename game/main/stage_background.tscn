@@ -333,6 +333,7 @@ animations = [{
 
 [node name="StageBackground" type="Node2D" unique_id=1460123268]
 process_mode = 3
+z_index = -2
 script = ExtResource("1_t7266")
 scroll_speed = 50.0
 modifier_3 = 0.75
@@ -351,7 +352,7 @@ centered = false
 
 [node name="Parallax2" type="Parallax2D" parent="." unique_id=1003403447]
 process_mode = 1
-scroll_offset = Vector2(67.85843, 0)
+scroll_offset = Vector2(670.33887, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -363,7 +364,7 @@ centered = false
 
 [node name="Parallax4" type="Parallax2D" parent="." unique_id=1409639157]
 process_mode = 1
-scroll_offset = Vector2(-99.34454, 0)
+scroll_offset = Vector2(1105.6393, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -375,7 +376,7 @@ centered = false
 
 [node name="Parallax3" type="Parallax2D" parent="." unique_id=1324184026]
 process_mode = 1
-scroll_offset = Vector2(-384.56342, 0)
+scroll_offset = Vector2(-1137.0839, 0)
 repeat_size = Vector2(1280, 0)
 repeat_times = 4
 
@@ -387,25 +388,25 @@ centered = false
 
 [node name="Planet1" type="Sprite2D" parent="." unique_id=4307794]
 process_mode = 1
-position = Vector2(-203, 625)
+position = Vector2(-406.30127, 625)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7lp44")
 
 [node name="Planet2" type="Sprite2D" parent="." unique_id=1984123476]
 process_mode = 1
-position = Vector2(457.2272, 88)
+position = Vector2(-228.08653, 88)
 scale = Vector2(2, 2)
 texture = ExtResource("7_pv6ml")
 
 [node name="Planet3" type="Sprite2D" parent="." unique_id=720359318]
 process_mode = 1
-position = Vector2(-82.106285, 140)
+position = Vector2(-82.247986, 140)
 scale = Vector2(2, 2)
 texture = ExtResource("8_6ns2i")
 
 [node name="Planet4" type="Sprite2D" parent="." unique_id=252639186]
 process_mode = 1
-position = Vector2(-170.14272, 540)
+position = Vector2(1211.7113, 540)
 scale = Vector2(2, 2)
 texture = ExtResource("9_m57kj")
 

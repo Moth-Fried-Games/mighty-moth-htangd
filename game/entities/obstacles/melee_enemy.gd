@@ -68,7 +68,7 @@ func _on_window_size_changed() -> void:
 
 func _on_punched() -> void:
 	GameGlobals.audio_manager.create_audio("sound_punch")
-	main_game_scene.apply_time_bonus(0.1)
+	#main_game_scene.apply_time_bonus(0.1)
 	super_meter_handler.on_successful_punch()
 	_on_defeated()
 
@@ -80,7 +80,7 @@ func _on_meteored() -> void:
 
 func _on_deflected() -> void:
 	GameGlobals.audio_manager.create_audio("sound_deflect")
-	main_game_scene.apply_time_bonus(0.2)
+	#main_game_scene.apply_time_bonus(0.2)
 	super_meter_handler.on_successful_deflect()
 	_on_defeated()
 
