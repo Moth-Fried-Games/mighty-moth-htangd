@@ -25,7 +25,7 @@ func _ready() -> void:
 	area_exited.connect(_on_area_exited)
 	
 	deflect_duration = 1.0 / 6.0 * 2 ## One second over Deflect animation FPS (6), multiplied by Deflect animation frames (2)
-	print("Deflect duration is " + str(deflect_duration))
+	#print("Deflect duration is " + str(deflect_duration))
 
 
 # Confirming the colliding entity is in the same lane as the player

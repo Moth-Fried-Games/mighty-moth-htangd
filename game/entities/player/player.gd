@@ -84,7 +84,7 @@ func _on_hit_reaction() -> void:
 
 
 func _on_parry_recharge() -> void:
-	print("parry the platapus")
+	#print("parry the platapus")
 	player_sprite.modulate = Color.LIGHT_CYAN
 	GameGlobals.audio_manager.create_audio("sound_deflect", 3)
 	await get_tree().create_timer(0.1).timeout
@@ -174,4 +174,4 @@ func _on_super_finished() -> void:
 
 
 func _stop_deflect() -> void:
-	pass # Replace with function body.
+	pass  # Replace with function body.
