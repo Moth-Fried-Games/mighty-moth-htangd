@@ -40,6 +40,7 @@ func on_successful_deflect() -> void:
 
 # Gives meter on a collect
 func on_successful_collect() -> void:
+	increment_combo(1)
 	apply_meter_gain(on_collect_meter_gain)
 	return
 
@@ -57,13 +58,10 @@ func calculate_meter_gain_value(base_gain_value: float) -> float:
 # Increases combo counter and, if applicable, combo multiplier
 func increment_combo(increment_value: int) -> void:
 	combo_count += increment_value
-	
-	var combo_COMPARE:float = floor(combo_count / float(combo_multiplier_increment_threshold))
-	
-	if (
-		combo_multiplier < combo_multiplier_maximum
-		and combo_COMPARE > combo_multiplier
-	):
+
+	var combo_COMPARE: float = floor(combo_count / float(combo_multiplier_increment_threshold))
+
+	if combo_multiplier < combo_multiplier_maximum and combo_COMPARE > combo_multiplier:
 		combo_multiplier += combo_multiplier_increment_value
 	return
 
