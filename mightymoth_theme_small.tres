@@ -183,14 +183,24 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06i3q"]
+bg_color = Color(0.37254903, 0.105882354, 0.49019608, 0.5411765)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37254903, 0.105882354, 0.49019608, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x4wt"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.37254903, 0.105882354, 0.49019608, 0.7607843)
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33hap"]
@@ -211,8 +221,8 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.37254903, 0.105882354, 0.49019608, 0.36078432)
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vssy6"]
@@ -233,10 +243,8 @@ content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5b0f"]
@@ -329,7 +337,7 @@ OptionButton/fonts/font = SubResource("FontVariation_e05k4")
 OptionButton/icons/arrow = SubResource("DPITexture_ibdkp")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_e05k4")
 OptionButton/styles/disabled_mirrored = SubResource("StyleBoxFlat_6qfiv")
-OptionButton/styles/focus = SubResource("StyleBoxFlat_jbr73")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_06i3q")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_6x4wt")
 OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_33hap")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_l7813")

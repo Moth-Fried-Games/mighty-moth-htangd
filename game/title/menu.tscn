@@ -256,7 +256,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qr41j")
 tab_alignment = 1
-current_tab = 2
+current_tab = 3
 tabs_visible = false
 
 [node name="Start" type="Control" parent="Control/TabContainer" unique_id=619077342]
@@ -374,6 +374,7 @@ theme = ExtResource("3_weauo")
 text = "QUIT"
 
 [node name="HowTo" type="Control" parent="Control/TabContainer" unique_id=2060671812]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -728,7 +729,6 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Settings" type="Control" parent="Control/TabContainer" unique_id=1752485961]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
