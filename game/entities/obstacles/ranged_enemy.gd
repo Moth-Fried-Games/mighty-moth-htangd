@@ -5,7 +5,7 @@ const RANGE_ENEMY_PROJECTILE = preload("uid://dkpcrcnigdbei")
 
 enum State { ARRIVING, IDLE, WINDUP, DEFEATED, ESCAPE }
 
-const spawn_offset_from_anchor: float = 100
+const spawn_offset_from_anchor: float = 140
 const movement_per_second: float = 300
 const arrival_move_speed: float = 100
 

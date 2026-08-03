@@ -16,6 +16,10 @@ size = Vector2(62, 133)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dxyy"]
 size = Vector2(66, 137)
 
+[sub_resource type="LabelSettings" id="LabelSettings_wat4r"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Debris" type="Area2D" unique_id=1549825374]
 script = ExtResource("1_iysvr")
 
@@ -56,13 +60,15 @@ z_index = 1
 position = Vector2(-49, 1)
 
 [node name="DistanceCountdown" type="Label" parent="DebrisWarning" unique_id=805158785]
-offset_left = -67.0
-offset_top = -16.0
-offset_right = 15.0
-offset_bottom = 7.0
+offset_left = -41.0
+offset_top = 45.0
+offset_right = 41.0
+offset_bottom = 68.0
 text = "X m"
-horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_wat4r")
+horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="DebrisWarning" unique_id=239104862]
-position = Vector2(31, -1)
+position = Vector2(7, -1)
+scale = Vector2(2, 2)
 texture = ExtResource("6_wat4r")
