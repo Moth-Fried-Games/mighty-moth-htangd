@@ -12,6 +12,8 @@ const arrival_move_speed: float = 100
 var is_super_kill: bool = false
 var is_super_defeat: bool = false
 var is_defeat: bool = false
+var ending_point: float = 0
+var is_shooting: bool = false
 
 @onready var ranged_enemy_sprite: RangeEnemySprite = $RangedEnemySprite
 
@@ -23,8 +25,6 @@ var main_game_scene: MainGameScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().root.size_changed.connect(_on_window_size_changed)
-
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 
 	var back_spawn_anchor: Marker2D = null
@@ -37,25 +37,25 @@ func _ready() -> void:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
 
 	global_position = Vector2(
-		back_spawn_anchor.global_position.x - spawn_offset_from_anchor,
+		back_spawn_anchor.global_position.x + spawn_offset_from_anchor,
 		back_spawn_anchor.global_position.y
 	)
 
 	main_game_scene = get_tree().current_scene
 	super_meter_handler = main_game_scene.super_meter_handler
-	_spawn_projectile()
 	add_to_group("ultimate")
 	return
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	_adjust_enemy(delta)
 	_ending_fade()
 	if is_super_kill:
 		if not is_super_defeat:
 			super_kill()
 
 
-func _on_window_size_changed() -> void:
+func _adjust_enemy(delta: float) -> void:
 	var lane_binder: Lanes = get_tree().current_scene.lane_binders
 	var back_spawn_anchor: Marker2D = null
 	match current_lane:
@@ -66,8 +66,17 @@ func _on_window_size_changed() -> void:
 		Lanes.LaneId.BOTTOM:
 			back_spawn_anchor = lane_binder.bottom_right_anchor
 
-	if global_position.x != (back_spawn_anchor.global_position.x - spawn_offset_from_anchor):
-		global_position.x = (back_spawn_anchor.global_position.x - spawn_offset_from_anchor)
+	if ending_point != (back_spawn_anchor.global_position.x - spawn_offset_from_anchor):
+		ending_point = (back_spawn_anchor.global_position.x - spawn_offset_from_anchor)
+
+	if global_position.x > ending_point:
+		global_position.x = global_position.x - (delta * movement_per_second)
+	else:
+		if not is_shooting:
+			is_shooting = true
+			_spawn_projectile()
+		if global_position.x != ending_point:
+			global_position.x = ending_point
 	return
 
 
